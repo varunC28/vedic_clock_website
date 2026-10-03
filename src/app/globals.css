@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void-navy: #0B0F1E;
+  --color-deep-indigo: #141B33;
+  --color-parchment: #F3E9D2;
+  --color-ivory: #FBF5E7;
+  --color-brass: #B8873D;
+  --color-antique-gold: #D4A65A;
+  --color-amber-glow: #F5A623;
+  --color-deep-bronze: #3D2A1A;
+  --color-ink-black: #2A1B10;
+
+  --color-bgDeep: var(--color-void-navy);
+  --color-bgDeeper: #060D18;
+  --color-bgLift: #16283C;
+  --color-bgLiftHi: #1E324A;
+  --color-ink: var(--color-ivory);
+  --color-inkMuted: #8A9BA8;
+  --color-accent: #D4691E;
+  --color-highlight: var(--color-brass);
+  --color-highlightSoft: #FFE3A8;
+  --color-shubha: #4A9D6F;
+  --color-ashubha: #C04848;
+  --color-giltLight: #D9B065;
+  --color-giltDeep: #8A6A2E;
+  --color-bindu: #FFE3A8;
+
+  --font-serif: var(--font-fraunces), serif;
+  --font-sans: var(--font-inter), sans-serif;
+}
+
+@utility animate-heartbeat {
+  animation: heartbeat 4s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 56%, 100% { transform: scale(1); opacity: 0.3; }
+  14%, 42%      { transform: scale(1.15); opacity: 0.6; }
+  28%           { transform: scale(1); opacity: 0.3; }
+}
+
+@layer base {
+  body {
+    background-color: var(--color-void-navy);
+    color: var(--color-ivory);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Minimal scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-void-navy);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-deep-indigo);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-brass);
+  }
+}
