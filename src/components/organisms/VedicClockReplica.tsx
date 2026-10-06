@@ -177,7 +177,7 @@ export function VedicClockReplica({
   // Earth 3D Globe Sizing
   const videoSize = scaledSize * 0.655;
   const videoLeft = (size - videoSize) / 2;
-  const videoTop = (size - videoSize) / 2;
+  const videoTop = (size - videoSize) / 2 + 4 * scale;
 
   // SVG Arch Sizing
   const svgSize = size * 2.00;
