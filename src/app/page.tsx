@@ -17,13 +17,17 @@ import { InstitutionCard } from "@/components/molecules/InstitutionCard";
 import { QuoteCard } from "@/components/molecules/QuoteCard";
 import { CtaCard } from "@/components/molecules/CtaCard";
 import { Header } from "@/components/organisms/Header";
+import { Footer } from "@/components/organisms/Footer";
+import { Hero } from "@/components/organisms/Hero";
 import { MUHURTAS } from "@/data/muhurtas";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center pt-24 pb-16 px-4 sm:px-8">
+    <>
       <Header />
-      <div className="w-full max-w-4xl space-y-12">
+      <Hero />
+      <main className="flex min-h-screen flex-col items-center pt-24 pb-16 px-4 sm:px-8">
+        <div className="w-full max-w-4xl space-y-12">
         {/* Header */}
         <div className="text-center space-y-4 mb-16">
           <h1 className="text-3xl sm:text-4xl font-serif text-brass">
@@ -1025,7 +1029,9 @@ export default function Home() {
           </div>
 
         </div>
-      </div>
-    </main>
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 }

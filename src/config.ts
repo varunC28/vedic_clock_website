@@ -20,11 +20,11 @@ export interface LocationConfig {
 }
 
 export const DEFAULT_LOCATION: LocationConfig = {
-  city: 'Ujjain',
-  cityHi: 'उज्जैन',
-  latitude: 23.1793,
-  longitude: 75.7849,
-  heightMeters: 490,
+  city: 'Bhopal',
+  cityHi: 'भोपाल',
+  latitude: 23.2599,
+  longitude: 77.4126,
+  heightMeters: 500,
 };
 
 /** IST is UTC+5:30, never DST. Use this to convert UTC↔IST for display. */

@@ -9,6 +9,7 @@ interface CtaCardProps {
   description: string;
   buttonTextEn: string;
   buttonTextHi?: string;
+  buttonSize?: "sm" | "md" | "lg";
   href?: string;
   className?: string;
 }
@@ -19,6 +20,7 @@ export function CtaCard({
   description,
   buttonTextEn,
   buttonTextHi,
+  buttonSize = "md",
   href = "/contact",
   className,
 }: CtaCardProps) {
@@ -49,7 +51,7 @@ export function CtaCard({
       </div>
 
       {/* Button Column */}
-      <div className="shrink-0 relative group z-10 w-full sm:w-auto flex justify-center">
+      <div className="shrink-0 relative group z-10 flex justify-center">
         {/* The Heartbeat Glow Behind the Button */}
         <div className="absolute inset-0 -z-10 rounded-lg bg-antique-gold/50 blur-xl motion-safe:animate-heartbeat" />
         
@@ -58,9 +60,9 @@ export function CtaCard({
           en={buttonTextEn}
           hi={buttonTextHi}
           href={href}
-          size="lg"
+          size={buttonSize}
           variant="primary"
-          className="w-full sm:w-auto shadow-none" /* We remove its internal shadow because we are providing the heartbeat glow */
+          className="shadow-none" /* We remove its internal shadow because we are providing the heartbeat glow */
         />
       </div>
     </div>

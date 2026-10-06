@@ -18,10 +18,12 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Detect scroll to toggle glass mode
+  // Detect scroll to reveal header ONLY after maximum scrolled past the hero section
+  // Clock awakening completes at window.innerHeight * 3.2. Header appears after an additional 1-2 scrolls.
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 50);
+      const heroThreshold = window.innerHeight * 3.35;
+      setScrolled(window.scrollY >= heroThreshold);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll(); // initialize
@@ -44,10 +46,10 @@ export function Header() {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out",
           scrolled
-            ? "bg-void-navy/80 backdrop-blur-lg border-b border-brass/10 shadow-lg shadow-black/20"
-            : "bg-transparent border-transparent"
+            ? "translate-y-0 opacity-100 bg-void-navy/90 backdrop-blur-lg border-b border-brass/10 shadow-lg shadow-black/30 pointer-events-auto"
+            : "-translate-y-full opacity-0 pointer-events-none"
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
@@ -62,25 +64,24 @@ export function Header() {
           </Link>
 
           {/* Center: Desktop Nav (English Only) */}
-          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+          <nav className="hidden lg:flex items-center gap-6 lg:gap-8">
             {NAV_LINKS.map((link) => (
               <NavItem
                 key={link.href}
                 href={link.href}
                 en={link.en}
-                // Intentionally omitting 'hi' prop to keep the desktop header compact
               />
             ))}
           </nav>
 
           {/* Right: Desktop CTA */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <BrassButton en="Enquire" size="sm" variant="primary" href="/contact" />
           </div>
 
           {/* Mobile: Hamburger Toggle */}
           <button
-            className="md:hidden flex flex-col items-center justify-center w-10 h-10 gap-1.5 relative z-50"
+            className="lg:hidden flex flex-col items-center justify-center w-10 h-10 gap-1.5 relative z-50"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle Menu"
           >
@@ -109,7 +110,7 @@ export function Header() {
       {/* Mobile Full-Screen Overlay Menu */}
       <div
         className={cn(
-          "fixed inset-0 z-40 bg-void-navy/95 backdrop-blur-xl flex flex-col items-center justify-center gap-10 transition-opacity duration-300 md:hidden",
+          "fixed inset-0 z-40 bg-void-navy/95 backdrop-blur-xl flex flex-col items-center justify-center gap-10 transition-opacity duration-300 lg:hidden",
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
       >

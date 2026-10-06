@@ -24,7 +24,7 @@ export function BrassButton({
   const sizeClasses = {
     sm: "px-5 py-2 min-w-[120px]",
     md: "px-6 py-2.5 sm:px-8 sm:py-3 min-w-[160px]",
-    lg: "px-8 py-3 sm:px-10 sm:py-4 min-w-[200px]",
+    lg: "px-5 py-3 sm:px-10 sm:py-4 min-w-[200px]",
   };
 
   const enTextSize = {
@@ -40,7 +40,7 @@ export function BrassButton({
   };
 
   const baseClasses = cn(
-    "inline-flex items-center justify-center whitespace-nowrap rounded-lg font-sans",
+    "inline-flex items-center justify-center flex-wrap text-center rounded-lg font-sans",
     "motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-out",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brass focus-visible:ring-offset-2 focus-visible:ring-offset-void-navy",
     sizeClasses[size],
