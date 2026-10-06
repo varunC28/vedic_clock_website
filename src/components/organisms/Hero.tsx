@@ -48,16 +48,12 @@ export function Hero() {
     const updateSize = () => {
       const w = window.innerWidth;
       const h = window.innerHeight;
-      const idealFromHeight = Math.floor(h * 0.58);
-      if (w < 640) {
-        setClockSize(Math.min(270, idealFromHeight));
-      } else if (w < 1024) {
-        setClockSize(Math.min(340, idealFromHeight));
-      } else if (w < 1440) {
-        setClockSize(Math.min(420, idealFromHeight));
-      } else {
-        setClockSize(Math.min(460, idealFromHeight));
-      }
+      const isPortrait = h > w;
+      // In portrait (e.g. iPad Mini 768x1024), dial width with wings expands ~2.38x, so cap dial size to w / 2.55
+      const maxForWidth = Math.floor(w / (isPortrait ? 2.55 : 1.85));
+      const idealFromHeight = Math.floor(h * (isPortrait ? 0.48 : 0.56));
+      const ideal = Math.min(maxForWidth, idealFromHeight);
+      setClockSize(Math.max(220, Math.min(460, ideal)));
     };
     updateSize();
     window.addEventListener("resize", updateSize);
@@ -208,16 +204,16 @@ export function Hero() {
         {/* Top-Left: Time (12h / 24h IST) */}
         <div
           ref={cornerTopLeftRef}
-          className="absolute top-[88px] sm:top-[92px] lg:top-[96px] left-8 sm:left-14 lg:left-20 w-[270px] sm:w-[305px] lg:w-[335px] h-[130px] sm:h-[150px] lg:h-[165px] flex items-center justify-center text-center"
+          className="absolute top-[80px] sm:top-[88px] lg:top-[96px] left-4 sm:left-6 md:left-8 lg:left-20 w-[240px] sm:w-[270px] md:w-[290px] lg:w-[335px] h-[115px] sm:h-[130px] md:h-[140px] lg:h-[165px] flex items-center justify-center text-center"
         >
           <img
             src="/assets/images/corner_assest.webp"
             alt="Plaque Frame"
             className="absolute inset-0 w-full h-full object-fill filter drop-shadow-2xl"
           />
-          <div className="relative z-10 flex flex-col items-center justify-center px-8">
+          <div className="relative z-10 flex flex-col items-center justify-center px-6 sm:px-8">
             <span
-              className="text-base sm:text-lg lg:text-xl text-[#FFF5D1]"
+              className="text-sm sm:text-base lg:text-xl text-[#FFF5D1]"
               style={{
                 filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.98)) drop-shadow(0 0 14px rgba(255,180,0,0.8))",
                 fontFamily: "var(--font-hindi), var(--font-noto-devanagari), 'Noto Sans Devanagari', sans-serif",
@@ -227,7 +223,7 @@ export function Hero() {
               {time12}
             </span>
             <span
-              className="text-xs sm:text-sm lg:text-[15px] font-bold text-[#E8B94B] tracking-wider uppercase mt-1.5"
+              className="text-[11px] sm:text-xs lg:text-[15px] font-bold text-[#E8B94B] tracking-wider uppercase mt-1 sm:mt-1.5"
               style={{
                 filter: "drop-shadow(0 1.5px 3px rgba(0,0,0,0.95))",
                 fontFamily: "var(--font-hindi), var(--font-noto-devanagari), 'Noto Sans Devanagari', sans-serif",
@@ -242,16 +238,16 @@ export function Hero() {
         {/* Top-Right: Hindu Date */}
         <div
           ref={cornerTopRightRef}
-          className="absolute top-[88px] sm:top-[92px] lg:top-[96px] right-8 sm:left-auto sm:right-14 lg:right-20 w-[270px] sm:w-[305px] lg:w-[335px] h-[130px] sm:h-[150px] lg:h-[165px] flex items-center justify-center text-center"
+          className="absolute top-[80px] sm:top-[88px] lg:top-[96px] right-4 sm:right-6 md:right-8 lg:right-20 w-[240px] sm:w-[270px] md:w-[290px] lg:w-[335px] h-[115px] sm:h-[130px] md:h-[140px] lg:h-[165px] flex items-center justify-center text-center"
         >
           <img
             src="/assets/images/corner_assest.webp"
             alt="Plaque Frame"
             className="absolute inset-0 w-full h-full object-fill filter drop-shadow-2xl"
           />
-          <div className="relative z-10 flex flex-col items-center justify-center px-8">
+          <div className="relative z-10 flex flex-col items-center justify-center px-6 sm:px-8">
             <span
-              className="text-base sm:text-lg lg:text-xl text-[#FFF5D1]"
+              className="text-sm sm:text-base lg:text-xl text-[#FFF5D1]"
               style={{
                 filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.98)) drop-shadow(0 0 14px rgba(255,180,0,0.8))",
                 fontFamily: "var(--font-hindi), var(--font-noto-devanagari), 'Noto Sans Devanagari', sans-serif",
@@ -261,7 +257,7 @@ export function Hero() {
               {dateHi}
             </span>
             <span
-              className="text-xs sm:text-sm lg:text-[15px] font-bold text-[#E8B94B] tracking-wider mt-1.5"
+              className="text-[11px] sm:text-xs lg:text-[15px] font-bold text-[#E8B94B] tracking-wider mt-1 sm:mt-1.5"
               style={{
                 filter: "drop-shadow(0 1.5px 3px rgba(0,0,0,0.95))",
                 fontFamily: "var(--font-hindi), var(--font-noto-devanagari), 'Noto Sans Devanagari', sans-serif",
@@ -276,16 +272,16 @@ export function Hero() {
         {/* Bottom-Left: Vikram Samvat */}
         <div
           ref={cornerBottomLeftRef}
-          className="absolute bottom-8 sm:bottom-12 lg:bottom-16 left-8 sm:left-14 lg:left-20 w-[270px] sm:w-[305px] lg:w-[335px] h-[130px] sm:h-[150px] lg:h-[165px] flex items-center justify-center text-center"
+          className="absolute bottom-4 sm:bottom-8 lg:bottom-16 left-4 sm:left-6 md:left-8 lg:left-20 w-[240px] sm:w-[270px] md:w-[290px] lg:w-[335px] h-[115px] sm:h-[130px] md:h-[140px] lg:h-[165px] flex items-center justify-center text-center"
         >
           <img
             src="/assets/images/corner_assest.webp"
             alt="Plaque Frame"
             className="absolute inset-0 w-full h-full object-fill filter drop-shadow-2xl"
           />
-          <div className="relative z-10 flex flex-col items-center justify-center px-8">
+          <div className="relative z-10 flex flex-col items-center justify-center px-6 sm:px-8">
             <span
-              className="text-base sm:text-lg lg:text-xl text-[#FFF5D1]"
+              className="text-sm sm:text-base lg:text-xl text-[#FFF5D1]"
               style={{
                 filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.98)) drop-shadow(0 0 14px rgba(255,180,0,0.8))",
                 fontFamily: "var(--font-hindi), var(--font-noto-devanagari), 'Noto Sans Devanagari', sans-serif",
@@ -295,7 +291,7 @@ export function Hero() {
               {samvatYear}
             </span>
             <span
-              className="text-xs sm:text-sm lg:text-[15px] font-bold text-[#E8B94B] tracking-wider mt-1.5"
+              className="text-[11px] sm:text-xs lg:text-[15px] font-bold text-[#E8B94B] tracking-wider mt-1 sm:mt-1.5"
               style={{
                 filter: "drop-shadow(0 1.5px 3px rgba(0,0,0,0.95))",
                 fontFamily: "var(--font-hindi), var(--font-noto-devanagari), 'Noto Sans Devanagari', sans-serif",
@@ -310,16 +306,16 @@ export function Hero() {
         {/* Bottom-Right: Singular Location (Ujjain / उज्जैन) */}
         <div
           ref={cornerBottomRightRef}
-          className="absolute bottom-8 sm:bottom-12 lg:bottom-16 right-8 sm:left-auto sm:right-14 lg:right-20 w-[270px] sm:w-[305px] lg:w-[335px] h-[130px] sm:h-[150px] lg:h-[165px] flex items-center justify-center text-center"
+          className="absolute bottom-4 sm:bottom-8 lg:bottom-16 right-4 sm:right-6 md:right-8 lg:right-20 w-[240px] sm:w-[270px] md:w-[290px] lg:w-[335px] h-[115px] sm:h-[130px] md:h-[140px] lg:h-[165px] flex items-center justify-center text-center"
         >
           <img
             src="/assets/images/corner_assest.webp"
             alt="Plaque Frame"
             className="absolute inset-0 w-full h-full object-fill filter drop-shadow-2xl"
           />
-          <div className="relative z-10 flex flex-col items-center justify-center px-8">
+          <div className="relative z-10 flex flex-col items-center justify-center px-6 sm:px-8">
             <span
-              className="text-base sm:text-lg lg:text-xl text-[#FFF5D1]"
+              className="text-sm sm:text-base lg:text-xl text-[#FFF5D1]"
               style={{
                 filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.98)) drop-shadow(0 0 14px rgba(255,180,0,0.8))",
                 fontFamily: "var(--font-hindi), var(--font-noto-devanagari), 'Noto Sans Devanagari', sans-serif",
@@ -329,7 +325,7 @@ export function Hero() {
               {DEFAULT_LOCATION.cityHi}
             </span>
             <span
-              className="text-xs sm:text-sm lg:text-[15px] font-bold text-[#E8B94B] tracking-wider uppercase mt-1.5"
+              className="text-[11px] sm:text-xs lg:text-[15px] font-bold text-[#E8B94B] tracking-wider uppercase mt-1 sm:mt-1.5"
               style={{
                 filter: "drop-shadow(0 1.5px 3px rgba(0,0,0,0.95))",
                 fontFamily: "var(--font-hindi), var(--font-noto-devanagari), 'Noto Sans Devanagari', sans-serif",
@@ -347,14 +343,14 @@ export function Hero() {
         {/* Step 1: Centered Majestic Bilingual Title (Reveals first, then dissolves) */}
         <div
           ref={textRef}
-          className="absolute z-30 flex flex-col items-center text-center origin-center pointer-events-none px-4"
+          className="absolute z-30 flex flex-col items-center text-center origin-center pointer-events-none px-6 max-w-[92vw]"
         >
-          <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-hindi text-[#FBF5E7] font-bold tracking-tight drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)]">
+          <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-hindi text-[#FBF5E7] font-bold tracking-tight drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)]">
             वेदिक घड़ी
           </h2>
-          <div className="w-36 sm:w-56 h-0.5 bg-gradient-to-r from-transparent via-[#D4A65A] to-transparent opacity-75 my-4 sm:my-6" />
+          <div className="w-24 sm:w-40 md:w-56 h-0.5 bg-gradient-to-r from-transparent via-[#D4A65A] to-transparent opacity-75 my-3 sm:my-5" />
           <h1
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-[#D4A65A] tracking-[0.25em] uppercase whitespace-nowrap drop-shadow-[0_2px_16px_rgba(0,0,0,0.9)]"
+            className="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-serif text-[#D4A65A] tracking-[0.14em] sm:tracking-[0.18em] md:tracking-[0.22em] uppercase whitespace-nowrap drop-shadow-[0_2px_16px_rgba(0,0,0,0.9)]"
             style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
           >
             The Vedic Clock
