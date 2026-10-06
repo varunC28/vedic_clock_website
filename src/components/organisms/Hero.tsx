@@ -17,8 +17,8 @@ const MONTH_HI = [
 // 1.0 = Default Cinematic Pace (~3.3s total)
 // 1.5 = Snappy & Fast (~2.2s total)
 // 2.0 = Ultra Fast (~1.6s total)
-// 0.7 = Slow & Majestic Pace
-export const LOAD_SPEED = 0.7;
+// 0.5 = Slow & Majestic Pace
+export const LOAD_SPEED = 0.5;
 
 export function Hero() {
   const clockState = useVedicClock();
@@ -73,7 +73,7 @@ export function Hero() {
 
     // Clock container and all pieces are initially hidden
     gsap.set(clockContainerRef.current, { opacity: 0 });
-    gsap.set(earthRef.current, { opacity: 0, scale: 0.82 });
+    gsap.set(earthRef.current, { opacity: 0 });
     gsap.set(frameRef.current, { opacity: 0, scale: 1.18, rotation: -8 });
     if (iconsRef.current?.children) {
       gsap.set(iconsRef.current.children, { opacity: 0, scale: 0, rotation: -45 });
@@ -116,8 +116,11 @@ export function Hero() {
     // ── PHASE 2: Clock Reveals & Auto-Assembles In Place ──────────────────────
     tl.to(clockContainerRef.current, { opacity: 1, duration: 0.5 }, 1.3);
 
-    // 1. Earth illuminates in cosmic space
-    tl.to(earthRef.current, { opacity: 1, scale: 1, duration: 0.85 }, 1.4);
+    // 1. Earth illuminates in cosmic space (pure opacity, no CSS scale so WebGL canvas retains 100% true bounds)
+    tl.to(earthRef.current, { opacity: 1, duration: 0.85 }, 1.4);
+    tl.call(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, undefined, 1.4);
 
     // 2. Brass Frame wraps securely around Earth
     tl.to(frameRef.current, { opacity: 1, scale: 1, rotation: 0, duration: 0.95, ease: "power2.out" }, 1.55);
