@@ -79,7 +79,7 @@ export default function ContactPage() {
       <main className="relative z-10 pt-28 sm:pt-36 pb-24 px-5 sm:px-8 lg:px-12 max-w-6xl mx-auto flex flex-col gap-16">
         
         {/* ── 2 Columns Layout ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start lg:items-center">
           
           {/* ── LEFT COLUMN: Typography, Direct Contact & Offices (No Card Boxes) ── */}
           <div className="lg:col-span-6 flex flex-col text-left">
