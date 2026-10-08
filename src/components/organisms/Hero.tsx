@@ -2,28 +2,25 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { VedicClockReplica } from "./VedicClockReplica";
 import { useVedicClock } from "@/hooks/useVedicClock";
 import { DEFAULT_LOCATION } from "@/config";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const MONTH_HI = [
   'जनवरी', 'फरवरी', 'मार्च', 'अप्रैल', 'मई', 'जून',
   'जुलाई', 'अगस्त', 'सितंबर', 'अक्टूबर', 'नवंबर', 'दिसंबर'
 ];
 
-// ─────────────────────────────────────────────────────────────────────────────
-// ⚡ LOAD SPEED CONTROLLER (Change this single variable to speed up / slow down)
-// ─────────────────────────────────────────────────────────────────────────────
-// 1.0 = Default Cinematic Pace (~3.3s total)
-// 1.5 = Snappy & Fast (~2.2s total)
-// 2.0 = Ultra Fast (~1.6s total)
-// 0.4 = Majestic & Balanced Pace
-export const LOAD_SPEED = 0.4;
-
 export function Hero() {
   const clockState = useVedicClock();
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
+  const scrollPromptRef = useRef<HTMLDivElement>(null);
   const clockContainerRef = useRef<HTMLDivElement>(null);
 
   // Clock component refs
@@ -73,21 +70,20 @@ export function Hero() {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // ── INITIAL STATES ───────────────────────────────────────────────────────
-    // Title is initially visible
-    gsap.set(textRef.current, { opacity: 1, scale: 1, y: 0 });
-
-    // Clock container and all pieces are initially hidden
+    // ── SCENE 0 INITIAL STATE ────────────────────────────────────────────────
+    // At scroll = 0: ONLY Cosmic Background + Center Bold Title + Scroll Prompt
     gsap.set(clockContainerRef.current, { opacity: 0 });
-    gsap.set(earthRef.current, { opacity: 0 });
-    gsap.set(frameRef.current, { opacity: 0, scale: 1.18, rotation: -8 });
+    gsap.set(earthRef.current, { opacity: 0, scale: 1 });
+    gsap.set(frameRef.current, { opacity: 0, scale: 1 });
     if (iconsRef.current?.children) {
-      gsap.set(iconsRef.current.children, { opacity: 0, scale: 0, rotation: -45 });
+      gsap.set(iconsRef.current.children, { opacity: 0, scale: 0, rotation: -90 });
     }
-    gsap.set(archesRef.current, { opacity: 0, scale: 0.94 });
-    gsap.set(progressRef.current, { opacity: 0, scale: 0.95 });
-    gsap.set(plaquesRef.current, { opacity: 0, scaleX: 0.65 });
-    gsap.set(digitsRef.current, { opacity: 0, scale: 0.78 });
+    gsap.set(archesRef.current, { opacity: 0, scale: 0.92 });
+    gsap.set(progressRef.current, { opacity: 0 });
+    gsap.set(plaquesRef.current, { opacity: 0, y: 15 });
+    gsap.set(digitsRef.current, { opacity: 0, scale: 0.85 });
+
+    // 4 Corner boxes hidden in Scene 0
     gsap.set(
       [
         cornerTopLeftRef.current,
@@ -95,61 +91,131 @@ export function Hero() {
         cornerBottomLeftRef.current,
         cornerBottomRightRef.current,
       ],
-      { opacity: 0, scale: 0.88, y: 16 }
+      { opacity: 0, scale: 0.88 }
     );
 
-    // ── CINEMATIC AUTO-ASSEMBLY TIMELINE (Controlled by single LOAD_SPEED) ───
+    // ── REORDERED WAKING UP SCROLL TIMELINE ───────────────────────────────────
     const tl = gsap.timeline({
-      defaults: { ease: "power2.out" },
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top top",
+        end: "+=320%",
+        scrub: 1.2,
+        pin: true,
+      },
     });
 
-    // ⚡ Scale animation speed via LOAD_SPEED variable
-    tl.timeScale(LOAD_SPEED);
+    // 0. Scroll prompt fades out immediately on first scroll touch
+    tl.to(
+      scrollPromptRef.current,
+      {
+        opacity: 0,
+        y: 18,
+        duration: 0.6,
+        ease: "power2.in",
+      },
+      0
+    );
 
-    // ── PHASE 1: "वेदिक घड़ी" Title Display & Smooth Dissolve ──────────────
+    // 1. Text smoothly ascends towards the top and dissolves cleanly
     tl.to(
       textRef.current,
       {
+        y: "-44vh",
+        scale: 0.32,
         opacity: 0,
-        y: -38,
-        scale: 0.94,
-        duration: 0.7,
+        duration: 1.6,
         ease: "power2.inOut",
       },
-      0.8 // Holds title for 0.8s, then smoothly dissolves away
+      0
     );
 
-    // ── PHASE 2: Clock Reveals & Auto-Assembles In Place ──────────────────────
-    tl.to(clockContainerRef.current, { opacity: 1, duration: 0.5 }, 1.3);
+    // Clock container reveals
+    tl.to(
+      clockContainerRef.current,
+      {
+        opacity: 1,
+        duration: 0.6,
+      },
+      0.6
+    );
 
-    // 1. Earth illuminates in cosmic space (pure opacity, no CSS scale so WebGL canvas retains 100% true bounds)
-    tl.to(earthRef.current, { opacity: 1, duration: 0.85 }, 1.4);
-    tl.call(() => {
-      window.dispatchEvent(new Event('resize'));
-    }, undefined, 1.4);
+    // 2. Earth starts at MAX SIZE (no zooming) and smoothly fades in to come live
+    tl.to(
+      earthRef.current,
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1.8,
+        ease: "power2.out",
+      },
+      0.8
+    );
 
-    // 2. Brass Frame wraps securely around Earth
-    tl.to(frameRef.current, { opacity: 1, scale: 1, rotation: 0, duration: 0.95, ease: "power2.out" }, 1.55);
+    // 3. Brass Frame wraps around the Earth at full size!
+    tl.to(
+      frameRef.current,
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1.8,
+        ease: "power2.out",
+      },
+      1.8
+    );
 
-    // 3. 4 Medallions fly into their 4 cutout sockets
+    // 4. 4 Medallion Icons fly into their diagonal cutouts
     if (iconsRef.current?.children) {
       tl.to(
         iconsRef.current.children,
-        { opacity: 1, scale: 1, rotation: 0, duration: 0.7, stagger: 0.08, ease: "back.out(1.7)" },
-        1.8
+        {
+          opacity: 1,
+          scale: 1,
+          rotation: 0,
+          duration: 1.8,
+          stagger: 0.15,
+          ease: "back.out(1.4)",
+        },
+        3.0
       );
     }
 
-    // 4. 6 Arches bloom with Sanskrit script
-    tl.to(archesRef.current, { opacity: 1, scale: 1, duration: 0.75, ease: "power2.out" }, 2.0);
+    // 5. The 6 Arches bloom with Sanskrit text
+    tl.to(
+      archesRef.current,
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1.8,
+        ease: "power2.out",
+      },
+      4.2
+    );
 
-    // 5. Karana and Yoga progress arc tracks expand
-    tl.to(progressRef.current, { opacity: 1, scale: 1, duration: 0.7 }, 2.15);
+    // 6. Floating percentage / progress bars appear (Karana 51/60, Yoga 57/100)
+    tl.to(
+      progressRef.current,
+      {
+        opacity: 1,
+        duration: 1.5,
+        ease: "power1.out",
+      },
+      5.2
+    );
 
-    // 6. Side wings (Sunrise & Sunset) slide outward
-    tl.to(plaquesRef.current, { opacity: 1, scaleX: 1, duration: 0.75, ease: "back.out(1.2)" }, 2.25);
+    // 7. Sunrise / Sunset text appears in side wings
+    tl.to(
+      plaquesRef.current,
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.5,
+        ease: "power1.out",
+      },
+      6.0
+    );
 
-    // 7. 4 Corner brass plaques glide into place
+    // 8. 4 Corner asset boxes appear
     tl.to(
       [
         cornerTopLeftRef.current,
@@ -157,19 +223,30 @@ export function Hero() {
         cornerBottomLeftRef.current,
         cornerBottomRightRef.current,
       ],
-      { opacity: 1, scale: 1, y: 0, duration: 0.75, stagger: 0.08, ease: "power2.out" },
-      2.35
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1.8,
+        stagger: 0.1,
+        ease: "power2.out",
+      },
+      6.8
     );
 
-    // 8. Central 3D Golden Vedic Digits ignite live in full brilliance!
+    // 9. Central Vedic gold digits ignite over the Earth!
     tl.to(
       digitsRef.current,
-      { opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.5)" },
-      2.5
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1.8,
+        ease: "power2.out",
+      },
+      7.6
     );
 
     return () => {
-      tl.kill();
+      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
 
@@ -365,6 +442,19 @@ export function Hero() {
           >
             The Vedic Clock
           </h1>
+        </div>
+
+        {/* SCENE 0: Animated Scroll Prompt Indicator */}
+        <div
+          ref={scrollPromptRef}
+          className="absolute bottom-8 sm:bottom-12 flex flex-col items-center gap-2.5 pointer-events-none z-30"
+        >
+          <span className="text-[10px] sm:text-xs font-serif uppercase tracking-[0.35em] text-[#D4A65A]/85 drop-shadow-md">
+            Scroll to Awaken
+          </span>
+          <div className="w-5 h-8 rounded-full border border-[#D4A65A]/50 flex items-start justify-center p-1 shadow-[0_0_12px_rgba(212,166,90,0.2)]">
+            <div className="w-1 h-2 rounded-full bg-[#D4A65A] animate-bounce" />
+          </div>
         </div>
 
         {/* Step 2: Centerpiece Vedic Clock Assembly ───────────────────────────── */}

@@ -22,7 +22,7 @@ export function Header() {
   // Clock awakening completes at window.innerHeight * 3.2. Header appears after an additional 1-2 scrolls.
   useEffect(() => {
     const onScroll = () => {
-      const heroThreshold = window.innerHeight * 0.7;
+      const heroThreshold = window.innerHeight * 3.35;
       setScrolled(window.scrollY >= heroThreshold);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
