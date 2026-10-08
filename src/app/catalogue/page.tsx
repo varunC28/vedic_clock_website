@@ -42,21 +42,10 @@ export default function CataloguePage() {
 
   return (
     <div className="relative w-full min-h-screen bg-[#03060E] text-ivory overflow-x-hidden selection:bg-brass/30 selection:text-ivory">
-      <Header />
+      <Header alwaysVisible />
 
       {/* ── Main Content ── */}
-      <main className="pt-28 sm:pt-36 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-        {/* Back Link */}
-        <div className="mb-8">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-xs font-sans text-[#D4A65A]/80 hover:text-[#FFF5D1] transition-colors"
-          >
-            <span>←</span>
-            <span>Return to Home</span>
-          </Link>
-        </div>
-
+      <main className="pt-20 sm:pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <SectionEyebrow
@@ -82,11 +71,12 @@ export default function CataloguePage() {
           {/* Download & Acquisition Actions */}
           <div className="flex flex-wrap items-center justify-center gap-4 pt-6">
             <a
-              href="#specifications"
+              href="/catalogue.pdf"
+              download="Vedic_Watch_Catalogue.pdf"
               className="px-6 py-2.5 rounded-full bg-[#D4A65A] text-[#050A14] font-sans text-xs sm:text-sm font-semibold tracking-wide hover:bg-[#E8B94B] transition-all shadow-[0_0_20px_rgba(212,166,90,0.3)] flex items-center gap-2"
             >
-              <span>📖</span>
-              <span>Browse Specifications</span>
+              <span>📥</span>
+              <span>Download Master Catalogue (PDF)</span>
             </a>
 
             <BrassButton

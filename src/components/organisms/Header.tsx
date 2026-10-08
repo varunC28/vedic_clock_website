@@ -9,17 +9,24 @@ import { BrassButton } from "@/components/atoms/BrassButton";
 const NAV_LINKS = [
   { href: "/", en: "Home", hi: "मुख्य पृष्ठ" },
   { href: "/clock", en: "The Clock", hi: "वेदिक घड़ी" },
-  { href: "/panchang", en: "Guide", hi: "मार्गदर्शिका" },
-  { href: "/catalogue", en: "Catalogue", hi: "कैटलॉग" },
+  { href: "/guide", en: "Guide", hi: "मार्गदर्शिका" },
+  { href: "/catalogue.pdf", en: "Catalogue", hi: "कैटलॉग", download: "Vedic_Watch_Catalogue.pdf" },
 ];
 
-export function Header() {
-  const [scrolled, setScrolled] = useState(false);
+interface HeaderProps {
+  alwaysVisible?: boolean;
+}
+
+export function Header({ alwaysVisible = false }: HeaderProps) {
+  const [scrolled, setScrolled] = useState(alwaysVisible);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Detect scroll to reveal header ONLY after maximum scrolled past the hero section
-  // Clock awakening completes at window.innerHeight * 3.2. Header appears after an additional 1-2 scrolls.
+  // Detect scroll to reveal header ONLY after maximum scrolled past the hero section (unless alwaysVisible)
   useEffect(() => {
+    if (alwaysVisible) {
+      setScrolled(true);
+      return;
+    }
     const onScroll = () => {
       const heroThreshold = window.innerHeight * 0.7;
       setScrolled(window.scrollY >= heroThreshold);
@@ -27,7 +34,7 @@ export function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll(); // initialize
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [alwaysVisible]);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -46,7 +53,7 @@ export function Header() {
       <header
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out",
-          scrolled
+          (alwaysVisible || scrolled)
             ? "translate-y-0 opacity-100 bg-void-navy/90 backdrop-blur-lg border-b border-brass/10 shadow-lg shadow-black/30 pointer-events-auto"
             : "-translate-y-full opacity-0 pointer-events-none"
         )}
@@ -69,6 +76,7 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 en={link.en}
+                download={link.download}
               />
             ))}
           </nav>
@@ -120,6 +128,7 @@ export function Header() {
                 href={link.href}
                 en={link.en}
                 hi={link.hi} // Full bilingual on mobile
+                download={link.download}
                 className="scale-110"
               />
             </div>

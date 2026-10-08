@@ -8,11 +8,11 @@ const NAVIGATE_LINKS = [
   { href: "/", label: "Home" },
   { href: "/clock", label: "The Clock" },
   { href: "#creation-story", label: "Creation Story" },
-  { href: "/catalogue", label: "Product Catalogue" },
+  { href: "/catalogue.pdf", label: "Product Catalogue (PDF)", download: "Vedic_Watch_Catalogue.pdf" },
 ];
 
 const EXPLORE_LINKS = [
-  { href: "/panchang", label: "Panchang Guide" },
+  { href: "/guide", label: "Panchang Guide" },
   { href: "/heritage", label: "Ujjain Prime Meridian" },
   { href: "/contact", label: "Reserve Timepiece" },
 ];
@@ -68,12 +68,13 @@ export function Footer({ variant = "dark", className }: FooterProps) {
             <ul className="space-y-3">
               {NAVIGATE_LINKS.map((link) => (
                 <li key={link.label}>
-                  <Link
+                  <a
                     href={link.href}
+                    download={link.download}
                     className="font-sans text-xs text-ivory/65 hover:text-[#FFF5D1] transition-colors"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>

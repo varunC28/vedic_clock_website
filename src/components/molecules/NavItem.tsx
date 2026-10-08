@@ -12,6 +12,7 @@ interface NavItemProps {
   variant?: "dark" | "light";
   forceActive?: boolean; // For sandbox demo purposes
   className?: string;
+  download?: boolean | string;
 }
 
 export function NavItem({
@@ -21,6 +22,7 @@ export function NavItem({
   variant = "dark",
   forceActive,
   className,
+  download,
 }: NavItemProps) {
   const pathname = usePathname();
   const [isHovered, setIsHovered] = useState(false);
@@ -52,13 +54,10 @@ export function NavItem({
       ? "text-antique-gold/80" 
       : "text-deep-bronze/80";
 
-  return (
-    <Link
-      href={href}
-      className={cn("group flex flex-col items-center gap-1", className)}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+  const isDownload = Boolean(download) || href.endsWith(".pdf");
+
+  const linkContent = (
+    <>
       <div className="relative pb-1">
         <span
           className={cn(
@@ -81,6 +80,31 @@ export function NavItem({
           {hi}
         </span>
       )}
+    </>
+  );
+
+  if (isDownload) {
+    return (
+      <a
+        href={href}
+        download={typeof download === "string" ? download : true}
+        className={cn("group flex flex-col items-center gap-1 cursor-pointer", className)}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {linkContent}
+      </a>
+    );
+  }
+
+  return (
+    <Link
+      href={href}
+      className={cn("group flex flex-col items-center gap-1", className)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {linkContent}
     </Link>
   );
 }

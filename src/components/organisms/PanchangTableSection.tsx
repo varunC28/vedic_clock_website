@@ -142,18 +142,19 @@ export function PanchangTableSection({ className }: PanchangTableSectionProps) {
       </div>
 
       {/* ── Table Container ─────────────────────────────────────────────────── */}
-      <div className="relative z-10 w-full max-w-4xl bg-[#080E1C]/60 border border-[#D4A65A]/15 rounded-2xl p-2 sm:p-4 shadow-xl backdrop-blur-sm">
-        {/* Table Header Row */}
-        <div className="hidden sm:flex items-center gap-4 px-4 py-2 border-b border-white/10 text-[10px] font-sans uppercase tracking-widest text-[#D4A65A]/70 font-semibold select-none">
-          <div className="w-8 shrink-0">#</div>
-          <div className="w-28 shrink-0">Muhurta · मुहूर्त</div>
-          <div className="w-20 shrink-0">Nature</div>
-          <div className="w-24 shrink-0">Deity</div>
-          <div className="flex-1">Suitable Deeds &amp; Influence</div>
+      <div className="relative z-10 w-full max-w-4xl bg-[#080E1C]/70 border border-[#D4A65A]/15 rounded-2xl sm:rounded-3xl p-3 sm:p-6 shadow-2xl backdrop-blur-sm overflow-x-auto">
+        {/* Container Eyebrow matching screenshot media_1791463915820 */}
+        <div className="px-2 sm:px-4 pt-1 pb-3 sm:pb-4 border-b border-white/[0.06] flex items-center justify-between min-w-[580px] sm:min-w-0">
+          <span className="font-sans text-[11px] sm:text-xs font-semibold tracking-[0.2em] text-[#D4A65A]/80 uppercase">
+            MUHURTA LIST {showAll ? "(ALL 30 ROWS)" : "(SHOWING ROWS 1-8)"}
+          </span>
+          <span className="font-sans text-[10.5px] text-ivory/40">
+            Hover or tap row to highlight
+          </span>
         </div>
 
         {/* Table Rows */}
-        <div className="divide-y divide-white/5">
+        <div className="divide-y divide-white/5 min-w-[580px] sm:min-w-0">
           {displayedMuhurtas.length > 0 ? (
             displayedMuhurtas.map((m) => (
               <div
