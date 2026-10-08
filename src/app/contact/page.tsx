@@ -7,47 +7,31 @@ import { Footer } from "@/components/organisms/Footer";
 
 interface OfficeLocation {
   id: "indore" | "bhopal";
-  cityEn: string;
-  cityHi: string;
   titleEn: string;
   titleHi: string;
   address: string;
   mapsUrl: string;
-  lat: number;
-  lng: number;
-  bbox: string;
 }
 
 const OFFICES: OfficeLocation[] = [
   {
     id: "indore",
-    cityEn: "Indore",
-    cityHi: "इंदौर",
     titleEn: "Indore Office",
     titleHi: "इंदौर कार्यालय",
     address: "LG 16A Silver Mall 8, RNT Road, Indore-452001, Madhya Pradesh",
     mapsUrl: "https://maps.app.goo.gl/KEvH5Sx6vmgivjeG7",
-    lat: 22.7169,
-    lng: 75.8770,
-    bbox: "75.86%2C22.70%2C75.89%2C22.73",
   },
   {
     id: "bhopal",
-    cityEn: "Bhopal",
-    cityHi: "भोपाल",
     titleEn: "Bhopal Office",
     titleHi: "भोपाल कार्यालय",
     address: "Danish Hills View Township, Bhopal, Madhya Pradesh",
     mapsUrl: "https://maps.app.goo.gl/ChwNZnMpVyBmwaaX9",
-    lat: 23.1830,
-    lng: 77.4041,
-    bbox: "77.38%2C23.16%2C77.43%2C23.20",
   },
 ];
 
 export default function ContactPage() {
   const [isParchment, setIsParchment] = useState(false);
-  const [activeOffice, setActiveOffice] = useState<OfficeLocation>(OFFICES[0]);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -92,9 +76,9 @@ export default function ContactPage() {
       />
 
       {/* ── Main Editorial Container (Clean, Simple, Zero Clutter) ── */}
-      <main className="relative z-10 pt-28 sm:pt-36 pb-20 px-5 sm:px-8 lg:px-12 max-w-6xl mx-auto flex flex-col gap-16 sm:gap-20">
+      <main className="relative z-10 pt-28 sm:pt-36 pb-24 px-5 sm:px-8 lg:px-12 max-w-6xl mx-auto flex flex-col gap-16">
         
-        {/* ── Top Section: 2 Columns ── */}
+        {/* ── 2 Columns Layout ── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* ── LEFT COLUMN: Typography, Direct Contact & Offices (No Card Boxes) ── */}
@@ -428,117 +412,6 @@ export default function ContactPage() {
           </div>
 
         </div>
-
-        {/* ── BOTTOM SECTION: Clean Minimal Map (Indore & Bhopal) ── */}
-        <section className="w-full flex flex-col gap-4 text-left">
-          {/* Map Switcher Pills */}
-          <div className="flex items-center justify-between flex-wrap gap-3">
-            <span
-              className={cn(
-                "font-sans text-xs uppercase tracking-wider font-semibold",
-                isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
-              )}
-            >
-              Location Map:
-            </span>
-            <div className="flex items-center gap-2">
-              {OFFICES.map((office) => {
-                const isActive = activeOffice.id === office.id;
-                return (
-                  <button
-                    key={office.id}
-                    type="button"
-                    onClick={() => setActiveOffice(office)}
-                    className={cn(
-                      "px-4 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium",
-                      isActive
-                        ? isParchment
-                          ? "bg-[#482D1C] text-[#FAF6F0] shadow-sm"
-                          : "bg-[#D4A65A] text-[#03060E] font-semibold shadow-sm"
-                        : isParchment
-                          ? "bg-[#EFE7DA] text-[#482D1C] hover:bg-[#E5D7C2]"
-                          : "bg-[#0B1220] text-ivory/80 border border-[#D4A65A]/20 hover:bg-[#121B2F]"
-                    )}
-                  >
-                    {office.cityEn} ({office.cityHi})
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Minimal Map Frame */}
-          <div
-            className={cn(
-              "relative w-full h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-sm transition-all duration-500",
-              isParchment
-                ? "border border-[#DFCBB5] bg-[#EFE7DA]"
-                : "border border-[#D4A65A]/30 bg-[#0B1220]"
-            )}
-          >
-            <iframe
-              title={`Shiv Enterprises ${activeOffice.titleEn}`}
-              width="100%"
-              height="100%"
-              className={cn(
-                "border-0 w-full h-full",
-                isParchment
-                  ? "filter sepia-[15%] contrast-[105%]"
-                  : "filter contrast-[108%] brightness-[90%]"
-              )}
-              loading="lazy"
-              src={`https://www.openstreetmap.org/export/embed.html?bbox=${activeOffice.bbox}&layer=mapnik&marker=${activeOffice.lat}%2C${activeOffice.lng}`}
-            />
-
-            {/* Clean Location Tag on bottom-left */}
-            <div
-              className={cn(
-                "absolute bottom-4 left-4 z-10 rounded-2xl p-3.5 sm:p-4 shadow-md max-w-xs text-left backdrop-blur-md transition-all duration-500",
-                isParchment
-                  ? "bg-[#FAF6F0]/95 border border-[#DFCBB5]"
-                  : "bg-[#060B18]/90 border border-[#D4A65A]/30 text-ivory"
-              )}
-            >
-              <span
-                className={cn(
-                  "font-sans text-[10px] font-bold tracking-widest uppercase block",
-                  isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
-                )}
-              >
-                SHIV ENTERPRISES
-              </span>
-              <span
-                className={cn(
-                  "font-sans font-bold text-sm block mt-0.5",
-                  isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
-                )}
-              >
-                {activeOffice.titleEn}
-              </span>
-              <p
-                className={cn(
-                  "font-sans text-xs leading-snug mt-1",
-                  isParchment ? "text-[#5C4533]" : "text-ivory/70"
-                )}
-              >
-                {activeOffice.address}
-              </p>
-              <a
-                href={activeOffice.mapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(
-                  "inline-block mt-2 font-sans text-xs font-semibold underline",
-                  isParchment
-                    ? "text-[#8C5D33] hover:text-[#482D1C]"
-                    : "text-[#D4A65A] hover:text-[#F3E9D2]"
-                )}
-              >
-                Open in Google Maps ↗
-              </a>
-            </div>
-          </div>
-        </section>
 
       </main>
 
