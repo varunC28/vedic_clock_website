@@ -46,6 +46,7 @@ const OFFICES: OfficeLocation[] = [
 ];
 
 export default function ContactPage() {
+  const [isParchment, setIsParchment] = useState(false);
   const [activeOffice, setActiveOffice] = useState<OfficeLocation>(OFFICES[0]);
   const [formData, setFormData] = useState({
     name: "",
@@ -69,143 +70,261 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="relative w-full min-h-screen bg-[#FAF6F0] text-[#2D1B0E] selection:bg-[#B8873D]/25 selection:text-[#2D1B0E] overflow-x-hidden">
+    <div
+      className={cn(
+        "relative w-full min-h-screen overflow-x-hidden transition-colors duration-500",
+        isParchment
+          ? "bg-[#FAF6F0] text-[#2D1B0E] selection:bg-[#B8873D]/25 selection:text-[#2D1B0E]"
+          : "bg-[#03060E] text-ivory selection:bg-[#D4A65A]/30 selection:text-[#FFFDF7]"
+      )}
+    >
       <Header alwaysVisible />
 
-      {/* ── Main Editorial Container (Clean, Simple, Uncluttered) ── */}
-      <main className="pt-28 sm:pt-36 pb-20 px-5 sm:px-8 lg:px-12 max-w-6xl mx-auto flex flex-col gap-16 sm:gap-20">
+      {/* ── Ambient Radial Golden Glow ── */}
+      <div
+        aria-hidden="true"
+        className={cn(
+          "absolute top-28 left-1/2 -translate-x-1/2 w-[850px] h-[500px] blur-3xl pointer-events-none rounded-full transition-opacity duration-500",
+          isParchment
+            ? "bg-gradient-to-tr from-[#B8873D]/12 via-[#D4A65A]/10 to-transparent"
+            : "bg-gradient-to-tr from-[#D4A65A]/12 via-[#E8B94B]/6 to-transparent"
+        )}
+      />
+
+      {/* ── Main Editorial Container (Clean, Simple, Zero Clutter) ── */}
+      <main className="relative z-10 pt-28 sm:pt-36 pb-20 px-5 sm:px-8 lg:px-12 max-w-6xl mx-auto flex flex-col gap-16 sm:gap-20">
         
         {/* ── Top Section: 2 Columns ── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* ── LEFT COLUMN: Clean Typography, Direct Contact & Offices ── */}
+          {/* ── LEFT COLUMN: Typography, Direct Contact & Offices (No Card Boxes) ── */}
           <div className="lg:col-span-6 flex flex-col text-left">
             {/* Eyebrow */}
-            <span className="font-mono text-xs text-[#8C5D33] tracking-[0.25em] uppercase mb-4">
+            <span
+              className={cn(
+                "font-mono text-xs tracking-[0.25em] uppercase mb-4",
+                isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
+              )}
+            >
               / get in touch /
             </span>
 
             {/* Headline */}
-            <h1 className="font-sans text-3xl sm:text-4xl lg:text-[44px] font-bold text-[#2D1B0E] leading-[1.18] tracking-tight mb-4">
+            <h1
+              className={cn(
+                "font-sans text-3xl sm:text-4xl lg:text-[44px] font-bold leading-[1.18] tracking-tight mb-4",
+                isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
+              )}
+            >
               We are always ready to help you and answer your questions
             </h1>
 
             {/* Subtitle */}
-            <p className="font-sans text-sm sm:text-base text-[#6E5540] leading-relaxed mb-8 max-w-lg">
+            <p
+              className={cn(
+                "font-sans text-sm sm:text-base leading-relaxed mb-10 max-w-lg",
+                isParchment ? "text-[#6E5540]" : "text-ivory/70"
+              )}
+            >
               At Shiv Enterprises, we are dedicated to bringing timeless Vedic wisdom and precision horology to life. We love connecting with our community — reach out to us directly!
             </p>
 
-            {/* ── DIRECT PERSONAL CONTACT ── */}
-            <div className="mb-8 p-5 sm:p-6 rounded-2xl bg-[#F2ECE1]/70 border border-[#E5D7C2] text-left flex flex-col gap-3">
-              <span className="font-mono text-[11px] font-semibold text-[#8C5D33] uppercase tracking-wider">
+            {/* ── DIRECT PERSONAL CONTACT (Pure typography, zero card box) ── */}
+            <div className="mb-10 flex flex-col gap-2 text-left">
+              <span
+                className={cn(
+                  "font-mono text-[11px] font-semibold uppercase tracking-wider",
+                  isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
+                )}
+              >
                 Direct Contact · Shiv Enterprises
               </span>
-              <div className="text-lg font-bold text-[#2D1B0E]">
+              <div
+                className={cn(
+                  "text-xl font-bold tracking-tight",
+                  isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
+                )}
+              >
                 Varun Chaturvedi
               </div>
-              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 pt-1 text-sm">
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-1 text-sm font-sans">
                 <a
                   href="tel:+919406664444"
-                  className="inline-flex items-center gap-2 font-mono text-[#2D1B0E] hover:text-[#8C5D33] transition-colors"
+                  className={cn(
+                    "inline-flex items-center gap-2 font-mono transition-colors",
+                    isParchment
+                      ? "text-[#2D1B0E] hover:text-[#8C5D33]"
+                      : "text-ivory hover:text-[#E8B94B]"
+                  )}
                 >
-                  <span className="text-[#8C5D33]">📞</span>
+                  <span className={isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"}>📞</span>
                   <span>+91 94066 64444</span>
                 </a>
                 <a
                   href="mailto:contact@vedicghadi.in"
-                  className="inline-flex items-center gap-2 font-sans text-[#2D1B0E] hover:text-[#8C5D33] transition-colors"
+                  className={cn(
+                    "inline-flex items-center gap-2 transition-colors",
+                    isParchment
+                      ? "text-[#2D1B0E] hover:text-[#8C5D33]"
+                      : "text-ivory hover:text-[#E8B94B]"
+                  )}
                 >
-                  <span className="text-[#8C5D33]">✉️</span>
+                  <span className={isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"}>✉️</span>
                   <span>contact@vedicghadi.in</span>
                 </a>
               </div>
             </div>
 
-            {/* ── TWO OFFICES (Clean Typography, No Clutter) ── */}
+            {/* ── TWO OFFICES (Clean Typography, No Clutter, Direct Maps Links) ── */}
             <div className="flex flex-col gap-6 pt-2">
-              <span className="font-mono text-[11px] font-semibold text-[#8C5D33] uppercase tracking-wider">
+              <span
+                className={cn(
+                  "font-mono text-[11px] font-semibold uppercase tracking-wider",
+                  isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
+                )}
+              >
                 Our Office Locations
               </span>
 
               {/* 1. INDORE OFFICE */}
-              <div className="flex flex-col gap-1.5 text-left border-l-2 border-[#B8873D] pl-4">
-                <h2 className="font-sans text-sm font-bold tracking-wider text-[#2D1B0E] uppercase">
+              <div
+                className={cn(
+                  "flex flex-col gap-1 text-left border-l-2 pl-4 transition-colors",
+                  isParchment ? "border-[#B8873D]" : "border-[#D4A65A]"
+                )}
+              >
+                <h2
+                  className={cn(
+                    "font-sans text-sm font-bold tracking-wider uppercase",
+                    isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
+                  )}
+                >
                   INDORE OFFICE · इंदौर कार्यालय
                 </h2>
-                <p className="font-sans text-sm text-[#5C4533] leading-relaxed">
+                <p
+                  className={cn(
+                    "font-sans text-sm leading-relaxed",
+                    isParchment ? "text-[#5C4533]" : "text-ivory/70"
+                  )}
+                >
                   LG 16A Silver Mall 8, RNT Road, Indore-452001, Madhya Pradesh
                 </p>
-                <div className="pt-1 flex items-center gap-4 text-xs">
+                <div className="pt-1 text-xs">
                   <a
                     href="https://maps.app.goo.gl/KEvH5Sx6vmgivjeG7"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-medium text-[#8C5D33] hover:text-[#482D1C] underline underline-offset-4 transition-colors"
+                    className={cn(
+                      "inline-flex items-center gap-1 font-medium underline underline-offset-4 transition-colors",
+                      isParchment
+                        ? "text-[#8C5D33] hover:text-[#482D1C]"
+                        : "text-[#D4A65A] hover:text-[#F3E9D2]"
+                    )}
                   >
                     View on Google Maps →
                   </a>
-                  <button
-                    type="button"
-                    onClick={() => setActiveOffice(OFFICES[0])}
-                    className="text-[#8C5D33] hover:text-[#482D1C] cursor-pointer"
-                  >
-                    Show on map below ↓
-                  </button>
                 </div>
               </div>
 
               {/* 2. BHOPAL OFFICE */}
-              <div className="flex flex-col gap-1.5 text-left border-l-2 border-[#B8873D] pl-4">
-                <h2 className="font-sans text-sm font-bold tracking-wider text-[#2D1B0E] uppercase">
+              <div
+                className={cn(
+                  "flex flex-col gap-1 text-left border-l-2 pl-4 transition-colors",
+                  isParchment ? "border-[#B8873D]" : "border-[#D4A65A]"
+                )}
+              >
+                <h2
+                  className={cn(
+                    "font-sans text-sm font-bold tracking-wider uppercase",
+                    isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
+                  )}
+                >
                   BHOPAL OFFICE · भोपाल कार्यालय
                 </h2>
-                <p className="font-sans text-sm text-[#5C4533] leading-relaxed">
+                <p
+                  className={cn(
+                    "font-sans text-sm leading-relaxed",
+                    isParchment ? "text-[#5C4533]" : "text-ivory/70"
+                  )}
+                >
                   Danish Hills View Township, Bhopal, Madhya Pradesh
                 </p>
-                <div className="pt-1 flex items-center gap-4 text-xs">
+                <div className="pt-1 text-xs">
                   <a
                     href="https://maps.app.goo.gl/ChwNZnMpVyBmwaaX9"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-medium text-[#8C5D33] hover:text-[#482D1C] underline underline-offset-4 transition-colors"
+                    className={cn(
+                      "inline-flex items-center gap-1 font-medium underline underline-offset-4 transition-colors",
+                      isParchment
+                        ? "text-[#8C5D33] hover:text-[#482D1C]"
+                        : "text-[#D4A65A] hover:text-[#F3E9D2]"
+                    )}
                   >
                     View on Google Maps →
                   </a>
-                  <button
-                    type="button"
-                    onClick={() => setActiveOffice(OFFICES[1])}
-                    className="text-[#8C5D33] hover:text-[#482D1C] cursor-pointer"
-                  >
-                    Show on map below ↓
-                  </button>
                 </div>
               </div>
 
             </div>
           </div>
 
-          {/* ── RIGHT COLUMN: Clean Minimalist Form ── */}
+          {/* ── RIGHT COLUMN: Clean Minimalist Form (Theme Adaptive) ── */}
           <div className="lg:col-span-6">
-            <div className="bg-[#F2ECE1] rounded-3xl p-8 sm:p-10 md:p-12 shadow-sm text-left">
-              <h2 className="font-sans text-2xl sm:text-3xl font-bold text-[#2D1B0E] mb-8 tracking-tight">
+            <div
+              className={cn(
+                "rounded-3xl p-8 sm:p-10 md:p-12 shadow-sm text-left transition-all duration-500",
+                isParchment
+                  ? "bg-[#F2ECE1] border border-[#DFCBB5]/50"
+                  : "bg-[#080E1C]/85 border border-[#D4A65A]/25 backdrop-blur-md"
+              )}
+            >
+              <h2
+                className={cn(
+                  "font-sans text-2xl sm:text-3xl font-bold mb-8 tracking-tight",
+                  isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
+                )}
+              >
                 Send a Message
               </h2>
 
               {submitted ? (
                 <div className="py-10 flex flex-col items-start text-left">
-                  <div className="w-12 h-12 rounded-full bg-[#E5D7C2] text-[#482D1C] flex items-center justify-center text-xl font-bold mb-4">
+                  <div
+                    className={cn(
+                      "w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mb-4",
+                      isParchment
+                        ? "bg-[#E5D7C2] text-[#482D1C]"
+                        : "bg-[#D4A65A]/20 text-[#E8B94B] border border-[#D4A65A]/30"
+                    )}
+                  >
                     ✓
                   </div>
-                  <h3 className="font-sans font-bold text-lg text-[#2D1B0E] mb-1">
+                  <h3
+                    className={cn(
+                      "font-sans font-bold text-lg mb-1",
+                      isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
+                    )}
+                  >
                     Thank you for reaching out
                   </h3>
-                  <p className="font-sans text-sm text-[#6E5540] leading-relaxed mb-6">
+                  <p
+                    className={cn(
+                      "font-sans text-sm leading-relaxed mb-6",
+                      isParchment ? "text-[#6E5540]" : "text-ivory/70"
+                    )}
+                  >
                     Your message has been received. We will get back to you shortly.
                   </p>
                   <button
                     type="button"
                     onClick={() => setSubmitted(false)}
-                    className="text-xs font-semibold text-[#8C5D33] hover:text-[#2D1B0E] underline underline-offset-4 cursor-pointer"
+                    className={cn(
+                      "text-xs font-semibold underline underline-offset-4 cursor-pointer",
+                      isParchment
+                        ? "text-[#8C5D33] hover:text-[#2D1B0E]"
+                        : "text-[#D4A65A] hover:text-[#F3E9D2]"
+                    )}
                   >
                     Send another message
                   </button>
@@ -222,7 +341,12 @@ export default function ContactPage() {
                       placeholder="Your name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-transparent border-b border-[#D8C7B0] focus:border-[#482D1C] py-3 text-sm sm:text-base text-[#2D1B0E] placeholder-[#8C7662] outline-none transition-colors"
+                      className={cn(
+                        "w-full bg-transparent border-b py-3 text-sm sm:text-base outline-none transition-colors",
+                        isParchment
+                          ? "border-[#D8C7B0] focus:border-[#482D1C] text-[#2D1B0E] placeholder-[#8C7662]"
+                          : "border-[#D4A65A]/30 focus:border-[#E8B94B] text-ivory placeholder-ivory/40"
+                      )}
                     />
                   </div>
 
@@ -236,7 +360,12 @@ export default function ContactPage() {
                       placeholder="Your email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-transparent border-b border-[#D8C7B0] focus:border-[#482D1C] py-3 text-sm sm:text-base text-[#2D1B0E] placeholder-[#8C7662] outline-none transition-colors"
+                      className={cn(
+                        "w-full bg-transparent border-b py-3 text-sm sm:text-base outline-none transition-colors",
+                        isParchment
+                          ? "border-[#D8C7B0] focus:border-[#482D1C] text-[#2D1B0E] placeholder-[#8C7662]"
+                          : "border-[#D4A65A]/30 focus:border-[#E8B94B] text-ivory placeholder-ivory/40"
+                      )}
                     />
                   </div>
 
@@ -250,7 +379,12 @@ export default function ContactPage() {
                       placeholder="Subject"
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      className="w-full bg-transparent border-b border-[#D8C7B0] focus:border-[#482D1C] py-3 text-sm sm:text-base text-[#2D1B0E] placeholder-[#8C7662] outline-none transition-colors"
+                      className={cn(
+                        "w-full bg-transparent border-b py-3 text-sm sm:text-base outline-none transition-colors",
+                        isParchment
+                          ? "border-[#D8C7B0] focus:border-[#482D1C] text-[#2D1B0E] placeholder-[#8C7662]"
+                          : "border-[#D4A65A]/30 focus:border-[#E8B94B] text-ivory placeholder-ivory/40"
+                      )}
                     />
                   </div>
 
@@ -263,7 +397,12 @@ export default function ContactPage() {
                       placeholder="Your message (optional)"
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-transparent border-b border-[#D8C7B0] focus:border-[#482D1C] py-3 text-sm sm:text-base text-[#2D1B0E] placeholder-[#8C7662] outline-none resize-none transition-colors"
+                      className={cn(
+                        "w-full bg-transparent border-b py-3 text-sm sm:text-base outline-none resize-none transition-colors",
+                        isParchment
+                          ? "border-[#D8C7B0] focus:border-[#482D1C] text-[#2D1B0E] placeholder-[#8C7662]"
+                          : "border-[#D4A65A]/30 focus:border-[#E8B94B] text-ivory placeholder-ivory/40"
+                      )}
                     />
                   </div>
 
@@ -273,7 +412,10 @@ export default function ContactPage() {
                       type="submit"
                       disabled={isSubmitting}
                       className={cn(
-                        "rounded-full px-8 py-3 bg-[#482D1C] hover:bg-[#382315] text-[#FAF6F0] font-sans text-sm font-semibold tracking-wide transition-all cursor-pointer shadow-sm",
+                        "rounded-full px-8 py-3 font-sans text-sm font-semibold tracking-wide transition-all cursor-pointer shadow-sm",
+                        isParchment
+                          ? "bg-[#482D1C] hover:bg-[#382315] text-[#FAF6F0]"
+                          : "bg-gradient-to-r from-[#B8873D] to-[#D4A65A] hover:from-[#C9974D] hover:to-[#E5B76A] text-[#03060E] font-bold shadow-[#D4A65A]/20 shadow-md",
                         isSubmitting && "opacity-75 cursor-not-allowed"
                       )}
                     >
@@ -287,59 +429,110 @@ export default function ContactPage() {
 
         </div>
 
-        {/* ── BOTTOM SECTION: Clean Minimal Map ── */}
+        {/* ── BOTTOM SECTION: Clean Minimal Map (Indore & Bhopal) ── */}
         <section className="w-full flex flex-col gap-4 text-left">
           {/* Map Switcher Pills */}
           <div className="flex items-center justify-between flex-wrap gap-3">
-            <span className="font-sans text-xs uppercase tracking-wider text-[#8C5D33] font-semibold">
+            <span
+              className={cn(
+                "font-sans text-xs uppercase tracking-wider font-semibold",
+                isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
+              )}
+            >
               Location Map:
             </span>
             <div className="flex items-center gap-2">
-              {OFFICES.map((office) => (
-                <button
-                  key={office.id}
-                  type="button"
-                  onClick={() => setActiveOffice(office)}
-                  className={cn(
-                    "px-4 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium",
-                    activeOffice.id === office.id
-                      ? "bg-[#482D1C] text-[#FAF6F0] shadow-sm"
-                      : "bg-[#EFE7DA] text-[#482D1C] hover:bg-[#E5D7C2]"
-                  )}
-                >
-                  {office.cityEn} ({office.cityHi})
-                </button>
-              ))}
+              {OFFICES.map((office) => {
+                const isActive = activeOffice.id === office.id;
+                return (
+                  <button
+                    key={office.id}
+                    type="button"
+                    onClick={() => setActiveOffice(office)}
+                    className={cn(
+                      "px-4 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium",
+                      isActive
+                        ? isParchment
+                          ? "bg-[#482D1C] text-[#FAF6F0] shadow-sm"
+                          : "bg-[#D4A65A] text-[#03060E] font-semibold shadow-sm"
+                        : isParchment
+                          ? "bg-[#EFE7DA] text-[#482D1C] hover:bg-[#E5D7C2]"
+                          : "bg-[#0B1220] text-ivory/80 border border-[#D4A65A]/20 hover:bg-[#121B2F]"
+                    )}
+                  >
+                    {office.cityEn} ({office.cityHi})
+                  </button>
+                );
+              })}
             </div>
           </div>
 
           {/* Minimal Map Frame */}
-          <div className="relative w-full h-[360px] sm:h-[420px] rounded-3xl overflow-hidden border border-[#DFCBB5] bg-[#EFE7DA] shadow-sm">
+          <div
+            className={cn(
+              "relative w-full h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-sm transition-all duration-500",
+              isParchment
+                ? "border border-[#DFCBB5] bg-[#EFE7DA]"
+                : "border border-[#D4A65A]/30 bg-[#0B1220]"
+            )}
+          >
             <iframe
               title={`Shiv Enterprises ${activeOffice.titleEn}`}
               width="100%"
               height="100%"
-              className="border-0 w-full h-full filter sepia-[15%] contrast-[105%]"
+              className={cn(
+                "border-0 w-full h-full",
+                isParchment
+                  ? "filter sepia-[15%] contrast-[105%]"
+                  : "filter contrast-[108%] brightness-[90%]"
+              )}
               loading="lazy"
               src={`https://www.openstreetmap.org/export/embed.html?bbox=${activeOffice.bbox}&layer=mapnik&marker=${activeOffice.lat}%2C${activeOffice.lng}`}
             />
 
             {/* Clean Location Tag on bottom-left */}
-            <div className="absolute bottom-4 left-4 z-10 bg-[#FAF6F0]/95 backdrop-blur-sm border border-[#DFCBB5] rounded-2xl p-3.5 sm:p-4 shadow-md max-w-xs text-left">
-              <span className="font-sans text-[10px] font-bold tracking-widest text-[#8C5D33] uppercase block">
+            <div
+              className={cn(
+                "absolute bottom-4 left-4 z-10 rounded-2xl p-3.5 sm:p-4 shadow-md max-w-xs text-left backdrop-blur-md transition-all duration-500",
+                isParchment
+                  ? "bg-[#FAF6F0]/95 border border-[#DFCBB5]"
+                  : "bg-[#060B18]/90 border border-[#D4A65A]/30 text-ivory"
+              )}
+            >
+              <span
+                className={cn(
+                  "font-sans text-[10px] font-bold tracking-widest uppercase block",
+                  isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
+                )}
+              >
                 SHIV ENTERPRISES
               </span>
-              <span className="font-sans font-bold text-sm text-[#2D1B0E] block mt-0.5">
+              <span
+                className={cn(
+                  "font-sans font-bold text-sm block mt-0.5",
+                  isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
+                )}
+              >
                 {activeOffice.titleEn}
               </span>
-              <p className="font-sans text-xs text-[#5C4533] leading-snug mt-1">
+              <p
+                className={cn(
+                  "font-sans text-xs leading-snug mt-1",
+                  isParchment ? "text-[#5C4533]" : "text-ivory/70"
+                )}
+              >
                 {activeOffice.address}
               </p>
               <a
                 href={activeOffice.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block mt-2 font-sans text-xs font-semibold text-[#8C5D33] hover:text-[#482D1C] underline"
+                className={cn(
+                  "inline-block mt-2 font-sans text-xs font-semibold underline",
+                  isParchment
+                    ? "text-[#8C5D33] hover:text-[#482D1C]"
+                    : "text-[#D4A65A] hover:text-[#F3E9D2]"
+                )}
               >
                 Open in Google Maps ↗
               </a>
@@ -350,7 +543,22 @@ export default function ContactPage() {
       </main>
 
       {/* ── Grounded Luxury Footer ── */}
-      <Footer variant="parchment" />
+      <Footer variant={isParchment ? "parchment" : "dark"} />
+
+      {/* ── Minimal Floating Theme Switcher ── */}
+      <aside
+        aria-label="Theme switcher"
+        className="fixed bottom-5 right-5 z-50 flex items-center bg-[#060B18]/90 backdrop-blur-md border border-[#D4A65A]/30 rounded-full p-1 shadow-lg"
+      >
+        <button
+          type="button"
+          onClick={() => setIsParchment(!isParchment)}
+          className="px-3 py-1 rounded-full text-[11px] font-sans text-ivory/80 hover:text-ivory cursor-pointer flex items-center gap-1.5 transition-colors"
+          title="Toggle Dark Cosmic / Light Parchment"
+        >
+          <span>{isParchment ? "🌌 Cosmic Mode" : "📜 Parchment Mode"}</span>
+        </button>
+      </aside>
     </div>
   );
 }
