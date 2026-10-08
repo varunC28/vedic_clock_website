@@ -90,15 +90,19 @@ export function VedicClockReplica({
   const scale = size / 600;
 
   // ── Derived dynamic values from live state (locked to Ujjain) ──────────
-  const mm = state ? pad2(state.muhurtaInDay) : '19';
-  const kk1 = state ? pad2(state.kalaInMuhurta) : '11';
-  const kk2 = state ? pad2(state.kashthaInKala) : '16';
+  const mm = state ? pad2(state.muhurtaInDay) : '17';
+  const kk1 = state ? pad2(state.kalaInMuhurta) : '08';
+  const kk2 = state ? pad2(state.kashthaInKala) : '21';
 
-  const muhurtaDeityRaw = state?.muhurta?.deity ?? 'Pushan';
-  const deityHi = DEITY_HI[muhurtaDeityRaw] || state?.muhurta?.deity || 'पूषा';
-  const muhurtaLine1 = `${state?.muhurta?.devanagari ?? 'पुष्य'} · ${state?.muhurta?.name ?? 'Pushya'}`;
+  const muhurtaDeityRaw = state?.muhurta?.deity ?? 'Aja Ekapada';
+  const deityHi = DEITY_HI[muhurtaDeityRaw] || state?.muhurta?.deity || 'अज एकपाद';
+  const muhurtaLine1 = state
+    ? `${state.muhurta?.devanagari ?? 'अजपाद'} · ${state.muhurta?.name ?? 'Ajapada'}`
+    : 'अजपाद · Ajapada';
   const muhurtaLine2 = `देवता : ${deityHi}`;
-  const muhurtaLine3 = state?.panchang?.tithi?.paksha === 'shukla' ? 'शुक्ल पक्ष' : 'कृष्ण पक्ष';
+  const muhurtaLine3 = state
+    ? (state.panchang?.tithi?.paksha === 'shukla' ? 'शुक्ल पक्ष' : 'कृष्ण पक्ष')
+    : 'कृष्ण पक्ष';
 
   const formatTimeIst = (d?: Date) =>
     d
@@ -142,9 +146,8 @@ export function VedicClockReplica({
   const yogaText = `योग : ${state?.panchang?.yoga?.nameHi ?? 'साध्य'}`;
   const sunRashiText = `सूर्य राशि : ${state?.panchang?.sunRashi?.nameHi ?? 'कन्या'}`;
 
-  // Dynamic slot calculations
-  const activeKaranaSlot = state?.panchang?.karana?.slot ?? 50; // 0..59
-  const yogaPercentage = state ? Math.round((state.panchang?.yoga?.progressFraction ?? 0.57) * 100) : 57;
+  const activeKaranaSlot = state?.panchang?.karana?.slot ?? 50; // 0..59 (shows 51/60)
+  const yogaPercentage = state ? Math.round((state.panchang?.yoga?.progressFraction ?? 0.55) * 100) : 55; // shows 55/100
   const activeYogaSlot = Math.min(59, Math.round((yogaPercentage / 100) * 59));
 
   // ── Frame and Cutouts Math from DialCore.tsx ──────────────────────────────

@@ -9,9 +9,8 @@ import { BrassButton } from "@/components/atoms/BrassButton";
 const NAV_LINKS = [
   { href: "/", en: "Home", hi: "मुख्य पृष्ठ" },
   { href: "/clock", en: "The Clock", hi: "वेदिक घड़ी" },
-  { href: "/heritage", en: "Heritage", hi: "धरोहर" },
-  { href: "/panchang", en: "Panchang", hi: "पंचांग" },
-  { href: "/institutions", en: "Institutions", hi: "संस्थान" },
+  { href: "/panchang", en: "Guide", hi: "मार्गदर्शिका" },
+  { href: "/catalogue", en: "Catalogue", hi: "कैटलॉग" },
 ];
 
 export function Header() {

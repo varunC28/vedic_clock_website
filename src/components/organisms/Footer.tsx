@@ -1,117 +1,129 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
-import { GoldDivider } from "@/components/atoms/GoldDivider";
+import { cn } from "@/lib/utils";
 
 const NAVIGATE_LINKS = [
   { href: "/", label: "Home" },
   { href: "/clock", label: "The Clock" },
-  { href: "/institutions", label: "Institutions" },
+  { href: "#creation-story", label: "Creation Story" },
+  { href: "/catalogue", label: "Product Catalogue" },
 ];
 
 const EXPLORE_LINKS = [
   { href: "/panchang", label: "Panchang Guide" },
-  { href: "/heritage", label: "Heritage" },
-  { href: "/contact", label: "Enquire" },
+  { href: "/heritage", label: "Ujjain Prime Meridian" },
+  { href: "/contact", label: "Reserve Timepiece" },
 ];
 
-export function Footer() {
+interface FooterProps {
+  variant?: "dark" | "parchment";
+  className?: string;
+}
+
+export function Footer({ variant = "dark", className }: FooterProps) {
+  const isParchment = variant === "parchment";
+
   return (
-    <footer className="w-full relative z-10 overflow-hidden">
-      {/* Subtle gradient background — darker than body to create depth */}
-      <div className="absolute inset-0 bg-gradient-to-b from-void-navy via-void-navy to-[#060810] pointer-events-none" />
-
-      {/* Top Divider */}
-      <div className="relative z-10">
-        <GoldDivider variant="dark" />
-      </div>
-
-      <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-
-        {/* ── Main Footer Content ── */}
-        <div className="py-16 lg:py-20 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8">
-
-          {/* Brand Column — spans 5 cols on desktop */}
-          <div className="md:col-span-5 flex flex-col items-center md:items-start text-center md:text-left">
-            <Link href="/" className="group inline-flex flex-col items-center md:items-start gap-1 mb-5">
-              <span className="font-serif text-[10px] text-antique-gold/80 uppercase tracking-[0.4em] group-hover:text-antique-gold transition-colors duration-300">
-                Vikramaditya
+    <footer
+      className={cn(
+        "w-full relative overflow-hidden select-none transition-colors duration-500",
+        isParchment
+          ? "bg-[#1E140C] text-[#FBF5E7] border-t border-[#B8873D]/30"
+          : "bg-[#03060E] text-ivory border-t border-[#D4A65A]/15",
+        className
+      )}
+    >
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-16 sm:py-20">
+        {/* ── Main 4-Column Grid ── */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 pb-14 border-b border-white/5">
+          {/* Col 1: Brand & Origin (Spans 5 cols) */}
+          <div className="md:col-span-5 flex flex-col items-start text-left">
+            <Link href="/" className="group inline-flex flex-col items-start gap-0.5 mb-4">
+              <span className="font-serif text-[10px] sm:text-xs text-[#D4A65A] uppercase tracking-[0.35em] group-hover:text-[#FFF5D1] transition-colors">
+                VIKRAMADITYA
               </span>
-              <span className="font-hindi text-3xl lg:text-4xl text-antique-gold leading-none group-hover:text-amber-glow transition-colors duration-300">
+              <span className="font-hindi text-2xl sm:text-3xl text-[#FFF5D1] leading-none group-hover:text-[#E8B94B] transition-colors mt-1 font-semibold">
                 वेदिक घड़ी
               </span>
             </Link>
 
-            <p className="font-serif italic text-ivory/40 text-sm leading-relaxed max-w-xs mb-8">
-              Time, as the ancients measured it.
+            <p className="font-sans text-xs sm:text-[13px] text-ivory/60 leading-relaxed max-w-sm mb-6">
+              Beyond artificial mechanical gears. Grounded in the sacred prime meridian of Ujjain, the Vedic Clock measures time through the Sun.
             </p>
 
-            {/* Decorative small diamond row */}
-            <div className="flex items-center gap-2 opacity-30">
-              <span className="block w-8 h-px bg-brass" />
-              <span className="block w-1.5 h-1.5 rotate-45 bg-brass" />
-              <span className="block w-1.5 h-1.5 rotate-45 bg-brass" />
-              <span className="block w-1.5 h-1.5 rotate-45 bg-brass" />
-              <span className="block w-8 h-px bg-brass" />
+            {/* Sacred Coordinates Tag */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D4A65A]/10 border border-[#D4A65A]/25 text-[11px] font-sans text-[#E8B94B]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#E8B94B] animate-pulse" />
+              <span>23.17° N · 75.77° E · उज्जयिनी</span>
             </div>
           </div>
 
-          {/* Navigation Columns — span 7 cols, split into two */}
-          <div className="md:col-span-7 grid grid-cols-2 gap-8 lg:gap-12">
+          {/* Col 2: Navigate (Spans 2 cols) */}
+          <div className="md:col-span-2 flex flex-col items-start">
+            <h4 className="font-sans text-[11px] font-semibold text-[#D4A65A] uppercase tracking-[0.25em] mb-5">
+              Navigate
+            </h4>
+            <ul className="space-y-3">
+              {NAVIGATE_LINKS.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="font-sans text-xs text-ivory/65 hover:text-[#FFF5D1] transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            {/* Navigate */}
-            <div className="flex flex-col items-start">
-              <h3 className="text-antique-gold uppercase tracking-[0.3em] text-[10px] font-sans mb-8 relative">
-                Navigate
-                <span className="absolute -bottom-3 left-0 w-6 h-px bg-brass/40" />
-              </h3>
-              <ul className="space-y-5">
-                {NAVIGATE_LINKS.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="group flex items-center font-sans text-sm text-ivory/60 hover:text-ivory transition-colors duration-300"
-                    >
-                      <span className="block w-0 group-hover:w-3 mr-0 group-hover:mr-2 h-px bg-antique-gold transition-all duration-300" />
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Col 3: Heritage & Guides (Spans 2 cols) */}
+          <div className="md:col-span-2 flex flex-col items-start">
+            <h4 className="font-sans text-[11px] font-semibold text-[#D4A65A] uppercase tracking-[0.25em] mb-5">
+              Heritage
+            </h4>
+            <ul className="space-y-3">
+              {EXPLORE_LINKS.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="font-sans text-xs text-ivory/65 hover:text-[#FFF5D1] transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            {/* Explore */}
-            <div className="flex flex-col items-start">
-              <h3 className="text-antique-gold uppercase tracking-[0.3em] text-[10px] font-sans mb-8 relative">
-                Explore
-                <span className="absolute -bottom-3 left-0 w-6 h-px bg-brass/40" />
-              </h3>
-              <ul className="space-y-5">
-                {EXPLORE_LINKS.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="group flex items-center font-sans text-sm text-ivory/60 hover:text-ivory transition-colors duration-300"
-                    >
-                      <span className="block w-0 group-hover:w-3 mr-0 group-hover:mr-2 h-px bg-antique-gold transition-all duration-300" />
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
+          {/* Col 4: Bespoke Consultation (Spans 3 cols) */}
+          <div className="md:col-span-3 flex flex-col items-start">
+            <h4 className="font-sans text-[11px] font-semibold text-[#D4A65A] uppercase tracking-[0.25em] mb-5">
+              Acquisition
+            </h4>
+            <p className="font-sans text-xs text-ivory/60 leading-relaxed mb-4">
+              Limited artisan production for sacred sanctums, museums, and private estates.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-1.5 text-xs font-sans text-[#E8B94B] hover:text-[#FFF5D1] font-medium tracking-wide transition-colors group"
+            >
+              <span>Enquire for Commissions</span>
+              <span className="transition-transform group-hover:translate-x-1">→</span>
+            </Link>
           </div>
         </div>
 
         {/* ── Bottom Bar ── */}
-        <div className="border-t border-brass/10 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="font-sans text-[11px] text-ivory/30 tracking-wide">
-            &copy; {new Date().getFullYear()} Vikramaditya Vedic Clock
-          </p>
-          <p className="font-hindi text-[11px] text-ivory/20 tracking-wide">
-            उज्जैन · भारत
-          </p>
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-ivory/40">
+          <p>© {new Date().getFullYear()} Vikramaditya Vedic Clock. All rights reserved.</p>
+          <div className="flex items-center gap-4">
+            <span className="font-hindi text-[#D4A65A]/70">कालचक्राय नमः</span>
+            <span>·</span>
+            <span>Ujjain, Bharat</span>
+          </div>
         </div>
       </div>
     </footer>

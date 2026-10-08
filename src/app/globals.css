@@ -69,3 +69,71 @@
     background: var(--color-brass);
   }
 }
+
+/* ── Global Theme & Typography Rules ─────────────────────────────────────────── */
+@layer utilities {
+  /* Theme Backgrounds */
+  .bg-cosmic-page {
+    background-color: #03060E;
+    color: #FBF5E7;
+  }
+  .bg-parchment-page {
+    background-color: #F3E9D2;
+    color: #2A1B10;
+  }
+
+  /* Typography Scales */
+  .display-heading {
+    font-family: var(--font-serif);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .devanagari-heading {
+    font-family: var(--font-hindi);
+    line-height: 1.25;
+  }
+
+  .eyebrow-label {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+  }
+
+  /* High-Contrast Semantic Text Helpers */
+  .text-title-dark {
+    color: #FBF5E7;
+  }
+  .text-title-parchment {
+    color: #2A1B10;
+  }
+
+  .text-sub-dark {
+    color: #D4A65A;
+  }
+  .text-sub-parchment {
+    color: #8A5A1A;
+  }
+
+  .text-body-dark {
+    color: rgba(251, 245, 231, 0.78);
+  }
+  .text-body-parchment {
+    color: rgba(61, 42, 26, 0.85);
+  }
+
+  /* Spec Badges */
+  .pill-spec-dark {
+    background-color: rgba(212, 166, 90, 0.10);
+    border: 1px solid rgba(212, 166, 90, 0.25);
+    color: rgba(255, 245, 209, 0.90);
+  }
+  .pill-spec-parchment {
+    background-color: rgba(184, 135, 61, 0.12);
+    border: 1px solid rgba(184, 135, 61, 0.35);
+    color: #2A1B10;
+    font-weight: 500;
+  }
+}
+
