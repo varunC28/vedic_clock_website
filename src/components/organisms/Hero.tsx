@@ -17,8 +17,8 @@ const MONTH_HI = [
 // 1.0 = Default Cinematic Pace (~3.3s total)
 // 1.5 = Snappy & Fast (~2.2s total)
 // 2.0 = Ultra Fast (~1.6s total)
-// 0.5 = Slow & Majestic Pace
-export const LOAD_SPEED = 0.5;
+// 0.4 = Majestic & Balanced Pace
+export const LOAD_SPEED = 0.4;
 
 export function Hero() {
   const clockState = useVedicClock();
@@ -49,11 +49,21 @@ export function Hero() {
       const w = window.innerWidth;
       const h = window.innerHeight;
       const isPortrait = h > w;
-      // In portrait (e.g. iPad Mini 768x1024), dial width with wings expands ~2.38x, so cap dial size to w / 2.55
-      const maxForWidth = Math.floor(w / (isPortrait ? 2.55 : 1.85));
-      const idealFromHeight = Math.floor(h * (isPortrait ? 0.48 : 0.56));
-      const ideal = Math.min(maxForWidth, idealFromHeight);
-      setClockSize(Math.max(220, Math.min(460, ideal)));
+      if (w <= 1032 || isPortrait) {
+        // From mobile view to iPad 1032 width:
+        // Total wings width = clockSize * 2.385.
+        // Centerpiece wings span fits exactly 96% of screen width:
+        const targetFor96PercentWidth = Math.floor((w * 0.96) / 2.385);
+        const maxForHeight = Math.floor(h * 0.48);
+        const ideal = Math.min(targetFor96PercentWidth, maxForHeight);
+        setClockSize(Math.max(140, ideal));
+      } else {
+        // Landscape (e.g. laptops, desktops > 1032px):
+        // Height is the primary constraint. 0.45 * h leaves clear vertical breathing room for corner cards.
+        const maxForHeight = Math.floor(h * 0.45);
+        const maxForWidth = Math.floor((w - 380) / 1.6);
+        setClockSize(Math.max(200, Math.min(430, maxForHeight, maxForWidth)));
+      }
     };
     updateSize();
     window.addEventListener("resize", updateSize);
@@ -199,21 +209,21 @@ export function Hero() {
         }}
       />
 
-      {/* ── 4 Symmetrical Corner Brass Plaques ── */}
+      {/* ── 4 Symmetrical Brass Plaques (Stacked on Mobile, 4 Corners on Desktop) ── */}
       <div className="absolute inset-0 pointer-events-none z-20 overflow-hidden">
-        {/* Top-Left: Time (12h / 24h IST) */}
+        {/* Plaque 1: Time (12h / 24h IST) - Mobile: Top #1 | Desktop: Top-Left */}
         <div
           ref={cornerTopLeftRef}
-          className="absolute top-[80px] sm:top-[88px] lg:top-[96px] left-4 sm:left-6 md:left-8 lg:left-20 w-[240px] sm:w-[270px] md:w-[290px] lg:w-[335px] h-[115px] sm:h-[130px] md:h-[140px] lg:h-[165px] flex items-center justify-center text-center"
+          className="absolute top-8 sm:top-4 md:top-5 lg:top-6 xl:top-8 left-0 right-0 sm:right-auto sm:left-4 md:left-5 lg:left-6 xl:left-8 mx-auto sm:mx-0 w-[230px] sm:w-[250px] md:w-[270px] lg:w-[285px] xl:w-[335px] h-[106px] sm:h-[115px] md:h-[125px] lg:h-[135px] xl:h-[155px] flex items-center justify-center text-center"
         >
           <img
             src="/assets/images/corner_assest.webp"
             alt="Plaque Frame"
             className="absolute inset-0 w-full h-full object-fill filter drop-shadow-2xl"
           />
-          <div className="relative z-10 flex flex-col items-center justify-center px-6 sm:px-8">
+          <div className="relative z-10 flex flex-col items-center justify-center px-6 sm:px-6 md:px-7">
             <span
-              className="text-sm sm:text-base lg:text-xl text-[#FFF5D1]"
+              className="text-[15px] sm:text-[15px] md:text-base lg:text-lg xl:text-xl text-[#FFF5D1] leading-tight"
               style={{
                 filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.98)) drop-shadow(0 0 14px rgba(255,180,0,0.8))",
                 fontFamily: "var(--font-hindi), var(--font-noto-devanagari), 'Noto Sans Devanagari', sans-serif",
@@ -223,7 +233,7 @@ export function Hero() {
               {time12}
             </span>
             <span
-              className="text-[11px] sm:text-xs lg:text-[15px] font-bold text-[#E8B94B] tracking-wider uppercase mt-1 sm:mt-1.5"
+              className="text-xs sm:text-xs md:text-[13px] lg:text-sm xl:text-[15px] font-bold text-[#E8B94B] tracking-wider uppercase mt-0.5 sm:mt-0.5 leading-tight"
               style={{
                 filter: "drop-shadow(0 1.5px 3px rgba(0,0,0,0.95))",
                 fontFamily: "var(--font-hindi), var(--font-noto-devanagari), 'Noto Sans Devanagari', sans-serif",
@@ -235,19 +245,19 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Top-Right: Hindu Date */}
+        {/* Plaque 2: Hindu Date - Mobile: Below Time #2 | Desktop: Top-Right */}
         <div
           ref={cornerTopRightRef}
-          className="absolute top-[80px] sm:top-[88px] lg:top-[96px] right-4 sm:right-6 md:right-8 lg:right-20 w-[240px] sm:w-[270px] md:w-[290px] lg:w-[335px] h-[115px] sm:h-[130px] md:h-[140px] lg:h-[165px] flex items-center justify-center text-center"
+          className="absolute top-[144px] sm:top-4 md:top-5 lg:top-6 xl:top-8 left-0 right-0 sm:left-auto sm:right-4 md:right-5 lg:right-6 xl:right-8 mx-auto sm:mx-0 w-[230px] sm:w-[250px] md:w-[270px] lg:w-[285px] xl:w-[335px] h-[106px] sm:h-[115px] md:h-[125px] lg:h-[135px] xl:h-[155px] flex items-center justify-center text-center"
         >
           <img
             src="/assets/images/corner_assest.webp"
             alt="Plaque Frame"
             className="absolute inset-0 w-full h-full object-fill filter drop-shadow-2xl"
           />
-          <div className="relative z-10 flex flex-col items-center justify-center px-6 sm:px-8">
+          <div className="relative z-10 flex flex-col items-center justify-center px-6 sm:px-6 md:px-7">
             <span
-              className="text-sm sm:text-base lg:text-xl text-[#FFF5D1]"
+              className="text-[15px] sm:text-[15px] md:text-base lg:text-lg xl:text-xl text-[#FFF5D1] leading-tight"
               style={{
                 filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.98)) drop-shadow(0 0 14px rgba(255,180,0,0.8))",
                 fontFamily: "var(--font-hindi), var(--font-noto-devanagari), 'Noto Sans Devanagari', sans-serif",
@@ -257,7 +267,7 @@ export function Hero() {
               {dateHi}
             </span>
             <span
-              className="text-[11px] sm:text-xs lg:text-[15px] font-bold text-[#E8B94B] tracking-wider mt-1 sm:mt-1.5"
+              className="text-xs sm:text-xs md:text-[13px] lg:text-sm xl:text-[15px] font-bold text-[#E8B94B] tracking-wider mt-0.5 sm:mt-0.5 leading-tight"
               style={{
                 filter: "drop-shadow(0 1.5px 3px rgba(0,0,0,0.95))",
                 fontFamily: "var(--font-hindi), var(--font-noto-devanagari), 'Noto Sans Devanagari', sans-serif",
@@ -269,19 +279,19 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Bottom-Left: Vikram Samvat */}
+        {/* Plaque 3: Vikram Samvat - Mobile: Above Location #3 | Desktop: Bottom-Left */}
         <div
           ref={cornerBottomLeftRef}
-          className="absolute bottom-4 sm:bottom-8 lg:bottom-16 left-4 sm:left-6 md:left-8 lg:left-20 w-[240px] sm:w-[270px] md:w-[290px] lg:w-[335px] h-[115px] sm:h-[130px] md:h-[140px] lg:h-[165px] flex items-center justify-center text-center"
+          className="absolute bottom-[144px] sm:bottom-4 md:bottom-5 lg:bottom-6 xl:bottom-8 left-0 right-0 sm:right-auto sm:left-4 md:left-5 lg:left-6 xl:left-8 mx-auto sm:mx-0 w-[230px] sm:w-[250px] md:w-[270px] lg:w-[285px] xl:w-[335px] h-[106px] sm:h-[115px] md:h-[125px] lg:h-[135px] xl:h-[155px] flex items-center justify-center text-center"
         >
           <img
             src="/assets/images/corner_assest.webp"
             alt="Plaque Frame"
             className="absolute inset-0 w-full h-full object-fill filter drop-shadow-2xl"
           />
-          <div className="relative z-10 flex flex-col items-center justify-center px-6 sm:px-8">
+          <div className="relative z-10 flex flex-col items-center justify-center px-6 sm:px-6 md:px-7">
             <span
-              className="text-sm sm:text-base lg:text-xl text-[#FFF5D1]"
+              className="text-[15px] sm:text-[15px] md:text-base lg:text-lg xl:text-xl text-[#FFF5D1] leading-tight"
               style={{
                 filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.98)) drop-shadow(0 0 14px rgba(255,180,0,0.8))",
                 fontFamily: "var(--font-hindi), var(--font-noto-devanagari), 'Noto Sans Devanagari', sans-serif",
@@ -291,7 +301,7 @@ export function Hero() {
               {samvatYear}
             </span>
             <span
-              className="text-[11px] sm:text-xs lg:text-[15px] font-bold text-[#E8B94B] tracking-wider mt-1 sm:mt-1.5"
+              className="text-xs sm:text-xs md:text-[13px] lg:text-sm xl:text-[15px] font-bold text-[#E8B94B] tracking-wider mt-0.5 sm:mt-0.5 leading-tight"
               style={{
                 filter: "drop-shadow(0 1.5px 3px rgba(0,0,0,0.95))",
                 fontFamily: "var(--font-hindi), var(--font-noto-devanagari), 'Noto Sans Devanagari', sans-serif",
@@ -303,19 +313,19 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Bottom-Right: Singular Location (Ujjain / उज्जैन) */}
+        {/* Plaque 4: Singular Location - Mobile: Bottom #4 | Desktop: Bottom-Right */}
         <div
           ref={cornerBottomRightRef}
-          className="absolute bottom-4 sm:bottom-8 lg:bottom-16 right-4 sm:right-6 md:right-8 lg:right-20 w-[240px] sm:w-[270px] md:w-[290px] lg:w-[335px] h-[115px] sm:h-[130px] md:h-[140px] lg:h-[165px] flex items-center justify-center text-center"
+          className="absolute bottom-8 sm:bottom-4 md:bottom-5 lg:bottom-6 xl:bottom-8 left-0 right-0 sm:left-auto sm:right-4 md:right-5 lg:right-6 xl:right-8 mx-auto sm:mx-0 w-[230px] sm:w-[250px] md:w-[270px] lg:w-[285px] xl:w-[335px] h-[106px] sm:h-[115px] md:h-[125px] lg:h-[135px] xl:h-[155px] flex items-center justify-center text-center"
         >
           <img
             src="/assets/images/corner_assest.webp"
             alt="Plaque Frame"
             className="absolute inset-0 w-full h-full object-fill filter drop-shadow-2xl"
           />
-          <div className="relative z-10 flex flex-col items-center justify-center px-6 sm:px-8">
+          <div className="relative z-10 flex flex-col items-center justify-center px-6 sm:px-6 md:px-7">
             <span
-              className="text-sm sm:text-base lg:text-xl text-[#FFF5D1]"
+              className="text-[15px] sm:text-[15px] md:text-base lg:text-lg xl:text-xl text-[#FFF5D1] leading-tight"
               style={{
                 filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.98)) drop-shadow(0 0 14px rgba(255,180,0,0.8))",
                 fontFamily: "var(--font-hindi), var(--font-noto-devanagari), 'Noto Sans Devanagari', sans-serif",
@@ -325,7 +335,7 @@ export function Hero() {
               {DEFAULT_LOCATION.cityHi}
             </span>
             <span
-              className="text-[11px] sm:text-xs lg:text-[15px] font-bold text-[#E8B94B] tracking-wider uppercase mt-1 sm:mt-1.5"
+              className="text-xs sm:text-xs md:text-[13px] lg:text-sm xl:text-[15px] font-bold text-[#E8B94B] tracking-wider uppercase mt-0.5 sm:mt-0.5 leading-tight"
               style={{
                 filter: "drop-shadow(0 1.5px 3px rgba(0,0,0,0.95))",
                 fontFamily: "var(--font-hindi), var(--font-noto-devanagari), 'Noto Sans Devanagari', sans-serif",
@@ -358,7 +368,7 @@ export function Hero() {
         </div>
 
         {/* Step 2: Centerpiece Vedic Clock Assembly ───────────────────────────── */}
-        <div ref={clockContainerRef} className="relative flex items-center justify-center mt-3 sm:mt-5">
+        <div ref={clockContainerRef} className="relative flex items-center justify-center mt-1 sm:mt-3">
           <VedicClockReplica
             size={clockSize}
             state={clockState}
