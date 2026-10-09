@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 const NAVIGATE_LINKS = [
   { href: "/", label: "Home" },
   { href: "/clock", label: "The Clock" },
-  { href: "#creation-story", label: "Creation Story" },
   { href: "/catalogue.pdf", label: "Product Catalogue (PDF)", download: "Vedic_Watch_Catalogue.pdf" },
 ];
 
@@ -102,11 +101,18 @@ export function Footer({ variant = "dark", className }: FooterProps) {
           {/* Col 4: Bespoke Consultation (Spans 3 cols) */}
           <div className="md:col-span-3 flex flex-col items-start">
             <h4 className="font-sans text-[11px] font-semibold text-[#D4A65A] uppercase tracking-[0.25em] mb-5">
-              Acquisition
+              Acquisition & Contact
             </h4>
-            <p className="font-sans text-xs text-ivory/60 leading-relaxed mb-4">
+            <p className="font-sans text-xs text-ivory/60 leading-relaxed mb-3">
               Limited artisan production for sacred sanctums, museums, and private estates.
             </p>
+            <a
+              href="mailto:contact@thevedicghadi.in"
+              className="font-sans text-xs text-ivory/75 hover:text-[#FFF5D1] transition-colors mb-3 flex items-center gap-1.5"
+            >
+              <span>✉️</span>
+              <span>contact@thevedicghadi.in</span>
+            </a>
             <Link
               href="/contact"
               className="inline-flex items-center gap-1.5 text-xs font-sans text-[#E8B94B] hover:text-[#FFF5D1] font-medium tracking-wide transition-colors group"

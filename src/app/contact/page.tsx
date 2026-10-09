@@ -145,7 +145,7 @@ export default function ContactPage() {
                   <span>+91 94066 64444</span>
                 </a>
                 <a
-                  href="mailto:contact@vedicghadi.in"
+                  href="mailto:contact@thevedicghadi.in"
                   className={cn(
                     "inline-flex items-center gap-2 transition-colors",
                     isParchment
@@ -154,7 +154,7 @@ export default function ContactPage() {
                   )}
                 >
                   <span className={isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"}>✉️</span>
-                  <span>contact@vedicghadi.in</span>
+                  <span>contact@thevedicghadi.in</span>
                 </a>
               </div>
             </div>
