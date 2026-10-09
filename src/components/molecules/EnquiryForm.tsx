@@ -82,7 +82,7 @@ export function EnquiryForm({ variant = "dark", className }: EnquiryFormProps) {
             isParchment ? "text-[#3D2A1A]/80" : "text-ivory/75"
           )}
         >
-          Thank you, <strong className="font-semibold">{name}</strong>. Your commission request has been received directly by our Ujjain horology desk. Our curation team will correspond with you via <span className="underline decoration-[#D4A65A]/50">{email}</span> within 24 hours.
+          Thank you, <strong className="font-semibold">{name}</strong>. Your commission request has been received directly by our Ujjain horology desk. Our curation team will correspond with you via <span className="underline decoration-[#D4A65A]/50">{email}</span> within 24 hours, or write to us directly at <a href="mailto:contact@thevedicghadi.in" className="underline font-medium hover:opacity-80">contact@thevedicghadi.in</a>.
         </p>
 
         {/* Reference Stamp */}
@@ -339,7 +339,13 @@ export function EnquiryForm({ variant = "dark", className }: EnquiryFormProps) {
             isParchment ? "text-[#3D2A1A]/60" : "text-ivory/50"
           )}
         >
-          Strict confidentiality observed. Direct correspondence from our Ujjain curation team within 24 hours.
+          Strict confidentiality observed. Direct correspondence from our team within 24 hours, or write to us directly at{" "}
+          <a
+            href="mailto:contact@thevedicghadi.in"
+            className="underline underline-offset-2 hover:opacity-80 font-medium"
+          >
+            contact@thevedicghadi.in
+          </a>.
         </p>
       </div>
     </form>
