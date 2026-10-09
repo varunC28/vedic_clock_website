@@ -35,6 +35,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     subject: "",
     message: "",
   });
@@ -49,7 +50,7 @@ export default function ContactPage() {
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
     }, 600);
   };
 
@@ -344,6 +345,24 @@ export default function ContactPage() {
                       placeholder="Your email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className={cn(
+                        "w-full bg-transparent border-b py-3 text-sm sm:text-base outline-none transition-colors",
+                        isParchment
+                          ? "border-[#D8C7B0] focus:border-[#482D1C] text-[#2D1B0E] placeholder-[#8C7662]"
+                          : "border-[#D4A65A]/30 focus:border-[#E8B94B] text-ivory placeholder-ivory/40"
+                      )}
+                    />
+                  </div>
+
+                  {/* Phone number */}
+                  <div className="flex flex-col">
+                    <label htmlFor="phone" className="sr-only">Phone number</label>
+                    <input
+                      id="phone"
+                      type="tel"
+                      placeholder="Phone number"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className={cn(
                         "w-full bg-transparent border-b py-3 text-sm sm:text-base outline-none transition-colors",
                         isParchment

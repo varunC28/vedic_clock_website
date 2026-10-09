@@ -107,6 +107,13 @@ export function Footer({ variant = "dark", className }: FooterProps) {
               Limited artisan production for sacred sanctums, museums, and private estates.
             </p>
             <a
+              href="tel:+919406664444"
+              className="font-mono text-xs text-ivory/75 hover:text-[#FFF5D1] transition-colors mb-2 flex items-center gap-1.5"
+            >
+              <span>📞</span>
+              <span>+91 94066 64444</span>
+            </a>
+            <a
               href="mailto:contact@thevedicghadi.in"
               className="font-sans text-xs text-ivory/75 hover:text-[#FFF5D1] transition-colors mb-3 flex items-center gap-1.5"
             >
