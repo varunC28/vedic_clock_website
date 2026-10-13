@@ -1,5 +1,5 @@
 // Built using Hyperiux Vault: https://vault.hyperiux.com
-// Adapted for Vedic Horology & Dual Themes (Cosmic / Parchment)
+// Adapted for Vedic Horology & Dual Themes (Cosmic / Parchment) with GSAP ScrollTrigger Pinning
 "use client";
 
 import {
@@ -20,11 +20,6 @@ if (typeof window !== "undefined") {
 const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
-/* Inline stand-in for @gsap/react's useGSAP. Mirrors its default
-   `revertOnUpdate: false`: one gsap.context lives for the component's
-   lifetime, the callback is re-added when dependencies change, and the
-   context is reverted only on unmount. A callback may return its own
-   cleanup, which runs before the next re-add and on unmount. */
 function useGSAP(
   callback: () => void | (() => void),
   options?: {
@@ -71,8 +66,6 @@ export type VedicJourneyItem = {
   order: number;
 };
 
-type SplitTextInstance = InstanceType<typeof SplitText>;
-
 export type TimelineProps = {
   title?: string;
   periodLabel?: string;
@@ -82,10 +75,6 @@ export type TimelineProps = {
   backgroundColor?: string;
   imageUrl?: string;
   imageAlt?: string;
-  /** Reveal animation duration, in seconds. */
-  duration?: number;
-  /** Fallback reveal duration when `duration` is omitted, in seconds. */
-  scrollDuration?: number;
   topData?: VedicJourneyItem[];
   bottomData?: VedicJourneyItem[];
 };
@@ -94,16 +83,13 @@ const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 
 function subscribeToReducedMotion(callback: () => void) {
   if (typeof window === "undefined") return () => {};
-
   const mediaQueryList = window.matchMedia(REDUCED_MOTION_QUERY);
   mediaQueryList.addEventListener("change", callback);
-
   return () => mediaQueryList.removeEventListener("change", callback);
 }
 
 function getReducedMotionSnapshot() {
   if (typeof window === "undefined") return false;
-
   return window.matchMedia?.(REDUCED_MOTION_QUERY)?.matches ?? false;
 }
 
@@ -179,16 +165,12 @@ export default function Timeline({
   backgroundColor = "var(--color-background, #FAF6F0)",
   imageUrl = "/assets/mainbg.webp",
   imageAlt = "Vedic Astronomical Horology",
-  duration,
-  scrollDuration = 1.2,
   topData = defaultTopJourneyData,
   bottomData = defaultBottomJourneyData,
 }: TimelineProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const wholeSliderRef = useRef<HTMLDivElement>(null);
   const reducedMotion = usePrefersReducedMotion();
-  const animationDuration = duration ?? scrollDuration;
-  const normalizedDuration = Math.max(0.2, animationDuration);
 
   const allJourneyItems = [...topData, ...bottomData].sort(
     (a, b) => a.order - b.order
@@ -207,287 +189,238 @@ export default function Timeline({
 
   useGSAP(() => {
     const section = sectionRef.current;
+    const slider = wholeSliderRef.current;
+    if (!section || !slider) return;
 
-    if (!section) return;
+    // Set initial states
+    allJourneyItems.forEach((item) => {
+      const isTop = topData.some((t) => t.id === item.id);
+      gsap.set(`.jl-${item.id}`, {
+        scaleY: 0,
+        transformOrigin: isTop ? "bottom center" : "top center",
+      });
+      gsap.set(`.jd-${item.id}`, { scale: 0 });
+      gsap.set(`.title-${item.id}`, { opacity: 0, y: isTop ? -20 : 20 });
+      gsap.set(`.desc-${item.id}`, { opacity: 0, y: isTop ? -15 : 15 });
+    });
+    gsap.set(".journey-line", { width: "0%" });
 
-    const isMobile = window.innerWidth < 600;
-    const slidePercent = isMobile ? -57 : -65;
-    const lineWidth = isMobile ? "65%" : "98%";
-    const lineStart = isMobile ? "top 30%" : "top 25%";
-    const slideEnd = isMobile ? "82% 50%" : "92% bottom";
-    const lineEnd = isMobile ? "80% 50%" : "92% bottom";
+    if (reducedMotion) {
+      allJourneyItems.forEach((item) => {
+        gsap.set(`.jl-${item.id}`, { scaleY: 1 });
+        gsap.set(`.jd-${item.id}`, { scale: 1 });
+        gsap.set(`.title-${item.id}`, { opacity: 1, y: 0 });
+        gsap.set(`.desc-${item.id}`, { opacity: 1, y: 0 });
+      });
+      gsap.set(".journey-line", { width: "98%" });
+      return;
+    }
 
-    const tl = gsap.timeline({
+    // Function to calculate exact horizontal travel distance
+    const getScrollDistance = () => {
+      const totalWidth = slider.scrollWidth;
+      const viewportWidth = window.innerWidth;
+      return Math.max(0, totalWidth - viewportWidth + 120);
+    };
+
+    // Master Timeline with ScrollTrigger PINNING:
+    // This locks vertical page scroll while scrub is active!
+    const masterTl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: slideEnd,
-        scrub: true,
+        end: () => `+=${Math.max(window.innerHeight * 2.5, getScrollDistance() * 1.2)}`,
+        pin: true,
+        scrub: 0.8,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
       },
       defaults: {
         ease: "none",
       },
     });
 
-    tl.fromTo(
-      wholeSliderRef.current,
-      { xPercent: 0 },
-      { xPercent: slidePercent },
+    // 1. Horizontal track movement across the viewport
+    masterTl.to(slider, {
+      x: () => -getScrollDistance(),
+      ease: "none",
+      duration: 1,
+    });
+
+    // 2. Central connecting line growth
+    masterTl.to(
+      ".journey-line",
+      {
+        width: "98%",
+        ease: "none",
+        duration: 0.95,
+      },
+      0
     );
 
-    if (reducedMotion) {
-      gsap.set(".journey-line", { width: lineWidth });
-      return;
-    }
+    // 3. Reveal milestones as they scroll into view
+    const itemCount = allJourneyItems.length;
+    allJourneyItems.forEach((item, index) => {
+      // Stagger activation evenly across the timeline duration
+      const itemTriggerTime = 0.08 + (index / (itemCount || 1)) * 0.82;
 
-    gsap.to(".journey-line", {
-      width: lineWidth,
-      ease: "none",
-      scrollTrigger: {
-        trigger: section,
-        start: lineStart,
-        end: lineEnd,
-        scrub: true,
-      },
-    });
-  }, { dependencies: [reducedMotion], scope: sectionRef });
-
-  useGSAP(() => {
-    const section = sectionRef.current;
-
-    if (!section) return;
-
-    const items = allJourneyItems;
-
-    if (reducedMotion) {
-      items.forEach((item) => {
-        gsap.set(`.jl-${item.id}`, { scaleY: 1 });
-        gsap.set(`.jd-${item.id}`, { scale: 1 });
-        gsap.set(`.title-${item.id}`, { opacity: 1, clearProps: "transform" });
-        gsap.set(`.description-${item.id}`, {
-          opacity: 1,
-          clearProps: "transform",
-        });
-      });
-      return;
-    }
-
-    items.forEach((item) => {
-      gsap.set(`.jl-${item.id}`, {
-        scaleY: 0,
-        transformOrigin: "bottom bottom",
-      });
-      gsap.set(`.jd-${item.id}`, { scale: 0 });
-      gsap.set(`.title-${item.id}`, { opacity: 1 });
-      gsap.set(`.description-${item.id}`, { opacity: 1 });
-    });
-
-    const titleSplits: Partial<Record<string, SplitTextInstance>> = {};
-    const descriptionSplits: Partial<Record<string, SplitTextInstance>> = {};
-
-    items.forEach((item) => {
-      titleSplits[item.id] = new SplitText(`.title-${item.id}`, {
-        type: "chars, words, lines",
-        mask: "lines",
-      });
-
-      descriptionSplits[item.id] = new SplitText(`.description-${item.id}`, {
-        type: "chars, words, lines",
-        mask: "lines",
-      });
-    });
-
-    const createItemTimeline = (
-      item: VedicJourneyItem,
-      startPos: number,
-      endPos: number,
-    ) => {
-      const lineSelector = `.jl-${item.id}`;
-      const dotSelector = `.jd-${item.id}`;
-      const titleLines = titleSplits[item.id]?.lines || [];
-      const descriptionLines = descriptionSplits[item.id]?.lines || [];
-
-      const isTop = topData.some((topItem) => topItem.id === item.id);
-
-      if (!isTop) {
-        gsap.set(lineSelector, { transformOrigin: "top top" });
-      }
-
-      const timeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: `${startPos}% 30%`,
-          end: `${endPos}% 50%`,
-          scrub: true,
-        },
-      });
-
-      timeline
-        .to(lineSelector, {
-          scaleY: 1,
-          duration: normalizedDuration * 0.4,
-        })
+      masterTl
+        // Draw the vertical stem
         .to(
-          dotSelector,
+          `.jl-${item.id}`,
+          {
+            scaleY: 1,
+            duration: 0.08,
+            ease: "power2.out",
+          },
+          itemTriggerTime
+        )
+        // Pop the node dot
+        .to(
+          `.jd-${item.id}`,
           {
             scale: 1,
-            duration: normalizedDuration * 0.4,
+            duration: 0.08,
+            ease: "back.out(2)",
           },
-          "<",
+          itemTriggerTime
         )
-        .fromTo(
-          titleLines,
-          { y: 100 },
+        // Fade in title & description
+        .to(
+          `.title-${item.id}`,
           {
+            opacity: 1,
             y: 0,
-            delay: -0.8 * normalizedDuration,
-            duration: normalizedDuration,
-            stagger: 0.02,
+            duration: 0.1,
             ease: "power2.out",
           },
+          itemTriggerTime + 0.02
         )
-        .fromTo(
-          descriptionLines,
-          { y: 100 },
+        .to(
+          `.desc-${item.id}`,
           {
+            opacity: 1,
             y: 0,
-            duration: normalizedDuration,
-            stagger: 0.02,
+            duration: 0.1,
             ease: "power2.out",
           },
-          "<",
+          itemTriggerTime + 0.03
         );
-
-      return timeline;
-    };
-
-    // Calculate positions evenly for the items
-    const count = items.length;
-    const positions: ReadonlyArray<readonly [number, number]> =
-      window.innerWidth < 600
-        ? items.map((_, i) => {
-            const step = 60 / (count || 1);
-            const start = 20 + i * step;
-            return [Math.round(start), Math.round(start + 12)] as const;
-          })
-        : items.map((_, i) => {
-            const step = 65 / (count || 1);
-            const start = 6 + i * step;
-            return [Math.round(start), Math.round(start + 20)] as const;
-          });
-
-    items.forEach((item, index) => {
-      const [startPos, endPos] = positions[index] || [10, 30];
-      createItemTimeline(item, startPos, endPos);
     });
 
     const handleResize = () => {
       ScrollTrigger.refresh();
     };
-
     window.addEventListener("resize", handleResize);
 
     return () => {
-      Object.values(titleSplits).forEach((split) => split?.revert?.());
-      Object.values(descriptionSplits).forEach((split) => split?.revert?.());
       window.removeEventListener("resize", handleResize);
     };
-  }, { dependencies: [normalizedDuration, reducedMotion], scope: sectionRef });
+  }, { dependencies: [reducedMotion], scope: sectionRef });
 
   return (
     <section
       ref={sectionRef}
       id="journey"
-      className="h-[200vw] max-[600px]:h-[400vh] w-full relative transition-colors duration-500"
+      className="w-full h-screen relative overflow-hidden transition-colors duration-500 flex flex-col justify-center"
       style={sectionStyle}
     >
-      <div className="h-screen w-screen sticky top-[0%] pt-[8%] overflow-hidden max-[600px]:top-[5%]">
+      {/* ── Viewport Pinned Viewport Container ── */}
+      <div className="w-full h-full relative overflow-hidden flex items-center justify-start">
         <div
           ref={wholeSliderRef}
-          className="mr-[2vw] flex h-[32vw] w-[240vw] items-center gap-[5vw] px-[5vw] max-[600px]:h-[80vh] max-[600px]:w-[800vw] max-[600px]:px-[7vw]"
+          className="flex h-[36vw] min-h-[460px] max-h-[620px] items-center gap-[5vw] px-[6vw] max-[600px]:h-[78vh] max-[600px]:gap-[8vw] max-[600px]:px-[8vw] will-change-transform shrink-0"
         >
-          {/* Leading Cover Card */}
-          <div className="h-full w-[28vw] overflow-hidden rounded-[1.5vw] max-[600px]:h-[65vw] max-[600px]:w-[85vw] max-[600px]:rounded-[5vw] border border-black/10 dark:border-white/10 shadow-2xl relative">
+          {/* Leading Cover / Intro Plaque */}
+          <div className="h-full w-[26vw] min-w-[280px] max-w-[380px] overflow-hidden rounded-[2vw] max-[600px]:h-[65vw] max-[600px]:w-[80vw] max-[600px]:rounded-[5vw] border border-black/10 dark:border-white/10 shadow-2xl relative shrink-0">
             <img
               src={imageUrl}
               alt={imageAlt}
               draggable={false}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-[2.5vw] text-left">
-              <span className="font-mono text-[1vw] max-[600px]:text-[3vw] text-[#E8B94B] uppercase tracking-[0.25em]">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent flex flex-col justify-end p-[2.5vw] text-left">
+              <span className="font-mono text-[0.85vw] max-[600px]:text-[3vw] text-[#E8B94B] uppercase tracking-[0.25em]">
                 Epoch Continuum
               </span>
-              <h3 className="font-serif text-[2vw] max-[600px]:text-[5.5vw] text-white font-bold leading-tight mt-1">
+              <h3 className="font-serif text-[1.8vw] max-[600px]:text-[5vw] text-white font-bold leading-tight mt-1">
                 Avanti Meridian
               </h3>
-              <p className="font-hindi text-[1.2vw] max-[600px]:text-[3.5vw] text-[#F3E9D2]/80 mt-1">
+              <p className="font-hindi text-[1.1vw] max-[600px]:text-[3.2vw] text-[#F3E9D2]/90 mt-1">
                 उज्जैन · समय की शून्य रेखा
               </p>
             </div>
           </div>
 
           {/* Connected Horizontal Timeline Rail */}
-          <div className="relative h-full w-full">
+          <div className="relative h-full flex flex-col justify-between shrink-0">
             {/* Center connecting axis line */}
-            <div className="w-full absolute left-0 top-[49%] -translate-y-1/2 flex items-center h-fit">
+            <div className="w-full absolute left-0 top-[50%] -translate-y-1/2 flex items-center h-fit z-0">
               <div
-                className="h-[.8vw] max-[600px]:h-[2vw] max-[600px]:w-[2vw] w-[.8vw] rounded-full shadow-[0_0_8px_currentColor]"
+                className="h-[.9vw] w-[.9vw] max-[600px]:h-[2.5vw] max-[600px]:w-[2.5vw] rounded-full shadow-[0_0_8px_currentColor]"
                 style={activeStyle}
               ></div>
               <div
-                className="h-[2px] w-[0%] rounded-full journey-line shadow-[0_0_4px_currentColor]"
+                className="h-[2px] w-[0%] rounded-full journey-line shadow-[0_0_6px_currentColor]"
                 style={activeStyle}
               ></div>
               <div
-                className="h-[.8vw] max-[600px]:h-[2vw] max-[600px]:w-[2vw] w-[.8vw] rounded-full shadow-[0_0_8px_currentColor]"
+                className="h-[.9vw] w-[.9vw] max-[600px]:h-[2.5vw] max-[600px]:w-[2.5vw] rounded-full shadow-[0_0_8px_currentColor]"
                 style={activeStyle}
               ></div>
             </div>
 
-            {/* TOP TRACK (Odd milestones) */}
-            <div className="flex h-1/2 w-full items-center justify-start gap-[.5vw]">
-              <div className="h-full w-[20%] pt-[2vw] max-[600px]:h-fit max-[600px]:pt-[5vw] text-left">
-                <h2 className="w-[85%] font-serif text-[2.5vw] leading-[1.05] max-[600px]:text-[7vw] font-bold">
+            {/* TOP TRACK (Odd Milestones: 1, 3, 5) */}
+            <div className="flex h-1/2 w-full items-center justify-start gap-[1vw] relative z-10">
+              {/* Left Title in Upper Half */}
+              <div className="h-full w-[18vw] min-w-[200px] pt-[2vw] max-[600px]:h-fit max-[600px]:pt-[4vw] text-left shrink-0">
+                <h2 className="w-[85%] font-serif text-[2.4vw] leading-[1.05] max-[600px]:text-[6.5vw] font-bold">
                   {title}
                 </h2>
               </div>
 
-              <div className="w-full flex h-full gap-x-[15vw] max-[600px]:gap-x-[40vw]">
+              {/* Top Cards Stream */}
+              <div className="flex h-full gap-x-[12vw] max-[600px]:gap-x-[36vw]">
                 {topData.map((item) => (
                   <div
                     key={`top-${item.id}`}
-                    className="relative h-full w-[30vw] px-[3vw] max-[600px]:flex max-[600px]:w-[70vw] max-[600px]:flex-col max-[600px]:px-[7vw] text-left"
+                    className="relative h-full w-[26vw] min-w-[280px] max-w-[380px] px-[2vw] max-[600px]:w-[68vw] max-[600px]:px-[6vw] text-left shrink-0"
                   >
-                    {/* Vertical Stem & Dot */}
-                    <div className="w-full absolute left-0 bottom-0 top-0 h-full">
+                    {/* Vertical Stem & Dot (Bottom to Top) */}
+                    <div className="w-full absolute left-0 bottom-0 top-0 h-full pointer-events-none">
                       <div
-                        className={`size-[1vw] max-[600px]:size-[2.5vw] -translate-x-1/2 relative aspect-square rounded-full jd-${item.id} shadow-[0_0_10px_currentColor]`}
+                        className={`size-[1vw] max-[600px]:size-[2.5vw] -translate-x-1/2 relative aspect-square rounded-full jd-${item.id} shadow-[0_0_12px_currentColor]`}
                         style={activeStyle}
                       ></div>
                       <div
-                        className={`h-[94%] w-[2px] origin-bottom rounded-full jl-${item.id}`}
+                        className={`h-[92%] w-[2px] origin-bottom rounded-full jl-${item.id}`}
                         style={activeStyle}
                       ></div>
                     </div>
 
                     {/* Milestone Copy */}
-                    <div className="mt-[-1vw] space-y-[0.6vw] max-[600px]:mt-[-2vw]">
+                    <div className="mt-[-0.8vw] space-y-[0.5vw] max-[600px]:mt-[-2vw]">
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-[1.1vw] max-[600px]:text-[3.2vw] font-bold tracking-wider px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10" style={mutedTextStyle}>
+                        <span
+                          className="font-mono text-[1vw] max-[600px]:text-[3vw] font-bold tracking-wider px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10"
+                          style={mutedTextStyle}
+                        >
                           {item.year}
                         </span>
-                        <span className="font-hindi text-[1vw] max-[600px]:text-[3vw] opacity-75 font-medium" style={mutedTextStyle}>
+                        <span
+                          className="font-hindi text-[0.9vw] max-[600px]:text-[2.8vw] opacity-80 font-medium"
+                          style={mutedTextStyle}
+                        >
                           {item.eraHi}
                         </span>
                       </div>
                       <h4
-                        className={`title-${item.id} font-serif text-[2vw] leading-tight max-[600px]:text-[5.5vw] font-bold`}
+                        className={`title-${item.id} font-serif text-[1.8vw] leading-tight max-[600px]:text-[5vw] font-bold`}
                       >
                         {item.title}
                       </h4>
                       <p
-                        className={`description-${item.id} w-[92%] font-sans text-[1.25vw] leading-[1.3] max-[600px]:w-[90%] max-[600px]:text-[4.2vw]`}
+                        className={`desc-${item.id} w-[92%] font-sans text-[1.1vw] leading-[1.35] max-[600px]:w-[90%] max-[600px]:text-[3.8vw]`}
                         style={mutedTextStyle}
                       >
                         {item.content}
@@ -498,52 +431,60 @@ export default function Timeline({
               </div>
             </div>
 
-            {/* BOTTOM TRACK (Even milestones) */}
-            <div className="h-1/2 flex items-center justify-start w-full text-left">
-              <div className="w-[34%] pt-[2vw] max-[600px]:pt-[5vw] max-[600px]:w-[30%] h-full">
+            {/* BOTTOM TRACK (Even Milestones: 2, 4) */}
+            <div className="h-1/2 flex items-center justify-start w-full text-left relative z-10">
+              {/* Period Label in Lower Half */}
+              <div className="w-[18vw] min-w-[200px] pt-[2vw] max-[600px]:pt-[4vw] h-full shrink-0">
                 <p
-                  className="font-mono text-[1.3vw] tracking-wider leading-none max-[600px]:text-[3.8vw] uppercase font-bold"
+                  className="font-mono text-[1.1vw] tracking-wider leading-none max-[600px]:text-[3.5vw] uppercase font-bold"
                   style={mutedTextStyle}
                 >
                   {periodLabel}
                 </p>
               </div>
 
-              <div className="w-full flex h-full gap-x-[20vw] ml-[7vw] max-[600px]:gap-x-[40vw] max-[600px]:ml-[7vw]">
+              {/* Bottom Cards Stream (Offset slightly to sit between top cards) */}
+              <div className="flex h-full gap-x-[14vw] ml-[8vw] max-[600px]:gap-x-[36vw] max-[600px]:ml-[6vw]">
                 {bottomData.map((item) => (
                   <div
                     key={`bottom-${item.id}`}
-                    className="relative h-full w-[28vw] px-[3vw] max-[600px]:w-[70vw] max-[600px]:px-[7vw]"
+                    className="relative h-full w-[26vw] min-w-[280px] max-w-[380px] px-[2vw] max-[600px]:w-[68vw] max-[600px]:px-[6vw] shrink-0"
                   >
-                    {/* Vertical Stem & Dot */}
-                    <div className="w-full absolute left-0 bottom-[-1%] h-full">
+                    {/* Vertical Stem & Dot (Top to Bottom) */}
+                    <div className="w-full absolute left-0 bottom-[-1%] h-full pointer-events-none">
                       <div
-                        className={`h-[94%] origin-top w-[2px] rounded-full max-[600px]:h-full jl-${item.id}`}
+                        className={`h-[92%] origin-top w-[2px] rounded-full jl-${item.id}`}
                         style={activeStyle}
                       ></div>
                       <div
-                        className={`size-[1vw] max-[600px]:size-[2.5vw] -translate-x-1/2 relative w-auto aspect-square rounded-full jd-${item.id} shadow-[0_0_10px_currentColor]`}
+                        className={`size-[1vw] max-[600px]:size-[2.5vw] -translate-x-1/2 relative aspect-square rounded-full jd-${item.id} shadow-[0_0_12px_currentColor]`}
                         style={activeStyle}
                       ></div>
                     </div>
 
                     {/* Milestone Copy */}
-                    <div className="flex h-full w-full flex-col justify-end space-y-[0.6vw]">
+                    <div className="flex h-full w-full flex-col justify-end space-y-[0.5vw]">
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-[1.1vw] max-[600px]:text-[3.2vw] font-bold tracking-wider px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10" style={mutedTextStyle}>
+                        <span
+                          className="font-mono text-[1vw] max-[600px]:text-[3vw] font-bold tracking-wider px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10"
+                          style={mutedTextStyle}
+                        >
                           {item.year}
                         </span>
-                        <span className="font-hindi text-[1vw] max-[600px]:text-[3vw] opacity-75 font-medium" style={mutedTextStyle}>
+                        <span
+                          className="font-hindi text-[0.9vw] max-[600px]:text-[2.8vw] opacity-80 font-medium"
+                          style={mutedTextStyle}
+                        >
                           {item.eraHi}
                         </span>
                       </div>
                       <h4
-                        className={`title-${item.id} font-serif text-[2vw] leading-tight max-[600px]:text-[5.5vw] font-bold`}
+                        className={`title-${item.id} font-serif text-[1.8vw] leading-tight max-[600px]:text-[5vw] font-bold`}
                       >
                         {item.title}
                       </h4>
                       <p
-                        className={`description-${item.id} w-[92%] font-sans text-[1.25vw] leading-[1.3] max-[600px]:w-[90%] max-[600px]:text-[4.2vw]`}
+                        className={`desc-${item.id} w-[92%] font-sans text-[1.1vw] leading-[1.35] max-[600px]:w-[90%] max-[600px]:text-[3.8vw]`}
                         style={mutedTextStyle}
                       >
                         {item.content}

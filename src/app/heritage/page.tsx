@@ -194,7 +194,7 @@ export default function HeritagePage() {
   return (
     <div
       className={cn(
-        "relative w-full min-h-screen overflow-x-hidden transition-colors duration-500 selection:bg-[#B8873D]/30",
+        "relative w-full min-h-screen overflow-x-clip transition-colors duration-500 selection:bg-[#B8873D]/30",
         isParchment
           ? "bg-[#FAF6F0] text-[#2D1B0E]"
           : "bg-[#03060E] text-ivory selection:text-[#FFFDF7]"
@@ -575,7 +575,7 @@ export default function HeritagePage() {
 
           {/* Render Selected Timeline Layout */}
           {timelineVariant === "hyperiux" ? (
-            <div className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden my-2">
+            <div className="w-screen relative left-1/2 -translate-x-1/2 my-2">
               <Timeline
                 title="Vedic Chronology"
                 periodLabel="1500 BCE — 2026 CE"
