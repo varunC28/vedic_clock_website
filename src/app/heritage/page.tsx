@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Header } from "@/components/organisms/Header";
 import { Footer } from "@/components/organisms/Footer";
 import { HorizontalTimeline } from "@/components/molecules/HorizontalTimeline";
+import Timeline from "@/components/ui/timeline";
 
 // ── 1. The 3 Core Pillars Data ──
 interface Pillar {
@@ -188,6 +189,7 @@ export default function HeritagePage() {
   const [isParchment, setIsParchment] = useState(true);
   const [activePillar, setActivePillar] = useState<string>(PILLARS[0].id);
   const [activePhase, setActivePhase] = useState<ArcPhase>(ARC_PHASES[0]);
+  const [timelineVariant, setTimelineVariant] = useState<"hyperiux" | "rail">("hyperiux");
 
   return (
     <div
@@ -505,41 +507,91 @@ export default function HeritagePage() {
         </section>
 
         {/* ═══════════════════════════════════════════════════════
-            SECTION 4: CHRONOLOGY TIMELINE (HORIZONTAL TRACK)
+            SECTION 4: CHRONOLOGY TIMELINE (HYPERIUX & HORIZONTAL)
            ═══════════════════════════════════════════════════════ */}
-        <section className="flex flex-col gap-8">
-          <div className="flex flex-col gap-1">
-            <span
-              className={cn(
-                "font-mono text-xs uppercase tracking-wider",
-                isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
-              )}
-            >
-              Chronological Epochs · 1500 BCE to 2026 CE
-            </span>
-            <h2
-              className={cn(
-                "font-sans text-2xl sm:text-3xl font-bold tracking-tight",
-                isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
-              )}
-            >
-              The Evolution of Vedic Horology
-            </h2>
-            <p
-              className={cn(
-                "font-sans text-sm max-w-xl mt-1",
-                isParchment ? "text-[#6E5540]" : "text-ivory/70"
-              )}
-            >
-              Trace the intellectual continuum across millennia—from Rigvedic solar mathematics to modern monumental tower horology.
-            </p>
+        <section className="flex flex-col gap-6">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div className="flex flex-col gap-1">
+              <span
+                className={cn(
+                  "font-mono text-xs uppercase tracking-wider",
+                  isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
+                )}
+              >
+                Chronological Epochs · 1500 BCE to 2026 CE
+              </span>
+              <h2
+                className={cn(
+                  "font-sans text-2xl sm:text-3xl font-bold tracking-tight",
+                  isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
+                )}
+              >
+                The Evolution of Vedic Horology
+              </h2>
+              <p
+                className={cn(
+                  "font-sans text-sm max-w-xl mt-1",
+                  isParchment ? "text-[#6E5540]" : "text-ivory/70"
+                )}
+              >
+                Trace the intellectual continuum across millennia—from Rigvedic solar mathematics to modern monumental tower horology.
+              </p>
+            </div>
+
+            {/* Layout Comparison Switcher */}
+            <div className="flex items-center gap-2 shrink-0 bg-current/5 p-1 rounded-full border border-current/10">
+              <button
+                type="button"
+                onClick={() => setTimelineVariant("hyperiux")}
+                className={cn(
+                  "px-3.5 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium flex items-center gap-1.5",
+                  timelineVariant === "hyperiux"
+                    ? isParchment
+                      ? "bg-[#482D1C] text-[#FAF6F0] shadow-sm font-semibold"
+                      : "bg-[#D4A65A] text-[#03060E] shadow-sm font-bold"
+                    : "opacity-70 hover:opacity-100"
+                )}
+              >
+                <span>✨</span>
+                <span>Hyperiux Scroll</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setTimelineVariant("rail")}
+                className={cn(
+                  "px-3.5 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium flex items-center gap-1.5",
+                  timelineVariant === "rail"
+                    ? isParchment
+                      ? "bg-[#482D1C] text-[#FAF6F0] shadow-sm font-semibold"
+                      : "bg-[#D4A65A] text-[#03060E] shadow-sm font-bold"
+                    : "opacity-70 hover:opacity-100"
+                )}
+              >
+                <span>📜</span>
+                <span>Rail Cards</span>
+              </button>
+            </div>
           </div>
 
-          {/* Continuous Horizontal Timeline Rail Component */}
-          <HorizontalTimeline
-            milestones={MILESTONES}
-            variant={isParchment ? "parchment" : "dark"}
-          />
+          {/* Render Selected Timeline Layout */}
+          {timelineVariant === "hyperiux" ? (
+            <div className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden my-2">
+              <Timeline
+                title="Vedic Chronology"
+                periodLabel="1500 BCE — 2026 CE"
+                backgroundColor={isParchment ? "#FAF6F0" : "#03060E"}
+                textColor={isParchment ? "#2D1B0E" : "#FBF5E7"}
+                mutedTextColor={isParchment ? "#6E5540" : "rgba(251, 245, 231, 0.65)"}
+                activeColor={isParchment ? "#B8873D" : "#D4A65A"}
+                imageUrl="/assets/mainbg.webp"
+              />
+            </div>
+          ) : (
+            <HorizontalTimeline
+              milestones={MILESTONES}
+              variant={isParchment ? "parchment" : "dark"}
+            />
+          )}
         </section>
 
         {/* ═══════════════════════════════════════════════════════
