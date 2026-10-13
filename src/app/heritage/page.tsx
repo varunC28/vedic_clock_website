@@ -5,6 +5,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/organisms/Header";
 import { Footer } from "@/components/organisms/Footer";
+import { HorizontalTimeline } from "@/components/molecules/HorizontalTimeline";
 
 // ── 1. The 3 Core Pillars Data ──
 interface Pillar {
@@ -187,9 +188,6 @@ export default function HeritagePage() {
   const [isParchment, setIsParchment] = useState(true);
   const [activePillar, setActivePillar] = useState<string>(PILLARS[0].id);
   const [activePhase, setActivePhase] = useState<ArcPhase>(ARC_PHASES[0]);
-  const [activeMilestoneIndex, setActiveMilestoneIndex] = useState<number>(2); // Default to Vikramaditya (57 BCE)
-
-  const selectedMilestone = MILESTONES[activeMilestoneIndex];
 
   return (
     <div
@@ -507,7 +505,7 @@ export default function HeritagePage() {
         </section>
 
         {/* ═══════════════════════════════════════════════════════
-            SECTION 4: CHRONOLOGY TIMELINE (HOVER MILESTONES)
+            SECTION 4: CHRONOLOGY TIMELINE (HORIZONTAL TRACK)
            ═══════════════════════════════════════════════════════ */}
         <section className="flex flex-col gap-8">
           <div className="flex flex-col gap-1">
@@ -533,105 +531,15 @@ export default function HeritagePage() {
                 isParchment ? "text-[#6E5540]" : "text-ivory/70"
               )}
             >
-              Hover across the milestones to trace the intellectual continuum from Rigvedic cosmology to modern Ujjain tower horology.
+              Trace the intellectual continuum across millennia—from Rigvedic solar mathematics to modern monumental tower horology.
             </p>
           </div>
 
-          {/* Timeline Bar & Buttons */}
-          <div className="flex flex-col gap-6">
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5 sm:gap-3">
-              {MILESTONES.map((milestone, idx) => {
-                const isSelected = activeMilestoneIndex === idx;
-                return (
-                  <button
-                    key={milestone.year}
-                    type="button"
-                    onMouseEnter={() => setActiveMilestoneIndex(idx)}
-                    onClick={() => setActiveMilestoneIndex(idx)}
-                    className={cn(
-                      "p-3.5 rounded-xl border text-left transition-all duration-200 cursor-pointer flex flex-col justify-between",
-                      isSelected
-                        ? isParchment
-                          ? "bg-[#482D1C] text-[#FAF6F0] border-[#482D1C] shadow-sm translate-y-[-2px]"
-                          : "bg-[#D4A65A] text-[#03060E] border-[#D4A65A] shadow-md translate-y-[-2px]"
-                        : isParchment
-                          ? "bg-[#FAF6F0] text-[#2D1B0E] border-[#DFCBB5] hover:border-[#B8873D]"
-                          : "bg-[#060B18] text-ivory/80 border-[#D4A65A]/20 hover:border-[#D4A65A]/50"
-                    )}
-                  >
-                    <span className="font-mono text-xs font-bold block mb-1">
-                      {milestone.year}
-                    </span>
-                    <span className="font-sans text-[11px] font-medium leading-tight opacity-90 truncate">
-                      {milestone.eraEn}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Active Milestone Card */}
-            <div
-              className={cn(
-                "p-7 sm:p-8 rounded-2xl border transition-all duration-300 text-left",
-                isParchment
-                  ? "bg-[#F2ECE1]/70 border-[#DFCBB5]"
-                  : "bg-[#080E1C]/85 border-[#D4A65A]/30"
-              )}
-            >
-              <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3">
-                <span
-                  className={cn(
-                    "font-mono text-xs font-bold tracking-wider uppercase",
-                    isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
-                  )}
-                >
-                  {selectedMilestone.year} · {selectedMilestone.eraEn} ({selectedMilestone.eraHi})
-                </span>
-                <span className="font-sans text-xs opacity-60">Milestone {activeMilestoneIndex + 1} of 5</span>
-              </div>
-
-              <h3
-                className={cn(
-                  "font-sans text-xl sm:text-2xl font-bold tracking-tight mb-1",
-                  isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
-                )}
-              >
-                {selectedMilestone.headlineEn}
-              </h3>
-
-              <p
-                className={cn(
-                  "font-hindi text-sm mb-4 font-medium",
-                  isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
-                )}
-              >
-                {selectedMilestone.headlineHi}
-              </p>
-
-              <p
-                className={cn(
-                  "font-sans text-sm sm:text-base leading-relaxed mb-6",
-                  isParchment ? "text-[#5C4533]" : "text-ivory/80"
-                )}
-              >
-                {selectedMilestone.description}
-              </p>
-
-              {/* Historical Impact Footer */}
-              <div
-                className={cn(
-                  "pt-4 border-t flex flex-col sm:flex-row sm:items-center gap-2 text-xs",
-                  isParchment ? "border-[#DFCBB5] text-[#6E5540]" : "border-[#D4A65A]/20 text-ivory/70"
-                )}
-              >
-                <span className="font-semibold text-current uppercase tracking-wider text-[10px]">
-                  Scientific Impact:
-                </span>
-                <span>{selectedMilestone.impact}</span>
-              </div>
-            </div>
-          </div>
+          {/* Continuous Horizontal Timeline Rail Component */}
+          <HorizontalTimeline
+            milestones={MILESTONES}
+            variant={isParchment ? "parchment" : "dark"}
+          />
         </section>
 
         {/* ═══════════════════════════════════════════════════════
