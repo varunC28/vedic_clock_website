@@ -577,7 +577,7 @@ export default function HeritagePage() {
 
       {/* ── Full Width Timeline Stream (Unconstrained by max-w-5xl) ── */}
       {timelineVariant === "hyperiux" ? (
-        <div className="w-full relative my-8">
+        <div className="w-full relative">
           <Timeline
             title="Vedic Chronology"
             periodLabel="1500 BCE — 2026 CE"
