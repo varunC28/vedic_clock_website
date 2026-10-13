@@ -194,7 +194,7 @@ export default function HeritagePage() {
   return (
     <div
       className={cn(
-        "relative w-full min-h-screen overflow-x-clip transition-colors duration-500 selection:bg-[#B8873D]/30",
+        "relative w-full min-h-screen transition-colors duration-500 selection:bg-[#B8873D]/30",
         isParchment
           ? "bg-[#FAF6F0] text-[#2D1B0E]"
           : "bg-[#03060E] text-ivory selection:text-[#FFFDF7]"
@@ -507,7 +507,7 @@ export default function HeritagePage() {
         </section>
 
         {/* ═══════════════════════════════════════════════════════
-            SECTION 4: CHRONOLOGY TIMELINE (HYPERIUX & HORIZONTAL)
+            SECTION 4: CHRONOLOGY TIMELINE (HEADER & SWITCHER)
            ═══════════════════════════════════════════════════════ */}
         <section className="flex flex-col gap-6">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
@@ -572,27 +572,34 @@ export default function HeritagePage() {
               </button>
             </div>
           </div>
-
-          {/* Render Selected Timeline Layout */}
-          {timelineVariant === "hyperiux" ? (
-            <div className="w-screen relative left-1/2 -translate-x-1/2 my-2">
-              <Timeline
-                title="Vedic Chronology"
-                periodLabel="1500 BCE — 2026 CE"
-                backgroundColor={isParchment ? "#FAF6F0" : "#03060E"}
-                textColor={isParchment ? "#2D1B0E" : "#FBF5E7"}
-                mutedTextColor={isParchment ? "#6E5540" : "rgba(251, 245, 231, 0.65)"}
-                activeColor={isParchment ? "#B8873D" : "#D4A65A"}
-                imageUrl="/assets/mainbg.webp"
-              />
-            </div>
-          ) : (
-            <HorizontalTimeline
-              milestones={MILESTONES}
-              variant={isParchment ? "parchment" : "dark"}
-            />
-          )}
         </section>
+      </main>
+
+      {/* ── Full Width Timeline Stream (Unconstrained by max-w-5xl) ── */}
+      {timelineVariant === "hyperiux" ? (
+        <div className="w-full relative my-8">
+          <Timeline
+            title="Vedic Chronology"
+            periodLabel="1500 BCE — 2026 CE"
+            backgroundColor={isParchment ? "#FAF6F0" : "#03060E"}
+            textColor={isParchment ? "#2D1B0E" : "#FBF5E7"}
+            mutedTextColor={isParchment ? "#6E5540" : "rgba(251, 245, 231, 0.7)"}
+            activeColor={isParchment ? "#B8873D" : "#D4A65A"}
+            imageUrl="/assets/mainbg.webp"
+            imageAlt="Vedic Astronomical Horology"
+          />
+        </div>
+      ) : (
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-12 my-8">
+          <HorizontalTimeline
+            milestones={MILESTONES}
+            variant={isParchment ? "parchment" : "dark"}
+          />
+        </div>
+      )}
+
+      {/* ── Bottom Editorial Container ── */}
+      <main className="relative z-10 pt-12 pb-24 px-5 sm:px-8 lg:px-12 max-w-5xl mx-auto flex flex-col gap-24 sm:gap-32 text-left">
 
         {/* ═══════════════════════════════════════════════════════
             SECTION 5: SURYA SIDDHANTA HISTORICAL INSCRIPTION
