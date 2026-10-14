@@ -53,10 +53,10 @@ export function YogaKaranaDimensionCard({
             {/* 27 Segment Ticks */}
             {Array.from({ length: 27 }).map((_, i) => {
               const rad = (i * (360 / 27) * Math.PI) / 180;
-              const x1 = 100 + 66 * Math.cos(rad);
-              const y1 = 100 + 66 * Math.sin(rad);
-              const x2 = 100 + 76 * Math.cos(rad);
-              const y2 = 100 + 76 * Math.sin(rad);
+              const x1 = Math.round((100 + 66 * Math.cos(rad)) * 1000) / 1000;
+              const y1 = Math.round((100 + 66 * Math.sin(rad)) * 1000) / 1000;
+              const x2 = Math.round((100 + 76 * Math.cos(rad)) * 1000) / 1000;
+              const y2 = Math.round((100 + 76 * Math.sin(rad)) * 1000) / 1000;
               return (
                 <line
                   key={i}

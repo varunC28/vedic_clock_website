@@ -64,8 +64,10 @@ interface VedicClockReplicaProps {
 }
 
 // ── Math helpers direct from DialCore.tsx ──────────────────────────────────
+const r3 = (val: number): number => Math.round(val * 1000) / 1000;
+
 function polar(cx: number, cy: number, r: number, ang: number): { x: number; y: number } {
-  return { x: cx + r * Math.cos(ang), y: cy + r * Math.sin(ang) };
+  return { x: r3(cx + r * Math.cos(ang)), y: r3(cy + r * Math.sin(ang)) };
 }
 
 function arcLine(cx: number, cy: number, r: number, a1: number, a2: number, sweepFlag: number = 1): string {
@@ -206,9 +208,9 @@ export function VedicClockReplica({
     const angleRad = (angleDeg * Math.PI) / 180;
     karanaTicks.push({
       key: i,
-      cx: svgHalf + r_karana_mid * Math.cos(angleRad),
-      cy: svgHalf + r_karana_mid * Math.sin(angleRad),
-      rotation: angleDeg + 90,
+      cx: r3(svgHalf + r_karana_mid * Math.cos(angleRad)),
+      cy: r3(svgHalf + r_karana_mid * Math.sin(angleRad)),
+      rotation: r3(angleDeg + 90),
       isActive: i <= activeKaranaSlot,
       isCurrent: i === activeKaranaSlot,
     });
@@ -228,9 +230,9 @@ export function VedicClockReplica({
     const angleRad = (angleDeg * Math.PI) / 180;
     yogaTicks.push({
       key: i,
-      cx: svgHalf + r_yoga_mid * Math.cos(angleRad),
-      cy: svgHalf + r_yoga_mid * Math.sin(angleRad),
-      rotation: angleDeg + 90,
+      cx: r3(svgHalf + r_yoga_mid * Math.cos(angleRad)),
+      cy: r3(svgHalf + r_yoga_mid * Math.sin(angleRad)),
+      rotation: r3(angleDeg + 90),
       isActive: i <= activeYogaSlot,
       isCurrent: i === activeYogaSlot,
     });
@@ -307,9 +309,9 @@ export function VedicClockReplica({
 
           const angleDeg = startAngleDeg + t * (endAngleDeg - startAngleDeg);
           const angleRad = (angleDeg * Math.PI) / 180;
-          const x = cx + effectiveR * Math.cos(angleRad);
-          const y = cy + effectiveR * Math.sin(angleRad);
-          const rotation = isTopHalf ? angleDeg + 90 : angleDeg - 90;
+          const x = r3(cx + effectiveR * Math.cos(angleRad));
+          const y = r3(cy + effectiveR * Math.sin(angleRad));
+          const rotation = r3(isTopHalf ? angleDeg + 90 : angleDeg - 90);
 
           return (
             <text

@@ -22,8 +22,8 @@ export function MuhurtaDimensionCard({
   const safeIndex = Math.max(0, Math.min(29, muhurtaIndex));
   const pointerAngle = (safeIndex / 30) * 360;
   const pointerRad = ((pointerAngle - 90) * Math.PI) / 180;
-  const handX = 100 + 58 * Math.cos(pointerRad);
-  const handY = 100 + 58 * Math.sin(pointerRad);
+  const handX = Math.round((100 + 58 * Math.cos(pointerRad)) * 1000) / 1000;
+  const handY = Math.round((100 + 58 * Math.sin(pointerRad)) * 1000) / 1000;
 
   const pills = [
     "30 Diurnal Windows",
@@ -62,10 +62,10 @@ export function MuhurtaDimensionCard({
               const isCurrent = i === safeIndex;
               const r1 = isCurrent ? 54 : isZenith ? 62 : 66;
               const r2 = 76;
-              const x1 = 100 + r1 * Math.cos(rad);
-              const y1 = 100 + r1 * Math.sin(rad);
-              const x2 = 100 + r2 * Math.cos(rad);
-              const y2 = 100 + r2 * Math.sin(rad);
+              const x1 = Math.round((100 + r1 * Math.cos(rad)) * 1000) / 1000;
+              const y1 = Math.round((100 + r1 * Math.sin(rad)) * 1000) / 1000;
+              const x2 = Math.round((100 + r2 * Math.cos(rad)) * 1000) / 1000;
+              const y2 = Math.round((100 + r2 * Math.sin(rad)) * 1000) / 1000;
 
               return (
                 <line

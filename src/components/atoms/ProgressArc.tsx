@@ -59,13 +59,13 @@ export function ProgressArc({
     }
 
     // Quadratic bezier position
-    const x = (1 - t) * (1 - t) * p0x + 2 * (1 - t) * t * p1x + t * t * p2x;
-    const y = (1 - t) * (1 - t) * p0y + 2 * (1 - t) * t * p1y + t * t * p2y;
+    const x = Math.round(((1 - t) * (1 - t) * p0x + 2 * (1 - t) * t * p1x + t * t * p2x) * 1000) / 1000;
+    const y = Math.round(((1 - t) * (1 - t) * p0y + 2 * (1 - t) * t * p1y + t * t * p2y) * 1000) / 1000;
 
     // Tangent for rotation (derivative of quadratic bezier)
     const dx = 2 * (1 - t) * (p1x - p0x) + 2 * t * (p2x - p1x);
     const dy = 2 * (1 - t) * (p1y - p0y) + 2 * t * (p2y - p1y);
-    const angle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+    const angle = Math.round((Math.atan2(dy, dx) * (180 / Math.PI) + 90) * 1000) / 1000;
 
     ticks.push({
       x,

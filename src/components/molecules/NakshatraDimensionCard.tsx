@@ -54,10 +54,10 @@ export function NakshatraDimensionCard({
             {Array.from({ length: 27 }).map((_, i) => {
               const angleDeg = (i / 27) * 360 - 90;
               const rad = (angleDeg * Math.PI) / 180;
-              const x1 = 100 + 44 * Math.cos(rad);
-              const y1 = 100 + 44 * Math.sin(rad);
-              const x2 = 100 + 76 * Math.cos(rad);
-              const y2 = 100 + 76 * Math.sin(rad);
+              const x1 = Math.round((100 + 44 * Math.cos(rad)) * 1000) / 1000;
+              const y1 = Math.round((100 + 44 * Math.sin(rad)) * 1000) / 1000;
+              const x2 = Math.round((100 + 76 * Math.cos(rad)) * 1000) / 1000;
+              const y2 = Math.round((100 + 76 * Math.sin(rad)) * 1000) / 1000;
               const isActive = i === safeIndex;
 
               return (
@@ -87,14 +87,14 @@ export function NakshatraDimensionCard({
               const r1 = 44;
               const r2 = 76;
 
-              const x1 = 100 + r1 * Math.cos(startRad);
-              const y1 = 100 + r1 * Math.sin(startRad);
-              const x2 = 100 + r2 * Math.cos(startRad);
-              const y2 = 100 + r2 * Math.sin(startRad);
-              const x3 = 100 + r2 * Math.cos(endRad);
-              const y3 = 100 + r2 * Math.sin(endRad);
-              const x4 = 100 + r1 * Math.cos(endRad);
-              const y4 = 100 + r1 * Math.sin(endRad);
+              const x1 = Math.round((100 + r1 * Math.cos(startRad)) * 1000) / 1000;
+              const y1 = Math.round((100 + r1 * Math.sin(startRad)) * 1000) / 1000;
+              const x2 = Math.round((100 + r2 * Math.cos(startRad)) * 1000) / 1000;
+              const y2 = Math.round((100 + r2 * Math.sin(startRad)) * 1000) / 1000;
+              const x3 = Math.round((100 + r2 * Math.cos(endRad)) * 1000) / 1000;
+              const y3 = Math.round((100 + r2 * Math.sin(endRad)) * 1000) / 1000;
+              const x4 = Math.round((100 + r1 * Math.cos(endRad)) * 1000) / 1000;
+              const y4 = Math.round((100 + r1 * Math.sin(endRad)) * 1000) / 1000;
 
               const d = `M ${x1} ${y1} L ${x2} ${y2} A ${r2} ${r2} 0 0 1 ${x3} ${y3} L ${x4} ${y4} A ${r1} ${r1} 0 0 0 ${x1} ${y1} Z`;
 

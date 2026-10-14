@@ -319,8 +319,8 @@ export function TithiInteractiveRHS() {
                 {/* 30 Tithi Ticks along orbit */}
                 {Array.from({ length: 30 }).map((_, i) => {
                   const ang = (i * 12 * Math.PI) / 180;
-                  const tx = 120 + 85 * Math.cos(ang);
-                  const ty = 50 + 32 * Math.sin(ang);
+                  const tx = Math.round((120 + 85 * Math.cos(ang)) * 1000) / 1000;
+                  const ty = Math.round((50 + 32 * Math.sin(ang)) * 1000) / 1000;
                   const isCurrent = Math.floor(orbitAngle / 12) === i;
                   return (
                     <circle
@@ -344,8 +344,8 @@ export function TithiInteractiveRHS() {
                 {/* Dynamic Moon Position */}
                 {(() => {
                   const rad = (orbitAngle * Math.PI) / 180;
-                  const mx = 120 + 85 * Math.cos(rad);
-                  const my = 50 + 32 * Math.sin(rad);
+                  const mx = Math.round((120 + 85 * Math.cos(rad)) * 1000) / 1000;
+                  const my = Math.round((50 + 32 * Math.sin(rad)) * 1000) / 1000;
                   const tithiNumber = (Math.floor(orbitAngle / 12) % 30) + 1;
                   return (
                     <g>

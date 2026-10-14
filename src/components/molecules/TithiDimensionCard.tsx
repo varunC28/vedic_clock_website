@@ -60,8 +60,8 @@ export function TithiDimensionCard({
             {/* 30 Lunar Step Ticks */}
             {Array.from({ length: 30 }).map((_, i) => {
               const ang = (i * 12 * Math.PI) / 180 - Math.PI / 2;
-              const tx = 110 + 76 * Math.cos(ang);
-              const ty = 110 + 76 * Math.sin(ang);
+              const tx = Math.round((110 + 76 * Math.cos(ang)) * 1000) / 1000;
+              const ty = Math.round((110 + 76 * Math.sin(ang)) * 1000) / 1000;
               const isPassed = Math.floor(orbitAngle / 12) >= i;
               return (
                 <circle
@@ -112,8 +112,8 @@ export function TithiDimensionCard({
             {/* Orbiting Moon */}
             {(() => {
               const rad = (orbitAngle * Math.PI) / 180 - Math.PI / 2;
-              const mx = 110 + 76 * Math.cos(rad);
-              const my = 110 + 76 * Math.sin(rad);
+              const mx = Math.round((110 + 76 * Math.cos(rad)) * 1000) / 1000;
+              const my = Math.round((110 + 76 * Math.sin(rad)) * 1000) / 1000;
               return (
                 <g>
                   <line
