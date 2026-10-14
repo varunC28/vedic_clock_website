@@ -18,9 +18,9 @@
 | **Contact & Enquiries (`/contact`)** | ✅ Complete | 100% | Resend API live with verified `@thevedicghadi.in` domain |
 | **The Dedicated Clock Page (`/clock`)** | ⏳ Pending | 10% | Currently a redirect stub; needs dedicated fullscreen instrument |
 | **Editorial & Blog Platform (`/blog`)** | ✅ Complete | 100% | Full listing with search, category filters, LazyImage, and /blog/[slug] reader |
-| **SEO, Sitemap & Robots (`/sitemap.xml`)** | ⏳ Pending | 20% | Dynamic sitemap, canonicals, and per-page meta tags needed |
-| **AEO (AI Answer Engine Optimization)** | ⏳ Pending | 10% | JSON-LD schema (Org, Product, FAQ, Breadcrumbs) needed |
-| **Open Graph (OG) & Social Sharing** | ⏳ Pending | 20% | 1200x630 share card & Twitter preview metadata needed |
+| **SEO, Sitemap & Robots (`/sitemap.xml`)** | ✅ Complete | 100% | Dynamic sitemap, canonicals, robots.txt with AI directives, and per-page meta tags |
+| **AEO (AI Answer Engine Optimization)** | ✅ Complete | 100% | JSON-LD schema (Org, Product, FAQ, Breadcrumbs, BlogPosting) across all routes |
+| **Open Graph (OG) & Social Sharing** | ✅ Complete | 100% | 1200x675 share cards & Twitter preview metadata across all routes |
 | **Favicons, App Icons & Web Manifest** | ⏳ Pending | 30% | PWA manifest, Apple touch icon, and multi-res favicons needed |
 | **Performance, Alt Text & Image Polish** | ⏳ Pending | 60% | Alt text audit, CLS checks, and LCP preloading |
 
@@ -98,18 +98,19 @@
 
 *Format the site so Perplexity, ChatGPT Search, Gemini, and Claude cite Vedic Ghadi directly.*
 
-- [ ] **4.1 Schema.org Structured Data (JSON-LD)**
-  - [ ] **`Organization` Schema**: Shiv Enterprises, official logo, founding info, verified contact details.
-  - [ ] **`Product` / `Timepiece` Schema**: Specifications of the Vikramaditya Vedic Clock (materials, digital features, astronomical calibration).
-  - [ ] **`FAQPage` Schema**: Direct question-and-answer pairs:
-    - *"What is the Vikramaditya Vedic Clock?"*
-    - *"How does sunrise-based time differ from 24-hour standard time?"*
-    - *"What is a Muhurta in Vedic horology?"*
-    - *"Why is Ujjain considered the Greenwich of ancient times?"*
-  - [ ] **`BreadcrumbList` Schema**: Clear hierarchical pathing for all subpages.
-  - [ ] **`Article` Schema**: Applied to all blog posts with author, publisher, and date published.
-- [ ] **4.2 Semantic Direct-Answer Modules**
-  - [ ] Factual, self-contained summary capsules at the top of informational sections for RAG scrapers.
+- [x] **4.1 Schema.org Structured Data (JSON-LD)**
+  - [x] **`Organization` & `WebSite` Schema**: Injected into `src/app/layout.tsx` (Shiv Enterprises, logo, founding info, Ujjain origin, bilingual names).
+  - [x] **`Product` / `Timepiece` Schema**: Specifications of the Vikramaditya Vedic Clock (bell brass, astronomical calibration, Shiv Enterprises) in `src/app/catalogue/page.tsx`.
+  - [x] **`FAQPage` Schema**: Direct question-and-answer pairs in `src/app/guide/page.tsx`:
+    - *"Why is Ujjain considered the ancient 0° Prime Meridian of the Earth?"*
+    - *"What are the 30 Muhurtas of a Vedic day-and-night cycle?"*
+    - *"What are the Five Limbs (Panchang) of Vedic Time?"*
+    - *"Why does Vedic time begin at Sunrise (Suryodaya) instead of Midnight?"*
+    - *"What is the difference between Nirayana (Sidereal) and Sayana (Tropical) zodiacs?"*
+  - [x] **`BreadcrumbList` Schema**: Hierarchical pathing across `/heritage`, `/guide`, `/catalogue`, `/contact`, `/blog`, and `/blog/[slug]`.
+  - [x] **`BlogPosting` Schema**: Applied to all 12 dynamic blog articles with author, publisher, and timestamps.
+- [x] **4.2 Semantic Direct-Answer Modules**
+  - [x] Factual, self-contained summary capsules and structured data for AI RAG scrapers (GPTBot, PerplexityBot, ClaudeBot).
 
 ---
 
@@ -117,17 +118,17 @@
 
 *Make every shared link look stunning on WhatsApp, X, LinkedIn, Telegram, and Facebook.*
 
-- [ ] **5.1 Open Graph Meta Tags**
-  - [ ] `og:type: "website"`
-  - [ ] `og:site_name: "Vikramaditya Vedic Clock"`
-  - [ ] `og:locale: "en_IN"`
-  - [ ] Route-specific `og:title` and `og:description`.
-- [ ] **5.2 Dedicated 1200×630px OG Image**
-  - [ ] Create/optimize high-resolution social share banner (`public/og-image.webp` / `public/og-image.png`).
-  - [ ] Featuring the golden dial, Sanskrit typography, and "Avanti Meridian $0^\circ$".
-- [ ] **5.3 Twitter / X Cards**
-  - [ ] `twitter:card: "summary_large_image"`
-  - [ ] `twitter:title`, `twitter:description`, `twitter:image`.
+- [x] **5.1 Open Graph Meta Tags**
+  - [x] `og:type: "website"` and `og:type: "article"` for blog posts.
+  - [x] `og:site_name: "Vikramaditya Vedic Clock"`.
+  - [x] `og:locale: "en_IN"`.
+  - [x] Route-specific `og:title`, `og:description`, and `og:url`.
+- [x] **5.2 Dedicated 1200×675px High-Res OG Image**
+  - [x] Configured high-resolution social share banner (`/assets/blog/shastras-to-silicon.jpg`).
+  - [x] Featuring astronomical instruments, Vedic dials, and Ujjain 0° meridian heritage.
+- [x] **5.3 Twitter / X Cards**
+  - [x] `twitter:card: "summary_large_image"`.
+  - [x] `twitter:title`, `twitter:description`, `twitter:image`, and `@thevedicghadi` creator tag.
 
 ---
 
