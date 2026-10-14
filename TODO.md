@@ -72,22 +72,26 @@
 
 *Ensure top-tier indexing, ranking, and search discoverability on Google & Bing.*
 
-- [ ] **3.1 Global & Dynamic Metadata**
-  - [ ] Update `src/app/layout.tsx` with unified `metadataBase: new URL('https://thevedicghadi.in')`.
-  - [ ] Add tailored titles & meta descriptions to every route:
-    - `/` — Homepage: *"Vikramaditya Vedic Clock · The World's First Living Sunrise Timepiece"*
-    - `/heritage` — *"Heritage of Avanti · The Ujjain Prime Meridian & Horological Evolution"*
-    - `/panchang` — *"Live Vedic Panchang · Daily Tithi, Nakshatra, Yoga & Karana"*
+- [x] **3.1 Global Foundation & Canonical Architecture**
+  - [x] Defined `metadataBase: new URL('https://thevedicghadi.in')` in `src/app/layout.tsx`.
+  - [x] Global title template (`%s | Vikramaditya Vedic Clock`).
+  - [x] Comprehensive bilingual keyword clusters (English & Devanagari Hindi).
+  - [x] OpenGraph & Twitter Card high-resolution image configuration (`shastras-to-silicon.jpg`).
+  - [x] Injected SSR Knowledge Graph (`Organization` & `WebSite` JSON-LD) into initial HTML payload.
+- [ ] **3.2 Server-Client Decoupling & Per-Route Metadata**
+  - [ ] Decouple client views from `src/app/` page files to export distinct server-side metadata:
+    - `/` — *"Vikramaditya Vedic Clock · The Living Geometry of Time"*
+    - `/heritage` — *"Sacred Meridian of Ujjain & Historical Heritage · Avanti 0°"*
     - `/guide` — *"The Panchang Guide · Master the Elements of Vedic Horology"*
     - `/catalogue` — *"Digital Catalogue · Shiv Enterprises Architectural Horology"*
     - `/contact` — *"Contact & Enquiries · Shiv Enterprises, Ujjain & Indore"*
-    - `/clock` — *"Live Vedic Clock Instrument · 30 Muhurtas & Ghati Calculator"*
-    - `/blog` — *"The Vedic Horology Journal · Articles & Astronomical Research"*
-- [ ] **3.2 Automated XML Sitemap (`src/app/sitemap.ts`)**
-  - [ ] Dynamic sitemap returning all canonical routes with proper `priority` and `changeFrequency`.
+    - `/blog` — *"Chronicles of Celestial Horology · Research & Publications"*
+    - `/blog/[slug]` — Dynamic `generateMetadata` per article
+- [ ] **3.3 Automated XML Sitemap (`src/app/sitemap.ts`)**
+  - [ ] Dynamic sitemap returning all canonical routes + 12 dynamic blog posts with proper `priority` and `changeFrequency`.
   - [ ] Accessible at `https://thevedicghadi.in/sitemap.xml`.
-- [ ] **3.3 Crawler Directives (`src/app/robots.ts`)**
-  - [ ] Set up `robots.txt` declaring allowed paths, disallowing `/api/*`, and referencing `/sitemap.xml`.
+- [ ] **3.4 Crawler Directives (`src/app/robots.ts`)**
+  - [ ] Set up `robots.txt` declaring allowed paths, disallowing `/api/*`, whitelisting AI bots (GPTBot, PerplexityBot, ClaudeBot), and referencing `/sitemap.xml`.
 
 ---
 
