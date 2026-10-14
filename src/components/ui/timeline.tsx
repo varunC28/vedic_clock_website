@@ -1,5 +1,5 @@
 // Built using Hyperiux Vault: https://vault.hyperiux.com
-// Compact & Elegant: Vertically centered pinning with tight, refined spacing
+// Universal Device Responsiveness: iPhone SE/16 -> iPad Mini/Pro -> Laptops & Desktops
 "use client";
 
 import {
@@ -11,10 +11,10 @@ import {
 } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
+import { cn } from "@/lib/utils";
 
 if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger, SplitText);
+  gsap.registerPlugin(ScrollTrigger);
 }
 
 const useIsomorphicLayoutEffect =
@@ -56,14 +56,6 @@ function useGSAP(
   }, deps);
 }
 
-type JourneyItem = {
-  id: string;
-  year: string;
-  era: string;
-  eraHi?: string;
-  content: string;
-};
-
 export type TimelineProps = {
   title?: string;
   periodLabel?: string;
@@ -101,14 +93,33 @@ function usePrefersReducedMotion() {
   );
 }
 
-// 4 Top Milestones (Always above the center line)
-const topJourneyData: JourneyItem[] = [
+export interface MilestoneItem {
+  id: string;
+  year: string;
+  era: string;
+  eraHi?: string;
+  content: string;
+  isTop: boolean;
+}
+
+// ── 7 Milestones in Strict Chronological Alternating Order ──
+// Top -> Bottom -> Top -> Bottom -> Top -> Bottom -> Top
+export const ALL_MILESTONES: MilestoneItem[] = [
   {
     id: "1500-bce",
     year: "1500 BCE",
     era: "Rigvedic Antiquity",
     eraHi: "ऋग्वेद काल",
     content: "Astronomical hymns formulate the solar cycle into 12 lunar months, 30 daily Muhurtas, and 27 Nakshatras.",
+    isTop: true,
+  },
+  {
+    id: "1000-bce",
+    year: "1000 BCE",
+    era: "Vedanga Jyotisha",
+    eraHi: "वेदांग ज्योतिष",
+    content: "Lagadha's astronomical manual introduces horizon gnomon shadow reckoning and Solstice calibrations.",
+    isTop: false,
   },
   {
     id: "500-bce",
@@ -116,31 +127,7 @@ const topJourneyData: JourneyItem[] = [
     era: "Surya Siddhanta",
     eraHi: "सूर्य सिद्धान्त",
     content: "Mathematically fixes Ujjain as 0° Prime Meridian, calculating micro-intervals down to Truti (29.6 microseconds).",
-  },
-  {
-    id: "505-ce",
-    year: "505 CE",
-    era: "Varahamihira",
-    eraHi: "वराहमिहिर काल",
-    content: "Compiles Pancha-Siddhantika in Ujjain, calibrating copper water bowls (Ghati-Yantra) to solar altitude.",
-  },
-  {
-    id: "2026-ce",
-    year: "2026 CE",
-    era: "Modern Rebirth",
-    eraHi: "नव पुनर्जागरण",
-    content: "Ancient astronomical mathematics synthesized with high-precision micro-stepper horology in the Ujjain Tower Clock.",
-  },
-];
-
-// 3 Bottom Milestones (Always below the center line)
-const bottomJourneyData: JourneyItem[] = [
-  {
-    id: "1000-bce",
-    year: "1000 BCE",
-    era: "Vedanga Jyotisha",
-    eraHi: "वेदांग ज्योतिष",
-    content: "Lagadha's astronomical manual introduces horizon gnomon shadow reckoning and Solstice calibrations.",
+    isTop: true,
   },
   {
     id: "57-bce",
@@ -148,6 +135,15 @@ const bottomJourneyData: JourneyItem[] = [
     era: "Vikramaditya Era",
     eraHi: "विक्रम संवत्",
     content: "Emperor Vikramaditya inaugurates the royal Vikram Samvat calendar, aligning civil governance with celestial ephemeris.",
+    isTop: false,
+  },
+  {
+    id: "505-ce",
+    year: "505 CE",
+    era: "Varahamihira",
+    eraHi: "वराहमिहिर काल",
+    content: "Compiles Pancha-Siddhantika in Ujjain, calibrating copper water bowls (Ghati-Yantra) to solar altitude.",
+    isTop: true,
   },
   {
     id: "1725-ce",
@@ -155,18 +151,16 @@ const bottomJourneyData: JourneyItem[] = [
     era: "Jantar Mantar",
     eraHi: "जंतर मंतर",
     content: "Monumental stone sundials and Samrat Yantras erected in Ujjain to measure local apparent solar time.",
+    isTop: false,
   },
-];
-
-// Chronological order along the horizontal timeline track
-const allJourneyItems: JourneyItem[] = [
-  topJourneyData[0],    // 1. 1500 BCE (Top)
-  bottomJourneyData[0], // 2. 1000 BCE (Bottom)
-  topJourneyData[1],    // 3. 500 BCE (Top)
-  bottomJourneyData[1], // 4. 57 BCE (Bottom)
-  topJourneyData[2],    // 5. 505 CE (Top)
-  bottomJourneyData[2], // 6. 1725 CE (Bottom)
-  topJourneyData[3],    // 7. 2026 CE (Top)
+  {
+    id: "2026-ce",
+    year: "2026 CE",
+    era: "Modern Rebirth",
+    eraHi: "नव पुनर्जागरण",
+    content: "Ancient astronomical mathematics synthesized with high-precision micro-stepper horology in the Ujjain Tower Clock.",
+    isTop: true,
+  },
 ];
 
 export default function Timeline({
@@ -180,6 +174,7 @@ export default function Timeline({
   imageAlt = "Vedic Astronomical Horology",
 }: TimelineProps) {
   const sectionRef = useRef<HTMLElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
   const wholeSliderRef = useRef<HTMLDivElement>(null);
   const reducedMotion = usePrefersReducedMotion();
 
@@ -200,22 +195,21 @@ export default function Timeline({
     if (!section || !slider) return;
 
     // Reset initial states
-    allJourneyItems.forEach((item) => {
-      const isTop = topJourneyData.some((t) => t.id === item.id);
+    ALL_MILESTONES.forEach((item) => {
       gsap.set(`.jl-${item.id}`, {
         scaleY: 0,
-        transformOrigin: isTop ? "bottom center" : "top center",
+        transformOrigin: item.isTop ? "bottom center" : "top center",
       });
       gsap.set(`.jd-${item.id}`, { scale: 0 });
       gsap.set(`.milestone-content-${item.id}`, {
         opacity: 0,
-        y: isTop ? -20 : 20,
+        y: item.isTop ? -16 : 16,
       });
     });
     gsap.set(".journey-line", { width: "0%" });
 
     if (reducedMotion) {
-      allJourneyItems.forEach((item) => {
+      ALL_MILESTONES.forEach((item) => {
         gsap.set(`.jl-${item.id}`, { scaleY: 1 });
         gsap.set(`.jd-${item.id}`, { scale: 1 });
         gsap.set(`.milestone-content-${item.id}`, { opacity: 1, y: 0 });
@@ -224,23 +218,23 @@ export default function Timeline({
       return;
     }
 
-    // Exact horizontal distance needed to scroll all the way through
+    // Dynamic travel distance based on exact rendered track width on current screen
     const getTravelDistance = () => {
       const sliderWidth = slider.scrollWidth;
       const viewportWidth = window.innerWidth;
-      return Math.max(0, sliderWidth - viewportWidth + 80);
+      const extraBuffer = viewportWidth < 640 ? 40 : 80;
+      return Math.max(0, sliderWidth - viewportWidth + extraBuffer);
     };
 
-    // ── MASTER GSAP TIMELINE WITH PIN:TRUE ──
-    // Pins right when centered in viewport, unpins right when finished!
+    // ── MASTER PINNED TIMELINE ──
     const masterTl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        start: "center center",
-        end: () => `+=${getTravelDistance() + 80}`,
+        start: "top top",
+        end: () => `+=${Math.round(getTravelDistance() * 1.05 + 160)}`,
         pin: true,
         pinSpacing: true,
-        scrub: 0.8,
+        scrub: 0.7,
         anticipatePin: 1,
         invalidateOnRefresh: true,
       },
@@ -249,31 +243,31 @@ export default function Timeline({
       },
     });
 
-    // 1. Move slider horizontally
+    // 1. Smooth horizontal glide
     masterTl.to(slider, {
       x: () => -getTravelDistance(),
       ease: "none",
       duration: 1,
     });
 
-    // 2. Central connecting line progress
+    // 2. Central connecting line growth across screen
     masterTl.to(
       ".journey-line",
       {
         width: "98%",
         ease: "none",
-        duration: 0.95,
+        duration: 0.94,
       },
       0
     );
 
-    // 3. Staggered reveal for each milestone as it enters viewport center
-    const totalItems = allJourneyItems.length;
-    allJourneyItems.forEach((item, index) => {
-      const triggerTime = 0.05 + (index / totalItems) * 0.85;
+    // 3. Sequential reveals for each milestone along the track
+    const totalItems = ALL_MILESTONES.length;
+    ALL_MILESTONES.forEach((item, index) => {
+      const triggerTime = 0.06 + (index / (totalItems - 0.5)) * 0.84;
 
       masterTl
-        // Draw connecting vertical stem
+        // Draw stem
         .to(
           `.jl-${item.id}`,
           {
@@ -293,7 +287,7 @@ export default function Timeline({
           },
           triggerTime
         )
-        // Smoothly reveal full milestone content (Year badge, Hindi tag, Title, Description together)
+        // Reveal milestone card content (Year badge, title, Hindi tag & description)
         .to(
           `.milestone-content-${item.id}`,
           {
@@ -302,7 +296,7 @@ export default function Timeline({
             duration: 0.1,
             ease: "power2.out",
           },
-          triggerTime + 0.02
+          triggerTime + 0.015
         );
     });
 
@@ -310,9 +304,11 @@ export default function Timeline({
       ScrollTrigger.refresh();
     };
     window.addEventListener("resize", handleResize);
+    window.addEventListener("orientationchange", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("orientationchange", handleResize);
     };
   }, { dependencies: [reducedMotion], scope: sectionRef });
 
@@ -320,195 +316,147 @@ export default function Timeline({
     <section
       ref={sectionRef}
       id="journey"
-      className="w-full h-[540px] sm:h-[580px] relative overflow-hidden transition-colors duration-500 flex items-center justify-center select-none my-2"
+      className="w-full h-screen h-[100dvh] min-h-[520px] relative overflow-hidden transition-colors duration-500 flex items-center select-none"
       style={sectionStyle}
     >
-      {/* ── Viewport Pinned Container (Centered Vertically) ── */}
-      <div className="w-full h-full relative overflow-hidden flex items-center">
+      {/* ── Viewport Container: Locked to Exact Center Vertically ── */}
+      <div
+        ref={viewportRef}
+        className="w-full h-full relative overflow-hidden flex items-center"
+      >
+        {/* ═══ ABSOLUTE HORIZONTAL AXIS (Exact 50% midpoint of screen) ═══ */}
+        <div className="w-full absolute left-0 right-0 top-1/2 -translate-y-1/2 flex items-center pointer-events-none z-10">
+          <div
+            className="h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full shadow-[0_0_8px_currentColor] shrink-0"
+            style={activeStyle}
+          />
+          <div
+            className="h-[2px] w-0 rounded-full journey-line shadow-[0_0_6px_currentColor]"
+            style={activeStyle}
+          />
+          <div
+            className="h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full shadow-[0_0_8px_currentColor] shrink-0"
+            style={activeStyle}
+          />
+        </div>
+
+        {/* ═══ THE HORIZONTAL SLIDER TRACK ═══ */}
         <div
           ref={wholeSliderRef}
-          className="flex h-full items-center gap-[4vw] px-[5vw] max-[600px]:gap-[7vw] max-[600px]:px-[7vw] will-change-transform shrink-0"
+          className="flex items-center h-full will-change-transform gap-6 sm:gap-10 md:gap-14 px-5 sm:px-10 md:px-16 shrink-0 relative z-20"
         >
-          {/* Leading Cover Plaque */}
-          <div className="h-[380px] w-[240px] sm:w-[280px] overflow-hidden rounded-2xl border border-black/10 dark:border-white/10 shadow-xl relative shrink-0">
+          {/* 1. Leading Plaque (Epoch Continuum / Avanti Meridian) */}
+          <div className="h-[48vh] max-h-[380px] min-h-[260px] w-[180px] sm:w-[220px] md:w-[260px] overflow-hidden rounded-2xl md:rounded-3xl border border-black/10 dark:border-white/10 shadow-xl relative shrink-0">
             <img
               src={imageUrl}
               alt={imageAlt}
               draggable={false}
               className="h-full w-full object-cover scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6 text-left">
-              <span className="font-mono text-[10px] text-[#E8B94B] uppercase tracking-[0.25em]">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4 sm:p-6 text-left">
+              <span className="font-mono text-[8px] sm:text-[10px] text-[#E8B94B] uppercase tracking-[0.25em]">
                 Epoch Continuum
               </span>
-              <h3 className="font-serif text-xl sm:text-2xl text-white font-bold leading-tight mt-1">
+              <h3 className="font-serif text-base sm:text-xl md:text-2xl text-white font-bold leading-tight mt-1">
                 Avanti Meridian
               </h3>
-              <p className="font-hindi text-xs sm:text-sm text-[#F3E9D2]/90 mt-1">
+              <p className="font-hindi text-[11px] sm:text-xs text-[#F3E9D2]/90 mt-1">
                 उज्जैन · समय की शून्य रेखा
               </p>
             </div>
           </div>
 
-          {/* ── Horizontal Track with Clear Top & Bottom Separation ── */}
-          <div className="relative h-full flex flex-col justify-between shrink-0">
-            
-            {/* ═══ ABSOLUTE CENTER LINE (At exact 50% midpoint) ═══ */}
-            <div className="w-full absolute left-0 top-[50%] -translate-y-1/2 flex items-center h-fit z-0 pointer-events-none">
-              <div
-                className="h-2.5 w-2.5 rounded-full shadow-[0_0_8px_currentColor]"
-                style={activeStyle}
-              />
-              <div
-                className="h-[2px] w-[0%] rounded-full journey-line shadow-[0_0_6px_currentColor]"
-                style={activeStyle}
-              />
-              <div
-                className="h-2.5 w-2.5 rounded-full shadow-[0_0_8px_currentColor]"
-                style={activeStyle}
-              />
+          {/* 2. Intro Title Column (Sits centered across the 50% line) */}
+          <div className="w-[120px] sm:w-[150px] md:w-[180px] shrink-0 h-full relative flex items-center text-left">
+            {/* Top Half: Title */}
+            <div className="absolute bottom-1/2 mb-3 sm:mb-4 w-full pr-2">
+              <span className="font-mono text-[8px] sm:text-[9px] uppercase tracking-widest block mb-0.5 opacity-60">
+                Chronology
+              </span>
+              <h2 className="font-serif text-base sm:text-xl md:text-2xl leading-tight font-bold">
+                {title}
+              </h2>
             </div>
 
-            {/* ═══ TOP TRACK (Exclusively above the center line) ═══ */}
-            <div className="h-1/2 w-full flex items-end pb-7 sm:pb-9 relative z-10">
-              {/* Left Title in Upper Half */}
-              <div className="w-[16vw] min-w-[170px] text-left shrink-0 pr-4">
-                <span className="font-mono text-[10px] uppercase tracking-widest block mb-1 opacity-60">
-                  Chronology
-                </span>
-                <h2 className="font-serif text-xl sm:text-2xl lg:text-3xl leading-tight font-bold">
-                  {title}
-                </h2>
-              </div>
-
-              {/* Top Cards Stream */}
-              <div className="flex gap-x-[11vw] max-[600px]:gap-x-[32vw]">
-                {topJourneyData.map((item) => (
-                  <div
-                    key={`top-${item.id}`}
-                    className="relative w-[24vw] min-w-[260px] max-w-[340px] px-2 max-[600px]:w-[68vw] text-left shrink-0 flex flex-col justify-end"
-                  >
-                    {/* Stem & Dot Dropping Down to Center Line */}
-                    <div className="absolute left-0 bottom-[-28px] sm:bottom-[-36px] top-0 pointer-events-none w-4">
-                      {/* Node Dot on the Center Line */}
-                      <div
-                        className={`size-3 -translate-x-[4px] absolute bottom-0 aspect-square rounded-full jd-${item.id} shadow-[0_0_8px_currentColor]`}
-                        style={activeStyle}
-                      />
-                      {/* Vertical Stem Going Up to Card */}
-                      <div
-                        className={`h-full w-[2px] origin-bottom rounded-full jl-${item.id}`}
-                        style={activeStyle}
-                      />
-                    </div>
-
-                    {/* Milestone Copy (Guaranteed safely ABOVE the line) */}
-                    <div className={`milestone-content-${item.id} space-y-1 pl-4`}>
-                      <div className="flex items-center gap-2">
-                        <span
-                          className="font-mono text-[11px] font-bold tracking-wider px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10"
-                          style={mutedTextStyle}
-                        >
-                          {item.year}
-                        </span>
-                        {item.eraHi && (
-                          <span
-                            className="font-hindi text-[11px] opacity-75 font-medium"
-                            style={mutedTextStyle}
-                          >
-                            {item.eraHi}
-                          </span>
-                        )}
-                      </div>
-                      <h4
-                        className={`title-${item.id} font-serif text-lg sm:text-xl font-bold leading-snug`}
-                      >
-                        {item.era}
-                      </h4>
-                      <p
-                        className={`desc-${item.id} font-sans text-xs leading-relaxed max-w-[320px]`}
-                        style={mutedTextStyle}
-                      >
-                        {item.content}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+            {/* Bottom Half: Era Span */}
+            <div className="absolute top-1/2 mt-3 sm:mt-4 w-full pr-2">
+              <span className="font-mono text-[8px] sm:text-[9px] uppercase tracking-widest block mb-0.5 opacity-60">
+                Era Span
+              </span>
+              <p
+                className="font-mono text-xs sm:text-sm tracking-wider font-bold"
+                style={mutedTextStyle}
+              >
+                {periodLabel}
+              </p>
             </div>
-
-            {/* ═══ BOTTOM TRACK (Exclusively below the center line) ═══ */}
-            <div className="h-1/2 w-full flex items-start pt-7 sm:pt-9 relative z-10 text-left">
-              {/* Period Label in Lower Half */}
-              <div className="w-[16vw] min-w-[170px] shrink-0 pr-4">
-                <span className="font-mono text-[10px] uppercase tracking-widest block mb-1 opacity-60">
-                  Era Span
-                </span>
-                <p
-                  className="font-mono text-xs sm:text-sm tracking-wider font-bold"
-                  style={mutedTextStyle}
-                >
-                  {periodLabel}
-                </p>
-              </div>
-
-              {/* Bottom Cards Stream */}
-              <div className="flex gap-x-[11vw] ml-[7vw] max-[600px]:gap-x-[32vw] max-[600px]:ml-[5vw]">
-                {bottomJourneyData.map((item) => (
-                  <div
-                    key={`bottom-${item.id}`}
-                    className="relative w-[24vw] min-w-[260px] max-w-[340px] px-2 max-[600px]:w-[68vw] shrink-0 flex flex-col justify-start"
-                  >
-                    {/* Stem & Dot Rising Up to Center Line */}
-                    <div className="absolute left-0 top-[-28px] sm:top-[-36px] bottom-0 pointer-events-none w-4">
-                      {/* Node Dot on the Center Line */}
-                      <div
-                        className={`size-3 -translate-x-[4px] absolute top-0 aspect-square rounded-full jd-${item.id} shadow-[0_0_8px_currentColor]`}
-                        style={activeStyle}
-                      />
-                      {/* Vertical Stem Going Down to Card */}
-                      <div
-                        className={`h-full origin-top w-[2px] rounded-full jl-${item.id}`}
-                        style={activeStyle}
-                      />
-                    </div>
-
-                    {/* Milestone Copy (Guaranteed safely BELOW the line) */}
-                    <div className={`milestone-content-${item.id} space-y-1 pl-4`}>
-                      <div className="flex items-center gap-2">
-                        <span
-                          className="font-mono text-[11px] font-bold tracking-wider px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10"
-                          style={mutedTextStyle}
-                        >
-                          {item.year}
-                        </span>
-                        {item.eraHi && (
-                          <span
-                            className="font-hindi text-[11px] opacity-75 font-medium"
-                            style={mutedTextStyle}
-                          >
-                            {item.eraHi}
-                          </span>
-                        )}
-                      </div>
-                      <h4
-                        className={`title-${item.id} font-serif text-lg sm:text-xl font-bold leading-snug`}
-                      >
-                        {item.era}
-                      </h4>
-                      <p
-                        className={`desc-${item.id} font-sans text-xs leading-relaxed max-w-[320px]`}
-                        style={mutedTextStyle}
-                      >
-                        {item.content}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
           </div>
+
+          {/* 3. The 7 Alternating Milestones (Equidistant & Non-Overlapping) */}
+          {ALL_MILESTONES.map((item) => {
+            const isTop = item.isTop;
+            return (
+              <div
+                key={item.id}
+                className="relative w-[210px] sm:w-[250px] md:w-[290px] h-full shrink-0 flex items-center"
+              >
+                {/* Node Dot on Center Line */}
+                <div
+                  className={`size-2.5 sm:size-3 -translate-x-1/2 absolute left-4 top-1/2 -translate-y-1/2 rounded-full jd-${item.id} shadow-[0_0_8px_currentColor] z-30`}
+                  style={activeStyle}
+                />
+
+                {/* Vertical Stem */}
+                <div
+                  className={cn(
+                    "absolute left-4 -translate-x-1/2 w-[2px] z-20 rounded-full",
+                    `jl-${item.id}`,
+                    isTop
+                      ? "bottom-1/2 origin-bottom h-9 sm:h-12 md:h-16"
+                      : "top-1/2 origin-top h-9 sm:h-12 md:h-16"
+                  )}
+                  style={activeStyle}
+                />
+
+                {/* Milestone Copy Card */}
+                <div
+                  className={cn(
+                    "absolute left-0 w-full pl-7 sm:pl-8 pr-2 select-text text-left",
+                    `milestone-content-${item.id}`,
+                    isTop
+                      ? "bottom-1/2 mb-11 sm:mb-14 md:mb-18 flex flex-col justify-end"
+                      : "top-1/2 mt-11 sm:mt-14 md:mt-18 flex flex-col justify-start"
+                  )}
+                >
+                  <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
+                    <span
+                      className="font-mono text-[9px] sm:text-[11px] font-bold tracking-wider px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10"
+                      style={mutedTextStyle}
+                    >
+                      {item.year}
+                    </span>
+                    {item.eraHi && (
+                      <span
+                        className="font-hindi text-[9px] sm:text-[11px] opacity-75 font-medium"
+                        style={mutedTextStyle}
+                      >
+                        {item.eraHi}
+                      </span>
+                    )}
+                  </div>
+                  <h4 className="font-serif text-sm sm:text-base md:text-lg font-bold leading-snug">
+                    {item.era}
+                  </h4>
+                  <p
+                    className="font-sans text-[11px] sm:text-xs leading-relaxed mt-1 line-clamp-4 sm:line-clamp-none max-w-[270px]"
+                    style={mutedTextStyle}
+                  >
+                    {item.content}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
