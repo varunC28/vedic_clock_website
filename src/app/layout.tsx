@@ -278,6 +278,19 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${fraunces.variable} ${notoDevanagari.variable}`}>
       <head>
+        {/* Preload critical above-the-fold clock hero assets to achieve sub-second LCP */}
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/images/OnlyFrame.webp"
+          type="image/webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/earth.jpg"
+          type="image/jpeg"
+        />
         <link
           rel="alternate"
           type="application/rss+xml"
