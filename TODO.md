@@ -77,16 +77,15 @@
   - [x] Global title template (`%s | Vikramaditya Vedic Clock`).
   - [x] Comprehensive bilingual keyword clusters (English & Devanagari Hindi).
   - [x] OpenGraph & Twitter Card high-resolution image configuration (`shastras-to-silicon.jpg`).
-  - [x] Injected SSR Knowledge Graph (`Organization` & `WebSite` JSON-LD) into initial HTML payload.
-- [ ] **3.2 Server-Client Decoupling & Per-Route Metadata**
-  - [ ] Decouple client views from `src/app/` page files to export distinct server-side metadata:
-    - `/` — *"Vikramaditya Vedic Clock · The Living Geometry of Time"*
+- [x] **3.2 Server-Client Decoupling & Per-Route Metadata**
+  - [x] Decoupled client views from `src/app/` page files to export distinct server-side metadata:
+    - `/` — *"The Living Geometry of Time | Vikramaditya Vedic Clock"*
     - `/heritage` — *"Sacred Meridian of Ujjain & Historical Heritage · Avanti 0°"*
-    - `/guide` — *"The Panchang Guide · Master the Elements of Vedic Horology"*
-    - `/catalogue` — *"Digital Catalogue · Shiv Enterprises Architectural Horology"*
-    - `/contact` — *"Contact & Enquiries · Shiv Enterprises, Ujjain & Indore"*
+    - `/guide` — *"The Panchang & Muhurta Guide · Astronomy of Vedic Timekeeping"*
+    - `/catalogue` — *"Artisan Timepieces & Institutional Commissions · Catalogue"*
+    - `/contact` — *"Acquisitions & Institutional Enquiries · Contact Us"*
     - `/blog` — *"Chronicles of Celestial Horology · Research & Publications"*
-    - `/blog/[slug]` — Dynamic `generateMetadata` per article
+    - `/blog/[slug]` — Dynamic `generateMetadata` and `generateStaticParams` per article with SSR `BlogPosting` JSON-LD schema.
 - [ ] **3.3 Automated XML Sitemap (`src/app/sitemap.ts`)**
   - [ ] Dynamic sitemap returning all canonical routes + 12 dynamic blog posts with proper `priority` and `changeFrequency`.
   - [ ] Accessible at `https://thevedicghadi.in/sitemap.xml`.
