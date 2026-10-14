@@ -232,7 +232,7 @@ export default function Timeline({
     const masterTl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        start: "top top",
+        start: () => (window.innerWidth < 640 ? "top 64px" : "top 76px"),
         end: () => `+=${Math.round(getTravelDistance() * 1.05 + 160)}`,
         pin: true,
         pinSpacing: true,
@@ -366,7 +366,7 @@ export default function Timeline({
     <section
       ref={sectionRef}
       id="journey"
-      className="w-full max-w-full h-screen h-[100dvh] min-h-[560px] max-h-[920px] relative overflow-hidden transition-colors duration-500 block select-none"
+      className="w-full max-w-full h-[480px] sm:h-[510px] md:h-[530px] relative overflow-hidden transition-colors duration-500 block select-none my-0 py-0"
       style={sectionStyle}
     >
       {/* ── Viewport Container: Locked to Exact Center Vertically ── */}
@@ -397,7 +397,7 @@ export default function Timeline({
         >
           {/* 1. Leading Plaque (Epoch Continuum / Avanti Meridian) */}
           <div className="h-full flex flex-col justify-center shrink-0">
-            <div className="h-[44vh] max-h-[360px] min-h-[240px] w-[180px] sm:w-[220px] md:w-[260px] overflow-hidden rounded-2xl md:rounded-3xl border border-black/10 dark:border-white/10 shadow-xl relative">
+            <div className="h-[310px] sm:h-[330px] md:h-[350px] w-[190px] sm:w-[220px] md:w-[250px] overflow-hidden rounded-2xl md:rounded-3xl border border-black/10 dark:border-white/10 shadow-xl relative">
               <img
                 src={imageUrl}
                 alt={imageAlt}
@@ -405,7 +405,7 @@ export default function Timeline({
                 className="h-full w-full object-cover scale-105"
                 onLoad={() => ScrollTrigger.refresh()}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4 sm:p-6 text-left">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4 sm:p-5 text-left">
                 <span className="font-mono text-[8px] sm:text-[10px] text-[#E8B94B] uppercase tracking-[0.25em]">
                   Epoch Continuum
                 </span>
@@ -420,9 +420,9 @@ export default function Timeline({
           </div>
 
           {/* 2. Intro Title Column: Upper Half Title, Lower Half Era Span */}
-          <div className="w-[120px] sm:w-[150px] md:w-[180px] h-full shrink-0 flex flex-col justify-between text-left">
-            {/* Top Half: Title (Guaranteed safely above center line, clearing header) */}
-            <div className="h-1/2 w-full flex flex-col justify-end pb-5 sm:pb-6 pr-2 pt-16 sm:pt-20">
+          <div className="w-[120px] sm:w-[150px] md:w-[170px] h-full shrink-0 flex flex-col justify-between text-left">
+            {/* Top Half: Title */}
+            <div className="h-1/2 w-full flex flex-col justify-end pb-3 sm:pb-4 pr-2 pt-2 sm:pt-3">
               <span className="font-mono text-[8px] sm:text-[9px] uppercase tracking-widest block mb-0.5 opacity-60">
                 Chronology
               </span>
@@ -431,8 +431,8 @@ export default function Timeline({
               </h2>
             </div>
 
-            {/* Bottom Half: Era Span (Guaranteed safely below center line) */}
-            <div className="h-1/2 w-full flex flex-col justify-start pt-5 sm:pt-6 pr-2 pb-10">
+            {/* Bottom Half: Era Span */}
+            <div className="h-1/2 w-full flex flex-col justify-start pt-3 sm:pt-4 pr-2 pb-3 sm:pb-4">
               <span className="font-mono text-[8px] sm:text-[9px] uppercase tracking-widest block mb-0.5 opacity-60">
                 Era Span
               </span>
@@ -453,14 +453,14 @@ export default function Timeline({
                 key={item.id}
                 className="relative w-[210px] sm:w-[250px] md:w-[290px] h-full shrink-0 flex flex-col justify-between"
               >
-                {/* ─── UPPER HALF (Always 50% height, clearing header) ─── */}
-                <div className="h-1/2 w-full flex flex-col justify-end items-start pb-0 pt-16 sm:pt-20 relative">
+                {/* ─── UPPER HALF (Always 50% height) ─── */}
+                <div className="h-1/2 w-full flex flex-col justify-end items-start pb-0 pt-2 sm:pt-3 relative">
                   {isTop ? (
                     <>
                       {/* Milestone Card Copy */}
                       <div
                         className={cn(
-                          "w-full pl-6 sm:pl-7 pr-2 select-text text-left pb-3 sm:pb-4",
+                          "w-full pl-5 sm:pl-6 pr-2 select-text text-left pb-2 sm:pb-3",
                           `milestone-content-${item.id}`
                         )}
                       >
@@ -495,7 +495,7 @@ export default function Timeline({
                       <div className="w-5 flex justify-center shrink-0">
                         <div
                           className={cn(
-                            "w-[2px] h-10 sm:h-16 md:h-20 lg:h-24 origin-bottom rounded-full shadow-[0_0_6px_currentColor]",
+                            "w-[2px] h-8 sm:h-10 md:h-12 origin-bottom rounded-full shadow-[0_0_6px_currentColor]",
                             `jl-${item.id}`
                           )}
                           style={activeStyle}
@@ -517,14 +517,14 @@ export default function Timeline({
                 </div>
 
                 {/* ─── LOWER HALF (Always 50% height) ─── */}
-                <div className="h-1/2 w-full flex flex-col justify-start items-start pt-0 pb-10 relative">
+                <div className="h-1/2 w-full flex flex-col justify-start items-start pt-0 pb-2 sm:pb-3 relative">
                   {!isTop ? (
                     <>
                       {/* Stem Line (Rises up from junction) */}
                       <div className="w-5 flex justify-center shrink-0">
                         <div
                           className={cn(
-                            "w-[2px] h-10 sm:h-16 md:h-20 lg:h-24 origin-top rounded-full shadow-[0_0_6px_currentColor]",
+                            "w-[2px] h-8 sm:h-10 md:h-12 origin-top rounded-full shadow-[0_0_6px_currentColor]",
                             `jl-${item.id}`
                           )}
                           style={activeStyle}
@@ -534,7 +534,7 @@ export default function Timeline({
                       {/* Milestone Card Copy */}
                       <div
                         className={cn(
-                          "w-full pl-6 sm:pl-7 pr-2 select-text text-left pt-3 sm:pt-4",
+                          "w-full pl-5 sm:pl-6 pr-2 select-text text-left pt-2 sm:pt-3",
                           `milestone-content-${item.id}`
                         )}
                       >
