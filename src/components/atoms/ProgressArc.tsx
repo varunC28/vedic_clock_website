@@ -8,9 +8,7 @@ interface ProgressArcProps {
   width?: number;
   direction?: "up" | "down";
   showLabel?: boolean;
-  variant?: "dark" | "parchment";
   className?: string;
-  onSelect?: (index: number) => void;
 }
 
 export function ProgressArc({
@@ -19,11 +17,8 @@ export function ProgressArc({
   width = 300,
   direction = "up",
   showLabel = true,
-  variant = "dark",
   className,
-  onSelect,
 }: ProgressArcProps) {
-  const isParchment = variant === "parchment";
   const safeCurrent = Math.max(0, Math.min(total, current));
   const tickCount = Math.min(total, 60);
   const activeCount = Math.round((safeCurrent / total) * tickCount);
@@ -94,8 +89,7 @@ export function ProgressArc({
       {showLabel && (
         <div
           className={cn(
-            "font-sans text-xs tabular-nums font-medium tracking-wider",
-            isParchment ? "text-[#8A5A1A]" : "text-antique-gold",
+            "text-antique-gold font-sans text-xs tabular-nums font-medium tracking-wider",
             direction === "up" ? "mb-1" : "order-first mb-1"
           )}
           style={direction === "down" ? { order: 1 } : undefined}
@@ -116,30 +110,13 @@ export function ProgressArc({
           <g
             key={i}
             transform={`translate(${tick.x}, ${tick.y}) rotate(${tick.angle})`}
-            onClick={onSelect ? () => onSelect(i + 1) : undefined}
-            className={onSelect ? "cursor-pointer" : undefined}
-            role={onSelect ? "button" : undefined}
-            tabIndex={onSelect ? 0 : undefined}
           >
             <path
               d={diamondPath}
-              fill={
-                tick.isCurrent
-                  ? isParchment ? "#8A5A1A" : "#FFC107"
-                  : tick.isActive
-                  ? isParchment ? "#B8873D" : "#FF9933"
-                  : isParchment ? "rgba(61, 42, 26, 0.12)" : "rgba(255, 255, 255, 0.1)"
-              }
-              stroke={
-                tick.isCurrent
-                  ? isParchment ? "#5C3810" : "#FFF7D6"
-                  : tick.isActive
-                  ? isParchment ? "#8A5A1A" : "#FFD700"
-                  : isParchment ? "rgba(61, 42, 26, 0.25)" : "rgba(255, 255, 255, 0.2)"
-              }
-              strokeWidth={(tick.isCurrent ? 1.2 : 0.8) * scale}
+              fill={tick.isActive ? "#FF9933" : "rgba(255, 255, 255, 0.1)"}
+              stroke={tick.isActive ? "#FFD700" : "rgba(255, 255, 255, 0.2)"}
+              strokeWidth={0.8 * scale}
               className={cn(
-                "transition-all duration-200",
                 tick.isCurrent && "motion-safe:animate-pulse"
               )}
             />

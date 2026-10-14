@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/organisms/Header";
 import { Footer } from "@/components/organisms/Footer";
 import { BilingualPill } from "@/components/atoms/BilingualPill";
 import { GoldDivider } from "@/components/atoms/GoldDivider";
-import { ProgressArc } from "@/components/atoms/ProgressArc";
 import { PanchangTableRow } from "@/components/molecules/PanchangTableRow";
 
 interface TocItem {
@@ -311,88 +310,6 @@ export default function GuidePage() {
     return true;
   });
 
-  const muhurtaTableRef = useRef<HTMLDivElement>(null);
-
-  const activeMuhurta =
-    MUHURTA_GUIDE_ITEMS.find((m) => m.num === selectedMuhurta) || MUHURTA_GUIDE_ITEMS[0];
-
-  const scrollToMuhurta = useCallback((num: number) => {
-    setSelectedMuhurta(num);
-    const row = document.getElementById(`muhurta-row-${num}`);
-    if (row) {
-      const yOffset = -220; // Account for header and sticky HUD
-      const y = row.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }
-  }, []);
-
-  const handleMuhurtaFilterChange = (filter: "all" | "day" | "night" | "auspicious" | "inauspicious") => {
-    setMuhurtaFilter(filter);
-    const filtered = MUHURTA_GUIDE_ITEMS.filter((m) => {
-      if (filter === "day") return m.num <= 15;
-      if (filter === "night") return m.num > 15;
-      if (filter === "auspicious") return m.nature === "auspicious" || m.nature === "highly_auspicious";
-      if (filter === "inauspicious") return m.nature === "inauspicious";
-      return true;
-    });
-    if (filtered.length && !filtered.some((m) => m.num === selectedMuhurta)) {
-      setSelectedMuhurta(filtered[0].num);
-    }
-  };
-
-  useEffect(() => {
-    let ticking = false;
-
-    const handleScroll = () => {
-      if (ticking) return;
-      ticking = true;
-
-      requestAnimationFrame(() => {
-        ticking = false;
-        const table = muhurtaTableRef.current;
-        if (!table) return;
-
-        const rect = table.getBoundingClientRect();
-        const focalY = window.innerHeight * 0.38;
-
-        // Skip if table is far outside viewport
-        if (rect.bottom < 100 || rect.top > window.innerHeight) {
-          return;
-        }
-
-        const rows = table.querySelectorAll<HTMLElement>("[data-muhurta-num]");
-        if (!rows.length) return;
-
-        if (rect.top > focalY) {
-          const firstNum = Number(rows[0].getAttribute("data-muhurta-num"));
-          if (!isNaN(firstNum)) setSelectedMuhurta(firstNum);
-          return;
-        }
-
-        if (rect.bottom <= focalY + 60) {
-          const lastNum = Number(rows[rows.length - 1].getAttribute("data-muhurta-num"));
-          if (!isNaN(lastNum)) setSelectedMuhurta(lastNum);
-          return;
-        }
-
-        for (let i = 0; i < rows.length; i++) {
-          const row = rows[i];
-          const r = row.getBoundingClientRect();
-          if (r.top <= focalY && r.bottom > focalY) {
-            const num = Number(row.getAttribute("data-muhurta-num"));
-            if (!isNaN(num)) {
-              setSelectedMuhurta(num);
-            }
-            break;
-          }
-        }
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const scrollToSection = (id: string) => {
     setSelectedChapter(id);
     const element = document.getElementById(id);
@@ -490,6 +407,7 @@ export default function GuidePage() {
                   nameClassName="w-44 sm:w-64"
                   detail="अध्याय पर जाएँ · Jump to Chapter →"
                   isHighlighted={selectedChapter === item.id}
+                  onMouseEnter={() => setSelectedChapter(item.id)}
                   onClick={() => scrollToSection(item.id)}
                   variant={isParchment ? "parchment" : "dark"}
                 />
@@ -1109,192 +1027,11 @@ export default function GuidePage() {
             </p>
           </div>
 
-          {/* ── Scroll-Linked Muhurta Progress Arc HUD (Spec O6, A6: "comprehension = motion") ── */}
-          <div
-            className={cn(
-              "sticky top-16 sm:top-20 z-20 mb-6 p-4 sm:p-5 rounded-2xl sm:rounded-3xl border backdrop-blur-xl shadow-lg transition-all duration-300",
-              isParchment
-                ? "bg-[#FAF4EA]/95 border-[#DFCBB5] text-[#2D1B0E] shadow-[0_8px_30px_rgba(72,45,28,0.12)]"
-                : "bg-[#060C1A]/95 border-[#D4A65A]/35 text-ivory shadow-[0_8px_30px_rgba(0,0,0,0.6)]"
-            )}
-          >
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-8">
-              {/* Left Column: Progress Arc Visualizer */}
-              <div className="flex flex-col items-center shrink-0 w-full lg:w-auto">
-                <div className="flex items-center justify-between w-full max-w-[270px] mb-1">
-                  <span className={cn("font-sans text-[10.5px] sm:text-[11px] font-semibold tracking-wider uppercase", t.eyebrow)}>
-                    दैनिक मुहूर्त चाप · ARC (1–30)
-                  </span>
-                  <span className={cn("font-mono text-xs font-bold", isParchment ? "text-[#8A5A1A]" : "text-[#D4A65A]")}>
-                    {selectedMuhurta} / 30
-                  </span>
-                </div>
-
-                <ProgressArc
-                  current={selectedMuhurta}
-                  total={30}
-                  width={270}
-                  direction="up"
-                  showLabel={false}
-                  variant={isParchment ? "parchment" : "dark"}
-                  onSelect={scrollToMuhurta}
-                />
-
-                {/* Stepper Controls */}
-                <div className="flex items-center gap-2 mt-1">
-                  <button
-                    type="button"
-                    onClick={() => scrollToMuhurta(Math.max(1, selectedMuhurta - 1))}
-                    disabled={selectedMuhurta <= 1}
-                    aria-label="Previous Muhurta"
-                    className={cn(
-                      "px-2.5 py-1 rounded-full text-[11px] font-sans font-medium transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed border",
-                      isParchment
-                        ? "bg-[#FAF5EC] border-[#DFCBB5] text-[#482D1C] hover:bg-[#EEDEC8]"
-                        : "bg-[#0B1325] border-[#D4A65A]/25 text-[#D4A65A] hover:bg-[#142340]"
-                    )}
-                  >
-                    ← पिछला · Prev
-                  </button>
-                  <span className={cn("text-[11px] font-mono", t.muted)}>
-                    {Math.round((selectedMuhurta / 30) * 100)}%
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => scrollToMuhurta(Math.min(30, selectedMuhurta + 1))}
-                    disabled={selectedMuhurta >= 30}
-                    aria-label="Next Muhurta"
-                    className={cn(
-                      "px-2.5 py-1 rounded-full text-[11px] font-sans font-medium transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed border",
-                      isParchment
-                        ? "bg-[#FAF5EC] border-[#DFCBB5] text-[#482D1C] hover:bg-[#EEDEC8]"
-                        : "bg-[#0B1325] border-[#D4A65A]/25 text-[#D4A65A] hover:bg-[#142340]"
-                    )}
-                  >
-                    अगला · Next →
-                  </button>
-                </div>
-              </div>
-
-              {/* Right Column: Active Muhurta Breakdown */}
-              <div className="flex-1 w-full flex flex-col justify-center">
-                {/* Title & Badges */}
-                <div
-                  className="flex flex-wrap items-baseline justify-between gap-2 mb-2 pb-2 border-b"
-                  style={{ borderColor: isParchment ? "rgba(223,203,181,0.5)" : "rgba(212,166,90,0.2)" }}
-                >
-                  <div className="flex items-baseline gap-2">
-                    <span className={cn("font-hindi text-xl sm:text-2xl font-bold", t.titleHi)}>
-                      {activeMuhurta.num}. {activeMuhurta.hi}
-                    </span>
-                    <span className={cn("font-serif text-sm sm:text-base", t.titleEn)}>
-                      {activeMuhurta.en}
-                    </span>
-                  </div>
-
-                  <div className="flex items-center gap-1.5 flex-wrap">
-                    {/* Day / Night Badge */}
-                    <span
-                      className={cn(
-                        "px-2 py-0.5 rounded-full text-[10.5px] font-sans font-semibold border",
-                        activeMuhurta.num <= 15
-                          ? isParchment
-                            ? "bg-[#FFF6E5] text-[#B8873D] border-[#DFCBB5]"
-                            : "bg-[#2A1D08] text-[#FBBF24] border-[#FBBF24]/30"
-                          : isParchment
-                          ? "bg-[#EAEFF8] text-[#3B5B88] border-[#CAD5E8]"
-                          : "bg-[#0C1B33] text-[#93C5FD] border-[#93C5FD]/30"
-                      )}
-                    >
-                      {activeMuhurta.num <= 15 ? "दिवस · Day (१–१५)" : "रात्रि · Night (१६–३०)"}
-                    </span>
-
-                    {/* Nature Badge */}
-                    <span
-                      className={cn(
-                        "px-2 py-0.5 rounded-full text-[10.5px] font-sans font-semibold border",
-                        activeMuhurta.nature === "highly_auspicious"
-                          ? isParchment
-                            ? "bg-[#FFF2D6] text-[#A16207] border-[#FDE047]"
-                            : "bg-[#2A1D08] text-[#FDE047] border-[#FDE047]/40 shadow-[0_0_8px_rgba(253,224,71,0.3)]"
-                          : activeMuhurta.nature === "auspicious"
-                          ? isParchment
-                            ? "bg-[#EAF5E9] text-[#256029] border-[#C2E4C0]"
-                            : "bg-[#0F2314] text-[#4ADE80] border-[#256029]/50"
-                          : activeMuhurta.nature === "inauspicious"
-                          ? isParchment
-                            ? "bg-[#FDECE8] text-[#A63620] border-[#F9D8D2]"
-                            : "bg-[#250F0F] text-[#F87171] border-[#A63620]/50"
-                          : isParchment
-                          ? "bg-[#FFF8E7] text-[#8C5D33] border-[#DFCBB5]"
-                          : "bg-[#1E170A] text-[#F59E0B] border-[#F59E0B]/30"
-                      )}
-                    >
-                      {activeMuhurta.natureHi} · {activeMuhurta.natureEn}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Do / Avoid Guidance Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                  <div
-                    className={cn(
-                      "p-2.5 rounded-xl border flex flex-col",
-                      isParchment ? "bg-[#FAF5EC] border-[#DFCBB5]/60" : "bg-[#0B1325]/80 border-[#D4A65A]/20"
-                    )}
-                  >
-                    <span className="font-sans font-bold text-[10px] text-[#4A9D6F] uppercase tracking-wider flex items-center gap-1">
-                      <span>✓</span> करें · Do
-                    </span>
-                    <span className={cn("font-hindi font-medium text-xs mt-0.5", t.bodyHi)}>
-                      {activeMuhurta.doHi}
-                    </span>
-                    <span className={cn("font-sans text-[11px] mt-0.5", t.muted)}>
-                      {activeMuhurta.doEn}
-                    </span>
-                  </div>
-
-                  <div
-                    className={cn(
-                      "p-2.5 rounded-xl border flex flex-col",
-                      isParchment ? "bg-[#FAF5EC] border-[#DFCBB5]/60" : "bg-[#0B1325]/80 border-[#D4A65A]/20"
-                    )}
-                  >
-                    <span className="font-sans font-bold text-[10px] text-[#C04848] uppercase tracking-wider flex items-center gap-1">
-                      <span>✕</span> न करें · Avoid
-                    </span>
-                    <span className={cn("font-hindi font-medium text-xs mt-0.5", t.bodyHi)}>
-                      {activeMuhurta.avoidHi}
-                    </span>
-                    <span className={cn("font-sans text-[11px] mt-0.5", t.muted)}>
-                      {activeMuhurta.avoidEn}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Micro Footer: Deity & Table Anchor */}
-                <div className="flex items-center justify-between text-[11px] font-sans mt-2 pt-1.5">
-                  <span className={t.muted}>
-                    <strong className={t.eyebrow}>अधिष्ठाता देव · Deity:</strong> {activeMuhurta.deity}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => scrollToMuhurta(activeMuhurta.num)}
-                    className={cn("inline-flex items-center gap-1 font-medium hover:underline cursor-pointer", t.eyebrow)}
-                  >
-                    <span>तालिका में देखें · View in Table</span>
-                    <span>↓</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
           {/* Filter Pills */}
           <div className="flex flex-wrap items-center gap-2 mb-6">
             <button
               type="button"
-              onClick={() => handleMuhurtaFilterChange("all")}
+              onClick={() => setMuhurtaFilter("all")}
               className={cn(
                 "px-3.5 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium",
                 muhurtaFilter === "all"
@@ -1310,7 +1047,7 @@ export default function GuidePage() {
             </button>
             <button
               type="button"
-              onClick={() => handleMuhurtaFilterChange("day")}
+              onClick={() => setMuhurtaFilter("day")}
               className={cn(
                 "px-3.5 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium",
                 muhurtaFilter === "day"
@@ -1326,7 +1063,7 @@ export default function GuidePage() {
             </button>
             <button
               type="button"
-              onClick={() => handleMuhurtaFilterChange("night")}
+              onClick={() => setMuhurtaFilter("night")}
               className={cn(
                 "px-3.5 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium",
                 muhurtaFilter === "night"
@@ -1342,7 +1079,7 @@ export default function GuidePage() {
             </button>
             <button
               type="button"
-              onClick={() => handleMuhurtaFilterChange("auspicious")}
+              onClick={() => setMuhurtaFilter("auspicious")}
               className={cn(
                 "px-3.5 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium",
                 muhurtaFilter === "auspicious"
@@ -1356,7 +1093,7 @@ export default function GuidePage() {
             </button>
             <button
               type="button"
-              onClick={() => handleMuhurtaFilterChange("inauspicious")}
+              onClick={() => setMuhurtaFilter("inauspicious")}
               className={cn(
                 "px-3.5 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium",
                 muhurtaFilter === "inauspicious"
@@ -1371,7 +1108,7 @@ export default function GuidePage() {
           </div>
 
           {/* ── 30 Muhurtas Document Table (Exact match of media_1791465161128) ── */}
-          <div ref={muhurtaTableRef} className={cn("w-full rounded-2xl sm:rounded-3xl shadow-sm overflow-hidden border", t.boxTable)}>
+          <div className={cn("w-full rounded-2xl sm:rounded-3xl shadow-sm overflow-hidden border", t.boxTable)}>
             {/* Desktop / Tablet Header Row (md and above) */}
             <div className={cn("hidden md:flex w-full py-3.5 px-6 items-center gap-4 font-sans text-sm font-bold select-none", t.th)}>
               <div className="w-12 text-center shrink-0">#</div>
