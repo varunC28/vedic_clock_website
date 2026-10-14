@@ -8,6 +8,11 @@ export const metadata: Metadata = {
     "Authoritative answers on the Vikramaditya Vedic Clock, ancient 0° Ujjain Prime Meridian, offline horological engineering, global location calibration, and institutional commissions.",
   alternates: {
     canonical: "/faq",
+    languages: {
+      "en-IN": "https://thevedicghadi.in/faq",
+      "hi-IN": "https://thevedicghadi.in/faq",
+      "x-default": "https://thevedicghadi.in/faq",
+    },
   },
   openGraph: {
     title: "Frequently Asked Questions | Master Horological Knowledge Base",

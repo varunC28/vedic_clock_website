@@ -750,10 +750,10 @@ export function GuideView() {
           {/* Intro Text */}
           <div className="mb-6 sm:mb-8 text-left">
             <h3 className={cn("font-hindi text-base sm:text-lg font-bold leading-snug", t.titleHi)}>
-              प्राचीन वैदिक ग्रंथों (सूर्य सिद्धांत व विष्णु पुराण) में समय की सूक्ष्म से स्थूल इकाइयाँ:
+              प्राचीन वैदिक ग्रंथों (सूर्य सिद्धांत व विष्णु पुराण) में समय की सूक्ष्म से स्थूल इकाइयाँ — <Link href="/glossary#truti" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">त्रुटि</Link> व <Link href="/glossary#kashtha" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">काष्ठा</Link> से लेकर <Link href="/glossary#ghati" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">घटी</Link> और <Link href="/glossary#ahoratra" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">अहोरात्र</Link> तक:
             </h3>
             <p className={cn("font-sans text-xs sm:text-sm mt-1 leading-relaxed", t.bodyEn)}>
-              Ancient Vedic texts (Surya Siddhanta & Vishnu Purana) calibrate time from atomic moments to full cycles:
+              Ancient Vedic texts (Surya Siddhanta & Vishnu Purana) calibrate time from atomic moments like <Link href="/glossary#truti" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Truti</Link> and <Link href="/glossary#kashtha" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Kashtha</Link> to macro cycles like <Link href="/glossary#ghati" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Ghati</Link> and <Link href="/glossary#ahoratra" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Ahoratra</Link>:
             </p>
           </div>
 
@@ -876,6 +876,47 @@ export function GuideView() {
               So a reading like 11:10:20 on the clock means: the 11th Muhurta, 10th Kala, 20th Kashtha of the current day.
             </p>
           </div>
+
+          {/* Lexicon Discovery Banner */}
+          <div
+            className={cn(
+              "w-full rounded-2xl p-5 sm:p-6 mt-6 border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-all duration-300",
+              isParchment
+                ? "bg-[#FAF4EA] border-[#D9C4AB] hover:border-[#9E672B] hover:shadow-md"
+                : "bg-[#0A1224] border-[#D4A65A]/30 hover:border-[#E5A84B] hover:shadow-[0_8px_24px_rgba(212,166,90,0.15)]"
+            )}
+          >
+            <div className="flex-1 text-left">
+              <span
+                className={cn(
+                  "inline-block text-[11px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full mb-2 border",
+                  isParchment
+                    ? "bg-[#8C5D33]/10 text-[#7E4A19] border-[#8C5D33]/20"
+                    : "bg-[#D4A65A]/15 text-[#FCD34D] border-[#D4A65A]/30"
+                )}
+              >
+                वैदिक शब्दावली कोष · Horology Lexicon
+              </span>
+              <h4 className={cn("font-hindi text-base sm:text-lg font-bold leading-snug mb-1", t.titleHi)}>
+                वैदिक काल-गणना के सूत्रों व शास्त्रीय प्रमाणों की विस्तृत सूची
+              </h4>
+              <p className={cn("font-sans text-xs sm:text-sm leading-relaxed", t.bodyEn)}>
+                Looking for exact mathematical formulas, Sanskrit derivations, and classical citations from the Surya Siddhanta? Explore the 42-Term Horology Lexicon.
+              </p>
+            </div>
+            <Link
+              href="/glossary"
+              className={cn(
+                "inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-xs sm:text-sm whitespace-nowrap transition-all duration-200 shadow-sm",
+                isParchment
+                  ? "bg-[#7E4A19] hover:bg-[#633810] text-[#FAF4EA]"
+                  : "bg-[#D4A65A] hover:bg-[#E5A84B] text-[#060B18] font-semibold"
+              )}
+            >
+              <span>Explore 42 Terms</span>
+              <span aria-hidden="true">→</span>
+            </Link>
+          </div>
         </article>
 
 
@@ -916,10 +957,20 @@ export function GuideView() {
           {/* Intro Text */}
           <div className="mb-6 sm:mb-8 text-left">
             <h3 className={cn("font-hindi text-base sm:text-lg font-bold leading-snug", t.titleHi)}>
-              पंचांग पाँच मूल तत्वों से मिलकर बनता है — तिथि, वार, नक्षत्र, योग और करण। प्रत्येक दिन का चरित्र इन्हीं पाँच अंगों से तय होता है।
+              पंचांग पाँच मूल तत्वों से मिलकर बनता है —{" "}
+              <Link href="/glossary#tithi" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">तिथि</Link>,{" "}
+              <Link href="/glossary#vara" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">वार</Link>,{" "}
+              <Link href="/glossary#nakshatra" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">नक्षत्र</Link>,{" "}
+              <Link href="/glossary#yoga" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">योग</Link> और{" "}
+              <Link href="/glossary#karana" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">करण</Link>। प्रत्येक दिन का चरित्र इन्हीं पाँच अंगों से तय होता है।
             </h3>
             <p className={cn("font-sans text-xs sm:text-sm mt-1.5 leading-relaxed", t.bodyEn)}>
-              The Panchang (Vedic almanac) is built from five core elements — Tithi, Vara, Nakshatra, Yoga and Karana. Together, they define the character of every single day.
+              The Panchang (Vedic almanac) is built from five core elements —{" "}
+              <Link href="/glossary#tithi" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Tithi</Link>,{" "}
+              <Link href="/glossary#vara" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Vara</Link>,{" "}
+              <Link href="/glossary#nakshatra" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Nakshatra</Link>,{" "}
+              <Link href="/glossary#yoga" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Yoga</Link> and{" "}
+              <Link href="/glossary#karana" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Karana</Link>. Together, they define the character of every single day.
             </p>
           </div>
 
@@ -1159,10 +1210,10 @@ export function GuideView() {
           {/* Intro Text */}
           <div className="mb-6 sm:mb-8 text-left">
             <h3 className={cn("font-hindi text-base sm:text-lg font-bold leading-snug", t.titleHi)}>
-              दिन के 30 भाग — प्रत्येक का अपना स्वभाव और मार्गदर्शन है। विषुव पर एक मुहूर्त ≈ 48 मिनट का होता है।
+              दिन के 30 भाग — प्रत्येक का अपना स्वभाव और मार्गदर्शन है। प्रातःकाल का <Link href="/glossary#brahma-muhurta" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">ब्रह्म मुहूर्त</Link> (29वाँ) और मध्याह्न का <Link href="/glossary#abhijit-muhurta" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">अभिजित् मुहूर्त</Link> (8वाँ) सर्वकार्य सिद्धिप्रद माने जाते हैं। विषुव पर एक <Link href="/glossary#muhurta" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">मुहूर्त</Link> ≈ 48 मिनट का होता है।
             </h3>
             <p className={cn("font-sans text-xs sm:text-sm mt-1.5 leading-relaxed", t.bodyEn)}>
-              The 30 parts of the day — each with its own nature and guidance. On the equinox, one Muhurta ≈ 48 minutes.
+              The 30 cyclical windows of each solar day — each with its own nature and guidance. Pre-dawn <Link href="/glossary#brahma-muhurta" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Brahma Muhurta</Link> and midday <Link href="/glossary#abhijit-muhurta" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Abhijit Muhurta</Link> are celebrated across classical treatises. On the equinox, one <Link href="/glossary#muhurta" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Muhurta</Link> spans 48 minutes.
             </p>
           </div>
 
@@ -1495,10 +1546,10 @@ export function GuideView() {
           {/* Intro Paragraph */}
           <div className="mb-8 text-left">
             <p className={cn("font-hindi text-sm sm:text-base font-medium leading-relaxed mb-2.5 text-justify", t.bodyHi)}>
-              विक्रम संवत् भारत का परंपरागत कैलेंडर है, जिसका प्रारंभ राजा विक्रमादित्य द्वारा 57 ईसा पूर्व में हुआ माना जाता है। इसमें संवत् वर्ष, चंद्र मास, पक्ष, तिथि और वार एक साथ दिखते हैं, और भारत के सभी पारंपरिक त्योहार व अनुष्ठान इसी पंचांग पर आधारित होते हैं।
+              विक्रम संवत् भारत का परंपरागत कैलेंडर है, जिसका प्रारंभ राजा विक्रमादित्य द्वारा 57 ईसा पूर्व में हुआ माना जाता है। इसमें <Link href="/glossary#samvatsara" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">संवत्</Link> वर्ष, चंद्र <Link href="/glossary#masa" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">मास</Link>, <Link href="/glossary#paksha" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">पक्ष</Link>, <Link href="/glossary#tithi" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">तिथि</Link> और <Link href="/glossary#vara" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">वार</Link> एक साथ दिखते हैं, और भारत के सभी पारंपरिक त्योहार व अनुष्ठान इसी पंचांग पर आधारित होते हैं।
             </p>
             <p className={cn("font-sans text-xs sm:text-[13.5px] leading-relaxed text-justify", t.bodyEn)}>
-              Vikram Samvat is India&apos;s traditional calendar, said to begin with King Vikramaditya in 57 BCE. It brings together the Samvat year, lunar month, Paksha, Tithi, and weekday in one view — and nearly every traditional Indian festival and ritual is timed against it.
+              Vikram Samvat is India&apos;s traditional calendar, said to begin with King Vikramaditya in 57 BCE. It brings together the <Link href="/glossary#samvatsara" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Samvat</Link> year, lunar <Link href="/glossary#masa" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Masa</Link>, <Link href="/glossary#paksha" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Paksha</Link>, <Link href="/glossary#tithi" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Tithi</Link>, and <Link href="/glossary#vara" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Vara</Link> in one view — and nearly every traditional Indian festival and ritual is timed against it.
             </p>
           </div>
 

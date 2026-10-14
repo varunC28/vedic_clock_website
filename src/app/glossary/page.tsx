@@ -8,6 +8,11 @@ export const metadata: Metadata = {
     "Explore 42 canonical terms of ancient Indian timekeeping: Ghati, Pala, Truti, Muhurta, Dinamana, Ayanamsha, and the five limbs of Panchang with mathematical formulas and classical citations.",
   alternates: {
     canonical: "/glossary",
+    languages: {
+      "en-IN": "https://thevedicghadi.in/glossary",
+      "hi-IN": "https://thevedicghadi.in/glossary",
+      "x-default": "https://thevedicghadi.in/glossary",
+    },
   },
   openGraph: {
     type: "website",

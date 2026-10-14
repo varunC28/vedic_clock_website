@@ -7,6 +7,11 @@ export const metadata: Metadata = {
     "Scholarly publications and essays on ancient Indian astronomy, the prime meridian of Ujjain, Surya Siddhanta mathematical models, and the living circadian philosophy of Vedic time.",
   alternates: {
     canonical: "/blog",
+    languages: {
+      "en-IN": "https://thevedicghadi.in/blog",
+      "hi-IN": "https://thevedicghadi.in/blog",
+      "x-default": "https://thevedicghadi.in/blog",
+    },
   },
   openGraph: {
     title: "Chronicles of Celestial Horology | Research & Publications",

@@ -7,6 +7,11 @@ export const metadata: Metadata = {
     "Connect with the Vikramaditya Vedic Clock team. Inquire about bespoke horological commissions, temple installations, university astronomical dials, and institution acquisitions.",
   alternates: {
     canonical: "/contact",
+    languages: {
+      "en-IN": "https://thevedicghadi.in/contact",
+      "hi-IN": "https://thevedicghadi.in/contact",
+      "x-default": "https://thevedicghadi.in/contact",
+    },
   },
   openGraph: {
     title: "Acquisitions & Institutional Enquiries | Contact Us",

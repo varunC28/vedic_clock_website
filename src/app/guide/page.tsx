@@ -7,6 +7,11 @@ export const metadata: Metadata = {
     "A comprehensive master guide to Vedic timekeeping. Learn the five limbs of Panchang (Tithi, Vaar, Nakshatra, Yoga, Karana), the 30 Muhurtas, and sidereal zodiac astronomy.",
   alternates: {
     canonical: "/guide",
+    languages: {
+      "en-IN": "https://thevedicghadi.in/guide",
+      "hi-IN": "https://thevedicghadi.in/guide",
+      "x-default": "https://thevedicghadi.in/guide",
+    },
   },
   openGraph: {
     title: "The Panchang & Muhurta Guide | Astronomy of Vedic Timekeeping",

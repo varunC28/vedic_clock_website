@@ -7,6 +7,11 @@ export const metadata: Metadata = {
     "Explore the deep history of ancient Indian astronomy. Why Ujjain was recognized as the prime meridian millennia before Greenwich, the legacy of Varahamihira and Sawai Jai Singh II, and the living science of the 30 Muhurtas.",
   alternates: {
     canonical: "/heritage",
+    languages: {
+      "en-IN": "https://thevedicghadi.in/heritage",
+      "hi-IN": "https://thevedicghadi.in/heritage",
+      "x-default": "https://thevedicghadi.in/heritage",
+    },
   },
   openGraph: {
     title: "Sacred Meridian of Ujjain & Historical Heritage | Avanti 0°",

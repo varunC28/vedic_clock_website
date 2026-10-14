@@ -7,6 +7,11 @@ export const metadata: Metadata = {
     "Experience the world's premier Vedic horological timepiece. Precision calibrated to the historic 0° Prime Meridian of Ujjain, featuring a living 30-Muhurta diurnal dial, Panchang calculations, and sidereal solar transit.",
   alternates: {
     canonical: "/",
+    languages: {
+      "en-IN": "https://thevedicghadi.in",
+      "hi-IN": "https://thevedicghadi.in",
+      "x-default": "https://thevedicghadi.in",
+    },
   },
   openGraph: {
     title: "Vikramaditya Vedic Clock | The Living Geometry of Time",

@@ -61,6 +61,7 @@ export const metadata: Metadata = {
     languages: {
       "en-IN": "https://thevedicghadi.in",
       "hi-IN": "https://thevedicghadi.in",
+      "x-default": "https://thevedicghadi.in",
     },
   },
   openGraph: {

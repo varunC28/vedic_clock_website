@@ -37,6 +37,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: article.description,
     alternates: {
       canonical: `/blog/${article.slug}`,
+      languages: {
+        "en-IN": `https://thevedicghadi.in/blog/${article.slug}`,
+        "hi-IN": `https://thevedicghadi.in/blog/${article.slug}`,
+        "x-default": `https://thevedicghadi.in/blog/${article.slug}`,
+      },
     },
     openGraph: {
       type: "article",

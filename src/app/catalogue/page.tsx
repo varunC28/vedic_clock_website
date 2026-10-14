@@ -7,6 +7,11 @@ export const metadata: Metadata = {
     "Official specification monograph and editions catalogue for the Vikramaditya Vedic Clock. Sanctum wall mounts, museum pedestal monuments, and bespoke heirloom commissions in bell brass.",
   alternates: {
     canonical: "/catalogue",
+    languages: {
+      "en-IN": "https://thevedicghadi.in/catalogue",
+      "hi-IN": "https://thevedicghadi.in/catalogue",
+      "x-default": "https://thevedicghadi.in/catalogue",
+    },
   },
   openGraph: {
     title: "Artisan Timepieces & Institutional Commissions | Catalogue",
