@@ -160,3 +160,15 @@
   z-index: 99999;
 }
 
+/* ── Clean Focus for Theme Toggle Button (No Browser Blue Outline) ── */
+.theme-toggle-btn {
+  -webkit-tap-highlight-color: transparent !important;
+  outline: none !important;
+}
+.theme-toggle-btn:focus,
+.theme-toggle-btn:focus-visible,
+.theme-toggle-btn:active {
+  outline: none !important;
+}
+
+

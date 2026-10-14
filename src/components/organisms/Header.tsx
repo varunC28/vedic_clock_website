@@ -69,7 +69,9 @@ export function Header({ alwaysVisible = false }: HeaderProps) {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out",
           (alwaysVisible || scrolled)
-            ? "translate-y-0 opacity-100 bg-void-navy/90 backdrop-blur-lg border-b border-brass/10 shadow-lg shadow-black/30 pointer-events-auto"
+            ? isParchment
+              ? "translate-y-0 opacity-100 bg-[#F3E9D2]/95 backdrop-blur-lg border-b border-[#B8873D]/25 shadow-md shadow-[#3D2A1A]/5 pointer-events-auto"
+              : "translate-y-0 opacity-100 bg-void-navy/90 backdrop-blur-lg border-b border-brass/10 shadow-lg shadow-black/30 pointer-events-auto"
             : "-translate-y-full opacity-0 pointer-events-none"
         )}
       >
@@ -80,10 +82,24 @@ export function Header({ alwaysVisible = false }: HeaderProps) {
             onClick={handleLogoClick}
             className="flex flex-col items-start gap-0.5 group cursor-pointer"
           >
-            <span className="font-serif text-[10px] sm:text-xs text-ivory uppercase tracking-[0.3em] group-hover:text-antique-gold transition-colors">
+            <span
+              className={cn(
+                "font-serif text-[10px] sm:text-xs uppercase tracking-[0.3em] transition-colors",
+                isParchment
+                  ? "text-[#3D2A1A] group-hover:text-[#8C5D33]"
+                  : "text-ivory group-hover:text-antique-gold"
+              )}
+            >
               Vedic
             </span>
-            <span className="font-hindi text-lg sm:text-xl text-antique-gold leading-none group-hover:text-ivory transition-colors">
+            <span
+              className={cn(
+                "font-hindi text-lg sm:text-xl leading-none transition-colors",
+                isParchment
+                  ? "text-[#8C5D33] group-hover:text-[#3D2A1A]"
+                  : "text-antique-gold group-hover:text-ivory"
+              )}
+            >
               वेदिक घड़ी
             </span>
           </Link>
@@ -96,6 +112,7 @@ export function Header({ alwaysVisible = false }: HeaderProps) {
                 href={link.href}
                 en={link.en}
                 download={link.download}
+                variant={isParchment ? "light" : "dark"}
               />
             ))}
           </nav>
@@ -127,19 +144,22 @@ export function Header({ alwaysVisible = false }: HeaderProps) {
             >
               <span
                 className={cn(
-                  "w-6 h-px bg-antique-gold transition-all duration-300 origin-center",
+                  "w-6 h-px transition-all duration-300 origin-center",
+                  isParchment ? "bg-[#8C5D33]" : "bg-antique-gold",
                   menuOpen && "rotate-45 translate-y-[7px]"
                 )}
               />
               <span
                 className={cn(
-                  "w-6 h-px bg-antique-gold transition-all duration-300",
+                  "w-6 h-px transition-all duration-300",
+                  isParchment ? "bg-[#8C5D33]" : "bg-antique-gold",
                   menuOpen && "opacity-0"
                 )}
               />
               <span
                 className={cn(
-                  "w-6 h-px bg-antique-gold transition-all duration-300 origin-center",
+                  "w-6 h-px transition-all duration-300 origin-center",
+                  isParchment ? "bg-[#8C5D33]" : "bg-antique-gold",
                   menuOpen && "-rotate-45 -translate-y-[7px]"
                 )}
               />
