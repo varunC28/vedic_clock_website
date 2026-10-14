@@ -29,7 +29,7 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     slug: "ujjain-zero-meridian",
     description: "Centuries before Greenwich was designated in 1884, classical astronomers calibrated all planetary ephemerides from the intersection of the Tropic of Cancer and Ujjain's meridian.",
     descriptionHi: "ग्रीनविच से शताब्दियों पूर्व, वराहमिहिर और भास्कराचार्य ने कर्क रेखा और शून्य देशांतर के संगम पर स्थित उज्जयिनी को समय-गणना का वैश्विक केंद्र माना था।",
-    image: "https://cdn.21st.dev/assets/mirror/f2/f2b2a055966c6c1681569e43db628e02b5f32ce532c436bd05b2889a78914819.jpg",
+    image: "/assets/blog/ujjain-zero-meridian.jpg",
     createdAt: "2026-03-15",
     author: "Dr. Kalyan Sundaram",
     authorRole: "Historian of Ancient Indian Astronomy",
