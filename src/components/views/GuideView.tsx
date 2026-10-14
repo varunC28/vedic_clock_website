@@ -1771,34 +1771,37 @@ export function GuideView() {
                     </span>
                   </button>
 
-                  {isOpen && (
-                    <div
-                      className={cn(
-                        "px-4 sm:px-6 pb-6 pt-3 border-t text-left flex flex-col gap-4 animate-in fade-in-50 duration-200",
-                        isParchment ? "border-[#DFCBB5]/60" : "border-[#D4A65A]/15"
-                      )}
-                    >
-                      {/* English Primary Answer */}
-                      <div className="flex flex-col gap-1">
-                        <span className={cn("text-[10px] font-mono tracking-widest uppercase", t.eyebrow)}>
-                          Answer · English
-                        </span>
-                        <p className={cn("font-sans text-xs sm:text-sm md:text-[14.5px] leading-relaxed", t.bodyEn)}>
-                          {item.aEn}
-                        </p>
-                      </div>
-
-                      {/* Hindi Translated Answer */}
-                      <div className={cn("pt-3.5 border-t flex flex-col gap-1", isParchment ? "border-[#DFCBB5]/50" : "border-[#D4A65A]/15")}>
-                        <span className={cn("text-[10px] font-mono tracking-widest uppercase", t.eyebrow)}>
-                          उत्तर · हिन्दी
-                        </span>
-                        <p className={cn("font-hindi text-xs sm:text-sm md:text-[15px] leading-relaxed", t.titleHi)}>
-                          {item.aHi}
-                        </p>
-                      </div>
+                  <div
+                    id={`guide-faq-answer-${idx}`}
+                    className={cn(
+                      "px-4 sm:px-6 text-left flex flex-col gap-4 transition-all duration-300 ease-in-out overflow-hidden",
+                      isOpen
+                        ? "max-h-[1000px] opacity-100 pb-6 pt-3 border-t"
+                        : "max-h-0 opacity-0 py-0 border-t-0 pointer-events-none",
+                      isParchment ? "border-[#DFCBB5]/60" : "border-[#D4A65A]/15"
+                    )}
+                    aria-hidden={!isOpen}
+                  >
+                    {/* English Primary Answer */}
+                    <div className="flex flex-col gap-1">
+                      <span className={cn("text-[10px] font-mono tracking-widest uppercase", t.eyebrow)}>
+                        Answer · English
+                      </span>
+                      <p className={cn("font-sans text-xs sm:text-sm md:text-[14.5px] leading-relaxed", t.bodyEn)}>
+                        {item.aEn}
+                      </p>
                     </div>
-                  )}
+
+                    {/* Hindi Translated Answer */}
+                    <div className={cn("pt-3.5 border-t flex flex-col gap-1", isParchment ? "border-[#DFCBB5]/50" : "border-[#D4A65A]/15")}>
+                      <span className={cn("text-[10px] font-mono tracking-widest uppercase", t.eyebrow)}>
+                        उत्तर · हिन्दी
+                      </span>
+                      <p className={cn("font-hindi text-xs sm:text-sm md:text-[15px] leading-relaxed", t.titleHi)}>
+                        {item.aHi}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               );
             })}
