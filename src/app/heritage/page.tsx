@@ -482,12 +482,12 @@ export default function HeritagePage() {
             </div>
 
             {/* Layout Comparison Switcher */}
-            <div className="flex items-center gap-2 shrink-0 bg-current/5 p-1 rounded-full border border-current/10">
+            <div className="flex items-center gap-1.5 shrink-0 bg-current/5 p-1 rounded-full border border-current/10">
               <button
                 type="button"
                 onClick={() => setTimelineVariant("hyperiux")}
                 className={cn(
-                  "px-3.5 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium flex items-center gap-1.5",
+                  "px-4 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium",
                   timelineVariant === "hyperiux"
                     ? isParchment
                       ? "bg-[#482D1C] text-[#FAF6F0] shadow-sm font-semibold"
@@ -495,14 +495,13 @@ export default function HeritagePage() {
                     : "opacity-70 hover:opacity-100"
                 )}
               >
-                <span>✨</span>
-                <span>Hyperiux Scroll</span>
+                Hyperiux Scroll
               </button>
               <button
                 type="button"
                 onClick={() => setTimelineVariant("rail")}
                 className={cn(
-                  "px-3.5 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium flex items-center gap-1.5",
+                  "px-4 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium",
                   timelineVariant === "rail"
                     ? isParchment
                       ? "bg-[#482D1C] text-[#FAF6F0] shadow-sm font-semibold"
@@ -510,8 +509,7 @@ export default function HeritagePage() {
                     : "opacity-70 hover:opacity-100"
                 )}
               >
-                <span>📜</span>
-                <span>Rail Cards</span>
+                Rail Cards
               </button>
             </div>
           </div>
@@ -528,7 +526,7 @@ export default function HeritagePage() {
             textColor={isParchment ? "#2D1B0E" : "#FBF5E7"}
             mutedTextColor={isParchment ? "#6E5540" : "rgba(251, 245, 231, 0.7)"}
             activeColor={isParchment ? "#B8873D" : "#D4A65A"}
-            imageUrl="/assets/images/ancient-temple-celestial-wheel.webp"
+            imageUrl="/assets/images/ancient-temple-celestial-wheel.webp?v=2"
             imageAlt="Ancient Temple Beneath the Celestial Wheel - Avanti Meridian"
           />
         </div>
