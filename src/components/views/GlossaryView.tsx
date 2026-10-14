@@ -256,7 +256,7 @@ export function GlossaryView() {
                 key={term.slug}
                 id={term.slug}
                 className={cn(
-                  "relative rounded-2xl p-6 sm:p-7 border transition-all duration-300 flex flex-col justify-between group scroll-mt-24",
+                  "relative rounded-2xl p-5 sm:p-7 border transition-all duration-300 flex flex-col justify-between group scroll-mt-24",
                   isParchment
                     ? "bg-[#FDFBF7] border-[#8C5D33]/20 shadow-[0_4px_20px_rgba(61,35,20,0.04)] hover:border-[#8C5D33]/45 hover:shadow-[0_8px_30px_rgba(61,35,20,0.08)]"
                     : "bg-[#0C0F17] border-[#D4A65A]/15 shadow-[0_4px_24px_rgba(0,0,0,0.4)] hover:border-[#D4A65A]/35 hover:shadow-[0_8px_32px_rgba(212,166,90,0.08)]"
@@ -295,7 +295,7 @@ export function GlossaryView() {
                   </div>
 
                   {/* Term Header: English + Devanagari */}
-                  <div className="flex items-baseline gap-2.5 mb-2">
+                  <div className="flex items-baseline flex-wrap gap-x-2.5 gap-y-1 mb-2">
                     <h2
                       className={cn(
                         "font-serif text-xl sm:text-2xl font-bold tracking-tight glossary-speakable-term",
@@ -358,40 +358,53 @@ export function GlossaryView() {
                   {term.formula && (
                     <div
                       className={cn(
-                        "inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border",
+                        "inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border max-w-full overflow-x-auto",
                         isParchment
                           ? "bg-[#EFE7DE] border-[#8C5D33]/20 text-[#3D2314]"
                           : "bg-[#111520] border-[#D4A65A]/20 text-[#FFF5D1]"
                       )}
                     >
                       <CompassIcon className="w-3.5 h-3.5 text-[#D4A65A] shrink-0" />
-                      <span className="font-mono text-[11px] sm:text-xs">{term.formula}</span>
+                      <span className="font-mono text-[11px] sm:text-xs break-all sm:break-normal">{term.formula}</span>
                     </div>
                   )}
 
-                  <div className="flex items-center justify-between flex-wrap gap-2 pt-1 text-[11px] opacity-80">
-                    {term.classicalCitation && (
-                      <span className="inline-flex items-center gap-1.5">
-                        <BookIcon className="w-3 h-3 text-[#D4A65A]" />
-                        <span>{term.classicalCitation}</span>
-                      </span>
-                    )}
+                  {(term.classicalCitation || term.wikipediaUrl) && (
+                    <div
+                      className={cn(
+                        "pt-2.5 mt-1 border-t flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11.5px]",
+                        isParchment
+                          ? "border-[#8C5D33]/15 text-[#5C4033]/85"
+                          : "border-white/5 text-ivory/70"
+                      )}
+                    >
+                      {term.classicalCitation && (
+                        <div className="flex items-start gap-1.5 text-left min-w-0 flex-1">
+                          <BookIcon className="w-3.5 h-3.5 text-[#D4A65A] shrink-0 mt-0.5" />
+                          <span className="leading-snug break-words">{term.classicalCitation}</span>
+                        </div>
+                      )}
 
-                    {term.wikipediaUrl && (
-                      <a
-                        href={term.wikipediaUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={cn(
-                          "inline-flex items-center gap-1 hover:underline ml-auto font-medium",
-                          isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
-                        )}
-                      >
-                        <span>Wikipedia</span>
-                        <ExternalLinkIcon className="w-2.5 h-2.5" />
-                      </a>
-                    )}
-                  </div>
+                      {term.wikipediaUrl && (
+                        <div className="flex items-center shrink-0 self-start sm:self-auto sm:ml-auto">
+                          <a
+                            href={term.wikipediaUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={cn(
+                              "inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10.5px] font-medium tracking-wide transition-all border",
+                              isParchment
+                                ? "bg-[#8C5D33]/8 hover:bg-[#8C5D33]/15 text-[#704828] border-[#8C5D33]/25 hover:border-[#8C5D33]/40"
+                                : "bg-[#D4A65A]/10 hover:bg-[#D4A65A]/20 text-[#D4A65A] border-[#D4A65A]/25 hover:border-[#D4A65A]/45"
+                            )}
+                          >
+                            <span>Wikipedia</span>
+                            <ExternalLinkIcon className="w-2.5 h-2.5" />
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               </article>
             );

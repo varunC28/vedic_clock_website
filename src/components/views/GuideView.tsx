@@ -878,44 +878,42 @@ export function GuideView() {
           </div>
 
           {/* Lexicon Discovery Banner */}
-          <div
-            className={cn(
-              "w-full rounded-2xl p-5 sm:p-6 mt-6 border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-all duration-300",
-              isParchment
-                ? "bg-[#FAF4EA] border-[#D9C4AB] hover:border-[#9E672B] hover:shadow-md"
-                : "bg-[#0A1224] border-[#D4A65A]/30 hover:border-[#E5A84B] hover:shadow-[0_8px_24px_rgba(212,166,90,0.15)]"
-            )}
-          >
-            <div className="flex-1 text-left">
-              <span
+          <div className={cn("w-full rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-sm mt-8 border transition-all duration-300", t.box)}>
+            <div className={cn("px-1 sm:px-2 pb-3 mb-4 border-b flex items-center justify-between", t.borderSubtle)}>
+              <BilingualPill
+                hi="वैदिक शब्दावली कोष"
+                en="Horology Lexicon"
+                size="sm"
+                variant={isParchment ? "light" : "dark"}
+              />
+              <span className={cn("font-sans text-[11px] tracking-wider hidden sm:inline-block", t.muted)}>
+                42 Canonical Terms & Classical Formulas
+              </span>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 px-1 sm:px-2">
+              <div className="flex-1 text-left">
+                <h4 className={cn("font-hindi text-base sm:text-lg font-bold leading-snug mb-1.5", t.titleHi)}>
+                  वैदिक काल-गणना के सूत्रों व शास्त्रीय प्रमाणों की विस्तृत सूची
+                </h4>
+                <p className={cn("font-sans text-xs sm:text-sm leading-relaxed", t.bodyEn)}>
+                  Looking for exact mathematical formulas, Sanskrit derivations, and classical citations from the Surya Siddhanta? Explore the 42-Term Horology Lexicon.
+                </p>
+              </div>
+
+              <Link
+                href="/glossary"
                 className={cn(
-                  "inline-block text-[11px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full mb-2 border",
+                  "w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0 shadow-sm",
                   isParchment
-                    ? "bg-[#8C5D33]/10 text-[#7E4A19] border-[#8C5D33]/20"
-                    : "bg-[#D4A65A]/15 text-[#FCD34D] border-[#D4A65A]/30"
+                    ? "bg-[#482D1C] text-[#FFF9F0] hover:bg-[#5E3B24]"
+                    : "bg-gradient-to-r from-[#B8873D] via-[#D4A65A] to-[#E5B76A] text-[#03060E] hover:opacity-95 shadow-[0_4px_16px_rgba(212,166,90,0.25)]"
                 )}
               >
-                वैदिक शब्दावली कोष · Horology Lexicon
-              </span>
-              <h4 className={cn("font-hindi text-base sm:text-lg font-bold leading-snug mb-1", t.titleHi)}>
-                वैदिक काल-गणना के सूत्रों व शास्त्रीय प्रमाणों की विस्तृत सूची
-              </h4>
-              <p className={cn("font-sans text-xs sm:text-sm leading-relaxed", t.bodyEn)}>
-                Looking for exact mathematical formulas, Sanskrit derivations, and classical citations from the Surya Siddhanta? Explore the 42-Term Horology Lexicon.
-              </p>
+                <span>Explore 42 Terms</span>
+                <span aria-hidden="true">→</span>
+              </Link>
             </div>
-            <Link
-              href="/glossary"
-              className={cn(
-                "inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-xs sm:text-sm whitespace-nowrap transition-all duration-200 shadow-sm",
-                isParchment
-                  ? "bg-[#7E4A19] hover:bg-[#633810] text-[#FAF4EA]"
-                  : "bg-[#D4A65A] hover:bg-[#E5A84B] text-[#060B18] font-semibold"
-              )}
-            >
-              <span>Explore 42 Terms</span>
-              <span aria-hidden="true">→</span>
-            </Link>
           </div>
         </article>
 
