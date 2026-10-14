@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { resend, RECIPIENT_EMAIL } from "@/lib/resend";
+import { getResendClient, getRecipientEmail } from "@/lib/resend";
+
+export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
   try {
@@ -13,9 +15,12 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const resend = getResendClient();
+    const recipientEmail = getRecipientEmail();
+
     const { data, error } = await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: RECIPIENT_EMAIL,
+      to: recipientEmail,
       replyTo: email,
       subject: subject
         ? `[Vedic Clock Enquiry] ${subject} - ${name}`
@@ -89,9 +94,12 @@ export async function POST(req: NextRequest) {
 // Quick verification endpoint to send test email as requested by user
 export async function GET() {
   try {
+    const resend = getResendClient();
+    const recipientEmail = getRecipientEmail();
+
     const { data, error } = await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: RECIPIENT_EMAIL,
+      to: recipientEmail,
       subject: "Hello World · Vedic Clock Resend Integration",
       html: "<p>Congrats on sending your <strong>first email</strong> from the Vedic Clock project!</p>",
     });
@@ -102,7 +110,7 @@ export async function GET() {
 
     return NextResponse.json({
       success: true,
-      message: "Test email successfully sent to " + RECIPIENT_EMAIL,
+      message: "Test email successfully sent to " + recipientEmail,
       id: data?.id,
     });
   } catch (err: unknown) {
