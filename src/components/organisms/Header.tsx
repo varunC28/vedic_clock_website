@@ -14,6 +14,7 @@ const NAV_LINKS = [
   { href: "/clock", en: "The Clock", hi: "वेदिक घड़ी" },
   { href: "/heritage", en: "Heritage", hi: "धरोहर" },
   { href: "/guide", en: "Guide", hi: "मार्गदर्शिका" },
+  { href: "/blog", en: "Blog", hi: "लेख" },
   { href: "/catalogue.pdf", en: "Catalogue", hi: "कैटलॉग", download: "Vedic_Watch_Catalogue.pdf" },
 ];
 

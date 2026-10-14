@@ -14,6 +14,7 @@ const NAVIGATE_LINKS = [
 const EXPLORE_LINKS = [
   { href: "/guide", label: "Panchang Guide" },
   { href: "/heritage", label: "Ujjain Prime Meridian" },
+  { href: "/blog", label: "Articles & Editorial" },
   { href: "/contact", label: "Reserve Timepiece" },
 ];
 
