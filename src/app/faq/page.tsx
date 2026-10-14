@@ -55,16 +55,30 @@ const faqJsonLd = {
     },
     {
       "@type": "FAQPage",
-      name: "Vikramaditya Vedic Clock Master Knowledge Base & FAQ",
-      url: "https://thevedicghadi.in/faq",
-      mainEntity: MASTER_FAQ_ITEMS.map((item) => ({
-        "@type": "Question",
-        name: item.questionEn,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: item.answerEn,
+      mainEntity: MASTER_FAQ_ITEMS.flatMap((item) => [
+        {
+          "@type": "Question",
+          name: item.questionEn,
+          alternateName: item.questionHi,
+          inLanguage: "en",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: `${item.answerEn}\n\n[हिन्दी व्याख्या / Hindi Explanation]: ${item.answerHi}`,
+            inLanguage: ["en", "hi"],
+          },
         },
-      })),
+        {
+          "@type": "Question",
+          name: item.questionHi,
+          alternateName: item.questionEn,
+          inLanguage: "hi",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: `${item.answerHi}\n\n[English Translation]: ${item.answerEn}`,
+            inLanguage: ["hi", "en"],
+          },
+        },
+      ]),
     },
   ],
 };

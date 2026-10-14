@@ -109,7 +109,7 @@ const rootJsonLd = {
       "@type": "Organization",
       "@id": "https://thevedicghadi.in/#organization",
       name: "Vikramaditya Vedic Clock",
-      alternateName: "विक्रमादित्य वैदिक घड़ी",
+      alternateName: ["विक्रमादित्य वैदिक घड़ी", "Vedic Ghadi"],
       url: "https://thevedicghadi.in",
       logo: {
         "@type": "ImageObject",
@@ -123,19 +123,97 @@ const rootJsonLd = {
       foundingLocation: {
         "@type": "Place",
         name: "Ujjain, Madhya Pradesh, Bharat",
+        sameAs: [
+          "https://en.wikipedia.org/wiki/Ujjain",
+          "https://www.wikidata.org/wiki/Q200237",
+        ],
       },
       areaServed: {
         "@type": "Country",
         name: "India",
+        sameAs: "https://en.wikipedia.org/wiki/India",
       },
       knowsAbout: [
-        "Vedic Horology",
-        "Panchang Science",
-        "Surya Siddhanta",
-        "Ujjain Prime Meridian",
-        "Muhurta Calculations",
-        "Nakshatra Astronomy",
-        "Ancient Indian Timekeeping",
+        {
+          "@type": "Thing",
+          name: "Surya Siddhanta",
+          alternateName: "सूर्य सिद्धान्त",
+          sameAs: [
+            "https://en.wikipedia.org/wiki/Surya_Siddhanta",
+            "https://www.wikidata.org/wiki/Q1089082",
+          ],
+        },
+        {
+          "@type": "Place",
+          name: "Ujjain Prime Meridian",
+          alternateName: "उज्जयिनी शून्य रेखा (Avantika)",
+          sameAs: [
+            "https://en.wikipedia.org/wiki/Ujjain",
+            "https://www.wikidata.org/wiki/Q200237",
+          ],
+        },
+        {
+          "@type": "Thing",
+          name: "Muhurta",
+          alternateName: "मुहूर्त",
+          sameAs: [
+            "https://en.wikipedia.org/wiki/Muhurta",
+            "https://www.wikidata.org/wiki/Q1952295",
+          ],
+        },
+        {
+          "@type": "Thing",
+          name: "Panchangam",
+          alternateName: "पञ्चाङ्गम्",
+          sameAs: [
+            "https://en.wikipedia.org/wiki/Panchangam",
+            "https://www.wikidata.org/wiki/Q2488349",
+          ],
+        },
+        {
+          "@type": "Person",
+          name: "Varāhamihira",
+          alternateName: "वराहमिहिर",
+          sameAs: [
+            "https://en.wikipedia.org/wiki/Var%C4%81hamihira",
+            "https://www.wikidata.org/wiki/Q318451",
+          ],
+        },
+        {
+          "@type": "Place",
+          name: "Vedh Shala (Ujjain Observatory)",
+          alternateName: "वेधशाला उज्जैन",
+          sameAs: [
+            "https://en.wikipedia.org/wiki/Vedh_Shala",
+            "https://www.wikidata.org/wiki/Q7917997",
+          ],
+        },
+        {
+          "@type": "Thing",
+          name: "Tropic of Cancer",
+          alternateName: "कर्क रेखा",
+          sameAs: [
+            "https://en.wikipedia.org/wiki/Tropic_of_Cancer",
+            "https://www.wikidata.org/wiki/Q176635",
+          ],
+        },
+        {
+          "@type": "Thing",
+          name: "Nakshatra",
+          alternateName: "नक्षत्र",
+          sameAs: [
+            "https://en.wikipedia.org/wiki/Nakshatra",
+            "https://www.wikidata.org/wiki/Q1048408",
+          ],
+        },
+        {
+          "@type": "Thing",
+          name: "Hindu Calendar & Horology",
+          sameAs: [
+            "https://en.wikipedia.org/wiki/Hindu_calendar",
+            "https://www.wikidata.org/wiki/Q19020",
+          ],
+        },
       ],
     },
     {
@@ -147,9 +225,17 @@ const rootJsonLd = {
       publisher: {
         "@id": "https://thevedicghadi.in/#organization",
       },
-      inLanguage: ["en", "hi"],
+      inLanguage: ["en-IN", "hi-IN"],
       description:
         "The living geometry of time: Exploring the 30-Muhurta dial, classical Hindu astronomy, and the historic 0° meridian of Ujjain.",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: "https://thevedicghadi.in/faq?q={search_term_string}",
+        },
+        "query-input": "required name=search_term_string",
+      },
     },
   ],
 };

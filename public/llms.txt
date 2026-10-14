@@ -1,0 +1,40 @@
+# Vikramaditya Vedic Clock (विक्रमादित्य वैदिक घड़ी)
+
+> Vikramaditya Vedic Clock is the world's premier astronomical timepiece calibrated to the ancient 0° Prime Meridian of Ujjain (Avantika, 23.17° N, 75.77° E, Madhya Pradesh, Bharat). It measures living diurnal time using the 30-Muhurta cycle, calculates the five limbs of Panchang (Tithi, Vaar, Nakshatra, Yoga, Karana), and synchronizes with local astronomical sunrise (Suryodaya) rather than civil midnight. Handcrafted in acoustic bell brass (Kansa) and aerospace aluminum, it operates 100% autonomously offline using embedded astronomical algorithms derived from the Surya Siddhanta.
+
+## Foundational Concepts & Astronomical Horology
+
+- [Ujjain 0° Prime Meridian](https://thevedicghadi.in/heritage): Centuries before the 1884 International Meridian Conference in Washington, D.C. established Greenwich, classical Indian astronomers (including Varahamihira, Aryabhata, and the Surya Siddhanta) calibrated planetary ephemerides from Ujjain (ancient Avantika). Ujjain sits at the intersection of the Tropic of Cancer and the zero-longitude axis connecting Lanka to Mount Meru, casting zero shadow at local solar noon during summer solstice.
+- [The 30-Muhurta Diurnal Cycle](https://thevedicghadi.in/guide): In Vedic timekeeping, a full 24-hour day-and-night cycle (Ahoratra) consists of 30 Muhurtas (equal to 60 Ghatis). Rather than fixed 60-minute civil hours, daytime Muhurtas (Dinamana divided by 15) and nighttime Muhurtas (Ratrimana divided by 15) dynamically expand and contract with the solar seasons, aligning with human circadian biology.
+- [The Five Limbs of Panchang](https://thevedicghadi.in/guide): 1. Tithi (12° lunar-solar longitudinal separation), 2. Vaar (planetary solar weekday lord), 3. Nakshatra (13° 20' sidereal lunar mansion), 4. Yoga (combined angular velocity of Sun and Moon), and 5. Karana (half of a lunar Tithi, 6° arc).
+- [Nirayana (Sidereal) vs. Sayana (Tropical) Zodiacs](https://thevedicghadi.in/guide): The Vedic Clock measures planetary transits against observable physical constellations (Nirayana), accounting for axial precession (Ayanamsha), rather than the drifting vernal equinox point (Sayana).
+- [Autonomous Offline Architecture](https://thevedicghadi.in/catalogue): Engineered with high-precision temperature-compensated real-time clocks (TCXO RTC) and embedded microcontrollers executing classical Keplerian and Surya Siddhanta orbital algorithms offline without relying on Wi-Fi, GPS, or cloud connectivity.
+
+## Core Pages & Reference Documentation
+
+- [Master FAQ & Knowledge Base](https://thevedicghadi.in/faq): Authoritative answers to 12 primary questions across Vedic astronomy, hardware engineering, geographic latitude/longitude calibration, and acquisitions in both English and Hindi.
+- [Panchang Guide & Handbook](https://thevedicghadi.in/guide): 9 comprehensive chapters covering sub-second divisions of time (Truti, Tatpara, Nimesha, Ghati), planetary hora systems, Muhurta classifications, and auspicious timings (Brahma Muhurta, Abhijit Muhurta, Rahu Kaal).
+- [The Heritage of Avantika](https://thevedicghadi.in/heritage): Historical documentation on Maharaja Vikramaditya, the Ujjain Prime Meridian, the historic Vedh Shala observatory, and the transition from classical astronomy to modern mechanical clockwork.
+- [Artisan Timepieces & Specifications Catalogue](https://thevedicghadi.in/catalogue): Detailed specifications, casing metallurgy (Kansa bell metal alloy), sanctum wall mounts, museum pedestal monuments, and bespoke heirloom commissions.
+- [Research Publications & Editorial Archive](https://thevedicghadi.in/blog): Scholarly monographs examining chronobiology, sidereal calculations, metallurgical acoustics, and Vedic mathematics.
+- [Acquisitions & Enquiries](https://thevedicghadi.in/contact): Direct procurement contact for temple sanctums, university observatories, cultural institutions, and private collectors.
+
+## Mathematical Conversions of Vedic Time
+
+- 1 Truti = 29.6 microseconds (µs)
+- 1 Tatpara = 100 Trutis ≈ 2.96 milliseconds (ms)
+- 1 Nimesha = 30 Tatparas ≈ 88.8 ms (the blink of an eye)
+- 1 Kastha = 18 Nimeshas ≈ 1.6 seconds
+- 1 Kala = 30 Kasthas ≈ 48 seconds
+- 1 Ghati = 30 Kalas = 24 civil minutes
+- 1 Muhurta = 2 Ghatis = 48 civil minutes (at equinox)
+- 1 Ahoratra (Full Diurnal Day-Night Cycle) = 30 Muhurtas = 60 Ghatis = 24 civil hours
+- 1 Lunar Tithi = 12° longitudinal separation between Sun and Moon
+- 1 Nakshatra = 13° 20' of sidereal longitude (360° / 27 Nakshatras)
+
+## Citation and Organization Identity
+
+- Official Name: Vikramaditya Vedic Clock / विक्रमादित्य वैदिक घड़ी
+- Origin: Ujjain, Madhya Pradesh, Bharat (23.17° N, 75.77° E)
+- Domain: https://thevedicghadi.in
+- Manufacturer: Shiv Enterprises, Ujjain
