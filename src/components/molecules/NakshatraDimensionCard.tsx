@@ -11,7 +11,7 @@ interface NakshatraDimensionCardProps {
   className?: string;
 }
 
-export function NakshatraDimensionCard({
+export function NakshatraDial({
   nakshatraNameHi = "आश्लेषा",
   nakshatraNameEn = "Ashlesha",
   nakshatraIndex = 8,
@@ -21,6 +21,130 @@ export function NakshatraDimensionCard({
   const isParchment = variant === "parchment";
   const safeIndex = Math.max(0, Math.min(26, nakshatraIndex));
   const activeSectorDeg = (safeIndex / 27) * 360;
+
+  return (
+    <div className={cn("w-full flex flex-col items-center justify-center shrink-0", className)}>
+      <div className="relative w-44 h-44 sm:w-52 sm:h-52 flex items-center justify-center">
+        <svg className="w-full h-full" viewBox="0 0 200 200">
+          {/* Outer zodiac boundary */}
+          <circle
+            cx="100"
+            cy="100"
+            r="76"
+            fill="none"
+            stroke={isParchment ? "#8A5A1A" : "#D4A65A"}
+            strokeWidth="1"
+            opacity={isParchment ? 0.35 : 0.25}
+          />
+
+          {/* 27 Mansions Radiating Spokes */}
+          {Array.from({ length: 27 }).map((_, i) => {
+            const angleDeg = (i / 27) * 360 - 90;
+            const rad = (angleDeg * Math.PI) / 180;
+            const x1 = 100 + 44 * Math.cos(rad);
+            const y1 = 100 + 44 * Math.sin(rad);
+            const x2 = 100 + 76 * Math.cos(rad);
+            const y2 = 100 + 76 * Math.sin(rad);
+            const isActive = i === safeIndex;
+
+            return (
+              <line
+                key={i}
+                x1={x1}
+                y1={y1}
+                x2={x2}
+                y2={y2}
+                stroke={
+                  isActive
+                    ? isParchment ? "#B8873D" : "#E8B94B"
+                    : isParchment ? "#8A5A1A" : "#D4A65A"
+                }
+                strokeWidth={isActive ? "2" : "0.75"}
+                opacity={isActive ? 1 : (isParchment ? 0.35 : 0.25)}
+              />
+            );
+          })}
+
+          {/* Active Highlighted 13°20' Sector Wedge */}
+          {(() => {
+            const startDeg = activeSectorDeg - 90;
+            const endDeg = startDeg + 360 / 27;
+            const startRad = (startDeg * Math.PI) / 180;
+            const endRad = (endDeg * Math.PI) / 180;
+            const r1 = 44;
+            const r2 = 76;
+
+            const x1 = 100 + r1 * Math.cos(startRad);
+            const y1 = 100 + r1 * Math.sin(startRad);
+            const x2 = 100 + r2 * Math.cos(startRad);
+            const y2 = 100 + r2 * Math.sin(startRad);
+            const x3 = 100 + r2 * Math.cos(endRad);
+            const y3 = 100 + r2 * Math.sin(endRad);
+            const x4 = 100 + r1 * Math.cos(endRad);
+            const y4 = 100 + r1 * Math.sin(endRad);
+
+            const d = `M ${x1} ${y1} L ${x2} ${y2} A ${r2} ${r2} 0 0 1 ${x3} ${y3} L ${x4} ${y4} A ${r1} ${r1} 0 0 0 ${x1} ${y1} Z`;
+
+            return (
+              <path
+                d={d}
+                fill={isParchment ? "#B8873D" : "#E8B94B"}
+                fillOpacity={isParchment ? "0.22" : "0.3"}
+                stroke={isParchment ? "#B8873D" : "#E8B94B"}
+                strokeWidth="1.2"
+              />
+            );
+          })()}
+
+          {/* Center Celestial Node */}
+          <circle
+            cx="100"
+            cy="100"
+            r="18"
+            fill={isParchment ? "#2A1B10" : "#070E1E"}
+            stroke={isParchment ? "#B8873D" : "#D4A65A"}
+            strokeWidth="1.2"
+          />
+          <circle
+            cx="100"
+            cy="100"
+            r="4"
+            fill={isParchment ? "#B8873D" : "#E8B94B"}
+          />
+        </svg>
+      </div>
+
+      {/* Clean Caption */}
+      <div className="flex flex-col items-center text-center mt-2.5">
+        <span
+          className={cn(
+            "text-[11px] font-sans tracking-[0.2em] uppercase font-semibold",
+            isParchment ? "text-[#8A5A1A]" : "text-[#D4A65A]/80"
+          )}
+        >
+          NAKSHATRA · नक्षत्र
+        </span>
+        <span
+          className={cn(
+            "text-xl sm:text-2xl font-hindi font-semibold mt-0.5",
+            isParchment ? "text-[#2A1B10]" : "text-[#FFF5D1]"
+          )}
+        >
+          {nakshatraNameHi} ({nakshatraNameEn})
+        </span>
+      </div>
+    </div>
+  );
+}
+
+export function NakshatraDimensionCard({
+  nakshatraNameHi = "आश्लेषा",
+  nakshatraNameEn = "Ashlesha",
+  nakshatraIndex = 8,
+  variant = "dark",
+  className,
+}: NakshatraDimensionCardProps) {
+  const isParchment = variant === "parchment";
 
   const pills = [
     "27 Stellar Mansions",
@@ -37,115 +161,12 @@ export function NakshatraDimensionCard({
     >
       {/* ── LHS: Stellar Wheel ───────────────────────────────────────────── */}
       <div className="w-full md:w-[38%] flex flex-col items-center justify-center shrink-0">
-        <div className="relative w-40 h-40 sm:w-48 sm:h-48 flex items-center justify-center">
-          <svg className="w-full h-full" viewBox="0 0 200 200">
-            {/* Outer zodiac boundary */}
-            <circle
-              cx="100"
-              cy="100"
-              r="76"
-              fill="none"
-              stroke={isParchment ? "#8A5A1A" : "#D4A65A"}
-              strokeWidth="1"
-              opacity={isParchment ? 0.35 : 0.25}
-            />
-
-            {/* 27 Mansions Radiating Spokes */}
-            {Array.from({ length: 27 }).map((_, i) => {
-              const angleDeg = (i / 27) * 360 - 90;
-              const rad = (angleDeg * Math.PI) / 180;
-              const x1 = 100 + 44 * Math.cos(rad);
-              const y1 = 100 + 44 * Math.sin(rad);
-              const x2 = 100 + 76 * Math.cos(rad);
-              const y2 = 100 + 76 * Math.sin(rad);
-              const isActive = i === safeIndex;
-
-              return (
-                <line
-                  key={i}
-                  x1={x1}
-                  y1={y1}
-                  x2={x2}
-                  y2={y2}
-                  stroke={
-                    isActive
-                      ? isParchment ? "#B8873D" : "#E8B94B"
-                      : isParchment ? "#8A5A1A" : "#D4A65A"
-                  }
-                  strokeWidth={isActive ? "2" : "0.75"}
-                  opacity={isActive ? 1 : (isParchment ? 0.35 : 0.25)}
-                />
-              );
-            })}
-
-            {/* Active Highlighted 13°20' Sector Wedge */}
-            {(() => {
-              const startDeg = activeSectorDeg - 90;
-              const endDeg = startDeg + 360 / 27;
-              const startRad = (startDeg * Math.PI) / 180;
-              const endRad = (endDeg * Math.PI) / 180;
-              const r1 = 44;
-              const r2 = 76;
-
-              const x1 = 100 + r1 * Math.cos(startRad);
-              const y1 = 100 + r1 * Math.sin(startRad);
-              const x2 = 100 + r2 * Math.cos(startRad);
-              const y2 = 100 + r2 * Math.sin(startRad);
-              const x3 = 100 + r2 * Math.cos(endRad);
-              const y3 = 100 + r2 * Math.sin(endRad);
-              const x4 = 100 + r1 * Math.cos(endRad);
-              const y4 = 100 + r1 * Math.sin(endRad);
-
-              const d = `M ${x1} ${y1} L ${x2} ${y2} A ${r2} ${r2} 0 0 1 ${x3} ${y3} L ${x4} ${y4} A ${r1} ${r1} 0 0 0 ${x1} ${y1} Z`;
-
-              return (
-                <path
-                  d={d}
-                  fill={isParchment ? "#B8873D" : "#E8B94B"}
-                  fillOpacity={isParchment ? "0.22" : "0.3"}
-                  stroke={isParchment ? "#B8873D" : "#E8B94B"}
-                  strokeWidth="1.2"
-                />
-              );
-            })()}
-
-            {/* Center Celestial Node */}
-            <circle
-              cx="100"
-              cy="100"
-              r="18"
-              fill={isParchment ? "#2A1B10" : "#070E1E"}
-              stroke={isParchment ? "#B8873D" : "#D4A65A"}
-              strokeWidth="1.2"
-            />
-            <circle
-              cx="100"
-              cy="100"
-              r="4"
-              fill={isParchment ? "#B8873D" : "#E8B94B"}
-            />
-          </svg>
-        </div>
-
-        {/* Clean Caption */}
-        <div className="flex flex-col items-center text-center mt-2.5">
-          <span
-            className={cn(
-              "text-[11px] font-sans tracking-[0.2em] uppercase font-semibold",
-              isParchment ? "text-[#8A5A1A]" : "text-[#D4A65A]/80"
-            )}
-          >
-            NAKSHATRA · नक्षत्र
-          </span>
-          <span
-            className={cn(
-              "text-xl sm:text-2xl font-hindi font-semibold mt-0.5",
-              isParchment ? "text-[#2A1B10]" : "text-[#FFF5D1]"
-            )}
-          >
-            {nakshatraNameHi} ({nakshatraNameEn})
-          </span>
-        </div>
+        <NakshatraDial
+          nakshatraNameHi={nakshatraNameHi}
+          nakshatraNameEn={nakshatraNameEn}
+          nakshatraIndex={nakshatraIndex}
+          variant={variant}
+        />
       </div>
 
       {/* ── RHS: Clean Editorial Presentation ────────────────────────────── */}
