@@ -31,7 +31,7 @@ export default function ArticlePage({ params }: PageProps) {
     headline: article.title,
     alternativeHeadline: article.titleHi,
     description: article.description,
-    image: [article.image],
+    ...(article.image ? { image: [article.image] } : {}),
     datePublished: article.createdAt,
     dateModified: article.createdAt,
     inLanguage: ["en", "hi"],
@@ -137,14 +137,16 @@ export default function ArticlePage({ params }: PageProps) {
         </div>
 
         {/* Hero Image */}
-        <div className="mb-10 rounded-2xl overflow-hidden shadow-xl border border-current/10">
-          <LazyImage
-            src={article.image}
-            alt={article.title}
-            ratio={16 / 9}
-            className="w-full"
-          />
-        </div>
+        {article.image && (
+          <div className="mb-10 rounded-2xl overflow-hidden shadow-xl border border-current/10">
+            <LazyImage
+              src={article.image}
+              alt={article.title}
+              ratio={16 / 9}
+              className="w-full"
+            />
+          </div>
+        )}
 
         {/* Article Excerpt */}
         {article.descriptionHi && (
@@ -262,14 +264,16 @@ export default function ArticlePage({ params }: PageProps) {
                 )}
               >
                 <div className="space-y-2">
-                  <div className="overflow-hidden rounded-lg">
-                    <LazyImage
-                      src={rel.image}
-                      alt={rel.title}
-                      ratio={16 / 9}
-                      className="group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
+                  {rel.image && (
+                    <div className="overflow-hidden rounded-lg">
+                      <LazyImage
+                        src={rel.image}
+                        alt={rel.title}
+                        ratio={16 / 9}
+                        className="group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  )}
                   <h4
                     className={cn(
                       "font-serif text-sm font-bold line-clamp-2 transition-colors",

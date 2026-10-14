@@ -4,7 +4,7 @@ export interface BlogArticle {
   slug: string;
   description: string;
   descriptionHi?: string;
-  image: string;
+  image?: string;
   createdAt: string;
   author: string;
   authorRole?: string;
@@ -95,7 +95,6 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     slug: "sunrise-over-midnight",
     description: "Civil midnight is an artificial abstraction set in total darkness. Vedic time begins at Suryodaya — synchronizing human biology with the solar arc.",
     descriptionHi: "12:00 AM का कृत्रिम विभाजन रात्रि के गहनतम अंधकार में होता है, जबकि वैदिक दिन प्रथम सूर्य किरण के साथ जागता है।",
-    image: "https://cdn.21st.dev/assets/mirror/02/02f7ddc201e97fad2664c317fa4182a86cd41174d0618f09d41b712cafd243be.jpg",
     createdAt: "2026-02-14",
     author: "Acharya Vidyadhar",
     authorRole: "Vedic Scholar & Chronobiologist",
@@ -119,7 +118,6 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     slug: "thirty-muhurtas-diurnal-geometry",
     description: "A complete day-and-night cycle comprises 30 Muhurtas. Discover how ancient astronomers mapped subtle psychological undertones to each 48-minute span.",
     descriptionHi: "एक अहोरात्र में 30 मुहूर्त और 60 घटी होती हैं। जानिए कैसे प्रत्येक मुहूर्त की विशिष्ट ऊर्जा मानव चेतना को प्रभावित करती है।",
-    image: "https://cdn.21st.dev/assets/mirror/ba/ba0e6341e9bf5eefa9dd354dce1cdc4a0ca745a5b6f338b0271000f1b7fc3248.jpg",
     createdAt: "2026-01-20",
     author: "Pt. Rajeshwar Shastri",
     authorRole: "Jyotisha Researcher",
@@ -141,7 +139,6 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     slug: "varahamihira-clepsydras-gnomons",
     description: "In 6th-century Ujjain, Varahamihira calibrated copper water bowls with microscopic apertures, creating timepieces accurate to fractions of a second.",
     descriptionHi: "ताम्र पात्र में सूक्ष्म छिद्र द्वारा जल के प्रवाह से २४ मिनट की घटी नापने वाले प्राचीन भारतीय जल-यंत्र का वैज्ञानिक विश्लेषण।",
-    image: "https://cdn.21st.dev/assets/mirror/c1/c12cf6dc6daca5173fd0bfc4b1562743c92e8f1fb17efa224098180d940ba880.jpg",
     createdAt: "2025-12-18",
     author: "Prof. Meera Deshpande",
     authorRole: "Archeoastronomy Department",
@@ -163,7 +160,6 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     slug: "decoding-five-limbs-panchang",
     description: "Tithi, Vaar, Nakshatra, Yoga, and Karana — understanding how the interaction of the Sun and Moon shapes daily focus and decision-making.",
     descriptionHi: "तिथि, वार, नक्षत्र, योग और करण — सूर्य और चंद्रमा के कोणों से निर्धारित होने वाले पाँच खगोलीय तत्वों की सरल व्याख्या।",
-    image: "https://cdn.21st.dev/assets/mirror/03/03e08e6b748cd888b6c4bb295b1348148830b5cfc87cce5ecb1ad62b4dd79fb3.jpg",
     createdAt: "2025-11-25",
     author: "Dr. Kalyan Sundaram",
     authorRole: "Historian of Ancient Indian Astronomy",
@@ -185,7 +181,6 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     slug: "cosmic-wheel-rigveda",
     description: "The 12-month solar cycle and 360-degree ecliptic circle first articulated in Rigvedic hymns millennia before modern geometry.",
     descriptionHi: "द्वादश प्रधयश्चक्रमेकं त्रीणि नभ्यानि क उ तच्चिकेत — ऋग्वेद के प्रथम मण्डल में वर्णित सौर मंडल की ज्यामिति।",
-    image: "https://cdn.21st.dev/assets/mirror/94/94f309ffe240e6252865b9a1fe6fc11c086414e7271e8565aae29d9e75dcfc44.jpg",
     createdAt: "2025-10-30",
     author: "Acharya Vidyadhar",
     authorRole: "Vedic Scholar & Chronobiologist",
@@ -207,7 +202,6 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     slug: "vikram-samvat-calendar",
     description: "Pre-dating the Gregorian calendar by nearly six decades, Vikram Samvat remains the premier lunisolar standard for national festivals and administration.",
     descriptionHi: "सम्राट विक्रमादित्य द्वारा शक विजय के उपलक्ष्य में आरंभ किया गया संवत्सर, जो आज भी भारत की सांस्कृतिक आत्मा को जोड़ता है।",
-    image: "https://cdn.21st.dev/assets/mirror/dd/dd7374e5608609dce96fedb6220383770fe180d2d2e9f41f9b3c22ccfa5b654e.jpg",
     createdAt: "2025-09-14",
     author: "Vikramaditya Research Group",
     authorRole: "Horological Engineering Faculty",
@@ -229,7 +223,6 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     slug: "ayanamsha-precession-equinoxes",
     description: "Earth's 25,772-year axial wobble causes tropical Western signs to drift 24° away from actual physical constellations. Here is how Vedic math corrects it.",
     descriptionHi: "पृथ्वी की धुरी के धीमे घूर्णन से होने वाले अयनांश का वैदिक खगोलशास्त्र में अचूक समाधान।",
-    image: "https://cdn.21st.dev/assets/mirror/1e/1e4a4d1babea6eab29262d2283d9fb7a28b0301690e5f9c45612978ae2ff064f.jpg",
     createdAt: "2025-08-22",
     author: "Pt. Rajeshwar Shastri",
     authorRole: "Jyotisha Researcher",
@@ -251,7 +244,6 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     slug: "sanctum-horology-temple-aartis",
     description: "Ancient Indian temples were giant astronomical observatories designed to capture solar equinox beams on inner sanctum idols at precise Muhurtas.",
     descriptionHi: "मोढेरा, कोणार्क और उज्जैन के महाकाल मंदिर में खगोलीय गणनाओं के आधार पर रचित वास्तुकला और समय-प्रबंधन।",
-    image: "https://cdn.21st.dev/assets/mirror/66/66c2376b01010086f676afcd56d9e3b0f0498b4d1c4e2c3e7e91eb3af2f179f2.jpg",
     createdAt: "2025-07-19",
     author: "Prof. Meera Deshpande",
     authorRole: "Archeoastronomy Department",
@@ -273,7 +265,6 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     slug: "bespoke-architectural-horology",
     description: "The tactile art of hand-finished brass, deep obsidian dials, and celestial wheel iconography forged for royal residences and institutions.",
     descriptionHi: "हस्तशिल्प और नक्काशीदार पीतल के आवरण में सजी विक्रमादित्य वेदिक घड़ी की कारीगरी और डिजाइन सौंदर्य।",
-    image: "https://cdn.21st.dev/assets/mirror/ee/ee1bd0742f0ae1ed3cc484df2b2a51495d35fd0e853eb14757b4f78df82f450c.jpg",
     createdAt: "2025-06-11",
     author: "Vikramaditya Artisan Guild",
     authorRole: "Master Horological Craftsmen",
@@ -295,7 +286,6 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     slug: "living-day-dawn-to-pre-dawn",
     description: "How synchronizing daily habits with Sandhya twilights and Brahma Muhurta restores clarity, mental plasticity, and biological balance.",
     descriptionHi: "भागदौड़ भरे आधुनिक युग में वैदिक काल विभाजन द्वारा मानसिक शांति और कार्यकुशलता प्राप्त करने का मार्ग।",
-    image: "https://cdn.21st.dev/assets/mirror/f0/f05e33f6d849e65bc6507c82ed416805bba5d5dd4152fde67b1d833b5ff91b88.jpg",
     createdAt: "2025-05-04",
     author: "Dr. Kalyan Sundaram",
     authorRole: "Historian of Ancient Indian Astronomy",
