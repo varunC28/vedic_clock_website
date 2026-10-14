@@ -297,13 +297,22 @@ export default function ContactPage() {
                 <div className="py-10 flex flex-col items-start text-left">
                   <div
                     className={cn(
-                      "w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mb-4",
+                      "w-12 h-12 sm:w-13 sm:h-13 rounded-full flex items-center justify-center mb-5 transition-transform duration-300",
                       isParchment
-                        ? "bg-[#E5D7C2] text-[#482D1C]"
-                        : "bg-[#D4A65A]/20 text-[#E8B94B] border border-[#D4A65A]/30"
+                        ? "bg-[#EAE0CE] border border-[#B8873D]/40 text-[#8C5D33] shadow-sm"
+                        : "bg-[#0D1527] border border-[#D4A65A]/45 text-[#E8B94B] shadow-[0_0_24px_rgba(212,166,90,0.18)]"
                     )}
                   >
-                    ✓
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      className="w-5 h-5 sm:w-6 sm:h-6 stroke-current"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
                   </div>
                   <h3
                     className={cn(
