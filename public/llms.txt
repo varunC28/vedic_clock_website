@@ -36,5 +36,8 @@
 
 - Official Name: Vikramaditya Vedic Clock / विक्रमादित्य वैदिक घड़ी
 - Origin: Ujjain, Madhya Pradesh, Bharat (23.17° N, 75.77° E)
+- Address: Jantar Mantar (Vedh Shala), Ujjain, Madhya Pradesh 456010, Bharat
+- Telephone: +91-94066-64444
 - Domain: https://thevedicghadi.in
 - Manufacturer: Shiv Enterprises, Ujjain
+- Extended Knowledge Base: https://thevedicghadi.in/llms-full.txt

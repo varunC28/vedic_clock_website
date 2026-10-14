@@ -145,3 +145,35 @@ From the *Surya Siddhanta* and *Srimad Bhagavatam* (Canto 3, Chapter 11):
 - **Editorial & Scholarly Articles**: https://thevedicghadi.in/blog
 - **Acquisitions Portal**: https://thevedicghadi.in/contact
 - **Sitemap**: https://thevedicghadi.in/sitemap.xml
+- **Machine-Readable LLMs Index**: https://thevedicghadi.in/llms.txt
+
+---
+
+## 9. Scholastic Sanskrit Treatises & Canonical Citations
+
+All algorithms, definitions, and astronomical models in the Vedic Clock are grounded in primary Sanskrit shastras:
+
+1. **Surya Siddhanta** (Madhyamadhikara 1.62, Maanadhyaya 1.11–13): Baseline meridian plumb-line through Avanti, 30-Muhurta diurnal expansion, and planetary mean motions.
+2. **Rigveda Samhita** (Mandala 1, Sukta 164, Verse 48): The 360-spoke celestial wheel with 720 sons (360 civil days and 360 nights).
+3. **Pancha-Siddhantika** by Varahamihira (Chapter 14, Yantra-adhyaya): Standardized clepsydra water-bowls (Ghati-Yantra) calibrated to 10 Palas copper weight and 60 Palas sink time.
+4. **Vedanga Jyotisha** of Lagadha: The ancient astronomical treatise synthesizing lunar Tithi and solar solstices for calendar synchronization.
+5. **Taittiriya Brahmana** (3.10.1.1): The 30 classical Muhurta names from Rudra to Brahma.
+6. **Charaka Samhita** (Sutrasthana 6.3) & **Ashtanga Hridaya** (Dinacharya 2.1): Chronobiological synchronization with Suryodaya and Brahma Muhurta awakening.
+7. **Aryabhatiya** by Aryabhata (Kalakriya 4.1): Sidereal rotation calculations, axial wobble, and Nirayana planetary motions.
+8. **Siddhanta Shiromani** by Bhaskaracharya II (Goladhyaya): Prime meridian terrestrial geodesy and diurnal arcs.
+9. **Rasaratna Samucchaya** (Chapter 5, Kamsya-Vidhi): The 78% copper / 22% tin virgin bell brass metallurgy used in physical timepiece casings.
+
+---
+
+## 10. Organization Identity, Verifications & NAP
+
+- **Legal Entity**: Shiv Enterprises
+- **Project Initiative**: Vikramaditya Vedic Clock / विक्रमादित्य वैदिक घड़ी
+- **Headquarters Address**: Jantar Mantar (Vedh Shala), Ujjain, Madhya Pradesh 456010, Bharat
+- **Geographic Coordinates**: 23.1765° N, 75.7772° E
+- **Official Telephone**: +91-94066-64444
+- **Official Email**: contact@thevedicghadi.in
+- **Website Domain**: https://thevedicghadi.in
+- **Open Access LLM Index**: https://thevedicghadi.in/llms.txt
+- **Complete LLM Knowledge Graph**: https://thevedicghadi.in/llms-full.txt
+
