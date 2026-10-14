@@ -214,7 +214,7 @@ export default function HeritagePage() {
       />
 
       {/* ── Main Editorial Container (Minimalist, Breathable, No Clutter) ── */}
-      <main className="relative z-10 pt-28 sm:pt-36 pb-24 px-5 sm:px-8 lg:px-12 max-w-5xl mx-auto flex flex-col gap-24 sm:gap-32 text-left">
+      <main className="relative z-10 pt-28 sm:pt-36 pb-4 sm:pb-6 px-5 sm:px-8 lg:px-12 max-w-5xl mx-auto flex flex-col gap-20 sm:gap-24 text-left">
         
         {/* ═══════════════════════════════════════════════════════
             SECTION 1: HERO — THE PRIME MERIDIAN OF ANTIQUITY
@@ -599,7 +599,7 @@ export default function HeritagePage() {
       )}
 
       {/* ── Bottom Editorial Container ── */}
-      <main className="relative z-10 pt-12 pb-24 px-5 sm:px-8 lg:px-12 max-w-5xl mx-auto flex flex-col gap-24 sm:gap-32 text-left">
+      <main className="relative z-10 pt-4 sm:pt-6 pb-24 px-5 sm:px-8 lg:px-12 max-w-5xl mx-auto flex flex-col gap-20 sm:gap-24 text-left">
 
         {/* ═══════════════════════════════════════════════════════
             SECTION 5: SURYA SIDDHANTA HISTORICAL INSCRIPTION

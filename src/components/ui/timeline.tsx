@@ -1,6 +1,5 @@
 // Built using Hyperiux Vault: https://vault.hyperiux.com
-// Fixed & Enhanced: Absolute vertical center locking via GSAP pin:true
-// Generous vertical clearance so the center line NEVER cuts text
+// Compact & Elegant: Vertically centered pinning with tight, refined spacing
 "use client";
 
 import {
@@ -109,28 +108,28 @@ const topJourneyData: JourneyItem[] = [
     year: "1500 BCE",
     era: "Rigvedic Antiquity",
     eraHi: "ऋग्वेद काल",
-    content: "Rigvedic astronomical hymns formulate the solar cycle into 12 lunar months, 30 daily Muhurtas, and 27 Nakshatras.",
+    content: "Astronomical hymns formulate the solar cycle into 12 lunar months, 30 daily Muhurtas, and 27 Nakshatras.",
   },
   {
     id: "500-bce",
     year: "500 BCE",
     era: "Surya Siddhanta",
     eraHi: "सूर्य सिद्धान्त",
-    content: "Surya Siddhanta mathematically fixes Ujjain as 0° Prime Meridian, calculating micro-intervals down to Truti (29.6 microseconds).",
+    content: "Mathematically fixes Ujjain as 0° Prime Meridian, calculating micro-intervals down to Truti (29.6 microseconds).",
   },
   {
     id: "505-ce",
     year: "505 CE",
     era: "Varahamihira",
     eraHi: "वराहमिहिर काल",
-    content: "Varahamihira compiles Pancha-Siddhantika in Ujjain, calibrating copper water bowls (Ghati-Yantra) to solar altitude.",
+    content: "Compiles Pancha-Siddhantika in Ujjain, calibrating copper water bowls (Ghati-Yantra) to solar altitude.",
   },
   {
     id: "2026-ce",
     year: "2026 CE",
     era: "Modern Rebirth",
     eraHi: "नव पुनर्जागरण",
-    content: "Ancient astronomical mathematics synthesized with high-precision micro-stepper horology in the Ujjain Vedic Tower Clock.",
+    content: "Ancient astronomical mathematics synthesized with high-precision micro-stepper horology in the Ujjain Tower Clock.",
   },
 ];
 
@@ -148,18 +147,18 @@ const bottomJourneyData: JourneyItem[] = [
     year: "57 BCE",
     era: "Vikramaditya Era",
     eraHi: "विक्रम संवत्",
-    content: "Emperor Vikramaditya of Ujjain inaugurates the royal Vikram Samvat calendar, aligning civil governance with celestial ephemeris.",
+    content: "Emperor Vikramaditya inaugurates the royal Vikram Samvat calendar, aligning civil governance with celestial ephemeris.",
   },
   {
     id: "1725-ce",
     year: "1725 CE",
     era: "Jantar Mantar",
     eraHi: "जंतर मंतर",
-    content: "Monumental masonry stone sundials and Samrat Yantras erected in Ujjain to measure local apparent solar time.",
+    content: "Monumental stone sundials and Samrat Yantras erected in Ujjain to measure local apparent solar time.",
   },
 ];
 
-// In chronological order along the horizontal timeline track
+// Chronological order along the horizontal timeline track
 const allJourneyItems: JourneyItem[] = [
   topJourneyData[0],    // 1. 1500 BCE (Top)
   bottomJourneyData[0], // 2. 1000 BCE (Bottom)
@@ -208,8 +207,8 @@ export default function Timeline({
         transformOrigin: isTop ? "bottom center" : "top center",
       });
       gsap.set(`.jd-${item.id}`, { scale: 0 });
-      gsap.set(`.title-${item.id}`, { opacity: 0, y: isTop ? -25 : 25 });
-      gsap.set(`.desc-${item.id}`, { opacity: 0, y: isTop ? -15 : 15 });
+      gsap.set(`.title-${item.id}`, { opacity: 0, y: isTop ? -20 : 20 });
+      gsap.set(`.desc-${item.id}`, { opacity: 0, y: isTop ? -10 : 10 });
     });
     gsap.set(".journey-line", { width: "0%" });
 
@@ -228,19 +227,19 @@ export default function Timeline({
     const getTravelDistance = () => {
       const sliderWidth = slider.scrollWidth;
       const viewportWidth = window.innerWidth;
-      return Math.max(0, sliderWidth - viewportWidth + 120);
+      return Math.max(0, sliderWidth - viewportWidth + 80);
     };
 
     // ── MASTER GSAP TIMELINE WITH PIN:TRUE ──
-    // This securely pins the viewport vertically right in the center!
+    // Pins right when centered in viewport, unpins right when finished!
     const masterTl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        start: "top top",
-        end: () => `+=${Math.max(window.innerHeight * 2.8, getTravelDistance() * 1.1)}`,
+        start: "center center",
+        end: () => `+=${getTravelDistance() + 80}`,
         pin: true,
         pinSpacing: true,
-        scrub: 1,
+        scrub: 0.8,
         anticipatePin: 1,
         invalidateOnRefresh: true,
       },
@@ -270,9 +269,7 @@ export default function Timeline({
     // 3. Staggered reveal for each milestone as it enters viewport center
     const totalItems = allJourneyItems.length;
     allJourneyItems.forEach((item, index) => {
-      const isTop = topJourneyData.some((t) => t.id === item.id);
-      // Evenly distributed along the scroll timeline (0.05 to 0.90)
-      const triggerTime = 0.06 + (index / totalItems) * 0.84;
+      const triggerTime = 0.05 + (index / totalItems) * 0.85;
 
       masterTl
         // Draw connecting vertical stem
@@ -333,31 +330,31 @@ export default function Timeline({
     <section
       ref={sectionRef}
       id="journey"
-      className="w-full h-screen relative overflow-hidden transition-colors duration-500 flex items-center justify-center select-none"
+      className="w-full h-[540px] sm:h-[580px] relative overflow-hidden transition-colors duration-500 flex items-center justify-center select-none my-2"
       style={sectionStyle}
     >
-      {/* ── Viewport Pinned Viewport Container (Locked Vertically) ── */}
+      {/* ── Viewport Pinned Container (Centered Vertically) ── */}
       <div className="w-full h-full relative overflow-hidden flex items-center">
         <div
           ref={wholeSliderRef}
-          className="flex h-[82vh] max-h-[720px] items-center gap-[4vw] px-[5vw] max-[600px]:h-[85vh] max-[600px]:gap-[7vw] max-[600px]:px-[7vw] will-change-transform shrink-0"
+          className="flex h-full items-center gap-[4vw] px-[5vw] max-[600px]:gap-[7vw] max-[600px]:px-[7vw] will-change-transform shrink-0"
         >
           {/* Leading Cover Plaque */}
-          <div className="h-[75%] w-[24vw] min-w-[270px] max-w-[360px] overflow-hidden rounded-3xl border border-black/10 dark:border-white/10 shadow-2xl relative shrink-0">
+          <div className="h-[380px] w-[240px] sm:w-[280px] overflow-hidden rounded-2xl border border-black/10 dark:border-white/10 shadow-xl relative shrink-0">
             <img
               src={imageUrl}
               alt={imageAlt}
               draggable={false}
               className="h-full w-full object-cover scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-7 sm:p-8 text-left">
-              <span className="font-mono text-xs text-[#E8B94B] uppercase tracking-[0.25em]">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6 text-left">
+              <span className="font-mono text-[10px] text-[#E8B94B] uppercase tracking-[0.25em]">
                 Epoch Continuum
               </span>
-              <h3 className="font-serif text-2xl sm:text-3xl text-white font-bold leading-tight mt-1">
+              <h3 className="font-serif text-xl sm:text-2xl text-white font-bold leading-tight mt-1">
                 Avanti Meridian
               </h3>
-              <p className="font-hindi text-sm sm:text-base text-[#F3E9D2]/90 mt-1">
+              <p className="font-hindi text-xs sm:text-sm text-[#F3E9D2]/90 mt-1">
                 उज्जैन · समय की शून्य रेखा
               </p>
             </div>
@@ -369,7 +366,7 @@ export default function Timeline({
             {/* ═══ ABSOLUTE CENTER LINE (At exact 50% midpoint) ═══ */}
             <div className="w-full absolute left-0 top-[50%] -translate-y-1/2 flex items-center h-fit z-0 pointer-events-none">
               <div
-                className="h-3 w-3 rounded-full shadow-[0_0_10px_currentColor]"
+                className="h-2.5 w-2.5 rounded-full shadow-[0_0_8px_currentColor]"
                 style={activeStyle}
               />
               <div
@@ -377,35 +374,35 @@ export default function Timeline({
                 style={activeStyle}
               />
               <div
-                className="h-3 w-3 rounded-full shadow-[0_0_10px_currentColor]"
+                className="h-2.5 w-2.5 rounded-full shadow-[0_0_8px_currentColor]"
                 style={activeStyle}
               />
             </div>
 
             {/* ═══ TOP TRACK (Exclusively above the center line) ═══ */}
-            <div className="h-1/2 w-full flex items-end pb-8 sm:pb-12 relative z-10">
+            <div className="h-1/2 w-full flex items-end pb-7 sm:pb-9 relative z-10">
               {/* Left Title in Upper Half */}
-              <div className="w-[18vw] min-w-[200px] text-left shrink-0 pr-4">
+              <div className="w-[16vw] min-w-[170px] text-left shrink-0 pr-4">
                 <span className="font-mono text-[10px] uppercase tracking-widest block mb-1 opacity-60">
                   Chronology
                 </span>
-                <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl leading-tight font-bold">
+                <h2 className="font-serif text-xl sm:text-2xl lg:text-3xl leading-tight font-bold">
                   {title}
                 </h2>
               </div>
 
               {/* Top Cards Stream */}
-              <div className="flex gap-x-[12vw] max-[600px]:gap-x-[36vw]">
+              <div className="flex gap-x-[11vw] max-[600px]:gap-x-[32vw]">
                 {topJourneyData.map((item) => (
                   <div
                     key={`top-${item.id}`}
-                    className="relative w-[26vw] min-w-[280px] max-w-[380px] px-3 max-[600px]:w-[70vw] max-[600px]:px-4 text-left shrink-0 flex flex-col justify-end"
+                    className="relative w-[24vw] min-w-[260px] max-w-[340px] px-2 max-[600px]:w-[68vw] text-left shrink-0 flex flex-col justify-end"
                   >
                     {/* Stem & Dot Dropping Down to Center Line */}
-                    <div className="absolute left-0 bottom-[-32px] sm:bottom-[-48px] top-0 pointer-events-none w-4">
+                    <div className="absolute left-0 bottom-[-28px] sm:bottom-[-36px] top-0 pointer-events-none w-4">
                       {/* Node Dot on the Center Line */}
                       <div
-                        className={`size-3.5 -translate-x-[5px] absolute bottom-0 aspect-square rounded-full jd-${item.id} shadow-[0_0_10px_currentColor]`}
+                        className={`size-3 -translate-x-[4px] absolute bottom-0 aspect-square rounded-full jd-${item.id} shadow-[0_0_8px_currentColor]`}
                         style={activeStyle}
                       />
                       {/* Vertical Stem Going Up to Card */}
@@ -416,17 +413,17 @@ export default function Timeline({
                     </div>
 
                     {/* Milestone Copy (Guaranteed safely ABOVE the line) */}
-                    <div className="space-y-1.5 pl-4">
+                    <div className="space-y-1 pl-4">
                       <div className="flex items-center gap-2">
                         <span
-                          className="font-mono text-xs font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-black/5 dark:bg-white/10"
+                          className="font-mono text-[11px] font-bold tracking-wider px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10"
                           style={mutedTextStyle}
                         >
                           {item.year}
                         </span>
                         {item.eraHi && (
                           <span
-                            className="font-hindi text-xs opacity-75 font-medium"
+                            className="font-hindi text-[11px] opacity-75 font-medium"
                             style={mutedTextStyle}
                           >
                             {item.eraHi}
@@ -434,12 +431,12 @@ export default function Timeline({
                         )}
                       </div>
                       <h4
-                        className={`title-${item.id} font-serif text-xl sm:text-2xl font-bold leading-snug`}
+                        className={`title-${item.id} font-serif text-lg sm:text-xl font-bold leading-snug`}
                       >
                         {item.era}
                       </h4>
                       <p
-                        className={`desc-${item.id} font-sans text-xs sm:text-sm leading-relaxed max-w-[340px]`}
+                        className={`desc-${item.id} font-sans text-xs leading-relaxed max-w-[320px]`}
                         style={mutedTextStyle}
                       >
                         {item.content}
@@ -451,32 +448,32 @@ export default function Timeline({
             </div>
 
             {/* ═══ BOTTOM TRACK (Exclusively below the center line) ═══ */}
-            <div className="h-1/2 w-full flex items-start pt-8 sm:pt-12 relative z-10 text-left">
+            <div className="h-1/2 w-full flex items-start pt-7 sm:pt-9 relative z-10 text-left">
               {/* Period Label in Lower Half */}
-              <div className="w-[18vw] min-w-[200px] shrink-0 pr-4">
-                <span className="font-mono text-xs uppercase tracking-widest block mb-1 opacity-60">
+              <div className="w-[16vw] min-w-[170px] shrink-0 pr-4">
+                <span className="font-mono text-[10px] uppercase tracking-widest block mb-1 opacity-60">
                   Era Span
                 </span>
                 <p
-                  className="font-mono text-sm sm:text-base tracking-wider font-bold"
+                  className="font-mono text-xs sm:text-sm tracking-wider font-bold"
                   style={mutedTextStyle}
                 >
                   {periodLabel}
                 </p>
               </div>
 
-              {/* Bottom Cards Stream (Offset horizontally to sit comfortably between top cards) */}
-              <div className="flex gap-x-[12vw] ml-[8vw] max-[600px]:gap-x-[36vw] max-[600px]:ml-[6vw]">
+              {/* Bottom Cards Stream */}
+              <div className="flex gap-x-[11vw] ml-[7vw] max-[600px]:gap-x-[32vw] max-[600px]:ml-[5vw]">
                 {bottomJourneyData.map((item) => (
                   <div
                     key={`bottom-${item.id}`}
-                    className="relative w-[26vw] min-w-[280px] max-w-[380px] px-3 max-[600px]:w-[70vw] max-[600px]:px-4 shrink-0 flex flex-col justify-start"
+                    className="relative w-[24vw] min-w-[260px] max-w-[340px] px-2 max-[600px]:w-[68vw] shrink-0 flex flex-col justify-start"
                   >
                     {/* Stem & Dot Rising Up to Center Line */}
-                    <div className="absolute left-0 top-[-32px] sm:top-[-48px] bottom-0 pointer-events-none w-4">
+                    <div className="absolute left-0 top-[-28px] sm:top-[-36px] bottom-0 pointer-events-none w-4">
                       {/* Node Dot on the Center Line */}
                       <div
-                        className={`size-3.5 -translate-x-[5px] absolute top-0 aspect-square rounded-full jd-${item.id} shadow-[0_0_10px_currentColor]`}
+                        className={`size-3 -translate-x-[4px] absolute top-0 aspect-square rounded-full jd-${item.id} shadow-[0_0_8px_currentColor]`}
                         style={activeStyle}
                       />
                       {/* Vertical Stem Going Down to Card */}
@@ -487,17 +484,17 @@ export default function Timeline({
                     </div>
 
                     {/* Milestone Copy (Guaranteed safely BELOW the line) */}
-                    <div className="space-y-1.5 pl-4">
+                    <div className="space-y-1 pl-4">
                       <div className="flex items-center gap-2">
                         <span
-                          className="font-mono text-xs font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-black/5 dark:bg-white/10"
+                          className="font-mono text-[11px] font-bold tracking-wider px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10"
                           style={mutedTextStyle}
                         >
                           {item.year}
                         </span>
                         {item.eraHi && (
                           <span
-                            className="font-hindi text-xs opacity-75 font-medium"
+                            className="font-hindi text-[11px] opacity-75 font-medium"
                             style={mutedTextStyle}
                           >
                             {item.eraHi}
@@ -505,12 +502,12 @@ export default function Timeline({
                         )}
                       </div>
                       <h4
-                        className={`title-${item.id} font-serif text-xl sm:text-2xl font-bold leading-snug`}
+                        className={`title-${item.id} font-serif text-lg sm:text-xl font-bold leading-snug`}
                       >
                         {item.era}
                       </h4>
                       <p
-                        className={`desc-${item.id} font-sans text-xs sm:text-sm leading-relaxed max-w-[340px]`}
+                        className={`desc-${item.id} font-sans text-xs leading-relaxed max-w-[320px]`}
                         style={mutedTextStyle}
                       >
                         {item.content}
