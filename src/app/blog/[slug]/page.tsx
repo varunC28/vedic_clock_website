@@ -25,6 +25,38 @@ export default function ArticlePage({ params }: PageProps) {
 
   const relatedArticles = VEDIC_BLOG_ARTICLES.filter((a) => a.slug !== slug).slice(0, 3);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: article.title,
+    alternativeHeadline: article.titleHi,
+    description: article.description,
+    image: [article.image],
+    datePublished: article.createdAt,
+    dateModified: article.createdAt,
+    inLanguage: ["en", "hi"],
+    author: {
+      "@type": "Person",
+      name: article.author,
+      jobTitle: article.authorRole,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Vikramaditya Vedic Clock",
+      url: "https://vedicclock.in",
+    },
+    articleSection: article.category,
+    keywords: [
+      article.category,
+      "Vedic Clock",
+      "Vedic Horology",
+      "Ujjain Prime Meridian",
+      "Panchang",
+      "Vikram Samvat",
+      "Muhurta",
+    ],
+  };
+
   return (
     <div
       className={cn(
@@ -32,6 +64,12 @@ export default function ArticlePage({ params }: PageProps) {
         isParchment ? "bg-[#FAF6F0] text-[#2D1B0E]" : "bg-[#03060E] text-ivory"
       )}
     >
+      {/* ── JSON-LD Structured Data for Rich Snippets & AI Engines ── */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <Header alwaysVisible />
 
       <main className="relative z-10 pt-28 sm:pt-36 pb-20 px-5 sm:px-8 max-w-4xl mx-auto text-left">
@@ -159,10 +197,23 @@ export default function ArticlePage({ params }: PageProps) {
                 </p>
               )}
 
+              {/* Hindi Body Text */}
+              {block.textHi && (
+                <p
+                  className={cn(
+                    "font-hindi text-base sm:text-lg leading-relaxed text-justify mb-1 font-normal",
+                    isParchment ? "text-[#3D2514]" : "text-ivory/95"
+                  )}
+                >
+                  {block.textHi}
+                </p>
+              )}
+
+              {/* English Translation / Counterpart */}
               <p
                 className={cn(
                   "font-sans text-sm sm:text-base leading-relaxed text-justify",
-                  isParchment ? "text-[#482D1C]" : "text-ivory/80"
+                  isParchment ? "text-[#5C4230]" : "text-ivory/75"
                 )}
               >
                 {block.text}
