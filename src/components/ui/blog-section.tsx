@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { LazyImage } from "./lazy-image";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { VEDIC_BLOG_ARTICLES, BlogArticle } from "@/data/blog-articles";
+import { getPendingHash } from "@/lib/hash-navigation";
 
 export interface BlogSectionProps {
   blogs?: BlogArticle[];
@@ -30,12 +31,12 @@ export function BlogSection({
   // Synchronize and illuminate targeted blog card on hash navigation
   useEffect(() => {
     const syncHash = () => {
-      if (typeof window === "undefined" || !window.location.hash) {
+      if (typeof window === "undefined") return;
+      const slug = getPendingHash();
+      if (!slug) {
         setActiveHash(null);
         return;
       }
-      const slug = window.location.hash.slice(1).toLowerCase().trim();
-      if (!slug) return;
 
       setActiveHash(slug);
 
@@ -48,8 +49,20 @@ export function BlogSection({
     };
 
     syncHash();
+    const t1 = setTimeout(syncHash, 100);
+    const t2 = setTimeout(syncHash, 300);
+
     window.addEventListener("hashchange", syncHash);
-    return () => window.removeEventListener("hashchange", syncHash);
+    window.addEventListener("app-hashchange", syncHash);
+    window.addEventListener("app-locationchange", syncHash);
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      window.removeEventListener("hashchange", syncHash);
+      window.removeEventListener("app-hashchange", syncHash);
+      window.removeEventListener("app-locationchange", syncHash);
+    };
   }, []);
 
   return (

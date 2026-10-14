@@ -7,6 +7,7 @@ import { Header } from "@/components/organisms/Header";
 import { Footer } from "@/components/organisms/Footer";
 import { cn } from "@/lib/utils";
 import { VEDIC_GLOSSARY_TERMS, GlossaryTerm } from "@/data/vedic-glossary";
+import { getPendingHash } from "@/lib/hash-navigation";
 
 // ── Lightweight, Zero-Dependency Semantic Icons ──────────────────────────────
 function SearchIcon({ className }: { className?: string }) {
@@ -72,15 +73,15 @@ export function GlossaryView() {
   const [copiedSlug, setCopiedSlug] = useState<string | null>(null);
   const [activeHash, setActiveHash] = useState<string | null>(null);
 
-  // Sync and illuminate targeted anchor card on initial page load or hash change
+  // Sync and illuminate targeted anchor card on initial page load, router change, or hash change
   useEffect(() => {
     const syncHash = () => {
-      if (typeof window === "undefined" || !window.location.hash) {
+      if (typeof window === "undefined") return;
+      const slug = getPendingHash();
+      if (!slug) {
         setActiveHash(null);
         return;
       }
-      const slug = window.location.hash.slice(1).toLowerCase().trim();
-      if (!slug) return;
 
       setActiveHash(slug);
 
@@ -100,8 +101,21 @@ export function GlossaryView() {
     };
 
     syncHash();
+    // Catch post-hydration ticks in case DOM was mounting
+    const t1 = setTimeout(syncHash, 100);
+    const t2 = setTimeout(syncHash, 300);
+
     window.addEventListener("hashchange", syncHash);
-    return () => window.removeEventListener("hashchange", syncHash);
+    window.addEventListener("app-hashchange", syncHash);
+    window.addEventListener("app-locationchange", syncHash);
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      window.removeEventListener("hashchange", syncHash);
+      window.removeEventListener("app-hashchange", syncHash);
+      window.removeEventListener("app-locationchange", syncHash);
+    };
   }, []);
 
   const categories = useMemo(() => {
