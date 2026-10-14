@@ -482,17 +482,26 @@ export default function HeritagePage() {
             </div>
 
             {/* Layout Comparison Switcher */}
-            <div className="flex items-center gap-1.5 shrink-0 bg-current/5 p-1 rounded-full border border-current/10">
+            <div
+              className={cn(
+                "w-full sm:w-auto grid grid-cols-2 sm:inline-flex items-center gap-1 p-1 rounded-full border transition-all duration-300 shrink-0",
+                isParchment
+                  ? "bg-[#EFE6D6]/80 border-[#B8873D]/30 shadow-sm"
+                  : "bg-[#091122]/90 border-[#D4A65A]/25 shadow-inner"
+              )}
+            >
               <button
                 type="button"
                 onClick={() => setTimelineVariant("hyperiux")}
                 className={cn(
-                  "px-4 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium",
+                  "px-4 py-2 sm:py-1.5 rounded-full text-xs font-sans transition-all duration-300 cursor-pointer flex items-center justify-center text-center",
                   timelineVariant === "hyperiux"
                     ? isParchment
                       ? "bg-[#482D1C] text-[#FAF6F0] shadow-sm font-semibold"
-                      : "bg-[#D4A65A] text-[#03060E] shadow-sm font-bold"
-                    : "opacity-70 hover:opacity-100"
+                      : "bg-gradient-to-r from-[#B8873D] to-[#D4A65A] text-[#03060E] shadow-md shadow-[#D4A65A]/20 font-bold"
+                    : isParchment
+                    ? "text-[#6E5540] hover:text-[#2D1B0E] hover:bg-black/5 font-medium"
+                    : "text-ivory/65 hover:text-ivory hover:bg-white/5 font-medium"
                 )}
               >
                 Hyperiux Scroll
@@ -501,12 +510,14 @@ export default function HeritagePage() {
                 type="button"
                 onClick={() => setTimelineVariant("rail")}
                 className={cn(
-                  "px-4 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium",
+                  "px-4 py-2 sm:py-1.5 rounded-full text-xs font-sans transition-all duration-300 cursor-pointer flex items-center justify-center text-center",
                   timelineVariant === "rail"
                     ? isParchment
                       ? "bg-[#482D1C] text-[#FAF6F0] shadow-sm font-semibold"
-                      : "bg-[#D4A65A] text-[#03060E] shadow-sm font-bold"
-                    : "opacity-70 hover:opacity-100"
+                      : "bg-gradient-to-r from-[#B8873D] to-[#D4A65A] text-[#03060E] shadow-md shadow-[#D4A65A]/20 font-bold"
+                    : isParchment
+                    ? "text-[#6E5540] hover:text-[#2D1B0E] hover:bg-black/5 font-medium"
+                    : "text-ivory/65 hover:text-ivory hover:bg-white/5 font-medium"
                 )}
               >
                 Rail Cards
