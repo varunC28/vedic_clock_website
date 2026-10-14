@@ -18,7 +18,7 @@ if (typeof window !== "undefined") {
 
 type ThemeMode = "full-cosmic" | "full-parchment" | "alternate";
 
-export function getVariant(
+function getVariant(
   mode: ThemeMode,
   section: "hero" | "process" | "features" | "institutions" | "cta" | "footer"
 ): "dark" | "parchment" {

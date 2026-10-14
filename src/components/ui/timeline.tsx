@@ -449,7 +449,7 @@ export default function Timeline({
                       {/* Stem Line (Drops down to junction) */}
                       <div
                         className={cn(
-                          "w-[2px] h-9 sm:h-12 md:h-14 ml-3.5 origin-bottom rounded-full shrink-0",
+                          "w-[2px] h-16 sm:h-20 md:h-24 lg:h-28 ml-3.5 origin-bottom rounded-full shrink-0 shadow-[0_0_6px_currentColor]",
                           `jl-${item.id}`
                         )}
                         style={activeStyle}
@@ -473,7 +473,7 @@ export default function Timeline({
                       {/* Stem Line (Rises up from junction) */}
                       <div
                         className={cn(
-                          "w-[2px] h-9 sm:h-12 md:h-14 ml-3.5 origin-top rounded-full shrink-0",
+                          "w-[2px] h-16 sm:h-20 md:h-24 lg:h-28 ml-3.5 origin-top rounded-full shrink-0 shadow-[0_0_6px_currentColor]",
                           `jl-${item.id}`
                         )}
                         style={activeStyle}
