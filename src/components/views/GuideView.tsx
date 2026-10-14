@@ -878,20 +878,8 @@ export function GuideView() {
           </div>
 
           {/* Lexicon Discovery Banner */}
-          <div className={cn("w-full rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-sm mt-8 border transition-all duration-300", t.box)}>
-            <div className={cn("px-1 sm:px-2 pb-3 mb-4 border-b flex items-center justify-between", t.borderSubtle)}>
-              <BilingualPill
-                hi="वैदिक शब्दावली कोष"
-                en="Horology Lexicon"
-                size="sm"
-                variant={isParchment ? "light" : "dark"}
-              />
-              <span className={cn("font-sans text-[11px] tracking-wider hidden sm:inline-block", t.muted)}>
-                42 Canonical Terms & Classical Formulas
-              </span>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 px-1 sm:px-2">
+          <div className={cn("w-full rounded-2xl sm:rounded-3xl p-5 sm:p-6 shadow-sm mt-8 border transition-all duration-300", t.box)}>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
               <div className="flex-1 text-left">
                 <h4 className={cn("font-hindi text-base sm:text-lg font-bold leading-snug mb-1.5", t.titleHi)}>
                   वैदिक काल-गणना के सूत्रों व शास्त्रीय प्रमाणों की विस्तृत सूची
