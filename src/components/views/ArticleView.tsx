@@ -226,9 +226,10 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
         {/* ── AEO Direct Answer / Key Insights Callout Box ── */}
         {article.keyInsights && (
           <aside
+            id="key-insights"
             aria-label="Executive Key Insights"
             className={cn(
-              "rounded-2xl p-6 sm:p-7 mb-10 border transition-all duration-300 article-speakable-takeaways",
+              "rounded-2xl p-6 sm:p-7 mb-10 border transition-all duration-300 article-speakable-takeaways scroll-mt-28",
               isParchment
                 ? "bg-[#FAF4EA] border-[#8C5D33]/30 shadow-[0_4px_24px_rgba(61,35,20,0.04)]"
                 : "bg-[#0C101A] border-[#D4A65A]/30 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
@@ -275,18 +276,26 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
 
         {/* Body Content Sections */}
         <article className="flex flex-col gap-8 mb-16">
-          {article.content.map((block, idx) => (
-            <section key={idx} className="flex flex-col gap-3">
-              {block.heading && (
-                <h2
-                  className={cn(
-                    "font-serif text-2xl sm:text-3xl font-bold tracking-tight mt-2",
-                    isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
-                  )}
-                >
-                  {block.heading}
-                </h2>
-              )}
+          {article.content.map((block, idx) => {
+            const sectionSlug = block.heading
+              ? block.heading
+                  .toLowerCase()
+                  .replace(/[^a-z0-9]+/g, "-")
+                  .replace(/^-|-$/g, "")
+              : `section-${idx + 1}`;
+
+            return (
+              <section key={idx} id={sectionSlug} className="flex flex-col gap-3 scroll-mt-28">
+                {block.heading && (
+                  <h2
+                    className={cn(
+                      "font-serif text-2xl sm:text-3xl font-bold tracking-tight mt-2",
+                      isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
+                    )}
+                  >
+                    {block.heading}
+                  </h2>
+                )}
 
               {block.headingHi && (
                 <p
@@ -341,12 +350,13 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
                   )}
                 </div>
               )}
-            </section>
-          ))}
+              </section>
+            );
+          })}
         </article>
 
         {/* Related Articles */}
-        <section className="pt-12 border-t border-current/15">
+        <section id="related-publications" className="pt-12 border-t border-current/15 scroll-mt-28">
           <h3
             className={cn(
               "font-serif text-xl sm:text-2xl font-bold mb-6",

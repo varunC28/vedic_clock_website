@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { LazyImage } from "./lazy-image";
@@ -25,6 +25,32 @@ export function BlogSection({
   className,
 }: BlogSectionProps) {
   const { isParchment } = useTheme();
+  const [activeHash, setActiveHash] = useState<string | null>(null);
+
+  // Synchronize and illuminate targeted blog card on hash navigation
+  useEffect(() => {
+    const syncHash = () => {
+      if (typeof window === "undefined" || !window.location.hash) {
+        setActiveHash(null);
+        return;
+      }
+      const slug = window.location.hash.slice(1).toLowerCase().trim();
+      if (!slug) return;
+
+      setActiveHash(slug);
+
+      // Dissolve the golden accent ring after 3.5 seconds
+      const timer = setTimeout(() => {
+        setActiveHash((current) => (current === slug ? null : current));
+      }, 3500);
+
+      return () => clearTimeout(timer);
+    };
+
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+    return () => window.removeEventListener("hashchange", syncHash);
+  }, []);
 
   return (
     <div
@@ -101,14 +127,22 @@ export function BlogSection({
       {/* ── Blog Grid (3 Columns on Desktop, 2 on Tablet, 1 on Mobile) ── */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 z-10 text-left">
         {blogs.map((blog) => {
-            const articleHref = blog.slug.startsWith("#") ? `/blog/${blog.slug.replace("#", "")}` : `/blog/${blog.slug}`;
+            const articleSlug = blog.slug.startsWith("#") ? blog.slug.replace("#", "") : blog.slug;
+            const articleHref = `/blog/${articleSlug}`;
+            const isTargeted = activeHash === articleSlug;
+
             return (
               <Link
                 href={articleHref}
                 key={blog.title}
+                id={articleSlug}
                 className={cn(
-                  "group flex flex-col justify-between rounded-2xl p-3 sm:p-3.5 border transition-all duration-300",
-                  isParchment
+                  "group flex flex-col justify-between rounded-2xl p-3 sm:p-3.5 border transition-all duration-700 scroll-mt-28",
+                  isTargeted
+                    ? isParchment
+                      ? "ring-2 ring-[#8C5D33] shadow-[0_0_35px_rgba(140,93,51,0.3)] border-[#8C5D33] scale-[1.01]"
+                      : "ring-2 ring-[#D4A65A] shadow-[0_0_40px_rgba(212,166,90,0.4)] border-[#D4A65A] scale-[1.01]"
+                    : isParchment
                     ? "bg-[#FAF6F0] border-[#DFCBB5] hover:bg-[#FFFDF9] hover:border-[#B8873D]/60 hover:shadow-lg shadow-sm"
                     : "bg-[#060B18]/80 border-[#D4A65A]/20 hover:bg-[#0A1224] hover:border-[#D4A65A]/50 hover:shadow-xl hover:shadow-[#D4A65A]/5"
                 )}
