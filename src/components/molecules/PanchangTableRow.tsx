@@ -127,11 +127,13 @@ export function PanchangTableRow({
     // 5-Column Document Table (e.g. 30 Muhurtas)
     return (
       <div
+        id={typeof index === "number" ? `muhurta-row-${index}` : undefined}
+        data-muhurta-num={typeof index === "number" ? index : undefined}
         onClick={onClick}
         role={onClick ? "button" : undefined}
         tabIndex={onClick ? 0 : undefined}
         className={cn(
-          "w-full transition-colors duration-150 border-b",
+          "w-full transition-colors duration-150 border-b scroll-mt-28 sm:scroll-mt-36",
           isDocDark ? "border-[#D4A65A]/15" : "border-[#DFCBB5]/40",
           onClick && (isDocDark ? "cursor-pointer hover:bg-white/[0.04]" : "cursor-pointer hover:bg-[#EBD6BE]/50"),
           isHighlighted && (isDocDark ? "bg-[#181512]" : "bg-[#EBD6BE]/70"),
