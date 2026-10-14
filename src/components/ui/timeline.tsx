@@ -170,8 +170,8 @@ export default function Timeline({
   mutedTextColor = "#6E5540",
   activeColor = "#B8873D",
   backgroundColor = "#FAF6F0",
-  imageUrl = "/assets/mainbg.webp",
-  imageAlt = "Vedic Astronomical Horology",
+  imageUrl = "/assets/images/ancient-temple-celestial-wheel.webp",
+  imageAlt = "Ancient Temple Beneath the Celestial Wheel - Avanti Meridian",
 }: TimelineProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
