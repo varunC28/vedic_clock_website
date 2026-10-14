@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 const NAVIGATE_LINKS = [
   { href: "/", label: "Home" },
   { href: "/clock", label: "The Clock" },
+  { href: "/faq", label: "FAQ & Knowledge Base" },
   { href: "/catalogue.pdf", label: "Product Catalogue (PDF)", download: "Vedic_Watch_Catalogue.pdf" },
 ];
 

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/organisms/Header";
 import { Footer } from "@/components/organisms/Footer";
@@ -96,6 +97,13 @@ const TOC_ITEMS: TocItem[] = [
     numHi: "८",
     titleHi: "घड़ी का दैनिक उपयोग",
     titleEn: "Using the Clock Daily",
+  },
+  {
+    id: "chapter-9",
+    num: 9,
+    numHi: "९",
+    titleHi: "खगोलीय प्रश्नोत्तरी",
+    titleEn: "Astronomical Inquiries & FAQ",
   },
 ];
 
@@ -301,6 +309,49 @@ const DAILY_USE_STEPS = [
   },
 ];
 
+const GUIDE_FAQ_ITEMS = [
+  {
+    num: 1,
+    tag: "Prime Meridian · ०° मध्याह्न",
+    qEn: "Why is Ujjain considered the ancient 0° Prime Meridian of the Earth?",
+    qHi: "उज्जैन को पृथ्वी की प्राचीन ०° प्रधान मध्याह्न रेखा (Prime Meridian) क्यों माना जाता है?",
+    aEn: "Centuries before the 1884 Greenwich designation, classical Indian astronomers (including Varahamihira and the Surya Siddhanta) calibrated all planetary ephemerides from Ujjain (Avantika). Ujjain sits precisely where the Tropic of Cancer intersects the ancient baseline axis connecting Lanka on the equator to Mount Meru at the North Pole. At the summer solstice, the midday sun reaches a 90° zenith overhead, casting zero shadow from vertical gnomons.",
+    aHi: "ग्रीनविच (1884) से शताब्दियों पूर्व, वराहमिहिर और सूर्य सिद्धान्त के भारतीय खगोलविदों ने उज्जैन (अवंतिका) से सभी ग्रह गणनाएँ की थीं। उज्जैन कर्क रेखा और भूमध्य रेखा से सुमेरु पर्वत को जोड़ने वाली प्राचीन मध्याह्न रेखा के संपात बिंदु पर स्थित है। ग्रीष्म संक्रांति के समय दोपहर का सूर्य ठीक ९०° शीर्ष पर होता है, जिससे शंकु की छाया शून्य हो जाती है।",
+  },
+  {
+    num: 2,
+    tag: "Diurnal Cycles · अहोरात्र काल",
+    qEn: "What are the 30 Muhurtas of a Vedic day-and-night cycle?",
+    qHi: "वैदिक अहोरात्र (दिन-रात) के ३० मुहूर्त क्या हैं?",
+    aEn: "In Vedic horology, a complete 24-hour day-and-night cycle (Ahoratra) comprises 30 Muhurtas (equal to 60 Ghatis). Unlike rigid 60-minute Western civil hours, daytime Muhurtas (Dinamana / 15) and nighttime Muhurtas (Ratrimana / 15) expand and contract gracefully with seasonal solstices, reflecting the living diurnal arc of the sun.",
+    aHi: "वैदिक काल-गणना में संपूर्ण २४ घंटे का अहोरात्र ३० मुहूर्तों (६० घटियों) में विभाजित होता है। पाश्चात्य ६०-मिनट के स्थिर घंटों के विपरीत, दिन के १५ मुहूर्त (दिनमान/१५) और रात्रि के १५ मुहूर्त (रात्रिमान/१५) ऋतुओं के अनुसार घटते-बढ़ते हैं, जो सूर्य के प्राकृतिक चक्र का जीवंत प्रतिबिंब हैं।",
+  },
+  {
+    num: 3,
+    tag: "Panchang Science · पंचांग के पाँच अंग",
+    qEn: "What are the Five Limbs (Panchang) of Vedic Time?",
+    qHi: "वैदिक काल-गणना के पाँच अंग (पंचांग) क्या हैं?",
+    aEn: "The Panchang coordinates time through five fundamental astronomical dimensions: 1. Tithi (12° longitudinal separation between Sun and Moon), 2. Vaar (the solar weekday ruled by planetary lords), 3. Nakshatra (the 13° 20' sidereal lunar mansion), 4. Yoga (the combined longitudinal sum of Sun and Moon), and 5. Karana (half of a lunar Tithi, 6° solar-lunar arc).",
+    aHi: "पंचांग समय को पाँच मूलभूत खगोलीय आयामों द्वारा समन्वित करता है: १. तिथि (सूर्य और चंद्रमा के बीच १२° का देशांतरीय अंतर), २. वार (ग्रहों द्वारा शासित सौर दिन), ३. नक्षत्र (१३° २०' का नक्षत्र मंडल), ४. योग (सूर्य व चंद्र के देशांतर का योग), और ५. करण (तिथि का आधा भाग, ६° सौर-चंद्र चाप)।",
+  },
+  {
+    num: 4,
+    tag: "Circadian Dawn · सौर सूर्योदय",
+    qEn: "Why does Vedic time begin at Sunrise (Suryodaya) instead of Midnight?",
+    qHi: "वैदिक समय अर्धरात्रि के बजाय सूर्योदय से क्यों प्रारंभ होता है?",
+    aEn: "Civil midnight (12:00 AM) is an artificial abstraction set at the darkest hour of the night. Vedic time begins at Suryodaya (local astronomical sunrise), when the upper limb of the solar disc breaches the horizon. This aligns human metabolic rhythms, cortisol secretion, and circadian biology directly with solar dawn.",
+    aHi: "नागरिक अर्धरात्रि (१२:०० पूर्वाह्न) रात्रि के अंधकार में एक कृत्रिम निर्धारण है। वैदिक समय का आरंभ स्थानीय सूर्योदय से होता है, जब सूर्य का ऊपरी किनारा क्षितिज पर दृष्टिगोचर होता है। यह मानव जैविक घड़ी (सर्कैडियन रिदम), उपापचय और चेतना को सीधे सौर भोर से जोड़ता है।",
+  },
+  {
+    num: 5,
+    tag: "Sidereal Zodiac · निरयण व सायन",
+    qEn: "What is the difference between Nirayana (Sidereal) and Sayana (Tropical) zodiacs?",
+    qHi: "निरयण (नाक्षत्र) और सायन (क्रांतिवृत्तीय) राशि चक्र में क्या अंतर है?",
+    aEn: "The Nirayana (sidereal) zodiac used in Vedic astronomy measures planetary positions against the actual physical, observable fixed constellations (Nakshatras). The Western Sayana (tropical) zodiac measures time against the moving vernal equinox point, which drifts by approximately 1° every 72 years due to the precession of the Earth's axis (Ayanamsha), creating an approximate 24° offset today.",
+    aHi: "वैदिक खगोल विज्ञान में प्रयुक्त निरयण राशि चक्र ग्रहों की स्थिति को वास्तविक, दृश्यमान स्थिर नक्षत्रों के आधार पर मापता है। पाश्चात्य सायन चक्र विषुव बिंदु (Vernal Equinox) के आधार पर मापता है, जो पृथ्वी की धुरी के अयन चलन (अयनांश) के कारण प्रत्येक ७२ वर्ष में लगभग १° खिसक जाता है, जिससे आज लगभग २४° का अंतर विद्यमान है।",
+  },
+];
+
 interface PanchangGridCardItem {
   num: number;
   hi: string;
@@ -389,6 +440,7 @@ export function GuideView() {
   const [muhurtaFilter, setMuhurtaFilter] = useState<"all" | "day" | "night" | "auspicious" | "inauspicious">("all");
   const [selectedMuhurta, setSelectedMuhurta] = useState<number>(3); // Row 3 (Mitra) highlighted by default as in screenshot
   const [showRashiTable, setShowRashiTable] = useState<boolean>(false);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
   const t = {
     card: isParchment
@@ -1608,6 +1660,150 @@ export function GuideView() {
                 </div>
               ))}
             </div>
+          </div>
+        </article>
+
+        {/* ========================================================
+            CHAPTER 9: ASTRONOMICAL INQUIRIES & FAQ (खगोलीय प्रश्नोत्तरी)
+           ======================================================== */}
+        <article
+          id="chapter-9"
+          className={cn("w-full rounded-3xl p-5 sm:p-8 md:p-12 flex flex-col scroll-mt-24 border transition-colors duration-300", t.card)}
+        >
+          {/* Quick Nav back to TOC */}
+          <div className={cn("w-full flex items-center justify-between mb-8 pb-4 border-b text-xs font-sans", t.quickNavBorder)}>
+            <button
+              type="button"
+              onClick={scrollToTop}
+              className={cn("inline-flex items-center gap-1.5 font-medium transition-colors cursor-pointer", t.quickNav)}
+            >
+              <span>↑</span>
+              <span>विषय-सूची · Table of Contents</span>
+            </button>
+            <span className={cn("font-mono tracking-wider", t.eyebrow)}>
+              CHAPTER 09
+            </span>
+          </div>
+
+          {/* Header Capsule */}
+          <div className="w-full flex justify-center mb-8 sm:mb-10">
+            <div className={cn("w-full max-w-lg rounded-full py-3.5 sm:py-4 px-6 sm:px-10 text-center flex flex-col items-center transition-all", t.capsule)}>
+              <span className={cn("font-hindi text-xl sm:text-2xl md:text-3xl font-bold leading-tight tracking-wide", t.capsuleHi)}>
+                खगोलीय प्रश्नोत्तरी
+              </span>
+              <span className={cn("font-serif text-xs sm:text-sm tracking-wider mt-1", t.capsuleEn)}>
+                Astronomical Inquiries & FAQ
+              </span>
+            </div>
+          </div>
+
+          {/* Intro Description */}
+          <p className={cn("text-center text-xs sm:text-sm max-w-2xl mx-auto mb-8 leading-relaxed", t.bodyEn)}>
+            Core astronomical foundations and historical proofs behind Vedic timekeeping, Ujjain&apos;s prime meridian, and the 30-Muhurta diurnal cycle.
+          </p>
+
+          {/* Accordion Container */}
+          <div className={cn("w-full rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 shadow-sm border flex flex-col gap-3", t.box)}>
+            {GUIDE_FAQ_ITEMS.map((item, idx) => {
+              const isOpen = openFaqIndex === idx;
+              return (
+                <div
+                  key={idx}
+                  className={cn(
+                    "rounded-xl sm:rounded-2xl border transition-all duration-300 overflow-hidden",
+                    isOpen
+                      ? isParchment
+                        ? "bg-[#FFF9F0] border-[#B8873D]/60 shadow-[0_4px_16px_rgba(110,65,25,0.08)]"
+                        : "bg-[#0E1628] border-[#D4A65A]/50 shadow-[0_4px_20px_rgba(212,166,90,0.12)]"
+                      : isParchment
+                        ? "bg-[#FAF4EA] border-[#DFCBB5] hover:border-[#B8873D]/40"
+                        : "bg-[#080D1A] border-[#D4A65A]/15 hover:border-[#D4A65A]/35"
+                  )}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
+                    className="w-full p-4 sm:p-5 flex items-start justify-between gap-4 text-left cursor-pointer transition-colors"
+                    aria-expanded={isOpen}
+                  >
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <span className={cn(
+                        "font-mono text-xs sm:text-sm font-bold px-2 py-0.5 rounded-md mt-0.5 shrink-0",
+                        isParchment
+                          ? "bg-[#EFE4D3] text-[#7E4A19]"
+                          : "bg-[#D4A65A]/15 text-[#D4A65A]"
+                      )}>
+                        {item.num < 10 ? `0${item.num}` : item.num}
+                      </span>
+                      <div className="flex flex-col">
+                        <span className={cn(
+                          "text-[10px] sm:text-[11px] font-mono tracking-wider uppercase mb-1",
+                          isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]/80"
+                        )}>
+                          {item.tag}
+                        </span>
+                        <span className={cn("font-hindi font-bold text-sm sm:text-base md:text-lg leading-snug", t.titleHi)}>
+                          {item.qHi}
+                        </span>
+                        <span className={cn("font-serif text-xs sm:text-sm mt-1 leading-snug", t.titleEn)}>
+                          {item.qEn}
+                        </span>
+                      </div>
+                    </div>
+                    <span
+                      className={cn(
+                        "w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 border transition-transform duration-300 mt-0.5 text-[10px] sm:text-xs",
+                        isOpen ? "rotate-180" : "rotate-0",
+                        isParchment
+                          ? "bg-[#EFE4D3] border-[#DFCBB5] text-[#7E4A19]"
+                          : "bg-[#10192D] border-[#D4A65A]/25 text-[#D4A65A]"
+                      )}
+                      aria-hidden="true"
+                    >
+                      ▼
+                    </span>
+                  </button>
+
+                  {isOpen && (
+                    <div className={cn(
+                      "px-4 sm:px-5 pb-5 pt-1 border-t text-left flex flex-col gap-3",
+                      isParchment ? "border-[#DFCBB5]/60" : "border-[#D4A65A]/15"
+                    )}>
+                      <p className={cn("font-hindi text-xs sm:text-sm md:text-[15px] leading-relaxed pt-2", t.titleHi)}>
+                        {item.aHi}
+                      </p>
+                      <p className={cn("font-sans text-xs sm:text-sm leading-relaxed", t.bodyEn)}>
+                        {item.aEn}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Bottom link to comprehensive Knowledge Base */}
+          <div className="mt-8 pt-6 border-t border-dashed border-[#D4A65A]/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <div>
+              <p className={cn("font-hindi font-semibold text-sm", t.titleHi)}>
+                क्या आप उपकरण, तकनीक या अधिग्रहण के बारे में जानना चाहते हैं?
+              </p>
+              <p className={cn("font-sans text-xs mt-0.5", t.bodyEn)}>
+                Inquiries regarding hardware microcontrollers, bell brass casting, global GPS sync, or institutional commissions.
+              </p>
+            </div>
+            <Link
+              href="/faq"
+              className={cn(
+                "inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-all cursor-pointer whitespace-nowrap",
+                isParchment
+                  ? "bg-[#482D1C] text-[#FFF9F0] hover:bg-[#5E3B24] shadow-sm"
+                  : "bg-gradient-to-r from-[#B8873D] via-[#D4A65A] to-[#E5B76A] text-[#03060E] hover:opacity-95 shadow-[0_4px_16px_rgba(212,166,90,0.25)]"
+              )}
+            >
+              <span>Explore Master FAQ</span>
+              <span>→</span>
+            </Link>
           </div>
         </article>
 

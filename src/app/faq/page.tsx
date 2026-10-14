@@ -1,0 +1,82 @@
+import type { Metadata } from "next";
+import { FaqView } from "@/components/views/FaqView";
+import { MASTER_FAQ_ITEMS } from "@/data/faq-data";
+
+export const metadata: Metadata = {
+  title: "Frequently Asked Questions · Horological & Astronomical Knowledge Base",
+  description:
+    "Authoritative answers on the Vikramaditya Vedic Clock, ancient 0° Ujjain Prime Meridian, offline horological engineering, global location calibration, and institutional commissions.",
+  alternates: {
+    canonical: "/faq",
+  },
+  openGraph: {
+    title: "Frequently Asked Questions | Master Horological Knowledge Base",
+    description:
+      "Comprehensive Q&A on Vedic timekeeping science, 30 Muhurtas, bell brass acoustic casework, offline microcontroller engineering, and temple acquisitions.",
+    url: "https://thevedicghadi.in/faq",
+    type: "website",
+    images: [
+      {
+        url: "/assets/blog/shastras-to-silicon.jpg",
+        width: 1200,
+        height: 675,
+        alt: "Vikramaditya Vedic Clock Frequently Asked Questions and Knowledge Base",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Frequently Asked Questions | Master Horological Knowledge Base",
+    description:
+      "Authoritative answers on Vedic astronomy, Ujjain 0° meridian, clock engineering, and bespoke commissions.",
+    images: ["/assets/blog/shastras-to-silicon.jpg"],
+  },
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thevedicghadi.in",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Frequently Asked Questions",
+          item: "https://thevedicghadi.in/faq",
+        },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      name: "Vikramaditya Vedic Clock Master Knowledge Base & FAQ",
+      url: "https://thevedicghadi.in/faq",
+      mainEntity: MASTER_FAQ_ITEMS.map((item) => ({
+        "@type": "Question",
+        name: item.questionEn,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answerEn,
+        },
+      })),
+    },
+  ],
+};
+
+export default function FaqPage() {
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <FaqView />
+    </>
+  );
+}
