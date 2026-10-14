@@ -93,7 +93,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     images: [
       article.image
         ? `${baseUrl}${article.image}`
-        : `${baseUrl}/api/og?title=${encodeURIComponent(article.title)}&subtitle=${encodeURIComponent(article.titleHi || "")}&category=${encodeURIComponent(article.category)}`,
+        : `${baseUrl}/assets/blog/shastras-to-silicon.jpg`,
     ],
   }));
 

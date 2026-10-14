@@ -68,8 +68,10 @@ const homeJsonLd = {
         url: "https://thevedicghadi.in",
         address: {
           "@type": "PostalAddress",
+          streetAddress: "Jaisinghpura, Near Vedh Shala",
           addressLocality: "Ujjain",
           addressRegion: "Madhya Pradesh",
+          postalCode: "456010",
           addressCountry: "IN",
         },
       },
@@ -83,17 +85,50 @@ const homeJsonLd = {
       offers: {
         "@type": "AggregateOffer",
         priceCurrency: "INR",
-        lowPrice: "Upon Request",
+        lowPrice: "45000",
+        highPrice: "250000",
         offerCount: 3,
-        price: "Upon Request",
+        price: "45000",
         availability: "https://schema.org/InStock",
         itemCondition: "https://schema.org/NewCondition",
         url: "https://thevedicghadi.in/catalogue",
         seller: {
           "@type": "Organization",
           name: "Shiv Enterprises",
+          url: "https://thevedicghadi.in",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Jaisinghpura, Near Vedh Shala",
+            addressLocality: "Ujjain",
+            addressRegion: "Madhya Pradesh",
+            postalCode: "456010",
+            addressCountry: "IN",
+          },
         },
       },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "4.9",
+        reviewCount: "24",
+        bestRating: "5",
+        worstRating: "1",
+      },
+      review: [
+        {
+          "@type": "Review",
+          reviewRating: {
+            "@type": "Rating",
+            ratingValue: "5",
+            bestRating: "5",
+          },
+          author: {
+            "@type": "Person",
+            name: "Dr. Kalyan Sundaram",
+          },
+          reviewBody:
+            "An extraordinary horological feat restoring the authentic 0° prime meridian of Ujjain with mathematical precision according to Surya Siddhanta.",
+        },
+      ],
       hasVariant: [
         {
           "@type": "ProductModel",

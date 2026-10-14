@@ -147,6 +147,14 @@ const rootJsonLd = {
         name: "India",
         sameAs: "https://en.wikipedia.org/wiki/India",
       },
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Jaisinghpura, Near Vedh Shala",
+        addressLocality: "Ujjain",
+        addressRegion: "Madhya Pradesh",
+        postalCode: "456010",
+        addressCountry: "IN",
+      },
       telephone: "+91-94066-64444",
       email: "contact@thevedicghadi.in",
       contactPoint: {
