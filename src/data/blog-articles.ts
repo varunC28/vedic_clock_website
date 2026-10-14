@@ -66,7 +66,7 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     slug: "shastras-to-silicon",
     description: "How five thousand years of Sanskrit astronomical geometry was transformed into living digital horology and micro-stepper mechanical dials.",
     descriptionHi: "सूर्य सिद्धान्त के सूक्ष्म गणितीय सूत्रों को आधुनिक माइक्रो-प्रोसेसर और स्टेपर मोटर तकनीक से जीवंत करने की अभूतपूर्व यात्रा।",
-    image: "https://cdn.21st.dev/assets/mirror/1c/1c9069d4c0e2ec6e906649d4872849733f11e1d5bc9acc77afa11d51300e042f.jpg",
+    image: "/assets/blog/shastras-to-silicon.jpg",
     createdAt: "2026-02-28",
     author: "Vikramaditya Research Group",
     authorRole: "Horological Engineering Faculty",
