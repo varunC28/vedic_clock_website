@@ -45,7 +45,7 @@ export function InstitutionCard({
   return (
     <div
       className={cn(
-        "flex flex-col justify-between p-5 sm:p-6 w-full h-full rounded-2xl motion-safe:transition-all motion-safe:duration-300",
+        "flex flex-col justify-between p-5 sm:p-6 lg:p-4.5 xl:p-6 w-full h-full rounded-2xl motion-safe:transition-all motion-safe:duration-300",
         containerClasses,
         className
       )}
@@ -101,11 +101,11 @@ export function InstitutionCard({
             <div
               key={idx}
               className={cn(
-                "h-8 sm:h-8.5 px-3 rounded-full text-[10px] sm:text-[10.5px] xl:text-[11px] font-sans font-medium uppercase tracking-wider sm:tracking-widest flex items-center justify-center text-center transition-all duration-200 whitespace-nowrap overflow-hidden select-none",
+                "h-8 sm:h-8.5 px-2.5 sm:px-3 rounded-full text-[11px] sm:text-[11.5px] xl:text-xs font-sans font-medium tracking-tight sm:tracking-normal flex items-center justify-center text-center transition-all duration-200 whitespace-nowrap select-none",
                 capsuleClasses
               )}
             >
-              <span className="truncate">{bullet}</span>
+              <span>{bullet}</span>
             </div>
           ))}
         </div>
