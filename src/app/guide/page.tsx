@@ -1145,6 +1145,7 @@ export default function GuidePage() {
                   avoid={item.avoidEn}
                   variant={isParchment ? "document" : "document-dark"}
                   isHighlighted={selectedMuhurta === item.num}
+                  onMouseEnter={() => setSelectedMuhurta(item.num)}
                   onClick={() => setSelectedMuhurta(item.num)}
                 />
               ))}
