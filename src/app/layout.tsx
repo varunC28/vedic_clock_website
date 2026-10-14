@@ -21,8 +21,137 @@ const notoDevanagari = Noto_Sans_Devanagari({
 });
 
 export const metadata: Metadata = {
-  title: "Vikramaditya Vedic Clock",
-  description: "Offline Panchang + 30-Muhurta dial",
+  metadataBase: new URL("https://thevedicghadi.in"),
+  title: {
+    default: "Vikramaditya Vedic Clock | World's Premier Astronomical Timepiece",
+    template: "%s | Vikramaditya Vedic Clock",
+  },
+  description:
+    "Discover the world's premier Vedic timepiece. Calibrated to the ancient 0° Prime Meridian of Ujjain, featuring a living 30-Muhurta diurnal dial, five limbs of Panchang, and sidereal solar geometry.",
+  keywords: [
+    "Vedic Clock",
+    "Vikramaditya Vedic Clock",
+    "वैदिक घड़ी",
+    "विक्रमादित्य वैदिक घड़ी",
+    "Ujjain Prime Meridian",
+    "अवंतिका शून्य रेखा",
+    "Surya Siddhanta",
+    "सूर्य सिद्धान्त",
+    "Panchang",
+    "पंचांग",
+    "30 Muhurtas",
+    "मुहूर्त",
+    "Indian Standard Time",
+    "Hindu Calendar",
+    "Sidereal Horology",
+    "Astronomical Clock India",
+    "Ujjain Vedh Shala",
+    "Varahamihira",
+  ],
+  authors: [{ name: "Vikramaditya Research & Horological Guild" }],
+  creator: "Shiv Enterprises",
+  publisher: "Vikramaditya Vedic Clock",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-IN": "https://thevedicghadi.in",
+      "hi-IN": "https://thevedicghadi.in",
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    alternateLocale: ["hi_IN"],
+    url: "https://thevedicghadi.in",
+    siteName: "Vikramaditya Vedic Clock",
+    title: "Vikramaditya Vedic Clock | The Living Geometry of Time",
+    description:
+      "Calibrated to the ancient 0° Prime Meridian of Ujjain. Experience the 30-Muhurta dial, offline Panchang, and 5,000 years of astronomical horology.",
+    images: [
+      {
+        url: "/assets/blog/shastras-to-silicon.jpg",
+        width: 1200,
+        height: 675,
+        alt: "Vikramaditya Vedic Clock Horological Dial and Ancient Indian Astronomy",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vikramaditya Vedic Clock | World's Premier Astronomical Timepiece",
+    description:
+      "Precision Vedic time calibrated to Ujjain 0° Prime Meridian. 30 Muhurtas, Tithi, Nakshatra, and solar zenith synchronization.",
+    images: ["/assets/blog/shastras-to-silicon.jpg"],
+    creator: "@thevedicghadi",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+const rootJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://thevedicghadi.in/#organization",
+      name: "Vikramaditya Vedic Clock",
+      alternateName: "विक्रमादित्य वैदिक घड़ी",
+      url: "https://thevedicghadi.in",
+      logo: {
+        "@type": "ImageObject",
+        "@id": "https://thevedicghadi.in/#logo",
+        url: "https://thevedicghadi.in/assets/icon.png",
+        caption: "Vikramaditya Vedic Clock Emblem",
+      },
+      image: "https://thevedicghadi.in/assets/blog/shastras-to-silicon.jpg",
+      description:
+        "World's premier precision astronomical Vedic timepiece calibrating living 30-Muhurta diurnal cycles, Panchang coordinates, and sidereal solar transit from the ancient 0° prime meridian of Ujjain.",
+      foundingLocation: {
+        "@type": "Place",
+        name: "Ujjain, Madhya Pradesh, Bharat",
+      },
+      areaServed: {
+        "@type": "Country",
+        name: "India",
+      },
+      knowsAbout: [
+        "Vedic Horology",
+        "Panchang Science",
+        "Surya Siddhanta",
+        "Ujjain Prime Meridian",
+        "Muhurta Calculations",
+        "Nakshatra Astronomy",
+        "Ancient Indian Timekeeping",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://thevedicghadi.in/#website",
+      url: "https://thevedicghadi.in",
+      name: "Vikramaditya Vedic Clock",
+      alternateName: "विक्रमादित्य वैदिक घड़ी",
+      publisher: {
+        "@id": "https://thevedicghadi.in/#organization",
+      },
+      inLanguage: ["en", "hi"],
+      description:
+        "The living geometry of time: Exploring the 30-Muhurta dial, classical Hindu astronomy, and the historic 0° meridian of Ujjain.",
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -32,6 +161,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${fraunces.variable} ${notoDevanagari.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(rootJsonLd) }}
+        />
+      </head>
       <body className="font-sans selection:bg-brass/30 selection:text-ivory">
         <SmoothScrollProvider>
           <ThemeProvider>
