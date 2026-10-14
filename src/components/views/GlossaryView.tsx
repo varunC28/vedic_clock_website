@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { Header } from "@/components/organisms/Header";
@@ -70,6 +70,39 @@ export function GlossaryView() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [copiedSlug, setCopiedSlug] = useState<string | null>(null);
+  const [activeHash, setActiveHash] = useState<string | null>(null);
+
+  // Sync and illuminate targeted anchor card on initial page load or hash change
+  useEffect(() => {
+    const syncHash = () => {
+      if (typeof window === "undefined" || !window.location.hash) {
+        setActiveHash(null);
+        return;
+      }
+      const slug = window.location.hash.slice(1).toLowerCase().trim();
+      if (!slug) return;
+
+      setActiveHash(slug);
+
+      // Ensure the targeted term is visible in the grid even if previous filters were applied
+      const termExists = VEDIC_GLOSSARY_TERMS.some((t) => t.slug.toLowerCase() === slug);
+      if (termExists) {
+        setSelectedCategory("All");
+        setSearchQuery("");
+      }
+
+      // Softly dissolve the golden accent ring after 3.5 seconds
+      const timer = setTimeout(() => {
+        setActiveHash((current) => (current === slug ? null : current));
+      }, 3500);
+
+      return () => clearTimeout(timer);
+    };
+
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+    return () => window.removeEventListener("hashchange", syncHash);
+  }, []);
 
   const categories = useMemo(() => {
     const cats = Array.from(new Set(VEDIC_GLOSSARY_TERMS.map((t) => t.category)));
@@ -251,13 +284,19 @@ export function GlossaryView() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-7">
           {filteredTerms.map((term: GlossaryTerm) => {
             const isCopied = copiedSlug === term.slug;
+            const isTargeted = activeHash === term.slug;
+
             return (
               <article
                 key={term.slug}
                 id={term.slug}
                 className={cn(
-                  "relative rounded-2xl p-5 sm:p-7 border transition-all duration-300 flex flex-col justify-between group scroll-mt-24",
-                  isParchment
+                  "relative rounded-2xl p-5 sm:p-7 border transition-all duration-700 flex flex-col justify-between group scroll-mt-28",
+                  isTargeted
+                    ? isParchment
+                      ? "ring-2 ring-[#8C5D33] shadow-[0_0_35px_rgba(140,93,51,0.3)] border-[#8C5D33] scale-[1.01]"
+                      : "ring-2 ring-[#D4A65A] shadow-[0_0_40px_rgba(212,166,90,0.4)] border-[#D4A65A] scale-[1.01]"
+                    : isParchment
                     ? "bg-[#FDFBF7] border-[#8C5D33]/20 shadow-[0_4px_20px_rgba(61,35,20,0.04)] hover:border-[#8C5D33]/45 hover:shadow-[0_8px_30px_rgba(61,35,20,0.08)]"
                     : "bg-[#0C0F17] border-[#D4A65A]/15 shadow-[0_4px_24px_rgba(0,0,0,0.4)] hover:border-[#D4A65A]/35 hover:shadow-[0_8px_32px_rgba(212,166,90,0.08)]"
                 )}
