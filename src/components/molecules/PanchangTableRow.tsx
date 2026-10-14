@@ -16,7 +16,7 @@ export interface PanchangTableRowProps {
   avoidHi?: string;
   badge?: string;
   isHighlighted?: boolean;
-  variant?: "dark" | "parchment" | "document";
+  variant?: "dark" | "parchment" | "document" | "document-dark";
   onClick?: () => void;
   nameClassName?: string;
   className?: string;
@@ -44,7 +44,8 @@ export function PanchangTableRow({
   className,
 }: PanchangTableRowProps) {
   // Document variant matching book document style (Zebra tables)
-  if (variant === "document") {
+  if (variant === "document" || variant === "document-dark") {
+    const isDocDark = variant === "document-dark";
     const isMultiColumn = Boolean(avoid || avoidHi || nature || natureLabelHi || natureLabelEn);
 
     // 2-Column Document Table (e.g. 12 Rashis: राशि · Sign | भाव · Signifies)
@@ -55,9 +56,10 @@ export function PanchangTableRow({
           role={onClick ? "button" : undefined}
           tabIndex={onClick ? 0 : undefined}
           className={cn(
-            "w-full flex items-center justify-between gap-3 sm:gap-6 px-3.5 sm:px-6 py-3 transition-colors duration-150 border-b border-[#DFCBB5]/40",
-            onClick && "cursor-pointer hover:bg-[#EBD6BE]/50",
-            isHighlighted && "bg-[#EBD6BE]/70",
+            "w-full flex items-center justify-between gap-3 sm:gap-6 px-3.5 sm:px-6 py-3 transition-colors duration-150 border-b",
+            isDocDark ? "border-[#D4A65A]/15" : "border-[#DFCBB5]/40",
+            onClick && (isDocDark ? "cursor-pointer hover:bg-white/[0.04]" : "cursor-pointer hover:bg-[#EBD6BE]/50"),
+            isHighlighted && (isDocDark ? "bg-[#181512]" : "bg-[#EBD6BE]/70"),
             className
           )}
         >
@@ -68,7 +70,11 @@ export function PanchangTableRow({
                 className={cn(
                   "w-7 h-7 sm:w-8 sm:h-8 shrink-0 rounded-full flex items-center justify-center font-sans text-[11px] sm:text-xs font-bold transition-all",
                   isHighlighted
-                    ? "bg-[#B8873D] text-[#FFF9F0] shadow-sm scale-105"
+                    ? isDocDark
+                      ? "bg-[#D4A65A] text-[#03060E] shadow-sm scale-105"
+                      : "bg-[#B8873D] text-[#FFF9F0] shadow-sm scale-105"
+                    : isDocDark
+                    ? "bg-white/10 text-[#D4A65A]"
                     : "bg-[#EADCCB] text-[#5C4230]"
                 )}
               >
@@ -76,10 +82,20 @@ export function PanchangTableRow({
               </div>
             )}
             <div className="flex flex-col text-left min-w-0">
-              <span className="font-hindi font-bold text-xs sm:text-[14px] text-[#2D1B0E] leading-tight">
+              <span
+                className={cn(
+                  "font-hindi font-bold text-xs sm:text-[14px] leading-tight",
+                  isDocDark ? "text-[#FBF5E7]" : "text-[#2D1B0E]"
+                )}
+              >
                 {nameHi}
               </span>
-              <span className="font-sans text-[11px] sm:text-xs text-[#5C4230] mt-0.5">
+              <span
+                className={cn(
+                  "font-sans text-[11px] sm:text-xs mt-0.5",
+                  isDocDark ? "text-ivory/60" : "text-[#5C4230]"
+                )}
+              >
                 {nameEn}
               </span>
             </div>
@@ -87,10 +103,20 @@ export function PanchangTableRow({
 
           {/* Column 2: Signifies (Bilingual Text) */}
           <div className="flex-1 flex flex-col text-left">
-            <span className="font-hindi font-bold text-xs sm:text-[14px] text-[#2D1B0E] leading-tight">
+            <span
+              className={cn(
+                "font-hindi font-bold text-xs sm:text-[14px] leading-tight",
+                isDocDark ? "text-[#FBF5E7]" : "text-[#2D1B0E]"
+              )}
+            >
               {detailHi}
             </span>
-            <span className="font-sans text-[11px] sm:text-xs text-[#5C4230] mt-0.5">
+            <span
+              className={cn(
+                "font-sans text-[11px] sm:text-xs mt-0.5",
+                isDocDark ? "text-ivory/60" : "text-[#5C4230]"
+              )}
+            >
               {detail}
             </span>
           </div>
@@ -105,9 +131,10 @@ export function PanchangTableRow({
         role={onClick ? "button" : undefined}
         tabIndex={onClick ? 0 : undefined}
         className={cn(
-          "w-full transition-colors duration-150 border-b border-[#DFCBB5]/40",
-          onClick && "cursor-pointer hover:bg-[#EBD6BE]/50",
-          isHighlighted && "bg-[#EBD6BE]/70",
+          "w-full transition-colors duration-150 border-b",
+          isDocDark ? "border-[#D4A65A]/15" : "border-[#DFCBB5]/40",
+          onClick && (isDocDark ? "cursor-pointer hover:bg-white/[0.04]" : "cursor-pointer hover:bg-[#EBD6BE]/50"),
+          isHighlighted && (isDocDark ? "bg-[#181512]" : "bg-[#EBD6BE]/70"),
           className
         )}
       >
@@ -120,7 +147,11 @@ export function PanchangTableRow({
                 className={cn(
                   "w-7 h-7 shrink-0 rounded-full flex items-center justify-center font-sans text-[11px] font-bold transition-all",
                   isHighlighted
-                    ? "bg-[#B8873D] text-[#FFF9F0] shadow-sm scale-105"
+                    ? isDocDark
+                      ? "bg-[#D4A65A] text-[#03060E] shadow-sm scale-105"
+                      : "bg-[#B8873D] text-[#FFF9F0] shadow-sm scale-105"
+                    : isDocDark
+                    ? "bg-white/10 text-[#D4A65A]"
                     : "bg-[#EADCCB] text-[#5C4230]"
                 )}
               >
@@ -128,10 +159,20 @@ export function PanchangTableRow({
               </div>
               {/* 2. Muhurta Name */}
               <div className="flex flex-col min-w-0">
-                <span className="font-hindi font-bold text-sm text-[#2D1B0E] leading-tight truncate">
+                <span
+                  className={cn(
+                    "font-hindi font-bold text-sm leading-tight truncate",
+                    isDocDark ? "text-[#FBF5E7]" : "text-[#2D1B0E]"
+                  )}
+                >
                   {nameHi}
                 </span>
-                <span className="font-sans text-[11px] text-[#5C4230] truncate">
+                <span
+                  className={cn(
+                    "font-sans text-[11px] truncate",
+                    isDocDark ? "text-ivory/60" : "text-[#5C4230]"
+                  )}
+                >
                   {nameEn}
                 </span>
               </div>
@@ -139,10 +180,20 @@ export function PanchangTableRow({
 
             {/* 3. Nature */}
             <div className="shrink-0 text-right">
-              <span className="font-hindi font-semibold text-xs text-[#2D1B0E] block leading-tight">
+              <span
+                className={cn(
+                  "font-hindi font-semibold text-xs block leading-tight",
+                  isDocDark ? "text-[#FBF5E7]" : "text-[#2D1B0E]"
+                )}
+              >
                 {natureLabelHi || nature}
               </span>
-              <span className="font-sans text-[10.5px] text-[#5C4230] block">
+              <span
+                className={cn(
+                  "font-sans text-[10.5px] block",
+                  isDocDark ? "text-ivory/60" : "text-[#5C4230]"
+                )}
+              >
                 {natureLabelEn || nature}
               </span>
             </div>
@@ -150,34 +201,73 @@ export function PanchangTableRow({
 
           {/* 4. Do & 5. Avoid Grid */}
           {(detailHi || detail || avoidHi || avoid) && (
-            <div className="grid grid-cols-2 gap-2 pt-2 border-t border-[#DFCBB5]/40">
-              <div className="bg-[#FAF5EC]/90 rounded-xl p-2.5 border border-[#DFCBB5]/50 flex flex-col">
-                <span className="font-sans font-bold text-[10.5px] text-[#256029] uppercase tracking-wider flex items-center gap-1">
+            <div
+              className={cn(
+                "grid grid-cols-2 gap-2 pt-2 border-t",
+                isDocDark ? "border-[#D4A65A]/20" : "border-[#DFCBB5]/40"
+              )}
+            >
+              <div
+                className={cn(
+                  "rounded-xl p-2.5 border flex flex-col",
+                  isDocDark
+                    ? "bg-[#0A1224] border-[#D4A65A]/20"
+                    : "bg-[#FAF5EC]/90 border-[#DFCBB5]/50"
+                )}
+              >
+                <span className="font-sans font-bold text-[10.5px] text-[#4A9D6F] uppercase tracking-wider flex items-center gap-1">
                   <span>✓</span> करें · Do
                 </span>
                 {detailHi && (
-                  <p className="font-hindi font-medium text-xs text-[#2D1B0E] mt-1 leading-snug">
+                  <p
+                    className={cn(
+                      "font-hindi font-medium text-xs mt-1 leading-snug",
+                      isDocDark ? "text-[#FBF5E7]" : "text-[#2D1B0E]"
+                    )}
+                  >
                     {detailHi}
                   </p>
                 )}
                 {detail && (
-                  <p className="font-sans text-[10.5px] text-[#5C4230] mt-0.5 leading-tight">
+                  <p
+                    className={cn(
+                      "font-sans text-[10.5px] mt-0.5 leading-tight",
+                      isDocDark ? "text-ivory/70" : "text-[#5C4230]"
+                    )}
+                  >
                     {detail}
                   </p>
                 )}
               </div>
 
-              <div className="bg-[#FAF5EC]/90 rounded-xl p-2.5 border border-[#DFCBB5]/50 flex flex-col">
-                <span className="font-sans font-bold text-[10.5px] text-[#A63620] uppercase tracking-wider flex items-center gap-1">
+              <div
+                className={cn(
+                  "rounded-xl p-2.5 border flex flex-col",
+                  isDocDark
+                    ? "bg-[#0A1224] border-[#D4A65A]/20"
+                    : "bg-[#FAF5EC]/90 border-[#DFCBB5]/50"
+                )}
+              >
+                <span className="font-sans font-bold text-[10.5px] text-[#C04848] uppercase tracking-wider flex items-center gap-1">
                   <span>✕</span> न करें · Avoid
                 </span>
                 {avoidHi && (
-                  <p className="font-hindi font-medium text-xs text-[#2D1B0E] mt-1 leading-snug">
+                  <p
+                    className={cn(
+                      "font-hindi font-medium text-xs mt-1 leading-snug",
+                      isDocDark ? "text-[#FBF5E7]" : "text-[#2D1B0E]"
+                    )}
+                  >
                     {avoidHi}
                   </p>
                 )}
                 {avoid && (
-                  <p className="font-sans text-[10.5px] text-[#5C4230] mt-0.5 leading-tight">
+                  <p
+                    className={cn(
+                      "font-sans text-[10.5px] mt-0.5 leading-tight",
+                      isDocDark ? "text-ivory/70" : "text-[#5C4230]"
+                    )}
+                  >
                     {avoid}
                   </p>
                 )}
@@ -194,7 +284,11 @@ export function PanchangTableRow({
               className={cn(
                 "w-8 h-8 shrink-0 rounded-full flex items-center justify-center font-sans text-xs font-bold transition-all duration-200",
                 isHighlighted
-                  ? "bg-[#B8873D] text-[#FFF9F0] shadow-sm scale-105"
+                  ? isDocDark
+                    ? "bg-[#D4A65A] text-[#03060E] shadow-sm scale-105"
+                    : "bg-[#B8873D] text-[#FFF9F0] shadow-sm scale-105"
+                  : isDocDark
+                  ? "bg-white/10 text-[#D4A65A]"
                   : "bg-[#EADCCB] text-[#5C4230]"
               )}
             >
@@ -204,40 +298,80 @@ export function PanchangTableRow({
 
           {/* 2. मुहूर्त · Muhurta */}
           <div className="w-36 shrink-0 flex flex-col text-left">
-            <span className="font-hindi font-bold text-[14px] text-[#2D1B0E] leading-tight">
+            <span
+              className={cn(
+                "font-hindi font-bold text-[14px] leading-tight",
+                isDocDark ? "text-[#FBF5E7]" : "text-[#2D1B0E]"
+              )}
+            >
               {nameHi}
             </span>
-            <span className="font-sans text-xs text-[#5C4230] mt-0.5">
+            <span
+              className={cn(
+                "font-sans text-xs mt-0.5",
+                isDocDark ? "text-ivory/60" : "text-[#5C4230]"
+              )}
+            >
               {nameEn}
             </span>
           </div>
 
           {/* 3. प्रकृति · Nature */}
           <div className="w-44 shrink-0 flex flex-col text-left">
-            <span className="font-hindi font-bold text-[14px] text-[#2D1B0E] leading-tight">
+            <span
+              className={cn(
+                "font-hindi font-bold text-[14px] leading-tight",
+                isDocDark ? "text-[#FBF5E7]" : "text-[#2D1B0E]"
+              )}
+            >
               {natureLabelHi || nature}
             </span>
-            <span className="font-sans text-xs text-[#5C4230] mt-0.5">
+            <span
+              className={cn(
+                "font-sans text-xs mt-0.5",
+                isDocDark ? "text-ivory/60" : "text-[#5C4230]"
+              )}
+            >
               {natureLabelEn || nature}
             </span>
           </div>
 
           {/* 4. करें · Do */}
           <div className="flex-1 min-w-[130px] flex flex-col text-left">
-            <span className="font-hindi font-bold text-[14px] text-[#2D1B0E] leading-tight">
+            <span
+              className={cn(
+                "font-hindi font-bold text-[14px] leading-tight",
+                isDocDark ? "text-[#FBF5E7]" : "text-[#2D1B0E]"
+              )}
+            >
               {detailHi}
             </span>
-            <span className="font-sans text-xs text-[#5C4230] mt-0.5">
+            <span
+              className={cn(
+                "font-sans text-xs mt-0.5",
+                isDocDark ? "text-ivory/60" : "text-[#5C4230]"
+              )}
+            >
               {detail}
             </span>
           </div>
 
           {/* 5. न करें · Avoid */}
           <div className="flex-1 min-w-[130px] flex flex-col text-left">
-            <span className="font-hindi font-bold text-[14px] text-[#2D1B0E] leading-tight">
+            <span
+              className={cn(
+                "font-hindi font-bold text-[14px] leading-tight",
+                isDocDark ? "text-[#FBF5E7]" : "text-[#2D1B0E]"
+              )}
+            >
               {avoidHi}
             </span>
-            <span className="font-sans text-xs text-[#5C4230] mt-0.5">
+            <span
+              className={cn(
+                "font-sans text-xs mt-0.5",
+                isDocDark ? "text-ivory/60" : "text-[#5C4230]"
+              )}
+            >
               {avoid}
             </span>
           </div>

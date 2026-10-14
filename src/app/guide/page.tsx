@@ -192,7 +192,7 @@ const MUHURTA_GUIDE_ITEMS = [
   { num: 30, hi: "समुद्र", en: "Samudrama", deity: "Varuna", nature: "auspicious", natureHi: "शुभ", natureEn: "Auspicious", suitableFor: "Sea travel, deep study, hidden knowledge, Yoga", doHi: "यात्रा आरंभ, शुद्धि", doEn: "starting journeys, purification", avoidHi: "गंदगी, अपव्यय", avoidEn: "clutter, waste" },
 ];
 
-export const RASHI_GUIDE_ITEMS = [
+const RASHI_GUIDE_ITEMS = [
   { num: 1, hi: "मेष", en: "Aries (Mesha)", signifiesHi: "साहस, नेतृत्व", signifiesEn: "courage, initiative" },
   { num: 2, hi: "वृषभ", en: "Taurus (Vrishabha)", signifiesHi: "स्थिरता, धन", signifiesEn: "stability, wealth" },
   { num: 3, hi: "मिथुन", en: "Gemini (Mithuna)", signifiesHi: "संवाद, बुद्धि", signifiesEn: "communication, wit" },
@@ -207,7 +207,7 @@ export const RASHI_GUIDE_ITEMS = [
   { num: 12, hi: "मीन", en: "Pisces (Meena)", signifiesHi: "अध्यात्म, करुणा", signifiesEn: "spirituality, compassion" },
 ];
 
-export const PANCHANG_READING_STEPS = [
+const PANCHANG_READING_STEPS = [
   {
     titleHi: "देखें कौन-सा मुहूर्त चल रहा है",
     descEn: "Check the current Muhurta → decide what to start or avoid.",
@@ -230,7 +230,7 @@ export const PANCHANG_READING_STEPS = [
   },
 ];
 
-export const DAILY_USE_STEPS = [
+const DAILY_USE_STEPS = [
   {
     titleHi: "मुहूर्त जाँचें",
     descEn: "Check the Muhurta before starting anything important — matching it against the Do / Avoid table.",
@@ -254,9 +254,53 @@ export const DAILY_USE_STEPS = [
 ];
 
 export default function GuidePage() {
+  const [isParchment, setIsParchment] = useState(false);
   const [selectedChapter, setSelectedChapter] = useState<string>("chapter-1");
   const [muhurtaFilter, setMuhurtaFilter] = useState<"all" | "day" | "night" | "auspicious" | "inauspicious">("all");
   const [selectedMuhurta, setSelectedMuhurta] = useState<number>(3); // Row 3 (Mitra) highlighted by default as in screenshot
+
+  const t = {
+    card: isParchment
+      ? "bg-[#F8F2E8] border-[#DFCBB5] shadow-[0_12px_40px_rgba(72,45,28,0.08)] text-[#2D1B0E]"
+      : "bg-[#060B18] border-[#D4A65A]/25 shadow-[0_12px_40px_rgba(0,0,0,0.5)] text-ivory",
+    box: isParchment
+      ? "bg-[#FAF4EA] border-[#DFCBB5]"
+      : "bg-[#0A1122] border-[#D4A65A]/20",
+    boxTable: isParchment
+      ? "bg-[#FAF5EC] border-[#DFCBB5]"
+      : "bg-[#060C1A] border-[#D4A65A]/25",
+    callout: isParchment
+      ? "bg-[#EFE4D3] border-l-4 border-[#A36D31]"
+      : "bg-[#0C1528] border-l-4 border-[#D4A65A]",
+    calloutDashed: isParchment
+      ? "border-2 border-dashed border-[#B8873D]/60 bg-[#FAF4EA]"
+      : "border-2 border-dashed border-[#D4A65A]/40 bg-[#0A1122]",
+    cardSm: isParchment
+      ? "bg-[#FAF4EA] border-[#D9C4AB] hover:border-[#B8873D]"
+      : "bg-[#0A1224] border-[#D4A65A]/20 hover:border-[#D4A65A]/50",
+    capsule: isParchment
+      ? "bg-[#482D1C] shadow-[0_6px_20px_rgba(72,45,28,0.25)]"
+      : "bg-gradient-to-r from-[#B8873D] via-[#D4A65A] to-[#E5B76A] shadow-[0_6px_24px_rgba(212,166,90,0.3)]",
+    capsuleHi: isParchment ? "text-[#FFF9F0]" : "text-[#03060E]",
+    capsuleEn: isParchment ? "text-[#DFCBB5]" : "text-[#1A1208] font-medium",
+    th: isParchment
+      ? "bg-[#482D1C] text-[#FFF9F0]"
+      : "bg-[#0B1325] text-[#D4A65A] border-b border-[#D4A65A]/25",
+    titleHi: isParchment ? "text-[#3D2314]" : "text-[#FBF5E7]",
+    titleEn: isParchment ? "text-[#4A2E1B]" : "text-[#D4A65A]",
+    bodyHi: isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]",
+    bodyEn: isParchment ? "text-[#5C4230]" : "text-ivory/70",
+    muted: isParchment ? "text-[#70523C]" : "text-ivory/60",
+    eyebrow: isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]",
+    quickNav: isParchment
+      ? "text-[#8C5D33] hover:text-[#3D2314]"
+      : "text-[#D4A65A] hover:text-[#FFF5D1]",
+    quickNavBorder: isParchment ? "border-[#DFCBB5]/60" : "border-[#D4A65A]/20",
+    divider: isParchment ? "bg-[#C29858]" : "bg-[#D4A65A]",
+    borderSubtle: isParchment ? "border-[#DFCBB5]/50" : "border-[#D4A65A]/20",
+    divideSubtle: isParchment ? "divide-[#DFCBB5]/40" : "divide-[#D4A65A]/20",
+    bullet: isParchment ? "text-[#482D1C]" : "text-[#D4A65A]",
+  };
 
   const filteredMuhurtas = MUHURTA_GUIDE_ITEMS.filter((m) => {
     if (muhurtaFilter === "day") return m.num <= 15;
@@ -279,42 +323,60 @@ export default function GuidePage() {
   };
 
   return (
-    <div className="relative w-full min-h-screen bg-[#F5EDE1] text-[#2D1B0E] selection:bg-[#B8873D]/30 selection:text-[#2D1B0E] overflow-x-hidden">
+    <div
+      className={cn(
+        "relative w-full min-h-screen transition-colors duration-500 overflow-x-hidden",
+        isParchment
+          ? "bg-[#F5EDE1] text-[#2D1B0E] selection:bg-[#B8873D]/30 selection:text-[#2D1B0E]"
+          : "bg-[#03060E] text-ivory selection:bg-[#D4A65A]/30 selection:text-[#FFFDF7]"
+      )}
+    >
       <Header alwaysVisible />
 
+      {/* ── Ambient Radial Golden Glow for Dark Mode ── */}
+      <div
+        aria-hidden="true"
+        className={cn(
+          "absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[450px] blur-3xl pointer-events-none rounded-full transition-opacity duration-500",
+          isParchment
+            ? "bg-gradient-to-tr from-[#B8873D]/10 via-[#D4A65A]/8 to-transparent"
+            : "bg-gradient-to-tr from-[#D4A65A]/12 via-[#E8B94B]/6 to-transparent"
+        )}
+      />
+
       {/* ── Document Container (Book / Manuscript Reader) ── */}
-      <main className="pt-24 sm:pt-28 pb-20 px-3.5 sm:px-6 lg:px-8 w-full max-w-5xl lg:max-w-6xl mx-auto flex flex-col gap-12 sm:gap-16 items-center min-w-0">
+      <main className="relative z-10 pt-24 sm:pt-28 pb-20 px-3.5 sm:px-6 lg:px-8 w-full max-w-5xl lg:max-w-6xl mx-auto flex flex-col gap-12 sm:gap-16 items-center min-w-0">
         
         {/* ========================================================
             PAGE 1: COVER & TABLE OF CONTENTS
            ======================================================== */}
-        <article className="w-full bg-[#F8F2E8] border border-[#DFCBB5] rounded-3xl p-5 sm:p-8 md:p-12 shadow-[0_12px_40px_rgba(72,45,28,0.08)] flex flex-col items-center">
+        <article className={cn("w-full rounded-3xl p-5 sm:p-8 md:p-12 flex flex-col items-center border transition-colors duration-300", t.card)}>
           
           {/* Eyebrow */}
           <div className="text-center mb-5">
-            <span className="font-sans text-[11px] sm:text-xs font-semibold tracking-[0.25em] text-[#8C5D33] uppercase">
+            <span className={cn("font-sans text-[11px] sm:text-xs font-semibold tracking-[0.25em] uppercase", t.eyebrow)}>
               A Complete Guide · एक सम्पूर्ण मार्गदर्शिका
             </span>
           </div>
 
           {/* Primary Titles */}
-          <h1 className="font-hindi text-3xl sm:text-5xl md:text-6xl font-extrabold text-[#3D2314] tracking-normal leading-tight text-center">
+          <h1 className={cn("font-hindi text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-normal leading-tight text-center", t.titleHi)}>
             विक्रमादित्य वैदिक घड़ी
           </h1>
 
-          <h2 className="font-serif text-xl sm:text-2xl md:text-3xl text-[#4A2E1B] font-medium tracking-tight mt-1 text-center">
+          <h2 className={cn("font-serif text-xl sm:text-2xl md:text-3xl font-medium tracking-tight mt-1 text-center", t.titleEn)}>
             Vikramaditya Vedic Clock
           </h2>
 
           {/* Golden Hairline Divider */}
-          <div className="w-24 sm:w-32 h-[1.5px] bg-[#C29858] my-6 opacity-75" />
+          <div className={cn("w-24 sm:w-32 h-[1.5px] my-6 opacity-75", t.divider)} />
 
           {/* Subtitles */}
           <div className="flex flex-col items-center text-center gap-1.5 max-w-xl mb-10 sm:mb-14">
-            <p className="font-hindi text-sm sm:text-base md:text-lg text-[#4A2E1B] font-medium leading-relaxed">
+            <p className={cn("font-hindi text-sm sm:text-base md:text-lg font-medium leading-relaxed", t.titleHi)}>
               सूर्योदय पर आधारित भारत की प्राचीन समय-प्रणाली को समझने की मार्गदर्शिका
             </p>
-            <p className="font-sans text-xs sm:text-sm text-[#70523C] leading-relaxed">
+            <p className={cn("font-sans text-xs sm:text-sm leading-relaxed", t.bodyEn)}>
               Understanding India&apos;s ancient, sunrise-based system of time
             </p>
           </div>
@@ -322,20 +384,20 @@ export default function GuidePage() {
           {/* ── TABLE OF CONTENTS (Using M5: PanchangTableRow) ── */}
           <section
             aria-label="विषय-सूची — Table of Contents"
-            className="w-full max-w-4xl bg-[#FAF4EA] border border-[#DFCBB5] rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 shadow-sm"
+            className={cn("w-full max-w-4xl rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 shadow-sm border", t.box)}
           >
             {/* Table Container Eyebrow */}
-            <div className="px-2 sm:px-4 pt-1 pb-3 sm:pb-4 border-b border-[#DFCBB5]/50 flex items-center justify-between">
-              <span className="font-sans text-[11px] sm:text-xs font-semibold tracking-[0.2em] text-[#8C5D33] uppercase">
+            <div className={cn("px-2 sm:px-4 pt-1 pb-3 sm:pb-4 border-b flex items-center justify-between", t.borderSubtle)}>
+              <span className={cn("font-sans text-[11px] sm:text-xs font-semibold tracking-[0.2em] uppercase", t.eyebrow)}>
                 TABLE OF CONTENTS · विषय-सूची (८ अध्याय)
               </span>
-              <span className="font-sans text-[10.5px] text-[#70523C]/70">
+              <span className={cn("font-sans text-[10.5px]", t.muted)}>
                 Click chapter to jump
               </span>
             </div>
 
             {/* List of 9 Chapters using PanchangTableRow (M5) */}
-            <div className="divide-y divide-[#DFCBB5]/40">
+            <div className={cn("divide-y", t.divideSubtle)}>
               {TOC_ITEMS.map((item) => (
                 <PanchangTableRow
                   key={item.id}
@@ -347,7 +409,7 @@ export default function GuidePage() {
                   detail="अध्याय पर जाएँ · Jump to Chapter →"
                   isHighlighted={selectedChapter === item.id}
                   onClick={() => scrollToSection(item.id)}
-                  variant="parchment"
+                  variant={isParchment ? "parchment" : "dark"}
                 />
               ))}
             </div>
@@ -361,30 +423,30 @@ export default function GuidePage() {
            ======================================================== */}
         <article
           id="chapter-1"
-          className="w-full bg-[#F8F2E8] border border-[#DFCBB5] rounded-3xl p-5 sm:p-8 md:p-12 shadow-[0_12px_40px_rgba(72,45,28,0.08)] flex flex-col scroll-mt-24"
+          className={cn("w-full rounded-3xl p-5 sm:p-8 md:p-12 flex flex-col scroll-mt-24 border transition-colors duration-300", t.card)}
         >
           {/* Quick Nav back to TOC */}
-          <div className="w-full flex items-center justify-between mb-8 pb-4 border-b border-[#DFCBB5]/60 text-xs font-sans">
+          <div className={cn("w-full flex items-center justify-between mb-8 pb-4 border-b text-xs font-sans", t.quickNavBorder)}>
             <button
               type="button"
               onClick={scrollToTop}
-              className="inline-flex items-center gap-1.5 text-[#8C5D33] hover:text-[#3D2314] font-medium transition-colors cursor-pointer"
+              className={cn("inline-flex items-center gap-1.5 font-medium transition-colors cursor-pointer", t.quickNav)}
             >
               <span>↑</span>
               <span>विषय-सूची · Table of Contents</span>
             </button>
-            <span className="text-[#8C5D33]/70 font-mono tracking-wider">
+            <span className={cn("font-mono tracking-wider", t.eyebrow)}>
               CHAPTER 01
             </span>
           </div>
 
           {/* Header Capsule */}
           <div className="w-full flex justify-center mb-10 sm:mb-12">
-            <div className="w-full max-w-lg bg-[#482D1C] rounded-full py-3.5 sm:py-4 px-6 sm:px-10 text-center shadow-[0_6px_20px_rgba(72,45,28,0.25)] flex flex-col items-center">
-              <span className="font-hindi text-xl sm:text-2xl md:text-3xl text-[#FFF9F0] font-bold leading-tight tracking-wide">
+            <div className={cn("w-full max-w-lg rounded-full py-3.5 sm:py-4 px-6 sm:px-10 text-center flex flex-col items-center transition-all", t.capsule)}>
+              <span className={cn("font-hindi text-xl sm:text-2xl md:text-3xl font-bold leading-tight tracking-wide", t.capsuleHi)}>
                 वैदिक समय को समझना
               </span>
-              <span className="font-serif text-xs sm:text-sm text-[#DFCBB5] tracking-wider mt-1">
+              <span className={cn("font-serif text-xs sm:text-sm tracking-wider mt-1", t.capsuleEn)}>
                 Understanding Vedic Time
               </span>
             </div>
@@ -397,15 +459,15 @@ export default function GuidePage() {
                 hi="विक्रमादित्य वैदिक घड़ी"
                 en="The Vikramaditya Vedic Clock"
                 size="md"
-                variant="light"
+                variant={isParchment ? "light" : "dark"}
               />
             </div>
 
-            <p className="font-hindi text-sm sm:text-base text-[#2D1B0E] font-medium leading-relaxed mb-2.5 text-justify">
+            <p className={cn("font-hindi text-sm sm:text-base font-medium leading-relaxed mb-2.5 text-justify", t.bodyHi)}>
               विक्रमादित्य वैदिक घड़ी भारत की प्राचीन समय-प्रणाली को आधुनिक डिजिटल रूप में सामने लाती है। इसमें एक दिन — अर्थात् एक सूर्योदय से अगले सूर्योदय तक — को 30 मुहूर्त में बाँटा गया है। प्रत्येक मुहूर्त 30 कला में और प्रत्येक कला 30 काष्ठा में विभाजित होती है। घड़ी किसी भी स्थान के अक्षांश, देशांतर और स्थानीय सूर्योदय के आधार पर यह समय सटीक रूप से निकालती है।
             </p>
 
-            <p className="font-sans text-xs sm:text-[13.5px] text-[#5C4230] leading-relaxed text-justify">
+            <p className={cn("font-sans text-xs sm:text-[13.5px] leading-relaxed text-justify", t.bodyEn)}>
               The Vikramaditya Vedic Clock brings India&apos;s ancient time system into a modern digital form. It divides a day — one sunrise to the next — into 30 Muhurtas. Each Muhurta contains 30 Kala, and each Kala contains 30 Kashtha. The clock calculates this precisely for any location, using its latitude, longitude, and local sunrise.
             </p>
           </div>
@@ -417,15 +479,15 @@ export default function GuidePage() {
                 hi="वैदिक काल-गणना का इतिहास"
                 en="A Brief History of Vedic Time-Keeping"
                 size="md"
-                variant="light"
+                variant={isParchment ? "light" : "dark"}
               />
             </div>
 
-            <p className="font-hindi text-sm sm:text-base text-[#2D1B0E] font-medium leading-relaxed mb-2.5 text-justify">
+            <p className={cn("font-hindi text-sm sm:text-base font-medium leading-relaxed mb-2.5 text-justify", t.bodyHi)}>
               ऋग्वेद में समय की पहली गणना &apos;मुहूर्त&apos; के रूप में मिलती है — एक सूर्योदय से दूसरे सूर्योदय तक 30 मुहूर्त, प्रत्येक मुहूर्त में 30 काल और प्रत्येक काल में 30 काष्ठा। इस प्रकार प्राचीन भारत एक 30-घंटे की समय-प्रणाली का उपयोग करता था, जिसमें सूर्योदय से सूर्यास्त तक 15 मुहूर्त और सूर्यास्त से अगले सूर्योदय तक शेष 15 मुहूर्त होते थे। यांत्रिक तकनीक की सीमाओं के कारण 20वीं सदी तक इस प्रणाली पर आधारित घड़ियाँ बनाना संभव नहीं था, और सन् 1884 में 24-घंटे की प्रणाली को वैश्विक मानक के रूप में अपना लिया गया। अब डिजिटल तकनीक की मदद से इस प्राचीन, सूर्योदय-आधारित प्रणाली को पुनः जीवित किया जा सकता है।
             </p>
 
-            <p className="font-sans text-xs sm:text-[13.5px] text-[#5C4230] leading-relaxed text-justify">
+            <p className={cn("font-sans text-xs sm:text-[13.5px] leading-relaxed text-justify", t.bodyEn)}>
               The Rig Veda contains the earliest known unit of time, the &apos;Muhurta&apos; — 30 of them between one sunrise and the next, each split into 30 Kala, each Kala into 30 Kashtha. Ancient India effectively worked on a 30-hour clock, with 15 Muhurtas from sunrise to sunset and the remaining 15 from sunset to the next sunrise. Mechanical clockwork couldn&apos;t support a system this granular until the 20th century, and the 24-hour system was adopted worldwide in 1884. With digital technology, this older, sunrise-based system can now be brought back to life.
             </p>
           </div>
@@ -437,30 +499,30 @@ export default function GuidePage() {
                 hi="सूर्योदय ही क्यों?"
                 en="Why Anchor Time to Sunrise?"
                 size="md"
-                variant="light"
+                variant={isParchment ? "light" : "dark"}
               />
             </div>
 
-            <p className="font-hindi text-sm sm:text-base text-[#2D1B0E] font-medium leading-relaxed mb-2.5 text-justify">
+            <p className={cn("font-hindi text-sm sm:text-base font-medium leading-relaxed mb-2.5 text-justify", t.bodyHi)}>
               वैदिक ऋषियों ने एक ऐसी समय-प्रणाली विकसित की जो मनुष्य को प्रकृति से जोड़े, क्योंकि यह पृथ्वी की सूर्य के सापेक्ष स्थिति पर आधारित है। आज का कैलेंडर भी सूर्य पर आधारित है, परंतु दिन की गणना मध्यरात्रि (24:00) से होती है — एक मनमाना, प्रकृति से असंबद्ध बिंदु। वैदिक प्रणाली में तिथि सदैव सूर्योदय पर बदलती है, अर्थात प्रत्येक स्थान पर सुबह ठीक 00:00 बजे सूर्योदय होता है। इससे दिन की गणना कहीं अधिक सहज और सटीक हो जाती है।
             </p>
 
-            <p className="font-sans text-xs sm:text-[13.5px] text-[#5C4230] leading-relaxed text-justify">
+            <p className={cn("font-sans text-xs sm:text-[13.5px] leading-relaxed text-justify", t.bodyEn)}>
               The Vedic Rishis designed a time system that keeps people connected to nature, since it&apos;s based on the earth&apos;s position relative to the sun. Today&apos;s calendar is also solar, but the day still resets at an arbitrary point — midnight. In the Vedic system, the date instead changes at sunrise, so the clock always reads 00:00 the moment the sun rises at that location — a more intuitive and precise way of marking a day.
             </p>
           </div>
 
           {/* ── Callout: One More Thing (Daylight Saving Alignment) ── */}
           <section className="w-full mt-2">
-            <div className="border-2 border-dashed border-[#B8873D]/60 bg-[#FAF4EA] rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-sm">
-              <p className="font-hindi text-sm sm:text-base text-[#2D1B0E] font-medium leading-relaxed mb-3 text-justify">
-                <strong className="font-bold text-[#3D2314]">
+            <div className={cn("rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-sm", t.calloutDashed)}>
+              <p className={cn("font-hindi text-sm sm:text-base font-medium leading-relaxed mb-3 text-justify", t.bodyHi)}>
+                <strong className={cn("font-bold", t.titleHi)}>
                   एक और बात · One more thing
                 </strong>{" "}
                 — कई देश डेलाइट सेविंग टाइम का उपयोग करते हैं, जिससे सूर्योदय का समय स्थिर 24-घंटे की घड़ी पर प्रतिदिन बदलता दिखता है। एक सूर्योदय-आधारित घड़ी में यह भ्रम नहीं रहता — हर जगह सूर्योदय सदैव 00:00 पर होता है, और हर देश, राज्य व शहर का अपना स्थानीय वैदिक समय होता है, जो वहाँ की कार्य-संस्कृति को प्रकृति के अनुरूप व्यवस्थित करता है।
               </p>
 
-              <p className="font-sans text-xs sm:text-[13.5px] text-[#5C4230] leading-relaxed text-justify">
+              <p className={cn("font-sans text-xs sm:text-[13.5px] leading-relaxed text-justify", t.bodyEn)}>
                 Many countries use daylight saving time, which makes sunrise appear to shift daily on a fixed 24-hour clock. A sunrise-based clock removes that confusion — sunrise is always 00:00, everywhere — and every country, state, and city gets its own local Vedic time, keeping daily rhythms aligned with nature.
               </p>
             </div>
@@ -473,30 +535,30 @@ export default function GuidePage() {
            ======================================================== */}
         <article
           id="chapter-2"
-          className="w-full bg-[#F8F2E8] border border-[#DFCBB5] rounded-3xl p-5 sm:p-8 md:p-12 shadow-[0_12px_40px_rgba(72,45,28,0.08)] flex flex-col scroll-mt-24"
+          className={cn("w-full rounded-3xl p-5 sm:p-8 md:p-12 flex flex-col scroll-mt-24 border transition-colors duration-300", t.card)}
         >
           {/* Quick Nav back to TOC */}
-          <div className="w-full flex items-center justify-between mb-8 pb-4 border-b border-[#DFCBB5]/60 text-xs font-sans">
+          <div className={cn("w-full flex items-center justify-between mb-8 pb-4 border-b text-xs font-sans", t.quickNavBorder)}>
             <button
               type="button"
               onClick={scrollToTop}
-              className="inline-flex items-center gap-1.5 text-[#8C5D33] hover:text-[#3D2314] font-medium transition-colors cursor-pointer"
+              className={cn("inline-flex items-center gap-1.5 font-medium transition-colors cursor-pointer", t.quickNav)}
             >
               <span>↑</span>
               <span>विषय-सूची · Table of Contents</span>
             </button>
-            <span className="text-[#8C5D33]/70 font-mono tracking-wider">
+            <span className={cn("font-mono tracking-wider", t.eyebrow)}>
               CHAPTER 02
             </span>
           </div>
 
           {/* Header Capsule */}
           <div className="w-full flex justify-center mb-8 sm:mb-10">
-            <div className="w-full max-w-lg bg-[#482D1C] rounded-full py-3.5 sm:py-4 px-6 sm:px-10 text-center shadow-[0_6px_20px_rgba(72,45,28,0.25)] flex flex-col items-center">
-              <span className="font-hindi text-xl sm:text-2xl md:text-3xl text-[#FFF9F0] font-bold leading-tight tracking-wide">
+            <div className={cn("w-full max-w-lg rounded-full py-3.5 sm:py-4 px-6 sm:px-10 text-center flex flex-col items-center transition-all", t.capsule)}>
+              <span className={cn("font-hindi text-xl sm:text-2xl md:text-3xl font-bold leading-tight tracking-wide", t.capsuleHi)}>
                 वैदिक समय की इकाइयाँ
               </span>
-              <span className="font-serif text-xs sm:text-sm text-[#DFCBB5] tracking-wider mt-1">
+              <span className={cn("font-serif text-xs sm:text-sm tracking-wider mt-1", t.capsuleEn)}>
                 The Vedic Units of Time
               </span>
             </div>
@@ -504,104 +566,104 @@ export default function GuidePage() {
 
           {/* Intro Text */}
           <div className="mb-6 sm:mb-8 text-left">
-            <h3 className="font-hindi text-base sm:text-lg font-bold text-[#2D1B0E] leading-snug">
+            <h3 className={cn("font-hindi text-base sm:text-lg font-bold leading-snug", t.titleHi)}>
               प्राचीन वैदिक ग्रंथों (सूर्य सिद्धांत व विष्णु पुराण) में समय की सूक्ष्म से स्थूल इकाइयाँ:
             </h3>
-            <p className="font-sans text-xs sm:text-sm text-[#5C4230] mt-1 leading-relaxed">
+            <p className={cn("font-sans text-xs sm:text-sm mt-1 leading-relaxed", t.bodyEn)}>
               Ancient Vedic texts (Surya Siddhanta & Vishnu Purana) calibrate time from atomic moments to full cycles:
             </p>
           </div>
 
           {/* ── Table Container 1: Vedic Time Units Hierarchy (Matching media_1791463915816) ── */}
-          <div className="w-full bg-[#FAF4EA] border border-[#DFCBB5] rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 shadow-sm mb-8">
-            <div className="px-2 sm:px-4 pt-1 pb-3 sm:pb-4 border-b border-[#DFCBB5]/50 flex items-center justify-between">
-              <span className="font-sans text-[11px] sm:text-xs font-semibold tracking-[0.2em] text-[#8C5D33] uppercase">
+          <div className={cn("w-full rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 shadow-sm mb-8 border", t.box)}>
+            <div className={cn("px-2 sm:px-4 pt-1 pb-3 sm:pb-4 border-b flex items-center justify-between", t.borderSubtle)}>
+              <span className={cn("font-sans text-[11px] sm:text-xs font-semibold tracking-[0.2em] uppercase", t.eyebrow)}>
                 VEDIC TIME UNITS (NO DEITY/NATURE TAGS)
               </span>
-              <span className="font-sans text-[10.5px] text-[#70523C]/70">
+              <span className={cn("font-sans text-[10.5px]", t.muted)}>
                 Microsecond to Macro Cycles
               </span>
             </div>
-            <div className="divide-y divide-[#DFCBB5]/40">
+            <div className={cn("divide-y", t.divideSubtle)}>
               <PanchangTableRow
                 index={1}
                 nameHi="त्रुटि"
                 nameEn="Truti"
                 detail="= 29.6 microseconds"
-                variant="parchment"
+                variant={isParchment ? "parchment" : "dark"}
               />
               <PanchangTableRow
                 index={2}
                 nameHi="तत्पर"
                 nameEn="Tatpara"
                 detail="= 100 Truti ≈ 3.2 milliseconds"
-                variant="parchment"
+                variant={isParchment ? "parchment" : "dark"}
               />
               <PanchangTableRow
                 index={3}
                 nameHi="निमेष"
                 nameEn="Nimesha"
                 detail="= 45 Tatpara ≈ 0.13 seconds (one eye-blink)"
-                variant="parchment"
+                variant={isParchment ? "parchment" : "dark"}
               />
               <PanchangTableRow
                 index={4}
                 nameHi="काष्ठा"
                 nameEn="Kashtha"
                 detail="= 18 Nimesha ≈ 2.4 seconds"
-                variant="parchment"
+                variant={isParchment ? "parchment" : "dark"}
               />
               <PanchangTableRow
                 index={5}
                 nameHi="कला"
                 nameEn="Kala"
                 detail="= 30 Kashtha ≈ 72 seconds"
-                variant="parchment"
+                variant={isParchment ? "parchment" : "dark"}
               />
               <PanchangTableRow
                 index={6}
                 nameHi="घटी"
                 nameEn="Ghati"
                 detail="= 30 Kala ≈ 24 minutes (60 Ghati per day)"
-                variant="parchment"
+                variant={isParchment ? "parchment" : "dark"}
               />
               <PanchangTableRow
                 index={7}
                 nameHi="मुहूर्त"
                 nameEn="Muhurta"
                 detail="= 2 Ghati ≈ 48 minutes (30 Muhurtas per day)"
-                variant="parchment"
+                variant={isParchment ? "parchment" : "dark"}
               />
             </div>
           </div>
 
           {/* ── Table Container 2: Digital Clock Dial Units ── */}
           <div className="mb-4 text-left">
-            <h4 className="font-hindi text-sm sm:text-base font-bold text-[#2D1B0E] leading-snug">
+            <h4 className={cn("font-hindi text-sm sm:text-base font-bold leading-snug", t.titleHi)}>
               विक्रमादित्य वैदिक घड़ी के 3 मुख्य अंक:
             </h4>
-            <p className="font-sans text-xs sm:text-[13px] text-[#5C4230] mt-0.5 leading-relaxed">
+            <p className={cn("font-sans text-xs sm:text-[13px] mt-0.5 leading-relaxed", t.bodyEn)}>
               The 3 digital counter units active on the clock face:
             </p>
           </div>
 
-          <div className="w-full bg-[#FAF4EA] border border-[#DFCBB5] rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 shadow-sm mb-6 sm:mb-8">
-            <div className="px-2 sm:px-4 pt-1 pb-3 sm:pb-4 border-b border-[#DFCBB5]/50 flex items-center justify-between">
-              <span className="font-sans text-[11px] sm:text-xs font-semibold tracking-[0.2em] text-[#8C5D33] uppercase">
+          <div className={cn("w-full rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 shadow-sm mb-6 sm:mb-8 border", t.box)}>
+            <div className={cn("px-2 sm:px-4 pt-1 pb-3 sm:pb-4 border-b flex items-center justify-between", t.borderSubtle)}>
+              <span className={cn("font-sans text-[11px] sm:text-xs font-semibold tracking-[0.2em] uppercase", t.eyebrow)}>
                 CLOCK DIAL UNITS · घड़ी की मुख्य इकाइयाँ
               </span>
-              <span className="font-sans text-[10.5px] text-[#70523C]/70">
+              <span className={cn("font-sans text-[10.5px]", t.muted)}>
                 1 Sunrise = 30 Muhurtas
               </span>
             </div>
-            <div className="divide-y divide-[#DFCBB5]/40">
+            <div className={cn("divide-y", t.divideSubtle)}>
               <PanchangTableRow
                 index={1}
                 nameHi="मुहूर्त"
                 nameEn="Muhurta"
                 detail="= 30 संख्या/दिन ≈ 48 मिनट (विषुव पर)"
                 secondary="30 per day"
-                variant="parchment"
+                variant={isParchment ? "parchment" : "dark"}
               />
               <PanchangTableRow
                 index={2}
@@ -609,7 +671,7 @@ export default function GuidePage() {
                 nameEn="Kala"
                 detail="= 900 (30×30) ≈ 96 सेकंड"
                 secondary="900 per day"
-                variant="parchment"
+                variant={isParchment ? "parchment" : "dark"}
               />
               <PanchangTableRow
                 index={3}
@@ -617,17 +679,17 @@ export default function GuidePage() {
                 nameEn="Kashtha"
                 detail="= 27,000 (30×30×30) ≈ 3.2 सेकंड"
                 secondary="27,000 per day"
-                variant="parchment"
+                variant={isParchment ? "parchment" : "dark"}
               />
             </div>
           </div>
 
           {/* ── Callout Box with Left Accent Bar ── */}
-          <div className="w-full bg-[#EFE4D3] border-l-4 border-[#A36D31] rounded-r-2xl p-4 sm:p-5 shadow-sm">
-            <p className="font-hindi text-sm sm:text-[15px] font-bold text-[#2D1B0E] leading-relaxed mb-1.5 text-left">
+          <div className={cn("w-full rounded-r-2xl p-4 sm:p-5 shadow-sm", t.callout)}>
+            <p className={cn("font-hindi text-sm sm:text-[15px] font-bold leading-relaxed mb-1.5 text-left", t.bodyHi)}>
               घड़ी पर दिखने वाला समय जैसे 11:10:20 इसी तरह पढ़ा जाता है — 11वाँ मुहूर्त, 10वीं कला, 20वीं काष्ठा।
             </p>
-            <p className="font-sans text-xs sm:text-[13px] text-[#5C4230] leading-relaxed text-left">
+            <p className={cn("font-sans text-xs sm:text-[13px] leading-relaxed text-left", t.bodyEn)}>
               So a reading like 11:10:20 on the clock means: the 11th Muhurta, 10th Kala, 20th Kashtha of the current day.
             </p>
           </div>
@@ -639,30 +701,30 @@ export default function GuidePage() {
            ======================================================== */}
         <article
           id="chapter-3"
-          className="w-full bg-[#F8F2E8] border border-[#DFCBB5] rounded-3xl p-5 sm:p-8 md:p-12 shadow-[0_12px_40px_rgba(72,45,28,0.08)] flex flex-col scroll-mt-24"
+          className={cn("w-full rounded-3xl p-5 sm:p-8 md:p-12 flex flex-col scroll-mt-24 border transition-colors duration-300", t.card)}
         >
           {/* Quick Nav back to TOC */}
-          <div className="w-full flex items-center justify-between mb-8 pb-4 border-b border-[#DFCBB5]/60 text-xs font-sans">
+          <div className={cn("w-full flex items-center justify-between mb-8 pb-4 border-b text-xs font-sans", t.quickNavBorder)}>
             <button
               type="button"
               onClick={scrollToTop}
-              className="inline-flex items-center gap-1.5 text-[#8C5D33] hover:text-[#3D2314] font-medium transition-colors cursor-pointer"
+              className={cn("inline-flex items-center gap-1.5 font-medium transition-colors cursor-pointer", t.quickNav)}
             >
               <span>↑</span>
               <span>विषय-सूची · Table of Contents</span>
             </button>
-            <span className="text-[#8C5D33]/70 font-mono tracking-wider">
+            <span className={cn("font-mono tracking-wider", t.eyebrow)}>
               CHAPTER 03
             </span>
           </div>
 
           {/* Header Capsule */}
           <div className="w-full flex justify-center mb-8 sm:mb-10">
-            <div className="w-full max-w-lg bg-[#482D1C] rounded-full py-3.5 sm:py-4 px-6 sm:px-10 text-center shadow-[0_6px_20px_rgba(72,45,28,0.25)] flex flex-col items-center">
-              <span className="font-hindi text-xl sm:text-2xl md:text-3xl text-[#FFF9F0] font-bold leading-tight tracking-wide">
+            <div className={cn("w-full max-w-lg rounded-full py-3.5 sm:py-4 px-6 sm:px-10 text-center flex flex-col items-center transition-all", t.capsule)}>
+              <span className={cn("font-hindi text-xl sm:text-2xl md:text-3xl font-bold leading-tight tracking-wide", t.capsuleHi)}>
                 पंचांग के पाँच अंग
               </span>
-              <span className="font-serif text-xs sm:text-sm text-[#DFCBB5] tracking-wider mt-1">
+              <span className={cn("font-serif text-xs sm:text-sm tracking-wider mt-1", t.capsuleEn)}>
                 The Five Limbs of the Panchang
               </span>
             </div>
@@ -670,15 +732,15 @@ export default function GuidePage() {
 
           {/* Intro Text */}
           <div className="mb-6 sm:mb-8 text-left">
-            <h3 className="font-hindi text-base sm:text-lg font-bold text-[#2D1B0E] leading-snug">
+            <h3 className={cn("font-hindi text-base sm:text-lg font-bold leading-snug", t.titleHi)}>
               पंचांग पाँच मूल तत्वों से मिलकर बनता है — तिथि, वार, नक्षत्र, योग और करण। प्रत्येक दिन का चरित्र इन्हीं पाँच अंगों से तय होता है।
             </h3>
-            <p className="font-sans text-xs sm:text-sm text-[#5C4230] mt-1.5 leading-relaxed">
+            <p className={cn("font-sans text-xs sm:text-sm mt-1.5 leading-relaxed", t.bodyEn)}>
               The Panchang (Vedic almanac) is built from five core elements — Tithi, Vara, Nakshatra, Yoga and Karana. Together, they define the character of every single day.
             </p>
           </div>
 
-          <GoldDivider variant="light" className="my-6 max-w-sm mx-auto" />
+          <GoldDivider variant={isParchment ? "light" : "dark"} className="my-6 max-w-sm mx-auto" />
 
           {/* ────────────────────────────────────────────────────────
               LIMB 1: TITHI (तिथि — चंद्र दिवस)
@@ -689,42 +751,42 @@ export default function GuidePage() {
                 hi="1. तिथि — चंद्र दिवस"
                 en="1. Tithi — The Lunar Day"
                 size="md"
-                variant="light"
+                variant={isParchment ? "light" : "dark"}
               />
             </div>
 
-            <p className="font-hindi text-sm sm:text-base text-[#2D1B0E] font-medium leading-relaxed mb-2 text-justify">
+            <p className={cn("font-hindi text-sm sm:text-base font-medium leading-relaxed mb-2 text-justify", t.bodyHi)}>
               एक चंद्र मास में 30 तिथियाँ होती हैं — 15 शुक्ल पक्ष (बढ़ता चंद्रमा) और 15 कृष्ण पक्ष (घटता चंद्रमा) में।
             </p>
-            <p className="font-sans text-xs sm:text-[13.5px] text-[#5C4230] leading-relaxed mb-5 text-justify">
+            <p className={cn("font-sans text-xs sm:text-[13.5px] leading-relaxed mb-5 text-justify", t.bodyEn)}>
               A lunar month has 30 Tithis — 15 in Shukla Paksha (waxing moon) and 15 in Krishna Paksha (waning moon).
             </p>
 
             {/* Sacred Days Callouts */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4">
-              <div className="bg-[#FAF4EA] border border-[#D9C4AB] rounded-2xl p-4 shadow-sm">
-                <span className="font-hindi font-bold text-base text-[#3D2314] block">
-                  एकादशी · <span className="font-sans font-medium text-xs text-[#8C5D33]">Ekadashi</span>
+              <div className={cn("rounded-2xl p-4 shadow-sm border transition-colors", t.cardSm)}>
+                <span className={cn("font-hindi font-bold text-base block", t.titleHi)}>
+                  एकादशी · <span className={cn("font-sans font-medium text-xs", t.eyebrow)}>Ekadashi</span>
                 </span>
-                <p className="font-sans text-xs text-[#5C4230] mt-1.5 leading-relaxed">
+                <p className={cn("font-sans text-xs mt-1.5 leading-relaxed", t.bodyEn)}>
                   A sacred day dedicated to fasting, spiritual reflection, and inner cleansing.
                 </p>
               </div>
 
-              <div className="bg-[#FAF4EA] border border-[#D9C4AB] rounded-2xl p-4 shadow-sm">
-                <span className="font-hindi font-bold text-base text-[#3D2314] block">
-                  पूर्णिमा · <span className="font-sans font-medium text-xs text-[#8C5D33]">Purnima</span>
+              <div className={cn("rounded-2xl p-4 shadow-sm border transition-colors", t.cardSm)}>
+                <span className={cn("font-hindi font-bold text-base block", t.titleHi)}>
+                  पूर्णिमा · <span className={cn("font-sans font-medium text-xs", t.eyebrow)}>Purnima</span>
                 </span>
-                <p className="font-sans text-xs text-[#5C4230] mt-1.5 leading-relaxed">
+                <p className={cn("font-sans text-xs mt-1.5 leading-relaxed", t.bodyEn)}>
                   The radiant full moon; a powerful threshold for worship, celebration, and rituals.
                 </p>
               </div>
 
-              <div className="bg-[#FAF4EA] border border-[#D9C4AB] rounded-2xl p-4 shadow-sm">
-                <span className="font-hindi font-bold text-base text-[#3D2314] block">
-                  अमावस्या · <span className="font-sans font-medium text-xs text-[#8C5D33]">Amavasya</span>
+              <div className={cn("rounded-2xl p-4 shadow-sm border transition-colors", t.cardSm)}>
+                <span className={cn("font-hindi font-bold text-base block", t.titleHi)}>
+                  अमावस्या · <span className={cn("font-sans font-medium text-xs", t.eyebrow)}>Amavasya</span>
                 </span>
-                <p className="font-sans text-xs text-[#5C4230] mt-1.5 leading-relaxed">
+                <p className={cn("font-sans text-xs mt-1.5 leading-relaxed", t.bodyEn)}>
                   The dark new moon; reserved for contemplation, rest, and sacred ancestor rites.
                 </p>
               </div>
@@ -740,21 +802,21 @@ export default function GuidePage() {
                 hi="2. वार — सप्ताह का दिन"
                 en="2. Vara — The Day of the Week"
                 size="md"
-                variant="light"
+                variant={isParchment ? "light" : "dark"}
               />
             </div>
 
             {/* ── 7-Day Vara Table (Using M5: PanchangTableRow) ── */}
-            <div className="w-full bg-[#FAF4EA] border border-[#DFCBB5] rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 shadow-sm mb-12 sm:mb-14">
-              <div className="px-2 sm:px-4 pt-1 pb-3 sm:pb-4 border-b border-[#DFCBB5]/50 flex items-center justify-between">
-                <span className="font-sans text-[11px] sm:text-xs font-semibold tracking-[0.2em] text-[#8C5D33] uppercase">
+            <div className={cn("w-full rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 shadow-sm mb-12 sm:mb-14 border", t.box)}>
+              <div className={cn("px-2 sm:px-4 pt-1 pb-3 sm:pb-4 border-b flex items-center justify-between", t.borderSubtle)}>
+                <span className={cn("font-sans text-[11px] sm:text-xs font-semibold tracking-[0.2em] uppercase", t.eyebrow)}>
                   VARA LIST · सात वार व स्वामी ग्रह
                 </span>
-                <span className="font-sans text-[10.5px] text-[#70523C]/70">
+                <span className={cn("font-sans text-[10.5px]", t.muted)}>
                   7 Solar Days
                 </span>
               </div>
-              <div className="divide-y divide-[#DFCBB5]/40">
+              <div className={cn("divide-y", t.divideSubtle)}>
                 {VARA_ITEMS.map((item, idx) => (
                   <PanchangTableRow
                     key={item.dayEn}
@@ -765,7 +827,7 @@ export default function GuidePage() {
                     secondaryHi={item.planetHi}
                     detail={item.meaningEn}
                     detailHi={item.meaningHi}
-                    variant="parchment"
+                    variant={isParchment ? "parchment" : "dark"}
                   />
                 ))}
               </div>
@@ -781,14 +843,14 @@ export default function GuidePage() {
                 hi="3. नक्षत्र — 27 नक्षत्र"
                 en="3. Nakshatra — The 27 Lunar Mansions"
                 size="md"
-                variant="light"
+                variant={isParchment ? "light" : "dark"}
               />
             </div>
 
-            <p className="font-hindi text-sm sm:text-base text-[#2D1B0E] font-medium leading-relaxed mb-2 text-justify">
+            <p className={cn("font-hindi text-sm sm:text-base font-medium leading-relaxed mb-2 text-justify", t.bodyHi)}>
               चंद्रमा प्रतिदिन एक नक्षत्र में रहता है; प्रत्येक नक्षत्र आकाश के 13°20&apos; भाग को दर्शाता है और मन तथा भावनाओं को प्रभावित करता है।
             </p>
-            <p className="font-sans text-xs sm:text-[13.5px] text-[#5C4230] leading-relaxed mb-6 text-justify">
+            <p className={cn("font-sans text-xs sm:text-[13.5px] leading-relaxed mb-6 text-justify", t.bodyEn)}>
               The Moon occupies one Nakshatra each day; each spans 13°20&apos; of sky and colours the day&apos;s mental and emotional tone.
             </p>
 
@@ -797,24 +859,24 @@ export default function GuidePage() {
               {NAKSHATRA_ITEMS.map((item) => (
                 <div
                   key={item.num}
-                  className="bg-[#FAF4EA] border border-[#D9C4AB] rounded-xl p-3 sm:p-3.5 shadow-sm hover:border-[#B8873D] transition-colors"
+                  className={cn("rounded-xl p-3 sm:p-3.5 shadow-sm border transition-colors", t.cardSm)}
                 >
                   <div className="flex items-baseline gap-1.5 mb-1">
-                    <span className="font-sans text-[11px] font-bold text-[#8C5D33]">
+                    <span className={cn("font-sans text-[11px] font-bold", t.eyebrow)}>
                       {item.num}.
                     </span>
-                    <span className="font-hindi font-bold text-sm text-[#3D2314]">
+                    <span className={cn("font-hindi font-bold text-sm", t.titleHi)}>
                       {item.hi}
                     </span>
-                    <span className="text-[#8C5D33] text-xs">·</span>
-                    <span className="font-sans text-xs text-[#70523C] font-medium">
+                    <span className={cn(t.eyebrow, "text-xs")}>·</span>
+                    <span className={cn("font-sans text-xs font-medium", t.muted)}>
                       {item.en}
                     </span>
                   </div>
-                  <p className="font-hindi text-[11.5px] text-[#2D1B0E] font-medium leading-tight">
+                  <p className={cn("font-hindi text-[11.5px] font-medium leading-tight", t.bodyHi)}>
                     {item.descHi}
                   </p>
-                  <p className="font-sans text-[10.5px] text-[#70523C] leading-tight mt-0.5">
+                  <p className={cn("font-sans text-[10.5px] leading-tight mt-0.5", t.muted)}>
                     {item.descEn}
                   </p>
                 </div>
@@ -831,14 +893,14 @@ export default function GuidePage() {
                 hi="4. योग — 27 योग"
                 en="4. Yoga — The 27 Yogas"
                 size="md"
-                variant="light"
+                variant={isParchment ? "light" : "dark"}
               />
             </div>
 
-            <p className="font-hindi text-sm sm:text-base text-[#2D1B0E] font-medium leading-relaxed mb-2 text-justify">
+            <p className={cn("font-hindi text-sm sm:text-base font-medium leading-relaxed mb-2 text-justify", t.bodyHi)}>
               योग सूर्य और चंद्रमा की संयुक्त स्थिति से बनता है और दिन के समग्र फल को दर्शाता है।
             </p>
-            <p className="font-sans text-xs sm:text-[13.5px] text-[#5C4230] leading-relaxed mb-6 text-justify">
+            <p className={cn("font-sans text-xs sm:text-[13.5px] leading-relaxed mb-6 text-justify", t.bodyEn)}>
               A Yoga arises from the combined position of the Sun and Moon, and reflects the overall outcome-tendency of the day.
             </p>
 
@@ -847,24 +909,24 @@ export default function GuidePage() {
               {YOGA_ITEMS.map((item) => (
                 <div
                   key={item.num}
-                  className="bg-[#FAF4EA] border border-[#D9C4AB] rounded-xl p-3 sm:p-3.5 shadow-sm hover:border-[#B8873D] transition-colors"
+                  className={cn("rounded-xl p-3 sm:p-3.5 shadow-sm border transition-colors", t.cardSm)}
                 >
                   <div className="flex items-baseline gap-1.5 mb-1">
-                    <span className="font-sans text-[11px] font-bold text-[#8C5D33]">
+                    <span className={cn("font-sans text-[11px] font-bold", t.eyebrow)}>
                       {item.num}.
                     </span>
-                    <span className="font-hindi font-bold text-sm text-[#3D2314]">
+                    <span className={cn("font-hindi font-bold text-sm", t.titleHi)}>
                       {item.hi}
                     </span>
-                    <span className="text-[#8C5D33] text-xs">·</span>
-                    <span className="font-sans text-xs text-[#70523C] font-medium">
+                    <span className={cn(t.eyebrow, "text-xs")}>·</span>
+                    <span className={cn("font-sans text-xs font-medium", t.muted)}>
                       {item.en}
                     </span>
                   </div>
-                  <p className="font-hindi text-[11.5px] text-[#2D1B0E] font-medium leading-tight">
+                  <p className={cn("font-hindi text-[11.5px] font-medium leading-tight", t.bodyHi)}>
                     {item.descHi}
                   </p>
-                  <p className="font-sans text-[10.5px] text-[#70523C] leading-tight mt-0.5">
+                  <p className={cn("font-sans text-[10.5px] leading-tight mt-0.5", t.muted)}>
                     {item.descEn}
                   </p>
                 </div>
@@ -881,28 +943,28 @@ export default function GuidePage() {
                 hi="5. करण — 11 करण"
                 en="5. Karana — The 11 Karanas"
                 size="md"
-                variant="light"
+                variant={isParchment ? "light" : "dark"}
               />
             </div>
 
-            <p className="font-hindi text-sm sm:text-base text-[#2D1B0E] font-medium leading-relaxed mb-2 text-justify">
+            <p className={cn("font-hindi text-sm sm:text-base font-medium leading-relaxed mb-2 text-justify", t.bodyHi)}>
               प्रत्येक तिथि दो करण में बँटी होती है — कुल 11 नाम हैं, जिनमें से 7 बार-बार आते हैं और 4 स्थिर हैं।
             </p>
-            <p className="font-sans text-xs sm:text-[13.5px] text-[#5C4230] leading-relaxed mb-6 text-justify">
+            <p className={cn("font-sans text-xs sm:text-[13.5px] leading-relaxed mb-6 text-justify", t.bodyEn)}>
               Each Tithi splits into two Karanas. There are 11 names in all — 7 repeat through the month, and 4 are fixed.
             </p>
 
             {/* ── 11 Karanas Table (Using M5: PanchangTableRow) ── */}
-            <div className="w-full bg-[#FAF4EA] border border-[#DFCBB5] rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 shadow-sm mb-4">
-              <div className="px-2 sm:px-4 pt-1 pb-3 sm:pb-4 border-b border-[#DFCBB5]/50 flex items-center justify-between">
-                <span className="font-sans text-[11px] sm:text-xs font-semibold tracking-[0.2em] text-[#8C5D33] uppercase">
+            <div className={cn("w-full rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 shadow-sm mb-4 border", t.box)}>
+              <div className={cn("px-2 sm:px-4 pt-1 pb-3 sm:pb-4 border-b flex items-center justify-between", t.borderSubtle)}>
+                <span className={cn("font-sans text-[11px] sm:text-xs font-semibold tracking-[0.2em] uppercase", t.eyebrow)}>
                   KARANA LIST · ग्यारह करण
                 </span>
-                <span className="font-sans text-[10.5px] text-[#70523C]/70">
+                <span className={cn("font-sans text-[10.5px]", t.muted)}>
                   7 Repeating · 4 Fixed
                 </span>
               </div>
-              <div className="divide-y divide-[#DFCBB5]/40">
+              <div className={cn("divide-y", t.divideSubtle)}>
                 {KARANA_ITEMS.map((item) => (
                   <PanchangTableRow
                     key={item.en}
@@ -912,7 +974,7 @@ export default function GuidePage() {
                     badge={`${item.typeHi} · ${item.typeEn}`}
                     detail={item.descEn}
                     detailHi={item.descHi}
-                    variant="parchment"
+                    variant={isParchment ? "parchment" : "dark"}
                   />
                 ))}
               </div>
@@ -926,30 +988,30 @@ export default function GuidePage() {
            ======================================================== */}
         <article
           id="chapter-4"
-          className="w-full bg-[#F8F2E8] border border-[#DFCBB5] rounded-3xl p-5 sm:p-8 md:p-12 shadow-[0_12px_40px_rgba(72,45,28,0.08)] flex flex-col scroll-mt-24"
+          className={cn("w-full rounded-3xl p-5 sm:p-8 md:p-12 flex flex-col scroll-mt-24 border transition-colors duration-300", t.card)}
         >
           {/* Quick Nav back to TOC */}
-          <div className="w-full flex items-center justify-between mb-8 pb-4 border-b border-[#DFCBB5]/60 text-xs font-sans">
+          <div className={cn("w-full flex items-center justify-between mb-8 pb-4 border-b text-xs font-sans", t.quickNavBorder)}>
             <button
               type="button"
               onClick={scrollToTop}
-              className="inline-flex items-center gap-1.5 text-[#8C5D33] hover:text-[#3D2314] font-medium transition-colors cursor-pointer"
+              className={cn("inline-flex items-center gap-1.5 font-medium transition-colors cursor-pointer", t.quickNav)}
             >
               <span>↑</span>
               <span>विषय-सूची · Table of Contents</span>
             </button>
-            <span className="text-[#8C5D33]/70 font-mono tracking-wider">
+            <span className={cn("font-mono tracking-wider", t.eyebrow)}>
               CHAPTER 04
             </span>
           </div>
 
           {/* Header Capsule */}
           <div className="w-full flex justify-center mb-8 sm:mb-10">
-            <div className="w-full max-w-lg bg-[#482D1C] rounded-full py-3.5 sm:py-4 px-6 sm:px-10 text-center shadow-[0_6px_20px_rgba(72,45,28,0.25)] flex flex-col items-center">
-              <span className="font-hindi text-xl sm:text-2xl md:text-3xl text-[#FFF9F0] font-bold leading-tight tracking-wide">
+            <div className={cn("w-full max-w-lg rounded-full py-3.5 sm:py-4 px-6 sm:px-10 text-center flex flex-col items-center transition-all", t.capsule)}>
+              <span className={cn("font-hindi text-xl sm:text-2xl md:text-3xl font-bold leading-tight tracking-wide", t.capsuleHi)}>
                 तीस नित्य-मुहूर्त
               </span>
-              <span className="font-serif text-xs sm:text-sm text-[#DFCBB5] tracking-wider mt-1">
+              <span className={cn("font-serif text-xs sm:text-sm tracking-wider mt-1", t.capsuleEn)}>
                 The 30 Daily Muhurtas
               </span>
             </div>
@@ -957,10 +1019,10 @@ export default function GuidePage() {
 
           {/* Intro Text */}
           <div className="mb-6 sm:mb-8 text-left">
-            <h3 className="font-hindi text-base sm:text-lg font-bold text-[#2D1B0E] leading-snug">
+            <h3 className={cn("font-hindi text-base sm:text-lg font-bold leading-snug", t.titleHi)}>
               दिन के 30 भाग — प्रत्येक का अपना स्वभाव और मार्गदर्शन है। विषुव पर एक मुहूर्त ≈ 48 मिनट का होता है।
             </h3>
-            <p className="font-sans text-xs sm:text-sm text-[#5C4230] mt-1.5 leading-relaxed">
+            <p className={cn("font-sans text-xs sm:text-sm mt-1.5 leading-relaxed", t.bodyEn)}>
               The 30 parts of the day — each with its own nature and guidance. On the equinox, one Muhurta ≈ 48 minutes.
             </p>
           </div>
@@ -973,8 +1035,12 @@ export default function GuidePage() {
               className={cn(
                 "px-3.5 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium",
                 muhurtaFilter === "all"
-                  ? "bg-[#482D1C] text-[#FFF9F0] shadow-sm"
-                  : "bg-[#EEDEC8]/70 text-[#482D1C] hover:bg-[#EEDEC8]"
+                  ? isParchment
+                    ? "bg-[#482D1C] text-[#FFF9F0] shadow-sm"
+                    : "bg-[#D4A65A] text-[#03060E] font-semibold shadow-[0_0_12px_rgba(212,166,90,0.4)]"
+                  : isParchment
+                    ? "bg-[#EEDEC8]/70 text-[#482D1C] hover:bg-[#EEDEC8]"
+                    : "bg-[#0B1325] text-ivory/70 border border-[#D4A65A]/20 hover:border-[#D4A65A]/40"
               )}
             >
               समग्र ३० · All 30
@@ -985,8 +1051,12 @@ export default function GuidePage() {
               className={cn(
                 "px-3.5 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium",
                 muhurtaFilter === "day"
-                  ? "bg-[#482D1C] text-[#FFF9F0] shadow-sm"
-                  : "bg-[#EEDEC8]/70 text-[#482D1C] hover:bg-[#EEDEC8]"
+                  ? isParchment
+                    ? "bg-[#482D1C] text-[#FFF9F0] shadow-sm"
+                    : "bg-[#D4A65A] text-[#03060E] font-semibold shadow-[0_0_12px_rgba(212,166,90,0.4)]"
+                  : isParchment
+                    ? "bg-[#EEDEC8]/70 text-[#482D1C] hover:bg-[#EEDEC8]"
+                    : "bg-[#0B1325] text-ivory/70 border border-[#D4A65A]/20 hover:border-[#D4A65A]/40"
               )}
             >
               दिवस १–१५ · Day (1–15)
@@ -997,8 +1067,12 @@ export default function GuidePage() {
               className={cn(
                 "px-3.5 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium",
                 muhurtaFilter === "night"
-                  ? "bg-[#482D1C] text-[#FFF9F0] shadow-sm"
-                  : "bg-[#EEDEC8]/70 text-[#482D1C] hover:bg-[#EEDEC8]"
+                  ? isParchment
+                    ? "bg-[#482D1C] text-[#FFF9F0] shadow-sm"
+                    : "bg-[#D4A65A] text-[#03060E] font-semibold shadow-[0_0_12px_rgba(212,166,90,0.4)]"
+                  : isParchment
+                    ? "bg-[#EEDEC8]/70 text-[#482D1C] hover:bg-[#EEDEC8]"
+                    : "bg-[#0B1325] text-ivory/70 border border-[#D4A65A]/20 hover:border-[#D4A65A]/40"
               )}
             >
               रात्रि १६–३० · Night (16–30)
@@ -1010,7 +1084,9 @@ export default function GuidePage() {
                 "px-3.5 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium",
                 muhurtaFilter === "auspicious"
                   ? "bg-[#256029] text-white shadow-sm"
-                  : "bg-[#EAF5E9] text-[#256029] hover:bg-[#D5EED4]"
+                  : isParchment
+                    ? "bg-[#EAF5E9] text-[#256029] hover:bg-[#D5EED4]"
+                    : "bg-[#0F2314] text-[#4ADE80] border border-[#256029]/40 hover:bg-[#15341E]"
               )}
             >
               शुभ · Auspicious
@@ -1022,7 +1098,9 @@ export default function GuidePage() {
                 "px-3.5 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium",
                 muhurtaFilter === "inauspicious"
                   ? "bg-[#A63620] text-white shadow-sm"
-                  : "bg-[#FDECE8] text-[#A63620] hover:bg-[#F9D8D2]"
+                  : isParchment
+                    ? "bg-[#FDECE8] text-[#A63620] hover:bg-[#F9D8D2]"
+                    : "bg-[#250F0F] text-[#F87171] border border-[#A63620]/40 hover:bg-[#341515]"
               )}
             >
               अशुभ · Inauspicious
@@ -1030,9 +1108,9 @@ export default function GuidePage() {
           </div>
 
           {/* ── 30 Muhurtas Document Table (Exact match of media_1791465161128) ── */}
-          <div className="w-full bg-[#FAF5EC] border border-[#DFCBB5] rounded-2xl sm:rounded-3xl shadow-sm overflow-hidden">
+          <div className={cn("w-full rounded-2xl sm:rounded-3xl shadow-sm overflow-hidden border", t.boxTable)}>
             {/* Desktop / Tablet Header Row (md and above) */}
-            <div className="hidden md:flex w-full bg-[#482D1C] text-[#FFF9F0] py-3.5 px-6 items-center gap-4 font-sans text-sm font-bold select-none">
+            <div className={cn("hidden md:flex w-full py-3.5 px-6 items-center gap-4 font-sans text-sm font-bold select-none", t.th)}>
               <div className="w-12 text-center shrink-0">#</div>
               <div className="w-36 shrink-0 text-left">मुहूर्त · Muhurta</div>
               <div className="w-44 shrink-0 text-left">प्रकृति · Nature</div>
@@ -1041,16 +1119,18 @@ export default function GuidePage() {
             </div>
 
             {/* Mobile Header Bar (< md) */}
-            <div className="md:hidden w-full bg-[#482D1C] text-[#FFF9F0] py-3 px-4 flex items-center justify-between font-sans text-xs font-bold select-none">
+            <div className={cn("md:hidden w-full py-3 px-4 flex items-center justify-between font-sans text-xs font-bold select-none", t.th)}>
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#E5A84B]" />
                 <span className="tracking-wide">३० नित्य-मुहूर्त · 30 MUHURTAS</span>
               </div>
-              <span className="text-[#DFCBB5] text-[11px] font-normal">दैनिक मुहूर्त विवरण</span>
+              <span className={cn("text-[11px] font-normal", isParchment ? "text-[#DFCBB5]" : "text-[#D4A65A]/80")}>
+                दैनिक मुहूर्त विवरण
+              </span>
             </div>
 
-            {/* Table Rows (Zebra striped: alternating #FAF5EC and #F2E6D4) */}
-            <div className="w-full divide-y divide-[#DFCBB5]/40">
+            {/* Table Rows (Zebra striped: alternating #FAF5EC/#F2E6D4 in parchment or #060C1A/#0A1224 in cosmic) */}
+            <div className={cn("w-full divide-y", t.divideSubtle)}>
               {filteredMuhurtas.map((item, idx) => (
                 <PanchangTableRow
                   key={item.num}
@@ -1063,10 +1143,14 @@ export default function GuidePage() {
                   detail={item.doEn}
                   avoidHi={item.avoidHi}
                   avoid={item.avoidEn}
-                  variant="document"
+                  variant={isParchment ? "document" : "document-dark"}
                   isHighlighted={selectedMuhurta === item.num}
                   onClick={() => setSelectedMuhurta(item.num)}
-                  className={idx % 2 === 1 ? "bg-[#F2E6D4]" : "bg-[#FAF5EC]"}
+                  className={
+                    isParchment
+                      ? (idx % 2 === 1 ? "bg-[#F2E6D4]" : "bg-[#FAF5EC]")
+                      : (idx % 2 === 1 ? "bg-[#0A1224]" : "bg-[#060C1A]")
+                  }
                 />
               ))}
             </div>
@@ -1078,30 +1162,30 @@ export default function GuidePage() {
            ======================================================== */}
         <article
           id="chapter-5"
-          className="w-full bg-[#F8F2E8] border border-[#DFCBB5] rounded-3xl p-5 sm:p-8 md:p-12 shadow-[0_12px_40px_rgba(72,45,28,0.08)] flex flex-col scroll-mt-24"
+          className={cn("w-full rounded-3xl p-5 sm:p-8 md:p-12 flex flex-col scroll-mt-24 border transition-colors duration-300", t.card)}
         >
           {/* Quick Nav back to TOC */}
-          <div className="w-full flex items-center justify-between mb-8 pb-4 border-b border-[#DFCBB5]/60 text-xs font-sans">
+          <div className={cn("w-full flex items-center justify-between mb-8 pb-4 border-b text-xs font-sans", t.quickNavBorder)}>
             <button
               type="button"
               onClick={scrollToTop}
-              className="inline-flex items-center gap-1.5 text-[#8C5D33] hover:text-[#3D2314] font-medium transition-colors cursor-pointer"
+              className={cn("inline-flex items-center gap-1.5 font-medium transition-colors cursor-pointer", t.quickNav)}
             >
               <span>↑</span>
               <span>विषय-सूची · Table of Contents</span>
             </button>
-            <span className="text-[#8C5D33]/70 font-mono tracking-wider">
+            <span className={cn("font-mono tracking-wider", t.eyebrow)}>
               CHAPTER 05
             </span>
           </div>
 
           {/* Header Capsule (Matching book document scan media_1791472831537) */}
           <div className="w-full flex justify-center mb-8 sm:mb-10">
-            <div className="w-full max-w-lg bg-[#482D1C] rounded-full py-3.5 sm:py-4 px-6 sm:px-10 text-center shadow-[0_6px_20px_rgba(72,45,28,0.25)] flex flex-col items-center">
-              <span className="font-hindi text-xl sm:text-2xl md:text-3xl text-[#FFF9F0] font-bold leading-tight tracking-wide">
+            <div className={cn("w-full max-w-lg rounded-full py-3.5 sm:py-4 px-6 sm:px-10 text-center flex flex-col items-center transition-all", t.capsule)}>
+              <span className={cn("font-hindi text-xl sm:text-2xl md:text-3xl font-bold leading-tight tracking-wide", t.capsuleHi)}>
                 राशि — सूर्य व चंद्र
               </span>
-              <span className="font-serif text-xs sm:text-sm text-[#DFCBB5] tracking-wider mt-1">
+              <span className={cn("font-serif text-xs sm:text-sm tracking-wider mt-1", t.capsuleEn)}>
                 Rashi — Zodiac Signs
               </span>
             </div>
@@ -1110,37 +1194,37 @@ export default function GuidePage() {
           {/* ── Top Callouts (Surya Rashi & Chandra Rashi) ── */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-10">
             {/* Surya Rashi Card */}
-            <div className="flex flex-col items-start bg-[#FAF4EA] border border-[#DFCBB5] rounded-2xl p-5 sm:p-6 shadow-sm">
+            <div className={cn("flex flex-col items-start rounded-2xl p-5 sm:p-6 shadow-sm border", t.box)}>
               <div className="mb-3">
                 <BilingualPill
                   hi="सूर्य राशि"
                   en="Surya Rashi"
                   size="md"
-                  variant="light"
+                  variant={isParchment ? "light" : "dark"}
                 />
               </div>
-              <p className="font-hindi text-sm sm:text-base text-[#2D1B0E] font-medium leading-relaxed mb-2 text-justify">
+              <p className={cn("font-hindi text-sm sm:text-base font-medium leading-relaxed mb-2 text-justify", t.bodyHi)}>
                 सूर्य की स्थिति; आत्मा, जीवनशक्ति और मासिक प्रवाह को दर्शाती है।
               </p>
-              <p className="font-sans text-xs sm:text-[13.5px] text-[#5C4230] leading-relaxed text-justify">
+              <p className={cn("font-sans text-xs sm:text-[13.5px] leading-relaxed text-justify", t.bodyEn)}>
                 Position of the Sun; reflects the soul, vitality, and month-long tone.
               </p>
             </div>
 
             {/* Chandra Rashi Card */}
-            <div className="flex flex-col items-start bg-[#FAF4EA] border border-[#DFCBB5] rounded-2xl p-5 sm:p-6 shadow-sm">
+            <div className={cn("flex flex-col items-start rounded-2xl p-5 sm:p-6 shadow-sm border", t.box)}>
               <div className="mb-3">
                 <BilingualPill
                   hi="चंद्र राशि"
                   en="Chandra Rashi"
                   size="md"
-                  variant="light"
+                  variant={isParchment ? "light" : "dark"}
                 />
               </div>
-              <p className="font-hindi text-sm sm:text-base text-[#2D1B0E] font-medium leading-relaxed mb-2 text-justify">
+              <p className={cn("font-hindi text-sm sm:text-base font-medium leading-relaxed mb-2 text-justify", t.bodyHi)}>
                 चंद्रमा की स्थिति; मन, भावनाएँ और दैनिक परिणाम को दर्शाती है।
               </p>
-              <p className="font-sans text-xs sm:text-[13.5px] text-[#5C4230] leading-relaxed text-justify">
+              <p className={cn("font-sans text-xs sm:text-[13.5px] leading-relaxed text-justify", t.bodyEn)}>
                 Position of the Moon; reflects the mind, emotions, and day-to-day results.
               </p>
             </div>
@@ -1152,14 +1236,14 @@ export default function GuidePage() {
               hi="12 राशियाँ"
               en="The 12 Signs"
               size="md"
-              variant="light"
+              variant={isParchment ? "light" : "dark"}
             />
           </div>
 
           {/* ── 12 Signs Document Table (Exact match of media_1791472831537 using M5 PanchangTableRow) ── */}
-          <div className="w-full bg-[#FAF5EC] border border-[#DFCBB5] rounded-2xl sm:rounded-3xl shadow-sm overflow-hidden">
-            {/* Header Row (Deep walnut bar matching screenshot) */}
-            <div className="w-full bg-[#482D1C] text-[#FFF9F0] py-3.5 px-3.5 sm:px-6 flex items-center justify-between font-sans text-xs sm:text-sm font-bold select-none">
+          <div className={cn("w-full rounded-2xl sm:rounded-3xl shadow-sm overflow-hidden border", t.boxTable)}>
+            {/* Header Row (Deep walnut in parchment / cosmic dark in dark mode) */}
+            <div className={cn("w-full py-3.5 px-3.5 sm:px-6 flex items-center justify-between font-sans text-xs sm:text-sm font-bold select-none", t.th)}>
               <div className="w-1/2 sm:w-2/5 shrink-0 text-left">
                 राशि · Sign
               </div>
@@ -1168,8 +1252,8 @@ export default function GuidePage() {
               </div>
             </div>
 
-            {/* 12 Rows using M5 PanchangTableRow (Zebra striped: alternating #FAF5EC and #F2E6D4) */}
-            <div className="w-full divide-y divide-[#DFCBB5]/40">
+            {/* 12 Rows using M5 PanchangTableRow (Zebra striped) */}
+            <div className={cn("w-full divide-y", t.divideSubtle)}>
               {RASHI_GUIDE_ITEMS.map((item, idx) => (
                 <PanchangTableRow
                   key={item.en}
@@ -1178,8 +1262,12 @@ export default function GuidePage() {
                   nameEn={item.en}
                   detailHi={item.signifiesHi}
                   detail={item.signifiesEn}
-                  variant="document"
-                  className={idx % 2 === 1 ? "bg-[#F2E6D4]" : "bg-[#FAF5EC]"}
+                  variant={isParchment ? "document" : "document-dark"}
+                  className={
+                    isParchment
+                      ? (idx % 2 === 1 ? "bg-[#F2E6D4]" : "bg-[#FAF5EC]")
+                      : (idx % 2 === 1 ? "bg-[#0A1224]" : "bg-[#060C1A]")
+                  }
                 />
               ))}
             </div>
@@ -1191,30 +1279,30 @@ export default function GuidePage() {
            ======================================================== */}
         <article
           id="chapter-6"
-          className="w-full bg-[#F8F2E8] border border-[#DFCBB5] rounded-3xl p-5 sm:p-8 md:p-12 shadow-[0_12px_40px_rgba(72,45,28,0.08)] flex flex-col scroll-mt-24"
+          className={cn("w-full rounded-3xl p-5 sm:p-8 md:p-12 flex flex-col scroll-mt-24 border transition-colors duration-300", t.card)}
         >
           {/* Quick Nav back to TOC */}
-          <div className="w-full flex items-center justify-between mb-8 pb-4 border-b border-[#DFCBB5]/60 text-xs font-sans">
+          <div className={cn("w-full flex items-center justify-between mb-8 pb-4 border-b text-xs font-sans", t.quickNavBorder)}>
             <button
               type="button"
               onClick={scrollToTop}
-              className="inline-flex items-center gap-1.5 text-[#8C5D33] hover:text-[#3D2314] font-medium transition-colors cursor-pointer"
+              className={cn("inline-flex items-center gap-1.5 font-medium transition-colors cursor-pointer", t.quickNav)}
             >
               <span>↑</span>
               <span>विषय-सूची · Table of Contents</span>
             </button>
-            <span className="text-[#8C5D33]/70 font-mono tracking-wider">
+            <span className={cn("font-mono tracking-wider", t.eyebrow)}>
               CHAPTER 06
             </span>
           </div>
 
           {/* Header Capsule (Matching book document scan media_1791473243986) */}
           <div className="w-full flex justify-center mb-8 sm:mb-10">
-            <div className="w-full max-w-lg bg-[#482D1C] rounded-full py-3.5 sm:py-4 px-6 sm:px-10 text-center shadow-[0_6px_20px_rgba(72,45,28,0.25)] flex flex-col items-center">
-              <span className="font-hindi text-xl sm:text-2xl md:text-3xl text-[#FFF9F0] font-bold leading-tight tracking-wide">
+            <div className={cn("w-full max-w-lg rounded-full py-3.5 sm:py-4 px-6 sm:px-10 text-center flex flex-col items-center transition-all", t.capsule)}>
+              <span className={cn("font-hindi text-xl sm:text-2xl md:text-3xl font-bold leading-tight tracking-wide", t.capsuleHi)}>
                 विक्रम संवत् पंचांग
               </span>
-              <span className="font-serif text-xs sm:text-sm text-[#DFCBB5] tracking-wider mt-1">
+              <span className={cn("font-serif text-xs sm:text-sm tracking-wider mt-1", t.capsuleEn)}>
                 The Vikram Samvat Calendar
               </span>
             </div>
@@ -1222,10 +1310,10 @@ export default function GuidePage() {
 
           {/* Intro Paragraph */}
           <div className="mb-8 text-left">
-            <p className="font-hindi text-sm sm:text-base text-[#2D1B0E] font-medium leading-relaxed mb-2.5 text-justify">
+            <p className={cn("font-hindi text-sm sm:text-base font-medium leading-relaxed mb-2.5 text-justify", t.bodyHi)}>
               विक्रम संवत् भारत का परंपरागत कैलेंडर है, जिसका प्रारंभ राजा विक्रमादित्य द्वारा 57 ईसा पूर्व में हुआ माना जाता है। इसमें संवत् वर्ष, चंद्र मास, पक्ष, तिथि और वार एक साथ दिखते हैं, और भारत के सभी पारंपरिक त्योहार व अनुष्ठान इसी पंचांग पर आधारित होते हैं।
             </p>
-            <p className="font-sans text-xs sm:text-[13.5px] text-[#5C4230] leading-relaxed text-justify">
+            <p className={cn("font-sans text-xs sm:text-[13.5px] leading-relaxed text-justify", t.bodyEn)}>
               Vikram Samvat is India&apos;s traditional calendar, said to begin with King Vikramaditya in 57 BCE. It brings together the Samvat year, lunar month, Paksha, Tithi, and weekday in one view — and nearly every traditional Indian festival and ritual is timed against it.
             </p>
           </div>
@@ -1236,21 +1324,21 @@ export default function GuidePage() {
               hi="घड़ी का प्रयोग कैसे करें"
               en="How to Read the Panchang at a Glance"
               size="md"
-              variant="light"
+              variant={isParchment ? "light" : "dark"}
             />
           </div>
 
           {/* ── Checklist / Steps Box (Matching media_1791473243986) ── */}
-          <div className="w-full bg-[#FAF4EA] border border-[#DFCBB5] rounded-2xl sm:rounded-3xl p-4 sm:p-7 shadow-sm">
-            <div className="flex flex-col divide-y divide-[#DFCBB5]/40">
+          <div className={cn("w-full rounded-2xl sm:rounded-3xl p-4 sm:p-7 shadow-sm border", t.box)}>
+            <div className={cn("flex flex-col divide-y", t.divideSubtle)}>
               {PANCHANG_READING_STEPS.map((step, idx) => (
                 <div key={idx} className="py-4 first:pt-0 last:pb-0 flex items-start gap-3 sm:gap-4">
-                  <span className="text-[#482D1C] font-bold text-lg sm:text-xl leading-none mt-0.5">•</span>
+                  <span className={cn("font-bold text-lg sm:text-xl leading-none mt-0.5", t.bullet)}>•</span>
                   <div className="flex flex-col text-left">
-                    <span className="font-hindi font-bold text-sm sm:text-base text-[#2D1B0E] leading-snug">
+                    <span className={cn("font-hindi font-bold text-sm sm:text-base leading-snug", t.titleHi)}>
                       {step.titleHi}
                     </span>
-                    <span className="font-sans text-xs sm:text-[13px] text-[#5C4230] mt-1 leading-relaxed">
+                    <span className={cn("font-sans text-xs sm:text-[13px] mt-1 leading-relaxed", t.bodyEn)}>
                       {step.descEn}
                     </span>
                   </div>
@@ -1266,30 +1354,30 @@ export default function GuidePage() {
            ======================================================== */}
         <article
           id="chapter-7"
-          className="w-full bg-[#F8F2E8] border border-[#DFCBB5] rounded-3xl p-5 sm:p-8 md:p-12 shadow-[0_12px_40px_rgba(72,45,28,0.08)] flex flex-col scroll-mt-24"
+          className={cn("w-full rounded-3xl p-5 sm:p-8 md:p-12 flex flex-col scroll-mt-24 border transition-colors duration-300", t.card)}
         >
           {/* Quick Nav back to TOC */}
-          <div className="w-full flex items-center justify-between mb-8 pb-4 border-b border-[#DFCBB5]/60 text-xs font-sans">
+          <div className={cn("w-full flex items-center justify-between mb-8 pb-4 border-b text-xs font-sans", t.quickNavBorder)}>
             <button
               type="button"
               onClick={scrollToTop}
-              className="inline-flex items-center gap-1.5 text-[#8C5D33] hover:text-[#3D2314] font-medium transition-colors cursor-pointer"
+              className={cn("inline-flex items-center gap-1.5 font-medium transition-colors cursor-pointer", t.quickNav)}
             >
               <span>↑</span>
               <span>विषय-सूची · Table of Contents</span>
             </button>
-            <span className="text-[#8C5D33]/70 font-mono tracking-wider">
+            <span className={cn("font-mono tracking-wider", t.eyebrow)}>
               CHAPTER 07
             </span>
           </div>
 
           {/* Header Capsule */}
           <div className="w-full flex justify-center mb-8 sm:mb-10">
-            <div className="w-full max-w-lg bg-[#482D1C] rounded-full py-3.5 sm:py-4 px-6 sm:px-10 text-center shadow-[0_6px_20px_rgba(72,45,28,0.25)] flex flex-col items-center">
-              <span className="font-hindi text-xl sm:text-2xl md:text-3xl text-[#FFF9F0] font-bold leading-tight tracking-wide">
+            <div className={cn("w-full max-w-lg rounded-full py-3.5 sm:py-4 px-6 sm:px-10 text-center flex flex-col items-center transition-all", t.capsule)}>
+              <span className={cn("font-hindi text-xl sm:text-2xl md:text-3xl font-bold leading-tight tracking-wide", t.capsuleHi)}>
                 अपनी घड़ी को पढ़ना
               </span>
-              <span className="font-serif text-xs sm:text-sm text-[#DFCBB5] tracking-wider mt-1">
+              <span className={cn("font-serif text-xs sm:text-sm tracking-wider mt-1", t.capsuleEn)}>
                 Reading Your Clock
               </span>
             </div>
@@ -1297,40 +1385,40 @@ export default function GuidePage() {
 
           {/* Core Concept Callouts */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-            <div className="bg-[#FAF4EA] border border-[#DFCBB5] rounded-2xl p-4 sm:p-5 shadow-sm text-left">
-              <span className="font-hindi font-bold text-base text-[#3D2314] block">
-                मुहूर्त सुई · <span className="font-sans font-medium text-xs text-[#8C5D33]">Muhurta Hand</span>
+            <div className={cn("rounded-2xl p-4 sm:p-5 shadow-sm text-left border", t.box)}>
+              <span className={cn("font-hindi font-bold text-base block", t.titleHi)}>
+                मुहूर्त सुई · <span className={cn("font-sans font-medium text-xs", t.eyebrow)}>Muhurta Hand</span>
               </span>
-              <p className="font-sans text-xs text-[#5C4230] mt-1.5 leading-relaxed">
+              <p className={cn("font-sans text-xs mt-1.5 leading-relaxed", t.bodyEn)}>
                 Completes one full revolution of 30 Muhurtas in a single day (one sunrise to the next).
               </p>
             </div>
 
-            <div className="bg-[#FAF4EA] border border-[#DFCBB5] rounded-2xl p-4 sm:p-5 shadow-sm text-left">
-              <span className="font-hindi font-bold text-base text-[#3D2314] block">
-                कला सुई · <span className="font-sans font-medium text-xs text-[#8C5D33]">Kala Hand</span>
+            <div className={cn("rounded-2xl p-4 sm:p-5 shadow-sm text-left border", t.box)}>
+              <span className={cn("font-hindi font-bold text-base block", t.titleHi)}>
+                कला सुई · <span className={cn("font-sans font-medium text-xs", t.eyebrow)}>Kala Hand</span>
               </span>
-              <p className="font-sans text-xs text-[#5C4230] mt-1.5 leading-relaxed">
+              <p className={cn("font-sans text-xs mt-1.5 leading-relaxed", t.bodyEn)}>
                 Marks the 30 subdivisions within each Muhurta (1 Kala ≈ 96 seconds).
               </p>
             </div>
 
-            <div className="bg-[#FAF4EA] border border-[#DFCBB5] rounded-2xl p-4 sm:p-5 shadow-sm text-left">
-              <span className="font-hindi font-bold text-base text-[#3D2314] block">
-                काष्ठा सुई · <span className="font-sans font-medium text-xs text-[#8C5D33]">Kashtha Hand</span>
+            <div className={cn("rounded-2xl p-4 sm:p-5 shadow-sm text-left border", t.box)}>
+              <span className={cn("font-hindi font-bold text-base block", t.titleHi)}>
+                काष्ठा सुई · <span className={cn("font-sans font-medium text-xs", t.eyebrow)}>Kashtha Hand</span>
               </span>
-              <p className="font-sans text-xs text-[#5C4230] mt-1.5 leading-relaxed">
+              <p className={cn("font-sans text-xs mt-1.5 leading-relaxed", t.bodyEn)}>
                 The continuous rhythm of seconds (30 Kashtha per Kala ≈ 3.2 seconds each).
               </p>
             </div>
           </div>
 
           {/* Reading Formula */}
-          <div className="w-full bg-[#EFE4D3] border-l-4 border-[#A36D31] rounded-r-2xl p-4 sm:p-5 shadow-sm text-left">
-            <p className="font-hindi text-sm sm:text-[15px] font-bold text-[#2D1B0E] leading-relaxed mb-1">
+          <div className={cn("w-full rounded-r-2xl p-4 sm:p-5 shadow-sm text-left", t.callout)}>
+            <p className={cn("font-hindi text-sm sm:text-[15px] font-bold leading-relaxed mb-1", t.bodyHi)}>
               वैदिक समय पठन सूत्र: [मुहूर्त] : [कला] : [काष्ठा]
             </p>
-            <p className="font-sans text-xs sm:text-[13px] text-[#5C4230] leading-relaxed">
+            <p className={cn("font-sans text-xs sm:text-[13px] leading-relaxed", t.bodyEn)}>
               Standard Vedic Display: Muhurta : Kala : Kashtha calculated from local sunrise.
             </p>
           </div>
@@ -1342,46 +1430,46 @@ export default function GuidePage() {
            ======================================================== */}
         <article
           id="chapter-8"
-          className="w-full bg-[#F8F2E8] border border-[#DFCBB5] rounded-3xl p-5 sm:p-8 md:p-12 shadow-[0_12px_40px_rgba(72,45,28,0.08)] flex flex-col scroll-mt-24"
+          className={cn("w-full rounded-3xl p-5 sm:p-8 md:p-12 flex flex-col scroll-mt-24 border transition-colors duration-300", t.card)}
         >
           {/* Quick Nav back to TOC */}
-          <div className="w-full flex items-center justify-between mb-8 pb-4 border-b border-[#DFCBB5]/60 text-xs font-sans">
+          <div className={cn("w-full flex items-center justify-between mb-8 pb-4 border-b text-xs font-sans", t.quickNavBorder)}>
             <button
               type="button"
               onClick={scrollToTop}
-              className="inline-flex items-center gap-1.5 text-[#8C5D33] hover:text-[#3D2314] font-medium transition-colors cursor-pointer"
+              className={cn("inline-flex items-center gap-1.5 font-medium transition-colors cursor-pointer", t.quickNav)}
             >
               <span>↑</span>
               <span>विषय-सूची · Table of Contents</span>
             </button>
-            <span className="text-[#8C5D33]/70 font-mono tracking-wider">
+            <span className={cn("font-mono tracking-wider", t.eyebrow)}>
               CHAPTER 08
             </span>
           </div>
 
           {/* Header Capsule (Matching book document scan media_1791473252269) */}
           <div className="w-full flex justify-center mb-8 sm:mb-10">
-            <div className="w-full max-w-lg bg-[#482D1C] rounded-full py-3.5 sm:py-4 px-6 sm:px-10 text-center shadow-[0_6px_20px_rgba(72,45,28,0.25)] flex flex-col items-center">
-              <span className="font-hindi text-xl sm:text-2xl md:text-3xl text-[#FFF9F0] font-bold leading-tight tracking-wide">
+            <div className={cn("w-full max-w-lg rounded-full py-3.5 sm:py-4 px-6 sm:px-10 text-center flex flex-col items-center transition-all", t.capsule)}>
+              <span className={cn("font-hindi text-xl sm:text-2xl md:text-3xl font-bold leading-tight tracking-wide", t.capsuleHi)}>
                 घड़ी का दैनिक उपयोग
               </span>
-              <span className="font-serif text-xs sm:text-sm text-[#DFCBB5] tracking-wider mt-1">
+              <span className={cn("font-serif text-xs sm:text-sm tracking-wider mt-1", t.capsuleEn)}>
                 Using the Clock Daily
               </span>
             </div>
           </div>
 
           {/* ── Daily Checklist Box (Matching media_1791473252269) ── */}
-          <div className="w-full bg-[#FAF4EA] border border-[#DFCBB5] rounded-2xl sm:rounded-3xl p-4 sm:p-7 shadow-sm">
-            <div className="flex flex-col divide-y divide-[#DFCBB5]/40">
+          <div className={cn("w-full rounded-2xl sm:rounded-3xl p-4 sm:p-7 shadow-sm border", t.box)}>
+            <div className={cn("flex flex-col divide-y", t.divideSubtle)}>
               {DAILY_USE_STEPS.map((step, idx) => (
                 <div key={idx} className="py-4 first:pt-0 last:pb-0 flex items-start gap-3 sm:gap-4">
-                  <span className="text-[#482D1C] font-bold text-lg sm:text-xl leading-none mt-0.5">•</span>
+                  <span className={cn("font-bold text-lg sm:text-xl leading-none mt-0.5", t.bullet)}>•</span>
                   <div className="flex flex-col text-left">
-                    <span className="font-hindi font-bold text-sm sm:text-base text-[#2D1B0E] leading-snug">
+                    <span className={cn("font-hindi font-bold text-sm sm:text-base leading-snug", t.titleHi)}>
                       {step.titleHi}
                     </span>
-                    <span className="font-sans text-xs sm:text-[13px] text-[#5C4230] mt-1 leading-relaxed">
+                    <span className={cn("font-sans text-xs sm:text-[13px] mt-1 leading-relaxed", t.bodyEn)}>
                       {step.descEn}
                     </span>
                   </div>
@@ -1394,7 +1482,58 @@ export default function GuidePage() {
       </main>
 
       {/* Grounded Luxury Footer */}
-      <Footer variant="parchment" />
+      <Footer variant={isParchment ? "parchment" : "dark"} />
+
+      {/* ── Floating Theme Comparison Controller (Matching Home & Heritage Pages) ────────────────── */}
+      <aside
+        aria-label="Theme comparison controls"
+        className="fixed bottom-5 left-5 z-50 flex items-center gap-1.5 bg-[#060B18]/95 backdrop-blur-md border border-[#D4A65A]/30 rounded-full p-1.5 shadow-[0_4px_24px_rgba(0,0,0,0.6)]"
+      >
+        <span className="text-[10px] font-sans font-semibold uppercase tracking-wider text-[#D4A65A]/80 px-2 select-none hidden lg:inline">
+          Theme Mode
+        </span>
+
+        {/* 1. Full Cosmic */}
+        <button
+          type="button"
+          onClick={() => setIsParchment(false)}
+          className={cn(
+            "px-3 py-1.5 rounded-full text-[11px] font-sans transition-all cursor-pointer flex items-center gap-1.5",
+            !isParchment
+              ? "bg-[#D4A65A] text-[#050A14] font-semibold shadow-[0_0_12px_rgba(212,166,90,0.4)]"
+              : "text-ivory/70 hover:text-ivory hover:bg-white/5"
+          )}
+          title="Deep Cosmic Gold theme across all sections"
+        >
+          <span>🌌</span>
+          <span>Full Cosmic</span>
+        </button>
+
+        {/* 2. Full Parchment */}
+        <button
+          type="button"
+          onClick={() => setIsParchment(true)}
+          className={cn(
+            "px-3 py-1.5 rounded-full text-[11px] font-sans transition-all cursor-pointer flex items-center gap-1.5",
+            isParchment
+              ? "bg-[#F3E9D2] text-[#2A1B10] font-semibold shadow-[0_0_12px_rgba(243,233,210,0.4)]"
+              : "text-ivory/70 hover:text-ivory hover:bg-white/5"
+          )}
+          title="Light Parchment theme across all sections"
+        >
+          <span>📜</span>
+          <span>Full Parchment</span>
+        </button>
+
+        {/* Link to Workbench */}
+        <a
+          href="/workbench"
+          className="text-[10px] font-mono text-[#D4A65A]/60 hover:text-[#FFF5D1] px-2.5 transition-colors border-l border-white/10 hidden md:inline"
+          title="View All Component Atoms & Molecules Workbench"
+        >
+          Workbench →
+        </a>
+      </aside>
     </div>
   );
 }

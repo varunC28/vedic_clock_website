@@ -12,137 +12,6 @@ interface YogaKaranaDimensionCardProps {
   className?: string;
 }
 
-export function YogaKaranaDial({
-  yogaNameHi = "साध्य",
-  karanaNameHi = "बव",
-  variant = "dark",
-  className,
-}: YogaKaranaDimensionCardProps) {
-  const isParchment = variant === "parchment";
-
-  return (
-    <div className={cn("w-full flex flex-col items-center justify-center shrink-0", className)}>
-      <div className="relative w-44 h-44 sm:w-52 sm:h-52 flex items-center justify-center">
-        <svg className="w-full h-full" viewBox="0 0 200 200">
-          {/* Outer harmonic ring */}
-          <circle
-            cx="100"
-            cy="100"
-            r="76"
-            fill="none"
-            stroke={isParchment ? "#8A5A1A" : "#D4A65A"}
-            strokeWidth="1"
-            strokeDasharray="3 4"
-            opacity={isParchment ? 0.35 : 0.25}
-          />
-
-          {/* 27 Segment Ticks */}
-          {Array.from({ length: 27 }).map((_, i) => {
-            const rad = (i * (360 / 27) * Math.PI) / 180;
-            const x1 = 100 + 66 * Math.cos(rad);
-            const y1 = 100 + 66 * Math.sin(rad);
-            const x2 = 100 + 76 * Math.cos(rad);
-            const y2 = 100 + 76 * Math.sin(rad);
-            return (
-              <line
-                key={i}
-                x1={x1}
-                y1={y1}
-                x2={x2}
-                y2={y2}
-                stroke={isParchment ? "#8A5A1A" : "#D4A65A"}
-                strokeWidth="1"
-                opacity={isParchment ? 0.4 : 0.3}
-              />
-            );
-          })}
-
-          {/* Sun Vector (Orange ray) */}
-          <line
-            x1="100"
-            y1="100"
-            x2="148"
-            y2="52"
-            stroke={isParchment ? "#C47D15" : "#F59E0B"}
-            strokeWidth="2"
-            strokeLinecap="round"
-            opacity="0.85"
-          />
-          <circle cx="148" cy="52" r="4.5" fill={isParchment ? "#C47D15" : "#F59E0B"} />
-
-          {/* Moon Vector (Cyan ray) */}
-          <line
-            x1="100"
-            y1="100"
-            x2="52"
-            y2="62"
-            stroke={isParchment ? "#2563EB" : "#38BDF8"}
-            strokeWidth="2"
-            strokeLinecap="round"
-            opacity="0.85"
-          />
-          <circle cx="52" cy="62" r="4.5" fill={isParchment ? "#2563EB" : "#38BDF8"} />
-
-          {/* Combined Resultant Vector (Gold ray) */}
-          <line
-            x1="100"
-            y1="100"
-            x2="100"
-            y2="28"
-            stroke={isParchment ? "#B8873D" : "#E8B94B"}
-            strokeWidth="2.5"
-            strokeLinecap="round"
-          />
-          <circle
-            cx="100"
-            cy="28"
-            r="5.5"
-            fill={isParchment ? "#FAF5E8" : "#FFF5D1"}
-            stroke={isParchment ? "#B8873D" : "#E8B94B"}
-            strokeWidth="1.5"
-          />
-
-          {/* Center Solar-Lunar Hub */}
-          <circle
-            cx="100"
-            cy="100"
-            r="16"
-            fill={isParchment ? "#2A1B10" : "#070E1E"}
-            stroke={isParchment ? "#B8873D" : "#E8B94B"}
-            strokeWidth="1.2"
-          />
-          <circle
-            cx="100"
-            cy="100"
-            r="4"
-            fill={isParchment ? "#B8873D" : "#E8B94B"}
-          />
-        </svg>
-      </div>
-
-      {/* Clean Caption */}
-      <div className="flex flex-col items-center text-center mt-2.5">
-        <span
-          className={cn(
-            "text-[11px] font-sans tracking-[0.2em] uppercase font-semibold",
-            isParchment ? "text-[#8A5A1A]" : "text-[#D4A65A]/80"
-          )}
-        >
-          YOGA &amp; KARANA · योग व करण
-        </span>
-        <span
-          className={cn(
-            "text-xl sm:text-2xl font-hindi font-semibold mt-0.5",
-            isParchment ? "text-[#2A1B10]" : "text-[#FFF5D1]"
-          )}
-        >
-          {yogaNameHi} · {karanaNameHi}
-        </span>
-      </div>
-    </div>
-  );
-}
-
 export function YogaKaranaDimensionCard({
   yogaNameHi = "साध्य",
   yogaNameEn = "Sadhya",
@@ -167,13 +36,123 @@ export function YogaKaranaDimensionCard({
     >
       {/* ── LHS: Solar-Lunar Dial ────────────────────────────────────────── */}
       <div className="w-full md:w-[38%] flex flex-col items-center justify-center shrink-0">
-        <YogaKaranaDial
-          yogaNameHi={yogaNameHi}
-          yogaNameEn={yogaNameEn}
-          karanaNameHi={karanaNameHi}
-          karanaNameEn={karanaNameEn}
-          variant={variant}
-        />
+        <div className="relative w-40 h-40 sm:w-48 sm:h-48 flex items-center justify-center">
+          <svg className="w-full h-full" viewBox="0 0 200 200">
+            {/* Outer harmonic ring */}
+            <circle
+              cx="100"
+              cy="100"
+              r="76"
+              fill="none"
+              stroke={isParchment ? "#8A5A1A" : "#D4A65A"}
+              strokeWidth="1"
+              strokeDasharray="3 4"
+              opacity={isParchment ? 0.35 : 0.25}
+            />
+
+            {/* 27 Segment Ticks */}
+            {Array.from({ length: 27 }).map((_, i) => {
+              const rad = (i * (360 / 27) * Math.PI) / 180;
+              const x1 = 100 + 66 * Math.cos(rad);
+              const y1 = 100 + 66 * Math.sin(rad);
+              const x2 = 100 + 76 * Math.cos(rad);
+              const y2 = 100 + 76 * Math.sin(rad);
+              return (
+                <line
+                  key={i}
+                  x1={x1}
+                  y1={y1}
+                  x2={x2}
+                  y2={y2}
+                  stroke={isParchment ? "#8A5A1A" : "#D4A65A"}
+                  strokeWidth="1"
+                  opacity={isParchment ? 0.4 : 0.3}
+                />
+              );
+            })}
+
+            {/* Sun Vector (Orange ray) */}
+            <line
+              x1="100"
+              y1="100"
+              x2="148"
+              y2="52"
+              stroke={isParchment ? "#C47D15" : "#F59E0B"}
+              strokeWidth="2"
+              strokeLinecap="round"
+              opacity="0.85"
+            />
+            <circle cx="148" cy="52" r="4.5" fill={isParchment ? "#C47D15" : "#F59E0B"} />
+
+            {/* Moon Vector (Cyan ray) */}
+            <line
+              x1="100"
+              y1="100"
+              x2="52"
+              y2="62"
+              stroke={isParchment ? "#2563EB" : "#38BDF8"}
+              strokeWidth="2"
+              strokeLinecap="round"
+              opacity="0.85"
+            />
+            <circle cx="52" cy="62" r="4.5" fill={isParchment ? "#2563EB" : "#38BDF8"} />
+
+            {/* Combined Resultant Vector (Gold ray) */}
+            <line
+              x1="100"
+              y1="100"
+              x2="100"
+              y2="28"
+              stroke={isParchment ? "#B8873D" : "#E8B94B"}
+              strokeWidth="2.5"
+              strokeLinecap="round"
+            />
+            <circle
+              cx="100"
+              cy="28"
+              r="5.5"
+              fill={isParchment ? "#FAF5E8" : "#FFF5D1"}
+              stroke={isParchment ? "#B8873D" : "#E8B94B"}
+              strokeWidth="1.5"
+            />
+
+            {/* Center Solar-Lunar Hub */}
+            <circle
+              cx="100"
+              cy="100"
+              r="16"
+              fill={isParchment ? "#2A1B10" : "#070E1E"}
+              stroke={isParchment ? "#B8873D" : "#E8B94B"}
+              strokeWidth="1.2"
+            />
+            <circle
+              cx="100"
+              cy="100"
+              r="4"
+              fill={isParchment ? "#B8873D" : "#E8B94B"}
+            />
+          </svg>
+        </div>
+
+        {/* Clean Caption */}
+        <div className="flex flex-col items-center text-center mt-2.5">
+          <span
+            className={cn(
+              "text-[11px] font-sans tracking-[0.2em] uppercase font-semibold",
+              isParchment ? "text-[#8A5A1A]" : "text-[#D4A65A]/80"
+            )}
+          >
+            YOGA &amp; KARANA · योग व करण
+          </span>
+          <span
+            className={cn(
+              "text-xl sm:text-2xl font-hindi font-semibold mt-0.5",
+              isParchment ? "text-[#2A1B10]" : "text-[#FFF5D1]"
+            )}
+          >
+            {yogaNameHi} · {karanaNameHi}
+          </span>
+        </div>
       </div>
 
       {/* ── RHS: Clean Editorial Presentation ────────────────────────────── */}

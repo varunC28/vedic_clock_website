@@ -207,6 +207,7 @@ export default function Timeline({
       });
     });
     gsap.set(".journey-line", { width: "0%" });
+    gsap.set(".journey-axis", { opacity: 0 });
 
     if (reducedMotion) {
       ALL_MILESTONES.forEach((item) => {
@@ -215,6 +216,7 @@ export default function Timeline({
         gsap.set(`.milestone-content-${item.id}`, { opacity: 1, y: 0 });
       });
       gsap.set(".journey-line", { width: "98%" });
+      gsap.set(".journey-axis", { opacity: 1 });
       return;
     }
 
@@ -250,16 +252,27 @@ export default function Timeline({
       duration: 1,
     });
 
-    // 2. Central connecting line growth across screen
-    masterTl.to(
-      ".journey-line",
-      {
-        width: "98%",
-        ease: "none",
-        duration: 0.94,
-      },
-      0
-    );
+    // 2. Central connecting line growth across screen & fade in axis from 0 at starting
+    masterTl
+      .fromTo(
+        ".journey-axis",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.04,
+          ease: "power2.out",
+        },
+        0
+      )
+      .to(
+        ".journey-line",
+        {
+          width: "98%",
+          ease: "none",
+          duration: 0.94,
+        },
+        0
+      );
 
     // 3. Sequential reveals for each milestone along the track
     const totalItems = ALL_MILESTONES.length;
@@ -363,7 +376,7 @@ export default function Timeline({
         style={{ height: "100%" }}
       >
         {/* ═══ ABSOLUTE HORIZONTAL AXIS (Exact 50% midpoint of screen) ═══ */}
-        <div className="w-full absolute left-0 right-0 top-1/2 -translate-y-1/2 flex items-center pointer-events-none z-10">
+        <div className="w-full absolute left-0 right-0 top-1/2 -translate-y-1/2 flex items-center pointer-events-none z-10 journey-axis opacity-0">
           <div
             className="h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full shadow-[0_0_8px_currentColor] shrink-0"
             style={activeStyle}
@@ -485,21 +498,26 @@ export default function Timeline({
                       </div>
 
                       {/* Stem Line (Drops down to junction) */}
-                      <div
-                        className={cn(
-                          "w-[2px] h-16 sm:h-20 md:h-24 lg:h-28 ml-3.5 origin-bottom rounded-full shrink-0 shadow-[0_0_6px_currentColor]",
-                          `jl-${item.id}`
-                        )}
-                        style={activeStyle}
-                      />
+                      <div className="w-5 flex justify-center shrink-0">
+                        <div
+                          className={cn(
+                            "w-[2px] h-16 sm:h-20 md:h-24 lg:h-28 origin-bottom rounded-full shadow-[0_0_6px_currentColor]",
+                            `jl-${item.id}`
+                          )}
+                          style={activeStyle}
+                        />
+                      </div>
                     </>
                   ) : null}
                 </div>
 
                 {/* ─── EXACT CENTER JUNCTION (Directly on 50% axis) ─── */}
-                <div className="relative w-full h-0 flex items-center z-30">
+                <div className="absolute top-1/2 left-0 -translate-y-1/2 w-5 flex justify-center pointer-events-none z-30">
                   <div
-                    className={`size-2.5 sm:size-3 rounded-full ml-2.5 -translate-y-1/2 aspect-square jd-${item.id} shadow-[0_0_8px_currentColor]`}
+                    className={cn(
+                      "size-2.5 sm:size-3 rounded-full aspect-square shadow-[0_0_8px_currentColor]",
+                      `jd-${item.id}`
+                    )}
                     style={activeStyle}
                   />
                 </div>
@@ -509,13 +527,15 @@ export default function Timeline({
                   {!isTop ? (
                     <>
                       {/* Stem Line (Rises up from junction) */}
-                      <div
-                        className={cn(
-                          "w-[2px] h-16 sm:h-20 md:h-24 lg:h-28 ml-3.5 origin-top rounded-full shrink-0 shadow-[0_0_6px_currentColor]",
-                          `jl-${item.id}`
-                        )}
-                        style={activeStyle}
-                      />
+                      <div className="w-5 flex justify-center shrink-0">
+                        <div
+                          className={cn(
+                            "w-[2px] h-16 sm:h-20 md:h-24 lg:h-28 origin-top rounded-full shadow-[0_0_6px_currentColor]",
+                            `jl-${item.id}`
+                          )}
+                          style={activeStyle}
+                        />
+                      </div>
 
                       {/* Milestone Card Copy */}
                       <div

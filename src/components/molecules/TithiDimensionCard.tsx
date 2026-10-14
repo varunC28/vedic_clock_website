@@ -9,7 +9,7 @@ interface TithiDimensionCardProps {
   className?: string;
 }
 
-export function TithiDial({
+export function TithiDimensionCard({
   tithiNameHi = "एकादशी",
   variant = "dark",
   className,
@@ -29,133 +29,6 @@ export function TithiDial({
     return () => cancelAnimationFrame(animId);
   }, []);
 
-  return (
-    <div className={cn("w-full flex flex-col items-center justify-center shrink-0", className)}>
-      <div className="relative w-44 h-44 sm:w-52 sm:h-52 flex items-center justify-center">
-        <svg className="w-full h-full" viewBox="0 0 220 220" fill="none">
-          {/* 30 Lunar Step Orbit Ring */}
-          <circle
-            cx="110"
-            cy="110"
-            r="76"
-            stroke={isParchment ? "#8A5A1A" : "#D4A65A"}
-            strokeWidth="1"
-            strokeDasharray="3 4"
-            opacity={isParchment ? 0.35 : 0.25}
-          />
-
-          {/* 30 Lunar Step Ticks */}
-          {Array.from({ length: 30 }).map((_, i) => {
-            const ang = (i * 12 * Math.PI) / 180 - Math.PI / 2;
-            const tx = 110 + 76 * Math.cos(ang);
-            const ty = 110 + 76 * Math.sin(ang);
-            const isPassed = Math.floor(orbitAngle / 12) >= i;
-            return (
-              <circle
-                key={i}
-                cx={tx}
-                cy={ty}
-                r={isPassed ? "2.2" : "1.2"}
-                fill={
-                  isPassed
-                    ? isParchment ? "#B8873D" : "#E8B94B"
-                    : isParchment ? "#8A5A1A" : "#D4A65A"
-                }
-                opacity={isPassed ? 0.95 : (isParchment ? 0.35 : 0.25)}
-              />
-            );
-          })}
-
-          {/* Earth Center Node */}
-          <circle
-            cx="110"
-            cy="110"
-            r="16"
-            fill={isParchment ? "#2A1B10" : "#070E1E"}
-            stroke={isParchment ? "#B8873D" : "#38BDF8"}
-            strokeWidth="1.5"
-          />
-          <circle
-            cx="110"
-            cy="110"
-            r="5"
-            fill={isParchment ? "#B8873D" : "#38BDF8"}
-            opacity="0.8"
-          />
-
-          {/* Sun Reference Ray (0°) */}
-          <line
-            x1="110"
-            y1="110"
-            x2="110"
-            y2="24"
-            stroke={isParchment ? "#C47D15" : "#F59E0B"}
-            strokeWidth="1.5"
-            strokeDasharray="3 3"
-            opacity={isParchment ? 0.5 : 0.4}
-          />
-          <circle cx="110" cy="24" r="5" fill={isParchment ? "#C47D15" : "#F59E0B"} />
-
-          {/* Orbiting Moon */}
-          {(() => {
-            const rad = (orbitAngle * Math.PI) / 180 - Math.PI / 2;
-            const mx = 110 + 76 * Math.cos(rad);
-            const my = 110 + 76 * Math.sin(rad);
-            return (
-              <g>
-                <line
-                  x1="110"
-                  y1="110"
-                  x2={mx}
-                  y2={my}
-                  stroke={isParchment ? "#B8873D" : "#E8B94B"}
-                  strokeWidth="1.2"
-                  opacity="0.7"
-                />
-                <circle
-                  cx={mx}
-                  cy={my}
-                  r="8"
-                  fill={isParchment ? "#FAF5E8" : "#FFFBEB"}
-                  stroke={isParchment ? "#B8873D" : "#E8B94B"}
-                  strokeWidth="1.5"
-                />
-              </g>
-            );
-          })()}
-        </svg>
-      </div>
-
-      {/* Clean Caption */}
-      <div className="flex flex-col items-center text-center mt-2.5">
-        <span
-          className={cn(
-            "text-[11px] font-sans tracking-[0.2em] uppercase font-semibold",
-            isParchment ? "text-[#8A5A1A]" : "text-[#D4A65A]/80"
-          )}
-        >
-          TITHI · तिथि
-        </span>
-        <span
-          className={cn(
-            "text-xl sm:text-2xl font-hindi font-semibold mt-0.5",
-            isParchment ? "text-[#2A1B10]" : "text-[#FFF5D1]"
-          )}
-        >
-          {tithiNameHi}
-        </span>
-      </div>
-    </div>
-  );
-}
-
-export function TithiDimensionCard({
-  tithiNameHi = "एकादशी",
-  variant = "dark",
-  className,
-}: TithiDimensionCardProps) {
-  const isParchment = variant === "parchment";
-
   const pills = [
     "30 Lunar Days",
     "12° Angular Step",
@@ -171,7 +44,120 @@ export function TithiDimensionCard({
     >
       {/* ── LHS: Astronomical Orbit Dial ─────────────────────────────────── */}
       <div className="w-full md:w-[38%] flex flex-col items-center justify-center shrink-0">
-        <TithiDial tithiNameHi={tithiNameHi} variant={variant} />
+        <div className="relative w-40 h-40 sm:w-48 sm:h-48 flex items-center justify-center">
+          <svg className="w-full h-full" viewBox="0 0 220 220" fill="none">
+            {/* 30 Lunar Step Orbit Ring */}
+            <circle
+              cx="110"
+              cy="110"
+              r="76"
+              stroke={isParchment ? "#8A5A1A" : "#D4A65A"}
+              strokeWidth="1"
+              strokeDasharray="3 4"
+              opacity={isParchment ? 0.35 : 0.25}
+            />
+
+            {/* 30 Lunar Step Ticks */}
+            {Array.from({ length: 30 }).map((_, i) => {
+              const ang = (i * 12 * Math.PI) / 180 - Math.PI / 2;
+              const tx = 110 + 76 * Math.cos(ang);
+              const ty = 110 + 76 * Math.sin(ang);
+              const isPassed = Math.floor(orbitAngle / 12) >= i;
+              return (
+                <circle
+                  key={i}
+                  cx={tx}
+                  cy={ty}
+                  r={isPassed ? "2.2" : "1.2"}
+                  fill={
+                    isPassed
+                      ? isParchment ? "#B8873D" : "#E8B94B"
+                      : isParchment ? "#8A5A1A" : "#D4A65A"
+                  }
+                  opacity={isPassed ? 0.95 : (isParchment ? 0.35 : 0.25)}
+                />
+              );
+            })}
+
+            {/* Earth Center Node */}
+            <circle
+              cx="110"
+              cy="110"
+              r="16"
+              fill={isParchment ? "#2A1B10" : "#070E1E"}
+              stroke={isParchment ? "#B8873D" : "#38BDF8"}
+              strokeWidth="1.5"
+            />
+            <circle
+              cx="110"
+              cy="110"
+              r="5"
+              fill={isParchment ? "#B8873D" : "#38BDF8"}
+              opacity="0.8"
+            />
+
+            {/* Sun Reference Ray (0°) */}
+            <line
+              x1="110"
+              y1="110"
+              x2="110"
+              y2="24"
+              stroke={isParchment ? "#C47D15" : "#F59E0B"}
+              strokeWidth="1.5"
+              strokeDasharray="3 3"
+              opacity={isParchment ? 0.5 : 0.4}
+            />
+            <circle cx="110" cy="24" r="5" fill={isParchment ? "#C47D15" : "#F59E0B"} />
+
+            {/* Orbiting Moon */}
+            {(() => {
+              const rad = (orbitAngle * Math.PI) / 180 - Math.PI / 2;
+              const mx = 110 + 76 * Math.cos(rad);
+              const my = 110 + 76 * Math.sin(rad);
+              return (
+                <g>
+                  <line
+                    x1="110"
+                    y1="110"
+                    x2={mx}
+                    y2={my}
+                    stroke={isParchment ? "#B8873D" : "#E8B94B"}
+                    strokeWidth="1.2"
+                    opacity="0.7"
+                  />
+                  <circle
+                    cx={mx}
+                    cy={my}
+                    r="8"
+                    fill={isParchment ? "#FAF5E8" : "#FFFBEB"}
+                    stroke={isParchment ? "#B8873D" : "#E8B94B"}
+                    strokeWidth="1.5"
+                  />
+                </g>
+              );
+            })()}
+          </svg>
+        </div>
+
+        {/* Clean Caption */}
+        <div className="flex flex-col items-center text-center mt-2.5">
+          <span
+            className={cn(
+              "text-[11px] font-sans tracking-[0.2em] uppercase font-semibold",
+              isParchment ? "text-[#8A5A1A]" : "text-[#D4A65A]/80"
+            )}
+          >
+            TITHI · तिथि
+          </span>
+          <span
+            className={cn(
+              "text-xl sm:text-2xl font-hindi font-semibold mt-0.5",
+              isParchment ? "text-[#2A1B10]" : "text-[#FFF5D1]"
+            )}
+          >
+            {tithiNameHi}
+          </span>
+        </div>
       </div>
 
       {/* ── RHS: Clean Editorial Presentation ────────────────────────────── */}

@@ -191,11 +191,54 @@ const MILESTONES: Milestone[] = [
   },
 ];
 
+// ── 4. Canonical Quotes Carousel Data ──
+interface CanonQuote {
+  id: string;
+  canon: string;
+  quoteEn: string;
+  source: string;
+}
+
+const CANON_QUOTES: CanonQuote[] = [
+  {
+    id: "surya-siddhanta",
+    canon: "Ancient Canon · Surya Siddhanta",
+    quoteEn:
+      "“That true vertical meridian which passes between Lanka and the celestial abode through Avanti (Ujjain) is the sacred prime meridian of astronomical observation.”",
+    source: "— Surya Siddhanta (भूगोल अध्याय)",
+  },
+  {
+    id: "pancha-siddhantika",
+    canon: "Astronomical Treatise · Varahamihira",
+    quoteEn:
+      "“Time is the primordial seed of cosmic creation, calibrated by celestial spheres. In Avanti, where celestial latitude aligns with Earth’s spine, solar shadows reveal divine geometry.”",
+    source: "— Varahamihira (पंचसिद्धान्तिका)",
+  },
+  {
+    id: "vedanga-jyotisha",
+    canon: "Cosmic Jyotisha · Vedanga Jyotisha",
+    quoteEn:
+      "“As the crest on the head of a peacock, as the brilliant gem on the hood of a cobra, so astronomy and celestial reckoning sit at the summit of all sacred Vedic knowledge.”",
+    source: "— Lagadha (वेदांग ज्योतिष, श्लोक ४)",
+  },
+];
+
 export default function HeritagePage() {
   const [isParchment, setIsParchment] = useState(true);
   const [activePillar, setActivePillar] = useState<string>(PILLARS[0].id);
   const [activePhase, setActivePhase] = useState<ArcPhase>(ARC_PHASES[0]);
   const [timelineVariant, setTimelineVariant] = useState<"hyperiux" | "rail">("hyperiux");
+  const [activeQuoteIndex, setActiveQuoteIndex] = useState(0);
+  const [isQuoteHovered, setIsQuoteHovered] = useState(false);
+
+  // Auto-rotate quotes every 5.5 seconds, pause on hover
+  useEffect(() => {
+    if (isQuoteHovered) return;
+    const interval = setInterval(() => {
+      setActiveQuoteIndex((prev) => (prev + 1) % CANON_QUOTES.length);
+    }, 5500);
+    return () => clearInterval(interval);
+  }, [isQuoteHovered]);
 
   useEffect(() => {
     // Ensure ScrollTrigger refreshes after Next.js client-side route transition
@@ -406,7 +449,102 @@ export default function HeritagePage() {
         </section>
 
         {/* ═══════════════════════════════════════════════════════
-            SECTION 3: SUN-ARC DIURNAL DIAL (HOVER TO EXPLORE)
+            SECTION 3: CHRONOLOGY TIMELINE (HEADER & SWITCHER)
+           ═══════════════════════════════════════════════════════ */}
+        <section className="flex flex-col gap-6">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div className="flex flex-col gap-1">
+              <span
+                className={cn(
+                  "font-mono text-xs uppercase tracking-wider",
+                  isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
+                )}
+              >
+                Chronological Epochs · 1500 BCE to 2026 CE
+              </span>
+              <h2
+                className={cn(
+                  "font-sans text-2xl sm:text-3xl font-bold tracking-tight",
+                  isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
+                )}
+              >
+                The Evolution of Vedic Horology
+              </h2>
+              <p
+                className={cn(
+                  "font-sans text-sm max-w-xl mt-1",
+                  isParchment ? "text-[#6E5540]" : "text-ivory/70"
+                )}
+              >
+                Trace the intellectual continuum across millennia—from Rigvedic solar mathematics to modern monumental tower horology.
+              </p>
+            </div>
+
+            {/* Layout Comparison Switcher */}
+            <div className="flex items-center gap-2 shrink-0 bg-current/5 p-1 rounded-full border border-current/10">
+              <button
+                type="button"
+                onClick={() => setTimelineVariant("hyperiux")}
+                className={cn(
+                  "px-3.5 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium flex items-center gap-1.5",
+                  timelineVariant === "hyperiux"
+                    ? isParchment
+                      ? "bg-[#482D1C] text-[#FAF6F0] shadow-sm font-semibold"
+                      : "bg-[#D4A65A] text-[#03060E] shadow-sm font-bold"
+                    : "opacity-70 hover:opacity-100"
+                )}
+              >
+                <span>✨</span>
+                <span>Hyperiux Scroll</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setTimelineVariant("rail")}
+                className={cn(
+                  "px-3.5 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium flex items-center gap-1.5",
+                  timelineVariant === "rail"
+                    ? isParchment
+                      ? "bg-[#482D1C] text-[#FAF6F0] shadow-sm font-semibold"
+                      : "bg-[#D4A65A] text-[#03060E] shadow-sm font-bold"
+                    : "opacity-70 hover:opacity-100"
+                )}
+              >
+                <span>📜</span>
+                <span>Rail Cards</span>
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* ── Full Width Timeline Stream (Unconstrained by max-w-5xl) ── */}
+      {timelineVariant === "hyperiux" ? (
+        <div className="w-full relative">
+          <Timeline
+            title="Vedic Chronology"
+            periodLabel="1500 BCE — 2026 CE"
+            backgroundColor={isParchment ? "#FAF6F0" : "#03060E"}
+            textColor={isParchment ? "#2D1B0E" : "#FBF5E7"}
+            mutedTextColor={isParchment ? "#6E5540" : "rgba(251, 245, 231, 0.7)"}
+            activeColor={isParchment ? "#B8873D" : "#D4A65A"}
+            imageUrl="/assets/mainbg.webp"
+            imageAlt="Vedic Astronomical Horology"
+          />
+        </div>
+      ) : (
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-12 my-8">
+          <HorizontalTimeline
+            milestones={MILESTONES}
+            variant={isParchment ? "parchment" : "dark"}
+          />
+        </div>
+      )}
+
+      {/* ── Bottom Editorial Container ── */}
+      <main className="relative z-10 pt-4 sm:pt-6 pb-24 px-5 sm:px-8 lg:px-12 max-w-5xl mx-auto flex flex-col gap-20 sm:gap-24 text-left">
+
+        {/* ═══════════════════════════════════════════════════════
+            SECTION 4: SUN-ARC DIURNAL DIAL (HOVER TO EXPLORE)
            ═══════════════════════════════════════════════════════ */}
         <section className="flex flex-col gap-8">
           <div className="flex flex-col gap-1">
@@ -523,141 +661,76 @@ export default function HeritagePage() {
         </section>
 
         {/* ═══════════════════════════════════════════════════════
-            SECTION 4: CHRONOLOGY TIMELINE (HEADER & SWITCHER)
-           ═══════════════════════════════════════════════════════ */}
-        <section className="flex flex-col gap-6">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div className="flex flex-col gap-1">
-              <span
-                className={cn(
-                  "font-mono text-xs uppercase tracking-wider",
-                  isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
-                )}
-              >
-                Chronological Epochs · 1500 BCE to 2026 CE
-              </span>
-              <h2
-                className={cn(
-                  "font-sans text-2xl sm:text-3xl font-bold tracking-tight",
-                  isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
-                )}
-              >
-                The Evolution of Vedic Horology
-              </h2>
-              <p
-                className={cn(
-                  "font-sans text-sm max-w-xl mt-1",
-                  isParchment ? "text-[#6E5540]" : "text-ivory/70"
-                )}
-              >
-                Trace the intellectual continuum across millennia—from Rigvedic solar mathematics to modern monumental tower horology.
-              </p>
-            </div>
-
-            {/* Layout Comparison Switcher */}
-            <div className="flex items-center gap-2 shrink-0 bg-current/5 p-1 rounded-full border border-current/10">
-              <button
-                type="button"
-                onClick={() => setTimelineVariant("hyperiux")}
-                className={cn(
-                  "px-3.5 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium flex items-center gap-1.5",
-                  timelineVariant === "hyperiux"
-                    ? isParchment
-                      ? "bg-[#482D1C] text-[#FAF6F0] shadow-sm font-semibold"
-                      : "bg-[#D4A65A] text-[#03060E] shadow-sm font-bold"
-                    : "opacity-70 hover:opacity-100"
-                )}
-              >
-                <span>✨</span>
-                <span>Hyperiux Scroll</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setTimelineVariant("rail")}
-                className={cn(
-                  "px-3.5 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer font-medium flex items-center gap-1.5",
-                  timelineVariant === "rail"
-                    ? isParchment
-                      ? "bg-[#482D1C] text-[#FAF6F0] shadow-sm font-semibold"
-                      : "bg-[#D4A65A] text-[#03060E] shadow-sm font-bold"
-                    : "opacity-70 hover:opacity-100"
-                )}
-              >
-                <span>📜</span>
-                <span>Rail Cards</span>
-              </button>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      {/* ── Full Width Timeline Stream (Unconstrained by max-w-5xl) ── */}
-      {timelineVariant === "hyperiux" ? (
-        <div className="w-full relative">
-          <Timeline
-            title="Vedic Chronology"
-            periodLabel="1500 BCE — 2026 CE"
-            backgroundColor={isParchment ? "#FAF6F0" : "#03060E"}
-            textColor={isParchment ? "#2D1B0E" : "#FBF5E7"}
-            mutedTextColor={isParchment ? "#6E5540" : "rgba(251, 245, 231, 0.7)"}
-            activeColor={isParchment ? "#B8873D" : "#D4A65A"}
-            imageUrl="/assets/mainbg.webp"
-            imageAlt="Vedic Astronomical Horology"
-          />
-        </div>
-      ) : (
-        <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-12 my-8">
-          <HorizontalTimeline
-            milestones={MILESTONES}
-            variant={isParchment ? "parchment" : "dark"}
-          />
-        </div>
-      )}
-
-      {/* ── Bottom Editorial Container ── */}
-      <main className="relative z-10 pt-4 sm:pt-6 pb-24 px-5 sm:px-8 lg:px-12 max-w-5xl mx-auto flex flex-col gap-20 sm:gap-24 text-left">
-
-        {/* ═══════════════════════════════════════════════════════
-            SECTION 5: SURYA SIDDHANTA HISTORICAL INSCRIPTION
+            SECTION 5: CANONICAL INSCRIPTIONS CAROUSEL (3 QUOTES)
            ═══════════════════════════════════════════════════════ */}
         <section
+          onMouseEnter={() => setIsQuoteHovered(true)}
+          onMouseLeave={() => setIsQuoteHovered(false)}
           className={cn(
-            "p-8 sm:p-12 rounded-3xl border transition-all duration-300 text-left flex flex-col gap-4 relative overflow-hidden",
+            "p-8 sm:p-12 rounded-3xl border transition-all duration-300 text-left flex flex-col justify-between gap-6 relative overflow-hidden min-h-[290px] sm:min-h-[260px]",
             isParchment
               ? "bg-[#F2ECE1] border-[#DFCBB5]"
               : "bg-[#060B18] border-[#D4A65A]/30"
           )}
         >
-          <span
-            className={cn(
-              "font-mono text-xs uppercase tracking-widest",
-              isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
-            )}
+          {/* Animated Quote Card */}
+          <div
+            key={CANON_QUOTES[activeQuoteIndex].id}
+            className="flex flex-col gap-4 animate-in fade-in duration-500 transition-all ease-out"
           >
-            Ancient Canon · Surya Siddhanta
-          </span>
-
-          <blockquote
-            className={cn(
-              "font-serif text-lg sm:text-2xl italic leading-relaxed",
-              isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
-            )}
-          >
-            “That true vertical meridian which passes between Lanka and the celestial abode through Avanti (Ujjain) is the sacred prime meridian of astronomical observation.”
-          </blockquote>
-
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 text-xs">
-            <span className="font-hindi text-sm text-[#B8873D]">
-              राक्षसालये देवतानां च मध्ये यत् समसूत्रम्, तदेव रेखांशः...
-            </span>
             <span
               className={cn(
-                "font-sans font-medium uppercase tracking-wider",
+                "font-mono text-xs uppercase tracking-widest",
                 isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
               )}
             >
-              — Surya Siddhanta (भूगोल अध्याय)
+              {CANON_QUOTES[activeQuoteIndex].canon}
             </span>
+
+            <blockquote
+              className={cn(
+                "font-serif text-lg sm:text-2xl italic leading-relaxed",
+                isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
+              )}
+            >
+              {CANON_QUOTES[activeQuoteIndex].quoteEn}
+            </blockquote>
+
+            <div className="flex items-center justify-end pt-2 text-xs">
+              <span
+                className={cn(
+                  "font-sans font-medium uppercase tracking-wider text-right",
+                  isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
+                )}
+              >
+                {CANON_QUOTES[activeQuoteIndex].source}
+              </span>
+            </div>
+          </div>
+
+          {/* 3 Pagination Indicator Dots */}
+          <div className="flex items-center justify-center gap-2 pt-1 z-10">
+            {CANON_QUOTES.map((q, idx) => {
+              const isActive = activeQuoteIndex === idx;
+              return (
+                <button
+                  key={q.id}
+                  type="button"
+                  onClick={() => setActiveQuoteIndex(idx)}
+                  aria-label={`Go to quote ${idx + 1}`}
+                  className={cn(
+                    "h-2 rounded-full transition-all duration-300 cursor-pointer",
+                    isActive
+                      ? isParchment
+                        ? "w-6 bg-[#B8873D]"
+                        : "w-6 bg-[#D4A65A]"
+                      : isParchment
+                        ? "w-2 bg-[#DFCBB5] hover:bg-[#B8873D]/60"
+                        : "w-2 bg-[#D4A65A]/30 hover:bg-[#D4A65A]/60"
+                  )}
+                />
+              );
+            })}
           </div>
         </section>
 
@@ -715,19 +788,55 @@ export default function HeritagePage() {
       {/* ── Grounded Luxury Footer ── */}
       <Footer variant={isParchment ? "parchment" : "dark"} />
 
-      {/* ── Minimal Floating Theme Switcher ── */}
+      {/* ── Floating Theme Comparison Controller (Matching Home Page) ────────────────── */}
       <aside
-        aria-label="Theme switcher"
-        className="fixed bottom-5 right-5 z-50 flex items-center bg-[#060B18]/90 backdrop-blur-md border border-[#D4A65A]/30 rounded-full p-1 shadow-lg"
+        aria-label="Theme comparison controls"
+        className="fixed bottom-5 left-5 z-50 flex items-center gap-1.5 bg-[#060B18]/95 backdrop-blur-md border border-[#D4A65A]/30 rounded-full p-1.5 shadow-[0_4px_24px_rgba(0,0,0,0.6)]"
       >
+        <span className="text-[10px] font-sans font-semibold uppercase tracking-wider text-[#D4A65A]/80 px-2 select-none hidden lg:inline">
+          Theme Mode
+        </span>
+
+        {/* 1. Full Cosmic */}
         <button
           type="button"
-          onClick={() => setIsParchment(!isParchment)}
-          className="px-3 py-1 rounded-full text-[11px] font-sans text-ivory/80 hover:text-ivory cursor-pointer flex items-center gap-1.5 transition-colors"
-          title="Toggle Dark Cosmic / Light Parchment"
+          onClick={() => setIsParchment(false)}
+          className={cn(
+            "px-3 py-1.5 rounded-full text-[11px] font-sans transition-all cursor-pointer flex items-center gap-1.5",
+            !isParchment
+              ? "bg-[#D4A65A] text-[#050A14] font-semibold shadow-[0_0_12px_rgba(212,166,90,0.4)]"
+              : "text-ivory/70 hover:text-ivory hover:bg-white/5"
+          )}
+          title="Deep Cosmic Gold theme across all sections"
         >
-          <span>{isParchment ? "🌌 Cosmic Mode" : "📜 Parchment Mode"}</span>
+          <span>🌌</span>
+          <span>Full Cosmic</span>
         </button>
+
+        {/* 2. Full Parchment */}
+        <button
+          type="button"
+          onClick={() => setIsParchment(true)}
+          className={cn(
+            "px-3 py-1.5 rounded-full text-[11px] font-sans transition-all cursor-pointer flex items-center gap-1.5",
+            isParchment
+              ? "bg-[#F3E9D2] text-[#2A1B10] font-semibold shadow-[0_0_12px_rgba(243,233,210,0.4)]"
+              : "text-ivory/70 hover:text-ivory hover:bg-white/5"
+          )}
+          title="Light Parchment theme across all sections"
+        >
+          <span>📜</span>
+          <span>Full Parchment</span>
+        </button>
+
+        {/* Link to Workbench */}
+        <a
+          href="/workbench"
+          className="text-[10px] font-mono text-[#D4A65A]/60 hover:text-[#FFF5D1] px-2.5 transition-colors border-l border-white/10 hidden md:inline"
+          title="View All Component Atoms & Molecules Workbench"
+        >
+          Workbench →
+        </a>
       </aside>
     </div>
   );

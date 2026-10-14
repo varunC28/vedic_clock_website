@@ -11,7 +11,7 @@ interface MuhurtaDimensionCardProps {
   className?: string;
 }
 
-export function MuhurtaDial({
+export function MuhurtaDimensionCard({
   muhurtaNameHi = "अभिजित",
   muhurtaNameEn = "Abhijit",
   muhurtaIndex = 7,
@@ -25,133 +25,6 @@ export function MuhurtaDial({
   const handX = 100 + 58 * Math.cos(pointerRad);
   const handY = 100 + 58 * Math.sin(pointerRad);
 
-  return (
-    <div className={cn("w-full flex flex-col items-center justify-center shrink-0", className)}>
-      <div className="relative w-44 h-44 sm:w-52 sm:h-52 flex items-center justify-center">
-        <svg className="w-full h-full" viewBox="0 0 200 200">
-          {/* Horizon Reference Line */}
-          <line
-            x1="26"
-            y1="100"
-            x2="174"
-            y2="100"
-            stroke={isParchment ? "#8A5A1A" : "#D4A65A"}
-            strokeWidth="1"
-            strokeDasharray="3 3"
-            opacity={isParchment ? 0.35 : 0.25}
-          />
-
-          {/* 30 Muhurta Dial Spokes */}
-          {Array.from({ length: 30 }).map((_, i) => {
-            const angleDeg = (i / 30) * 360 - 90;
-            const rad = (angleDeg * Math.PI) / 180;
-            const isZenith = i === 7;
-            const isCurrent = i === safeIndex;
-            const r1 = isCurrent ? 54 : isZenith ? 62 : 66;
-            const r2 = 76;
-            const x1 = 100 + r1 * Math.cos(rad);
-            const y1 = 100 + r1 * Math.sin(rad);
-            const x2 = 100 + r2 * Math.cos(rad);
-            const y2 = 100 + r2 * Math.sin(rad);
-
-            return (
-              <line
-                key={i}
-                x1={x1}
-                y1={y1}
-                x2={x2}
-                y2={y2}
-                stroke={
-                  isCurrent
-                    ? isParchment ? "#2A1B10" : "#FBF5E7"
-                    : isZenith
-                    ? isParchment ? "#B8873D" : "#E8B94B"
-                    : i < 15
-                    ? isParchment ? "#8A5A1A" : "#D4A65A"
-                    : isParchment ? "#78716C" : "#64748B"
-                }
-                strokeWidth={isCurrent ? "2.5" : isZenith ? "1.5" : "0.75"}
-                opacity={isCurrent ? 1 : isZenith ? 0.95 : (isParchment ? 0.4 : 0.3)}
-              />
-            );
-          })}
-
-          {/* Midday Zenith (Abhijit) Marker */}
-          <circle
-            cx="100"
-            cy="24"
-            r="3.5"
-            fill={isParchment ? "#B8873D" : "#E8B94B"}
-          />
-
-          {/* Sweeping Sun Ray Hand to Current Muhurta */}
-          <line
-            x1="100"
-            y1="100"
-            x2={handX}
-            y2={handY}
-            stroke={isParchment ? "#B8873D" : "#E8B94B"}
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-          <circle
-            cx={handX}
-            cy={handY}
-            r="4.5"
-            fill={isParchment ? "#FAF5E8" : "#FFF5D1"}
-            stroke={isParchment ? "#B8873D" : "#E8B94B"}
-            strokeWidth="1.5"
-          />
-
-          {/* Central Sun Node */}
-          <circle
-            cx="100"
-            cy="100"
-            r="16"
-            fill={isParchment ? "#2A1B10" : "#070E1E"}
-            stroke={isParchment ? "#B8873D" : "#E8B94B"}
-            strokeWidth="1.2"
-          />
-          <circle
-            cx="100"
-            cy="100"
-            r="4"
-            fill={isParchment ? "#B8873D" : "#E8B94B"}
-          />
-        </svg>
-      </div>
-
-      {/* Clean Caption */}
-      <div className="flex flex-col items-center text-center mt-2.5">
-        <span
-          className={cn(
-            "text-[11px] font-sans tracking-[0.2em] uppercase font-semibold",
-            isParchment ? "text-[#8A5A1A]" : "text-[#D4A65A]/80"
-          )}
-        >
-          MUHURTA · मुहूर्त
-        </span>
-        <span
-          className={cn(
-            "text-xl sm:text-2xl font-hindi font-semibold mt-0.5",
-            isParchment ? "text-[#2A1B10]" : "text-[#FFF5D1]"
-          )}
-        >
-          {muhurtaNameHi} ({muhurtaNameEn})
-        </span>
-      </div>
-    </div>
-  );
-}
-
-export function MuhurtaDimensionCard({
-  muhurtaNameHi = "अभिजित",
-  muhurtaNameEn = "Abhijit",
-  muhurtaIndex = 7,
-  variant = "dark",
-  className,
-}: MuhurtaDimensionCardProps) {
-  const isParchment = variant === "parchment";
   const pills = [
     "30 Diurnal Windows",
     "48 Minutes / Cycle",
@@ -167,12 +40,119 @@ export function MuhurtaDimensionCard({
     >
       {/* ── LHS: Clean Astronomical Dial ─────────────────────────────────── */}
       <div className="w-full md:w-[38%] flex flex-col items-center justify-center shrink-0">
-        <MuhurtaDial
-          muhurtaNameHi={muhurtaNameHi}
-          muhurtaNameEn={muhurtaNameEn}
-          muhurtaIndex={muhurtaIndex}
-          variant={variant}
-        />
+        <div className="relative w-40 h-40 sm:w-48 sm:h-48 flex items-center justify-center">
+          <svg className="w-full h-full" viewBox="0 0 200 200">
+            {/* Horizon Reference Line */}
+            <line
+              x1="26"
+              y1="100"
+              x2="174"
+              y2="100"
+              stroke={isParchment ? "#8A5A1A" : "#D4A65A"}
+              strokeWidth="1"
+              strokeDasharray="3 3"
+              opacity={isParchment ? 0.35 : 0.25}
+            />
+
+            {/* 30 Muhurta Dial Spokes */}
+            {Array.from({ length: 30 }).map((_, i) => {
+              const angleDeg = (i / 30) * 360 - 90;
+              const rad = (angleDeg * Math.PI) / 180;
+              const isZenith = i === 7;
+              const isCurrent = i === safeIndex;
+              const r1 = isCurrent ? 54 : isZenith ? 62 : 66;
+              const r2 = 76;
+              const x1 = 100 + r1 * Math.cos(rad);
+              const y1 = 100 + r1 * Math.sin(rad);
+              const x2 = 100 + r2 * Math.cos(rad);
+              const y2 = 100 + r2 * Math.sin(rad);
+
+              return (
+                <line
+                  key={i}
+                  x1={x1}
+                  y1={y1}
+                  x2={x2}
+                  y2={y2}
+                  stroke={
+                    isCurrent
+                      ? isParchment ? "#2A1B10" : "#FBF5E7"
+                      : isZenith
+                      ? isParchment ? "#B8873D" : "#E8B94B"
+                      : i < 15
+                      ? isParchment ? "#8A5A1A" : "#D4A65A"
+                      : isParchment ? "#78716C" : "#64748B"
+                  }
+                  strokeWidth={isCurrent ? "2.5" : isZenith ? "1.5" : "0.75"}
+                  opacity={isCurrent ? 1 : isZenith ? 0.95 : (isParchment ? 0.4 : 0.3)}
+                />
+              );
+            })}
+
+            {/* Midday Zenith (Abhijit) Marker */}
+            <circle
+              cx="100"
+              cy="24"
+              r="3.5"
+              fill={isParchment ? "#B8873D" : "#E8B94B"}
+            />
+
+            {/* Sweeping Sun Ray Hand to Current Muhurta */}
+            <line
+              x1="100"
+              y1="100"
+              x2={handX}
+              y2={handY}
+              stroke={isParchment ? "#B8873D" : "#E8B94B"}
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+            <circle
+              cx={handX}
+              cy={handY}
+              r="4.5"
+              fill={isParchment ? "#FAF5E8" : "#FFF5D1"}
+              stroke={isParchment ? "#B8873D" : "#E8B94B"}
+              strokeWidth="1.5"
+            />
+
+            {/* Central Sun Node */}
+            <circle
+              cx="100"
+              cy="100"
+              r="16"
+              fill={isParchment ? "#2A1B10" : "#070E1E"}
+              stroke={isParchment ? "#B8873D" : "#E8B94B"}
+              strokeWidth="1.2"
+            />
+            <circle
+              cx="100"
+              cy="100"
+              r="4"
+              fill={isParchment ? "#B8873D" : "#E8B94B"}
+            />
+          </svg>
+        </div>
+
+        {/* Clean Caption */}
+        <div className="flex flex-col items-center text-center mt-2.5">
+          <span
+            className={cn(
+              "text-[11px] font-sans tracking-[0.2em] uppercase font-semibold",
+              isParchment ? "text-[#8A5A1A]" : "text-[#D4A65A]/80"
+            )}
+          >
+            MUHURTA · मुहूर्त
+          </span>
+          <span
+            className={cn(
+              "text-xl sm:text-2xl font-hindi font-semibold mt-0.5",
+              isParchment ? "text-[#2A1B10]" : "text-[#FFF5D1]"
+            )}
+          >
+            {muhurtaNameHi} ({muhurtaNameEn})
+          </span>
+        </div>
       </div>
 
       {/* ── RHS: Clean Editorial Presentation ────────────────────────────── */}

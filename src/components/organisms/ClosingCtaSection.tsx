@@ -31,7 +31,7 @@ export function ClosingCtaSection({ variant = "dark", className }: ClosingCtaSec
           description="Bring the living celestial wisdom of Ujjain's sunrise timekeeping into your personal space. Limited artisan production — now open for private acquisitions and bespoke commissions."
           buttonTextEn="Enquire Now"
           buttonTextHi="पूछताछ करें"
-          buttonSize="lg"
+          buttonSize="md"
           href="/contact"
         />
       </div>
