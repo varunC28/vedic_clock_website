@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { NavItem } from "@/components/molecules/NavItem";
 import { BrassButton } from "@/components/atoms/BrassButton";
@@ -21,6 +22,19 @@ interface HeaderProps {
 export function Header({ alwaysVisible = false }: HeaderProps) {
   const [scrolled, setScrolled] = useState(alwaysVisible);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      const heroEl = document.getElementById("hero");
+      if (heroEl) {
+        heroEl.scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
+  };
 
   // Detect scroll to reveal header ONLY after maximum scrolled past the hero section (unless alwaysVisible)
   useEffect(() => {
@@ -58,7 +72,11 @@ export function Header({ alwaysVisible = false }: HeaderProps) {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
           {/* Left: Brand Logo */}
-          <Link href="/" className="flex flex-col items-start gap-0.5 group">
+          <Link
+            href="/"
+            onClick={handleLogoClick}
+            className="flex flex-col items-start gap-0.5 group cursor-pointer"
+          >
             <span className="font-serif text-[10px] sm:text-xs text-ivory uppercase tracking-[0.3em] group-hover:text-antique-gold transition-colors">
               Vedic
             </span>

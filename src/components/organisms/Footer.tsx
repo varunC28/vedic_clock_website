@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const NAVIGATE_LINKS = [
@@ -23,6 +24,19 @@ interface FooterProps {
 
 export function Footer({ variant = "dark", className }: FooterProps) {
   const isParchment = variant === "parchment";
+  const pathname = usePathname();
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      const heroEl = document.getElementById("hero");
+      if (heroEl) {
+        heroEl.scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
+  };
 
   return (
     <footer
@@ -39,7 +53,11 @@ export function Footer({ variant = "dark", className }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 pb-14 border-b border-white/5">
           {/* Col 1: Brand & Origin (Spans 5 cols) */}
           <div className="md:col-span-5 flex flex-col items-start text-left">
-            <Link href="/" className="group inline-flex flex-col items-start gap-0.5 mb-4">
+            <Link
+              href="/"
+              onClick={handleLogoClick}
+              className="group inline-flex flex-col items-start gap-0.5 mb-4 cursor-pointer"
+            >
               <span className="font-serif text-[10px] sm:text-xs text-[#D4A65A] uppercase tracking-[0.35em] group-hover:text-[#FFF5D1] transition-colors">
                 VIKRAMADITYA
               </span>

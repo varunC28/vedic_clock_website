@@ -119,6 +119,7 @@ export function Hero({ variant = "dark", className }: HeroProps) {
 
   return (
     <section
+      id="hero"
       ref={containerRef}
       className={cn(
         "relative min-h-screen w-full overflow-hidden select-none flex items-center justify-center",
