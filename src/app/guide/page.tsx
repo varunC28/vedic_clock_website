@@ -584,7 +584,7 @@ export default function GuidePage() {
                 Microsecond to Macro Cycles
               </span>
             </div>
-            <div className={cn("divide-y", t.divideSubtle)}>
+            <div className="flex flex-col gap-1.5 sm:gap-2 py-2">
               <PanchangTableRow
                 index={1}
                 nameHi="त्रुटि"
@@ -656,7 +656,7 @@ export default function GuidePage() {
                 1 Sunrise = 30 Muhurtas
               </span>
             </div>
-            <div className={cn("divide-y", t.divideSubtle)}>
+            <div className="flex flex-col gap-1.5 sm:gap-2 py-2">
               <PanchangTableRow
                 index={1}
                 nameHi="मुहूर्त"
@@ -816,7 +816,7 @@ export default function GuidePage() {
                   7 Solar Days
                 </span>
               </div>
-              <div className={cn("divide-y", t.divideSubtle)}>
+              <div className="flex flex-col gap-1.5 sm:gap-2 py-2">
                 {VARA_ITEMS.map((item, idx) => (
                   <PanchangTableRow
                     key={item.dayEn}
@@ -964,7 +964,7 @@ export default function GuidePage() {
                   7 Repeating · 4 Fixed
                 </span>
               </div>
-              <div className={cn("divide-y", t.divideSubtle)}>
+              <div className="flex flex-col gap-1.5 sm:gap-2 py-2">
                 {KARANA_ITEMS.map((item) => (
                   <PanchangTableRow
                     key={item.en}

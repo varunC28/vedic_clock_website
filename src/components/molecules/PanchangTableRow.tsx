@@ -62,10 +62,12 @@ export function PanchangTableRow({
           role={onClick ? "button" : undefined}
           tabIndex={onClick ? 0 : undefined}
           className={cn(
-            "w-full flex items-center justify-between gap-3 sm:gap-6 px-3.5 sm:px-6 py-3 transition-colors duration-150 border-b",
+            "group w-full flex items-center justify-between gap-3 sm:gap-6 px-3.5 sm:px-6 py-3 transition-all duration-200 border-b cursor-pointer",
             isDocDark ? "border-[#D4A65A]/15" : "border-[#DFCBB5]/40",
-            onClick && (isDocDark ? "cursor-pointer hover:bg-white/[0.04]" : "cursor-pointer hover:bg-[#EBD6BE]/50"),
-            isHighlighted && (isDocDark ? "bg-[#181512]" : "bg-[#EBD6BE]/70"),
+            isDocDark
+              ? "hover:bg-[#181512] hover:border-l-[3px] hover:border-l-[#D4A65A]"
+              : "hover:bg-[#EBD6BE]/60 hover:border-l-[3px] hover:border-l-[#B8873D]",
+            isHighlighted && (isDocDark ? "bg-[#181512] border-l-[3px] border-l-[#D4A65A]" : "bg-[#EBD6BE]/70 border-l-[3px] border-l-[#B8873D]"),
             className
           )}
         >
@@ -74,31 +76,33 @@ export function PanchangTableRow({
             {index !== undefined && (
               <div
                 className={cn(
-                  "w-7 h-7 sm:w-8 sm:h-8 shrink-0 rounded-full flex items-center justify-center font-sans text-[11px] sm:text-xs font-bold transition-all",
+                  "w-7 h-7 sm:w-8 sm:h-8 shrink-0 rounded-full flex items-center justify-center font-sans text-[11px] sm:text-xs font-bold transition-all duration-200",
                   isHighlighted
                     ? isDocDark
                       ? "bg-[#D4A65A] text-[#03060E] shadow-sm scale-105"
                       : "bg-[#B8873D] text-[#FFF9F0] shadow-sm scale-105"
                     : isDocDark
-                    ? "bg-white/10 text-[#D4A65A]"
-                    : "bg-[#EADCCB] text-[#5C4230]"
+                    ? "bg-white/10 text-[#D4A65A] group-hover:scale-105 group-hover:bg-[#D4A65A] group-hover:text-[#03060E] group-hover:shadow-sm"
+                    : "bg-[#EADCCB] text-[#5C4230] group-hover:scale-105 group-hover:bg-[#B8873D] group-hover:text-[#FFF9F0] group-hover:shadow-sm"
                 )}
               >
                 {index}
               </div>
             )}
-            <div className="flex flex-col text-left min-w-0">
+            <div className="flex flex-col text-left min-w-0 py-0.5">
               <span
                 className={cn(
-                  "font-hindi font-bold text-xs sm:text-[14px] leading-tight",
-                  isDocDark ? "text-[#FBF5E7]" : "text-[#2D1B0E]"
+                  "font-hindi font-bold text-xs sm:text-[14px] leading-normal pt-0.5 transition-colors duration-200",
+                  isDocDark
+                    ? "text-[#FBF5E7] group-hover:text-[#FCD34D]"
+                    : "text-[#2D1B0E] group-hover:text-[#8C5D33]"
                 )}
               >
                 {nameHi}
               </span>
               <span
                 className={cn(
-                  "font-sans text-[11px] sm:text-xs mt-0.5",
+                  "font-sans text-[11px] sm:text-xs mt-0.5 transition-colors duration-200",
                   isDocDark ? "text-ivory/60" : "text-[#5C4230]"
                 )}
               >
@@ -108,10 +112,10 @@ export function PanchangTableRow({
           </div>
 
           {/* Column 2: Signifies (Bilingual Text) */}
-          <div className="flex-1 flex flex-col text-left">
+          <div className="flex-1 flex flex-col text-left py-0.5">
             <span
               className={cn(
-                "font-hindi font-bold text-xs sm:text-[14px] leading-tight",
+                "font-hindi font-bold text-xs sm:text-[14px] leading-normal pt-0.5",
                 isDocDark ? "text-[#FBF5E7]" : "text-[#2D1B0E]"
               )}
             >
@@ -139,10 +143,12 @@ export function PanchangTableRow({
         role={onClick ? "button" : undefined}
         tabIndex={onClick ? 0 : undefined}
         className={cn(
-          "w-full transition-colors duration-150 border-b",
+          "group w-full transition-all duration-200 border-b cursor-pointer",
           isDocDark ? "border-[#D4A65A]/15" : "border-[#DFCBB5]/40",
-          onClick && (isDocDark ? "cursor-pointer hover:bg-white/[0.04]" : "cursor-pointer hover:bg-[#EBD6BE]/50"),
-          isHighlighted && (isDocDark ? "bg-[#181512]" : "bg-[#EBD6BE]/70"),
+          isDocDark
+            ? "hover:bg-[#181512] hover:border-l-[3px] hover:border-l-[#D4A65A]"
+            : "hover:bg-[#EBD6BE]/60 hover:border-l-[3px] hover:border-l-[#B8873D]",
+          isHighlighted && (isDocDark ? "bg-[#181512] border-l-[3px] border-l-[#D4A65A]" : "bg-[#EBD6BE]/70 border-l-[3px] border-l-[#B8873D]"),
           className
         )}
       >
@@ -153,31 +159,33 @@ export function PanchangTableRow({
               {/* 1. # Disc */}
               <div
                 className={cn(
-                  "w-7 h-7 shrink-0 rounded-full flex items-center justify-center font-sans text-[11px] font-bold transition-all",
+                  "w-7 h-7 shrink-0 rounded-full flex items-center justify-center font-sans text-[11px] font-bold transition-all duration-200",
                   isHighlighted
                     ? isDocDark
                       ? "bg-[#D4A65A] text-[#03060E] shadow-sm scale-105"
                       : "bg-[#B8873D] text-[#FFF9F0] shadow-sm scale-105"
                     : isDocDark
-                    ? "bg-white/10 text-[#D4A65A]"
-                    : "bg-[#EADCCB] text-[#5C4230]"
+                    ? "bg-white/10 text-[#D4A65A] group-hover:scale-105 group-hover:bg-[#D4A65A] group-hover:text-[#03060E] group-hover:shadow-sm"
+                    : "bg-[#EADCCB] text-[#5C4230] group-hover:scale-105 group-hover:bg-[#B8873D] group-hover:text-[#FFF9F0] group-hover:shadow-sm"
                 )}
               >
                 {index}
               </div>
               {/* 2. Muhurta Name */}
-              <div className="flex flex-col min-w-0">
+              <div className="flex flex-col min-w-0 py-0.5">
                 <span
                   className={cn(
-                    "font-hindi font-bold text-sm leading-tight truncate",
-                    isDocDark ? "text-[#FBF5E7]" : "text-[#2D1B0E]"
+                    "font-hindi font-bold text-sm leading-normal pt-0.5 transition-colors duration-200",
+                    isDocDark
+                      ? "text-[#FBF5E7] group-hover:text-[#FCD34D]"
+                      : "text-[#2D1B0E] group-hover:text-[#8C5D33]"
                   )}
                 >
                   {nameHi}
                 </span>
                 <span
                   className={cn(
-                    "font-sans text-[11px] truncate",
+                    "font-sans text-[11px] transition-colors duration-200",
                     isDocDark ? "text-ivory/60" : "text-[#5C4230]"
                   )}
                 >
@@ -296,8 +304,8 @@ export function PanchangTableRow({
                     ? "bg-[#D4A65A] text-[#03060E] shadow-sm scale-105"
                     : "bg-[#B8873D] text-[#FFF9F0] shadow-sm scale-105"
                   : isDocDark
-                  ? "bg-white/10 text-[#D4A65A]"
-                  : "bg-[#EADCCB] text-[#5C4230]"
+                  ? "bg-white/10 text-[#D4A65A] group-hover:scale-105 group-hover:bg-[#D4A65A] group-hover:text-[#03060E] group-hover:shadow-sm"
+                  : "bg-[#EADCCB] text-[#5C4230] group-hover:scale-105 group-hover:bg-[#B8873D] group-hover:text-[#FFF9F0] group-hover:shadow-sm"
               )}
             >
               {index}
@@ -305,18 +313,20 @@ export function PanchangTableRow({
           </div>
 
           {/* 2. मुहूर्त · Muhurta */}
-          <div className="w-36 shrink-0 flex flex-col text-left">
+          <div className="w-36 shrink-0 flex flex-col text-left py-0.5">
             <span
               className={cn(
-                "font-hindi font-bold text-[14px] leading-tight",
-                isDocDark ? "text-[#FBF5E7]" : "text-[#2D1B0E]"
+                "font-hindi font-bold text-[14px] leading-normal pt-0.5 transition-colors duration-200",
+                isDocDark
+                  ? "text-[#FBF5E7] group-hover:text-[#FCD34D]"
+                  : "text-[#2D1B0E] group-hover:text-[#8C5D33]"
               )}
             >
               {nameHi}
             </span>
             <span
               className={cn(
-                "font-sans text-xs mt-0.5",
+                "font-sans text-xs mt-0.5 transition-colors duration-200",
                 isDocDark ? "text-ivory/60" : "text-[#5C4230]"
               )}
             >
@@ -325,10 +335,10 @@ export function PanchangTableRow({
           </div>
 
           {/* 3. प्रकृति · Nature */}
-          <div className="w-44 shrink-0 flex flex-col text-left">
+          <div className="w-44 shrink-0 flex flex-col text-left py-0.5">
             <span
               className={cn(
-                "font-hindi font-bold text-[14px] leading-tight",
+                "font-hindi font-bold text-[14px] leading-normal pt-0.5",
                 isDocDark ? "text-[#FBF5E7]" : "text-[#2D1B0E]"
               )}
             >
@@ -345,10 +355,10 @@ export function PanchangTableRow({
           </div>
 
           {/* 4. करें · Do */}
-          <div className="flex-1 min-w-[130px] flex flex-col text-left">
+          <div className="flex-1 min-w-[130px] flex flex-col text-left py-0.5">
             <span
               className={cn(
-                "font-hindi font-bold text-[14px] leading-tight",
+                "font-hindi font-bold text-[14px] leading-normal pt-0.5",
                 isDocDark ? "text-[#FBF5E7]" : "text-[#2D1B0E]"
               )}
             >
@@ -365,14 +375,14 @@ export function PanchangTableRow({
           </div>
 
           {/* 5. न करें · Avoid */}
-          <div className="flex-1 min-w-[130px] flex flex-col text-left">
+          <div className="flex-1 min-w-[130px] flex flex-col text-left py-0.5">
             <span
               className={cn(
-                "font-hindi font-bold text-[14px] leading-tight",
+                "font-hindi font-bold text-[14px] leading-normal pt-0.5",
                 isDocDark ? "text-[#FBF5E7]" : "text-[#2D1B0E]"
               )}
             >
-              {avoidHi}
+              {avoidHi || "—"}
             </span>
             <span
               className={cn(
@@ -380,7 +390,7 @@ export function PanchangTableRow({
                 isDocDark ? "text-ivory/60" : "text-[#5C4230]"
               )}
             >
-              {avoid}
+              {avoid || "—"}
             </span>
           </div>
         </div>
@@ -431,10 +441,10 @@ export function PanchangTableRow({
         isParchment
           ? isHighlighted
             ? "border-2 border-[#9E672B] border-l-[4px] border-l-[#7E4A19] bg-[#EBD6BE] rounded-2xl shadow-[0_10px_25px_-5px_rgba(110,65,25,0.18),0_4px_10px_rgba(110,65,25,0.08)] scale-[1.015] sm:scale-[1.025] -translate-y-0.5 sm:-translate-y-1 z-10"
-            : "border-2 border-transparent border-l-[4px] border-l-transparent hover:bg-[#F3E6D3]/40 rounded-2xl scale-100 translate-y-0 z-0"
+            : "border-2 border-transparent border-l-[4px] border-l-transparent hover:border-[#9E672B] hover:border-l-[#7E4A19] hover:bg-[#EBD6BE] hover:shadow-[0_10px_25px_-5px_rgba(110,65,25,0.18)] hover:scale-[1.015] sm:hover:scale-[1.025] hover:-translate-y-0.5 sm:hover:-translate-y-1 hover:z-10 rounded-2xl scale-100 translate-y-0 z-0"
           : isHighlighted
           ? "border-2 border-[#E5A84B] border-l-[4px] border-l-[#F59E0B] bg-[#181512] rounded-2xl shadow-[0_12px_30px_-6px_rgba(229,168,75,0.32),0_4px_12px_rgba(0,0,0,0.5)] scale-[1.015] sm:scale-[1.025] -translate-y-0.5 sm:-translate-y-1 z-10"
-          : "border-2 border-transparent border-l-[4px] border-l-transparent hover:bg-white/[0.03] rounded-2xl scale-100 translate-y-0 z-0",
+          : "border-2 border-transparent border-l-[4px] border-l-transparent hover:border-[#E5A84B] hover:border-l-[#F59E0B] hover:bg-[#181512] hover:shadow-[0_12px_30px_-6px_rgba(229,168,75,0.32),0_4px_12px_rgba(0,0,0,0.5)] hover:scale-[1.015] sm:hover:scale-[1.025] hover:-translate-y-0.5 sm:hover:-translate-y-1 hover:z-10 rounded-2xl scale-100 translate-y-0 z-0",
         onClick && "cursor-pointer",
         className
       )}
@@ -447,10 +457,10 @@ export function PanchangTableRow({
             isParchment
               ? isHighlighted
                 ? "bg-[#B8873D] text-[#FFF9F0] shadow-md scale-110"
-                : "bg-[#EADCCB] text-[#5C4230] scale-100"
+                : "bg-[#EADCCB] text-[#5C4230] scale-100 group-hover:scale-110 group-hover:bg-[#B8873D] group-hover:text-[#FFF9F0] group-hover:shadow-md"
               : isHighlighted
               ? "bg-[#E5A84B] text-[#120F0B] shadow-[0_0_16px_rgba(229,168,75,0.55)] scale-110"
-              : "bg-white/[0.08] text-white/70 scale-100"
+              : "bg-white/[0.08] text-white/70 scale-100 group-hover:scale-110 group-hover:bg-[#E5A84B] group-hover:text-[#120F0B] group-hover:shadow-[0_0_16px_rgba(229,168,75,0.55)]"
           )}
         >
           {index}
@@ -463,10 +473,12 @@ export function PanchangTableRow({
           className={cn(
             "font-hindi text-sm sm:text-base font-bold leading-normal pt-1 pb-0.5 transition-colors duration-300",
             isParchment
-              ? "text-[#3D2314]"
+              ? isHighlighted
+                ? "text-[#3D2314]"
+                : "text-[#3D2314] group-hover:text-[#7E4A19]"
               : isHighlighted
               ? "text-[#FCD34D]"
-              : "text-[#E5A84B]"
+              : "text-[#E5A84B] group-hover:text-[#FCD34D]"
           )}
         >
           {nameHi}
@@ -579,7 +591,7 @@ export function PanchangTableRow({
             <span
               className={cn(
                 "text-xs sm:text-sm leading-relaxed transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
-                isHighlighted && "translate-x-1.5",
+                isHighlighted ? "translate-x-1.5" : "group-hover:translate-x-1.5",
                 isEquation
                   ? isParchment
                     ? "font-sans font-medium text-[#482D1C]"
@@ -587,10 +599,10 @@ export function PanchangTableRow({
                   : isParchment
                   ? isHighlighted
                     ? "font-sans font-medium text-[#2D1B0E]"
-                    : "font-sans text-[#5C4230]"
+                    : "font-sans text-[#5C4230] group-hover:text-[#2D1B0E]"
                   : isHighlighted
                   ? "font-sans font-medium text-ivory/95"
-                  : "font-sans text-ivory/60"
+                  : "font-sans text-ivory/60 group-hover:text-ivory/95"
               )}
             >
               {detail}
