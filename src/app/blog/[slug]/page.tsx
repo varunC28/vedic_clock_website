@@ -114,6 +114,16 @@ export default function ArticlePage({ params }: PageProps) {
         </div>
 
         {/* Article Excerpt */}
+        {article.descriptionHi && (
+          <p
+            className={cn(
+              "text-base sm:text-lg font-hindi font-medium leading-relaxed mb-3",
+              isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
+            )}
+          >
+            {article.descriptionHi}
+          </p>
+        )}
         <p
           className={cn(
             "text-base sm:text-lg font-sans leading-relaxed mb-10 pb-6 border-b border-current/10 font-normal italic",

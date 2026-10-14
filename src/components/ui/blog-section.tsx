@@ -243,19 +243,31 @@ export function BlogSection({
                     {blog.titleHi && (
                       <p
                         className={cn(
-                          "line-clamp-1 font-hindi text-xs sm:text-sm font-medium",
-                          isParchment ? "text-[#8C5D33]/90" : "text-[#D4A65A]/80"
+                          "line-clamp-1 font-hindi text-xs sm:text-sm font-semibold",
+                          isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
                         )}
                       >
                         {blog.titleHi}
                       </p>
                     )}
 
-                    {/* Description excerpt */}
+                    {/* Hindi Description */}
+                    {blog.descriptionHi && (
+                      <p
+                        className={cn(
+                          "line-clamp-2 font-hindi text-xs sm:text-[13px] font-medium leading-relaxed pt-0.5",
+                          isParchment ? "text-[#5C4533]" : "text-ivory/85"
+                        )}
+                      >
+                        {blog.descriptionHi}
+                      </p>
+                    )}
+
+                    {/* English Description */}
                     <p
                       className={cn(
-                        "line-clamp-3 text-xs sm:text-[13px] font-sans leading-relaxed pt-0.5",
-                        isParchment ? "text-[#6E5540]" : "text-ivory/65"
+                        "line-clamp-2 text-xs sm:text-[12.5px] font-sans leading-relaxed pt-0.5",
+                        isParchment ? "text-[#7A614D]" : "text-ivory/60"
                       )}
                     >
                       {blog.description}
