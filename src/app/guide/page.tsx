@@ -452,8 +452,8 @@ export default function GuidePage() {
           </div>
 
           {/* ── Section 1: The Vikramaditya Vedic Clock ── */}
-          <div className="flex flex-col items-start mb-8 sm:mb-10">
-            <div className="mb-3.5">
+          <div className="flex flex-col items-start mb-8 sm:mb-10 max-w-full">
+            <div className="mb-3.5 max-w-full">
               <BilingualPill
                 hi="विक्रमादित्य वैदिक घड़ी"
                 en="The Vikramaditya Vedic Clock"
@@ -472,8 +472,8 @@ export default function GuidePage() {
           </div>
 
           {/* ── Section 2: A Brief History of Vedic Time-Keeping ── */}
-          <div className="flex flex-col items-start mb-8 sm:mb-10">
-            <div className="mb-3.5">
+          <div className="flex flex-col items-start mb-8 sm:mb-10 max-w-full">
+            <div className="mb-3.5 max-w-full">
               <BilingualPill
                 hi="वैदिक काल-गणना का इतिहास"
                 en="A Brief History of Vedic Time-Keeping"
@@ -492,8 +492,8 @@ export default function GuidePage() {
           </div>
 
           {/* ── Section 3: Why Anchor Time to Sunrise? ── */}
-          <div className="flex flex-col items-start mb-8 sm:mb-10">
-            <div className="mb-3.5">
+          <div className="flex flex-col items-start mb-8 sm:mb-10 max-w-full">
+            <div className="mb-3.5 max-w-full">
               <BilingualPill
                 hi="सूर्योदय ही क्यों?"
                 en="Why Anchor Time to Sunrise?"
@@ -745,7 +745,7 @@ export default function GuidePage() {
               LIMB 1: TITHI (तिथि — चंद्र दिवस)
              ──────────────────────────────────────────────────────── */}
           <section className="mb-12 sm:mb-14">
-            <div className="mb-3.5">
+            <div className="mb-3.5 max-w-full">
               <BilingualPill
                 hi="1. तिथि — चंद्र दिवस"
                 en="1. Tithi — The Lunar Day"
@@ -796,7 +796,7 @@ export default function GuidePage() {
               LIMB 2: VARA (वार — सप्ताह का दिन)
              ──────────────────────────────────────────────────────── */}
           <section className="mb-12 sm:mb-14">
-            <div className="mb-3.5">
+            <div className="mb-3.5 max-w-full">
               <BilingualPill
                 hi="2. वार — सप्ताह का दिन"
                 en="2. Vara — The Day of the Week"
@@ -837,7 +837,7 @@ export default function GuidePage() {
               LIMB 3: NAKSHATRA (नक्षत्र — 27 नक्षत्र)
              ──────────────────────────────────────────────────────── */}
           <section className="mb-12 sm:mb-14">
-            <div className="mb-3.5">
+            <div className="mb-3.5 max-w-full">
               <BilingualPill
                 hi="3. नक्षत्र — 27 नक्षत्र"
                 en="3. Nakshatra — The 27 Lunar Mansions"
@@ -887,7 +887,7 @@ export default function GuidePage() {
               LIMB 4: YOGA (योग — 27 योग)
              ──────────────────────────────────────────────────────── */}
           <section className="mb-12 sm:mb-14">
-            <div className="mb-3.5">
+            <div className="mb-3.5 max-w-full">
               <BilingualPill
                 hi="4. योग — 27 योग"
                 en="4. Yoga — The 27 Yogas"
@@ -937,7 +937,7 @@ export default function GuidePage() {
               LIMB 5: KARANA (करण — 11 करण)
              ──────────────────────────────────────────────────────── */}
           <section className="mb-4">
-            <div className="mb-3.5">
+            <div className="mb-3.5 max-w-full">
               <BilingualPill
                 hi="5. करण — 11 करण"
                 en="5. Karana — The 11 Karanas"
@@ -1194,7 +1194,7 @@ export default function GuidePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-10">
             {/* Surya Rashi Card */}
             <div className={cn("flex flex-col items-start rounded-2xl p-5 sm:p-6 shadow-sm border", t.box)}>
-              <div className="mb-3">
+              <div className="mb-3 max-w-full">
                 <BilingualPill
                   hi="सूर्य राशि"
                   en="Surya Rashi"
@@ -1212,7 +1212,7 @@ export default function GuidePage() {
 
             {/* Chandra Rashi Card */}
             <div className={cn("flex flex-col items-start rounded-2xl p-5 sm:p-6 shadow-sm border", t.box)}>
-              <div className="mb-3">
+              <div className="mb-3 max-w-full">
                 <BilingualPill
                   hi="चंद्र राशि"
                   en="Chandra Rashi"
@@ -1230,7 +1230,7 @@ export default function GuidePage() {
           </div>
 
           {/* ── Subheading Pill: 12 Signs ── */}
-          <div className="flex items-center gap-2 mb-4">
+          <div className="flex items-center gap-2 mb-4 max-w-full">
             <BilingualPill
               hi="12 राशियाँ"
               en="The 12 Signs"
@@ -1318,7 +1318,7 @@ export default function GuidePage() {
           </div>
 
           {/* ── Subheading Pill: How to Read the Panchang at a Glance ── */}
-          <div className="flex items-center gap-2 mb-4">
+          <div className="flex items-center gap-2 mb-4 max-w-full">
             <BilingualPill
               hi="घड़ी का प्रयोग कैसे करें"
               en="How to Read the Panchang at a Glance"
