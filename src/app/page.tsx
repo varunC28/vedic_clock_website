@@ -78,31 +78,31 @@ export default function Home() {
       {/* ── Fixed Sticky Navigation Header ─────────────────────────────────── */}
       <Header />
 
-      {/* ── Section 1: Hero Showcase (40% Text / 60% Luxury Clock) ─────────── */}
-      <Hero variant={variant} />
+      {/* ── Section 1: Hero Showcase (40% Text / 60% Luxury Clock) [LIGHT in light mode / DARK in dark mode] ─── */}
+      <Hero variant={isParchment ? "parchment" : "dark"} />
 
-      {/* ── Section 2: The Creation Story (3-Step Process Strip) ───────────── */}
+      {/* ── Section 2: The Creation Story (3-Step Process Strip) [DARK in both modes for alternation] ───── */}
       <div ref={processStripRef}>
-        <ProcessStrip variant={variant} />
+        <ProcessStrip variant="dark" />
       </div>
 
-      {/* ── Section 3: Astrological Architecture / Dimensions ──────────────── */}
+      {/* ── Section 3: Astrological Architecture / Dimensions [LIGHT in light mode / DARK in dark mode] ──── */}
       <div ref={dimensionsRef}>
-        <FeatureGrid variant={variant} />
+        <FeatureGrid variant={isParchment ? "parchment" : "dark"} />
       </div>
 
-      {/* ── Section 4: Patrons & Institutions (Who It's For) ───────────────── */}
+      {/* ── Section 4: Patrons & Institutions (Who It's For) [DARK in both modes for alternation] ───────── */}
       <div ref={institutionsRef}>
-        <InstitutionGrid variant={variant} />
+        <InstitutionGrid variant="dark" />
       </div>
 
-      {/* ── Section 5: The Final Conversion Closer (M10 CTA Card) ─────────── */}
+      {/* ── Section 5: The Final Conversion Closer (M10 CTA Card) [LIGHT in light mode / DARK in dark mode] ─ */}
       <div ref={ctaRef}>
-        <ClosingCtaSection variant={variant} />
+        <ClosingCtaSection variant={isParchment ? "parchment" : "dark"} />
       </div>
 
-      {/* ── Section 6: Grounded 4-Column Luxury Footer ──────────────────────── */}
-      <Footer variant={variant} />
+      {/* ── Section 6: Grounded 4-Column Luxury Footer [DARK in both modes for alternation] ──────────────── */}
+      <Footer variant="dark" />
     </div>
   );
 }

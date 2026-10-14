@@ -448,59 +448,35 @@ export default function HeritagePage() {
             })}
           </div>
         </section>
+      </main>
 
-        {/* ═══════════════════════════════════════════════════════
-            SECTION 3: CHRONOLOGY TIMELINE (HEADER & SWITCHER)
-           ═══════════════════════════════════════════════════════ */}
-        <section className="flex flex-col gap-6">
+      {/* ═══════════════════════════════════════════════════════
+          SECTION 3: CHRONOLOGY TIMELINE (ALWAYS DARK FOR ALTERNATION)
+         ═══════════════════════════════════════════════════════ */}
+      <section className="w-full bg-[#03060E] text-ivory transition-colors duration-500 pt-16 sm:pt-20 pb-8 overflow-hidden border-y border-[#D4A65A]/20">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-12 mb-8 sm:mb-12 flex flex-col gap-6 text-left">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div className="flex flex-col gap-1">
-              <span
-                className={cn(
-                  "font-mono text-xs uppercase tracking-wider",
-                  isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
-                )}
-              >
+              <span className="font-mono text-xs uppercase tracking-wider text-[#D4A65A]">
                 Chronological Epochs · 1500 BCE to 2026 CE
               </span>
-              <h2
-                className={cn(
-                  "font-sans text-2xl sm:text-3xl font-bold tracking-tight",
-                  isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
-                )}
-              >
+              <h2 className="font-sans text-2xl sm:text-3xl font-bold tracking-tight text-[#FBF5E7]">
                 The Evolution of Vedic Horology
               </h2>
-              <p
-                className={cn(
-                  "font-sans text-sm max-w-xl mt-1",
-                  isParchment ? "text-[#6E5540]" : "text-ivory/70"
-                )}
-              >
+              <p className="font-sans text-sm max-w-xl mt-1 text-ivory/70">
                 Trace the intellectual continuum across millennia—from Rigvedic solar mathematics to modern monumental tower horology.
               </p>
             </div>
 
             {/* Layout Comparison Switcher */}
-            <div
-              className={cn(
-                "w-full sm:w-auto grid grid-cols-2 sm:inline-flex items-center gap-1 p-1 rounded-full border transition-all duration-300 shrink-0",
-                isParchment
-                  ? "bg-[#EFE6D6]/80 border-[#B8873D]/30 shadow-sm"
-                  : "bg-[#091122]/90 border-[#D4A65A]/25 shadow-inner"
-              )}
-            >
+            <div className="w-full sm:w-auto grid grid-cols-2 sm:inline-flex items-center gap-1 p-1 rounded-full border bg-[#091122]/90 border-[#D4A65A]/25 shadow-inner shrink-0">
               <button
                 type="button"
                 onClick={() => setTimelineVariant("hyperiux")}
                 className={cn(
                   "px-4 py-2 sm:py-1.5 rounded-full text-xs font-sans transition-all duration-300 cursor-pointer flex items-center justify-center text-center",
                   timelineVariant === "hyperiux"
-                    ? isParchment
-                      ? "bg-[#482D1C] text-[#FAF6F0] shadow-sm font-semibold"
-                      : "bg-gradient-to-r from-[#B8873D] to-[#D4A65A] text-[#03060E] shadow-md shadow-[#D4A65A]/20 font-bold"
-                    : isParchment
-                    ? "text-[#6E5540] hover:text-[#2D1B0E] hover:bg-black/5 font-medium"
+                    ? "bg-gradient-to-r from-[#B8873D] to-[#D4A65A] text-[#03060E] shadow-md shadow-[#D4A65A]/20 font-bold"
                     : "text-ivory/65 hover:text-ivory hover:bg-white/5 font-medium"
                 )}
               >
@@ -512,11 +488,7 @@ export default function HeritagePage() {
                 className={cn(
                   "px-4 py-2 sm:py-1.5 rounded-full text-xs font-sans transition-all duration-300 cursor-pointer flex items-center justify-center text-center",
                   timelineVariant === "rail"
-                    ? isParchment
-                      ? "bg-[#482D1C] text-[#FAF6F0] shadow-sm font-semibold"
-                      : "bg-gradient-to-r from-[#B8873D] to-[#D4A65A] text-[#03060E] shadow-md shadow-[#D4A65A]/20 font-bold"
-                    : isParchment
-                    ? "text-[#6E5540] hover:text-[#2D1B0E] hover:bg-black/5 font-medium"
+                    ? "bg-gradient-to-r from-[#B8873D] to-[#D4A65A] text-[#03060E] shadow-md shadow-[#D4A65A]/20 font-bold"
                     : "text-ivory/65 hover:text-ivory hover:bg-white/5 font-medium"
                 )}
               >
@@ -524,42 +496,34 @@ export default function HeritagePage() {
               </button>
             </div>
           </div>
-        </section>
-      </main>
-
-      {/* ── Full Width Timeline Stream (Unconstrained by max-w-5xl) ── */}
-      {timelineVariant === "hyperiux" ? (
-        <div className="w-full max-w-full overflow-hidden relative">
-          <Timeline
-            title="Vedic Chronology"
-            periodLabel="1500 BCE — 2026 CE"
-            backgroundColor={isParchment ? "#FAF6F0" : "#03060E"}
-            textColor={isParchment ? "#2D1B0E" : "#FBF5E7"}
-            mutedTextColor={isParchment ? "#6E5540" : "rgba(251, 245, 231, 0.7)"}
-            activeColor={isParchment ? "#B8873D" : "#D4A65A"}
-            imageUrl={
-              isParchment
-                ? "/assets/images/celestial-astrolabe-sunrise.webp"
-                : "/assets/images/ancient-temple-celestial-wheel.webp?v=2"
-            }
-            imageAlt={
-              isParchment
-                ? "Celestial Astrolabe Temple at Sunrise - Avanti Meridian"
-                : "Ancient Temple Beneath the Celestial Wheel - Avanti Meridian"
-            }
-          />
         </div>
-      ) : (
-        <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-12 my-8">
-          <HorizontalTimeline
-            milestones={MILESTONES}
-            variant={isParchment ? "parchment" : "dark"}
-          />
-        </div>
-      )}
 
-      {/* ── Bottom Editorial Container ── */}
-      <main className="relative z-10 pt-4 sm:pt-6 pb-24 px-5 sm:px-8 lg:px-12 max-w-5xl mx-auto flex flex-col gap-20 sm:gap-24 text-left">
+        {/* ── Full Width Timeline Stream (Unconstrained by max-w-5xl) ── */}
+        {timelineVariant === "hyperiux" ? (
+          <div className="w-full max-w-full overflow-hidden relative">
+            <Timeline
+              title="Vedic Chronology"
+              periodLabel="1500 BCE — 2026 CE"
+              backgroundColor="#03060E"
+              textColor="#FBF5E7"
+              mutedTextColor="rgba(251, 245, 231, 0.7)"
+              activeColor="#D4A65A"
+              imageUrl="/assets/images/ancient-temple-celestial-wheel.webp?v=2"
+              imageAlt="Ancient Temple Beneath the Celestial Wheel - Avanti Meridian"
+            />
+          </div>
+        ) : (
+          <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-12 my-8">
+            <HorizontalTimeline
+              milestones={MILESTONES}
+              variant="dark"
+            />
+          </div>
+        )}
+      </section>
+
+      {/* ── Bottom Editorial Container (LIGHT in light mode / DARK in dark mode) ── */}
+      <main className="relative z-10 pt-16 sm:pt-20 pb-24 px-5 sm:px-8 lg:px-12 max-w-5xl mx-auto flex flex-col gap-20 sm:gap-24 text-left">
 
         {/* ═══════════════════════════════════════════════════════
             SECTION 4: SUN-ARC DIURNAL DIAL (HOVER TO EXPLORE)
@@ -680,47 +644,34 @@ export default function HeritagePage() {
 
         {/* ═══════════════════════════════════════════════════════
             SECTION 5: CANONICAL INSCRIPTIONS CAROUSEL (3 QUOTES)
+            [ALWAYS DARK for alternating rhythm]
            ═══════════════════════════════════════════════════════ */}
         <section
           onMouseEnter={() => setIsQuoteHovered(true)}
           onMouseLeave={() => setIsQuoteHovered(false)}
-          className={cn(
-            "p-8 sm:p-12 rounded-3xl border transition-all duration-300 text-left flex flex-col justify-between gap-6 relative overflow-hidden min-h-[290px] sm:min-h-[260px]",
-            isParchment
-              ? "bg-[#F2ECE1] border-[#DFCBB5]"
-              : "bg-[#060B18] border-[#D4A65A]/30"
-          )}
+          className="p-8 sm:p-12 rounded-3xl border border-[#D4A65A]/30 bg-[#060B18] text-ivory shadow-2xl transition-all duration-300 text-left flex flex-col justify-between gap-6 relative overflow-hidden min-h-[290px] sm:min-h-[260px]"
         >
+          {/* Subtle cosmic glow */}
+          <div
+            aria-hidden="true"
+            className="absolute -top-16 -right-16 w-64 h-64 bg-[#D4A65A]/10 rounded-full blur-3xl pointer-events-none"
+          />
+
           {/* Animated Quote Card */}
           <div
             key={CANON_QUOTES[activeQuoteIndex].id}
-            className="flex flex-col gap-4 animate-in fade-in duration-500 transition-all ease-out"
+            className="relative z-10 flex flex-col gap-4 animate-in fade-in duration-500 transition-all ease-out"
           >
-            <span
-              className={cn(
-                "font-mono text-xs uppercase tracking-widest",
-                isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
-              )}
-            >
+            <span className="font-mono text-xs uppercase tracking-widest text-[#D4A65A]">
               {CANON_QUOTES[activeQuoteIndex].canon}
             </span>
 
-            <blockquote
-              className={cn(
-                "font-serif text-lg sm:text-2xl italic leading-relaxed",
-                isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
-              )}
-            >
+            <blockquote className="font-serif text-lg sm:text-2xl italic leading-relaxed text-[#FBF5E7]">
               {CANON_QUOTES[activeQuoteIndex].quoteEn}
             </blockquote>
 
             <div className="flex items-center justify-end pt-2 text-xs">
-              <span
-                className={cn(
-                  "font-sans font-medium uppercase tracking-wider text-right",
-                  isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
-                )}
-              >
+              <span className="font-sans font-medium uppercase tracking-wider text-right text-[#D4A65A]">
                 {CANON_QUOTES[activeQuoteIndex].source}
               </span>
             </div>
@@ -739,12 +690,8 @@ export default function HeritagePage() {
                   className={cn(
                     "h-2 rounded-full transition-all duration-300 cursor-pointer",
                     isActive
-                      ? isParchment
-                        ? "w-6 bg-[#B8873D]"
-                        : "w-6 bg-[#D4A65A]"
-                      : isParchment
-                        ? "w-2 bg-[#DFCBB5] hover:bg-[#B8873D]/60"
-                        : "w-2 bg-[#D4A65A]/30 hover:bg-[#D4A65A]/60"
+                      ? "w-6 bg-[#D4A65A]"
+                      : "w-2 bg-[#D4A65A]/30 hover:bg-[#D4A65A]/60"
                   )}
                 />
               );
@@ -755,7 +702,10 @@ export default function HeritagePage() {
         {/* ═══════════════════════════════════════════════════════
             SECTION 6: MINIMALIST NEXT STEPS / CTA
            ═══════════════════════════════════════════════════════ */}
-        <section className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-4 border-t border-current/10">
+        <section className={cn(
+          "flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-4 border-t",
+          isParchment ? "border-[#DFCBB5]" : "border-white/10"
+        )}>
           <div className="flex flex-col gap-1">
             <h3
               className={cn(
@@ -803,8 +753,8 @@ export default function HeritagePage() {
 
       </main>
 
-      {/* ── Grounded Luxury Footer ── */}
-      <Footer variant={isParchment ? "parchment" : "dark"} />
+      {/* ── Grounded Luxury Footer [ALWAYS DARK] ── */}
+      <Footer variant="dark" />
     </div>
   );
 }

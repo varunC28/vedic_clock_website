@@ -315,6 +315,7 @@ export default function Timeline({
 
     // ── Multi-Stage Refresh for Next.js Client-Side Route Transitions ──
     const refreshTrigger = () => {
+      if (!sectionRef.current) return;
       ScrollTrigger.sort();
       ScrollTrigger.refresh();
     };
