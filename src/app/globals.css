@@ -46,10 +46,18 @@
     --font-hindi: var(--font-noto-devanagari), 'Noto Sans Devanagari', sans-serif;
   }
 
+  html {
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+  }
+
   body {
     background-color: var(--color-void-navy);
     color: var(--color-ivory);
-    overflow-x: clip;
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

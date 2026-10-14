@@ -366,14 +366,13 @@ export default function Timeline({
     <section
       ref={sectionRef}
       id="journey"
-      className="w-full h-screen h-[100dvh] min-h-[520px] relative overflow-hidden transition-colors duration-500 flex items-center select-none"
+      className="w-full max-w-full h-screen h-[100dvh] min-h-[560px] max-h-[920px] relative overflow-hidden transition-colors duration-500 block select-none"
       style={sectionStyle}
     >
       {/* ── Viewport Container: Locked to Exact Center Vertically ── */}
       <div
         ref={viewportRef}
-        className="w-full h-full relative overflow-hidden flex items-center"
-        style={{ height: "100%" }}
+        className="w-full h-full relative overflow-hidden"
       >
         {/* ═══ ABSOLUTE HORIZONTAL AXIS (Exact 50% midpoint of screen) ═══ */}
         <div className="w-full absolute left-0 right-0 top-1/2 -translate-y-1/2 flex items-center pointer-events-none z-10 journey-axis opacity-0">
@@ -391,15 +390,14 @@ export default function Timeline({
           />
         </div>
 
-        {/* ═══ THE HORIZONTAL SLIDER TRACK (Explicitly 100% height) ═══ */}
+        {/* ═══ THE HORIZONTAL SLIDER TRACK (Fixed full height via absolute inset-0) ═══ */}
         <div
           ref={wholeSliderRef}
-          className="flex will-change-transform gap-6 sm:gap-10 md:gap-14 px-5 sm:px-10 md:px-16 shrink-0 relative z-20 items-stretch"
-          style={{ height: "100%" }}
+          className="absolute inset-0 w-max flex will-change-transform gap-6 sm:gap-10 md:gap-14 px-5 sm:px-10 md:px-16 shrink-0 z-20"
         >
           {/* 1. Leading Plaque (Epoch Continuum / Avanti Meridian) */}
-          <div className="flex flex-col justify-center shrink-0">
-            <div className="h-[48vh] max-h-[380px] min-h-[260px] w-[180px] sm:w-[220px] md:w-[260px] overflow-hidden rounded-2xl md:rounded-3xl border border-black/10 dark:border-white/10 shadow-xl relative">
+          <div className="h-full flex flex-col justify-center shrink-0">
+            <div className="h-[44vh] max-h-[360px] min-h-[240px] w-[180px] sm:w-[220px] md:w-[260px] overflow-hidden rounded-2xl md:rounded-3xl border border-black/10 dark:border-white/10 shadow-xl relative">
               <img
                 src={imageUrl}
                 alt={imageAlt}
@@ -422,12 +420,9 @@ export default function Timeline({
           </div>
 
           {/* 2. Intro Title Column: Upper Half Title, Lower Half Era Span */}
-          <div
-            className="w-[120px] sm:w-[150px] md:w-[180px] shrink-0 flex flex-col justify-between text-left"
-            style={{ height: "100%" }}
-          >
-            {/* Top Half: Title */}
-            <div className="h-1/2 flex flex-col justify-end pb-5 sm:pb-6 pr-2">
+          <div className="w-[120px] sm:w-[150px] md:w-[180px] h-full shrink-0 flex flex-col justify-between text-left">
+            {/* Top Half: Title (Guaranteed safely above center line, clearing header) */}
+            <div className="h-1/2 w-full flex flex-col justify-end pb-5 sm:pb-6 pr-2 pt-16 sm:pt-20">
               <span className="font-mono text-[8px] sm:text-[9px] uppercase tracking-widest block mb-0.5 opacity-60">
                 Chronology
               </span>
@@ -436,8 +431,8 @@ export default function Timeline({
               </h2>
             </div>
 
-            {/* Bottom Half: Era Span */}
-            <div className="h-1/2 flex flex-col justify-start pt-5 sm:pt-6 pr-2">
+            {/* Bottom Half: Era Span (Guaranteed safely below center line) */}
+            <div className="h-1/2 w-full flex flex-col justify-start pt-5 sm:pt-6 pr-2 pb-10">
               <span className="font-mono text-[8px] sm:text-[9px] uppercase tracking-widest block mb-0.5 opacity-60">
                 Era Span
               </span>
@@ -456,17 +451,16 @@ export default function Timeline({
             return (
               <div
                 key={item.id}
-                className="relative w-[210px] sm:w-[250px] md:w-[290px] shrink-0 flex flex-col justify-between"
-                style={{ height: "100%" }}
+                className="relative w-[210px] sm:w-[250px] md:w-[290px] h-full shrink-0 flex flex-col justify-between"
               >
-                {/* ─── UPPER HALF (Always 50% height) ─── */}
-                <div className="h-1/2 flex flex-col justify-end items-start pb-0 relative">
+                {/* ─── UPPER HALF (Always 50% height, clearing header) ─── */}
+                <div className="h-1/2 w-full flex flex-col justify-end items-start pb-0 pt-16 sm:pt-20 relative">
                   {isTop ? (
                     <>
                       {/* Milestone Card Copy */}
                       <div
                         className={cn(
-                          "w-full pl-6 sm:pl-7 pr-2 select-text text-left pb-4",
+                          "w-full pl-6 sm:pl-7 pr-2 select-text text-left pb-3 sm:pb-4",
                           `milestone-content-${item.id}`
                         )}
                       >
@@ -501,7 +495,7 @@ export default function Timeline({
                       <div className="w-5 flex justify-center shrink-0">
                         <div
                           className={cn(
-                            "w-[2px] h-16 sm:h-20 md:h-24 lg:h-28 origin-bottom rounded-full shadow-[0_0_6px_currentColor]",
+                            "w-[2px] h-10 sm:h-16 md:h-20 lg:h-24 origin-bottom rounded-full shadow-[0_0_6px_currentColor]",
                             `jl-${item.id}`
                           )}
                           style={activeStyle}
@@ -523,14 +517,14 @@ export default function Timeline({
                 </div>
 
                 {/* ─── LOWER HALF (Always 50% height) ─── */}
-                <div className="h-1/2 flex flex-col justify-start items-start pt-0 relative">
+                <div className="h-1/2 w-full flex flex-col justify-start items-start pt-0 pb-10 relative">
                   {!isTop ? (
                     <>
                       {/* Stem Line (Rises up from junction) */}
                       <div className="w-5 flex justify-center shrink-0">
                         <div
                           className={cn(
-                            "w-[2px] h-16 sm:h-20 md:h-24 lg:h-28 origin-top rounded-full shadow-[0_0_6px_currentColor]",
+                            "w-[2px] h-10 sm:h-16 md:h-20 lg:h-24 origin-top rounded-full shadow-[0_0_6px_currentColor]",
                             `jl-${item.id}`
                           )}
                           style={activeStyle}
@@ -540,7 +534,7 @@ export default function Timeline({
                       {/* Milestone Card Copy */}
                       <div
                         className={cn(
-                          "w-full pl-6 sm:pl-7 pr-2 select-text text-left pt-4",
+                          "w-full pl-6 sm:pl-7 pr-2 select-text text-left pt-3 sm:pt-4",
                           `milestone-content-${item.id}`
                         )}
                       >
