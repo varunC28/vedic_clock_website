@@ -526,8 +526,16 @@ export default function HeritagePage() {
             textColor={isParchment ? "#2D1B0E" : "#FBF5E7"}
             mutedTextColor={isParchment ? "#6E5540" : "rgba(251, 245, 231, 0.7)"}
             activeColor={isParchment ? "#B8873D" : "#D4A65A"}
-            imageUrl="/assets/images/ancient-temple-celestial-wheel.webp?v=2"
-            imageAlt="Ancient Temple Beneath the Celestial Wheel - Avanti Meridian"
+            imageUrl={
+              isParchment
+                ? "/assets/images/celestial-astrolabe-sunrise.webp"
+                : "/assets/images/ancient-temple-celestial-wheel.webp?v=2"
+            }
+            imageAlt={
+              isParchment
+                ? "Celestial Astrolabe Temple at Sunrise - Avanti Meridian"
+                : "Ancient Temple Beneath the Celestial Wheel - Avanti Meridian"
+            }
           />
         </div>
       ) : (
