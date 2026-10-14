@@ -78,45 +78,48 @@ export function FaqView() {
                 key={item.id}
                 onMouseEnter={() => setActiveId(item.id)}
                 className={cn(
-                  "w-full rounded-2xl border transition-all duration-300 overflow-hidden",
+                  "group relative w-full rounded-2xl select-none origin-center cursor-pointer overflow-hidden",
+                  "transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
                   isOpen
                     ? isParchment
-                      ? "bg-[#FFF9F0] border-[#B8873D]/70 shadow-[0_6px_24px_rgba(110,65,25,0.09)]"
-                      : "bg-[#0A1224] border-[#D4A65A]/60 shadow-[0_6px_28px_rgba(212,166,90,0.14)]"
+                      ? "bg-[#FFF9F0] border-2 border-[#9E672B] border-l-[4px] border-l-[#7E4A19] shadow-[0_12px_30px_-6px_rgba(110,65,25,0.18),0_4px_12px_rgba(110,65,25,0.08)] scale-[1.012] -translate-y-0.5 sm:-translate-y-1 z-10"
+                      : "bg-[#0C1428] border-2 border-[#E5A84B] border-l-[4px] border-l-[#F59E0B] shadow-[0_14px_34px_-6px_rgba(229,168,75,0.32),0_4px_14px_rgba(0,0,0,0.5)] scale-[1.012] -translate-y-0.5 sm:-translate-y-1 z-10"
                     : isParchment
-                      ? "bg-[#FAF4EA] border-[#DFCBB5] hover:border-[#B8873D]/40"
-                      : "bg-[#060B18] border-[#D4A65A]/15 hover:border-[#D4A65A]/35"
+                      ? "bg-[#FAF4EA] border-2 border-transparent border-l-[4px] border-l-transparent hover:border-[#9E672B]/60 hover:border-l-[#7E4A19] hover:bg-[#FFF9F0] hover:shadow-[0_10px_25px_-5px_rgba(110,65,25,0.12)] hover:scale-[1.008] hover:-translate-y-0.5 scale-100 translate-y-0 z-0"
+                      : "bg-[#060B18] border-2 border-transparent border-l-[4px] border-l-transparent hover:border-[#E5A84B]/60 hover:border-l-[#F59E0B] hover:bg-[#0A1224] hover:shadow-[0_12px_28px_-6px_rgba(229,168,75,0.2)] hover:scale-[1.008] hover:-translate-y-0.5 scale-100 translate-y-0 z-0"
                 )}
               >
                 <button
                   type="button"
                   onClick={() => setActiveId(isOpen ? null : item.id)}
-                  className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer transition-colors"
+                  className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer"
                   aria-expanded={isOpen}
                 >
                   <div className="flex items-center gap-3.5 sm:gap-4 min-w-0">
                     <span
                       className={cn(
-                        "font-mono text-xs sm:text-sm font-bold px-2.5 py-1 rounded-md shrink-0 border transition-colors",
+                        "w-7 h-7 sm:w-8 sm:h-8 shrink-0 rounded-full flex items-center justify-center font-sans text-[11px] sm:text-xs font-bold transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
                         isOpen
                           ? isParchment
-                            ? "bg-[#482D1C] text-[#FFF9F0] border-[#482D1C]"
-                            : "bg-[#D4A65A] text-[#03060E] border-[#D4A65A]"
-                          : t.tag
+                            ? "bg-[#B8873D] text-[#FFF9F0] shadow-md scale-110"
+                            : "bg-[#E5A84B] text-[#120F0B] shadow-[0_0_16px_rgba(229,168,75,0.55)] scale-110"
+                          : isParchment
+                            ? "bg-[#EADCCB] text-[#5C4230] scale-100 group-hover:scale-105"
+                            : "bg-white/10 text-[#D4A65A] scale-100 group-hover:scale-105"
                       )}
                     >
                       {index + 1 < 10 ? `0${index + 1}` : index + 1}
                     </span>
                     <h3
                       className={cn(
-                        "font-serif text-sm sm:text-base md:text-lg font-medium tracking-tight leading-snug transition-colors",
+                        "font-serif text-sm sm:text-base md:text-lg font-medium tracking-tight leading-snug transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
                         isOpen
                           ? isParchment
                             ? "text-[#3D2314]"
                             : "text-[#FCD34D]"
                           : isParchment
-                            ? "text-[#5C4230]"
-                            : "text-ivory/90"
+                            ? "text-[#5C4230] group-hover:text-[#3D2314]"
+                            : "text-ivory/80 group-hover:text-ivory"
                       )}
                     >
                       {item.questionEn}
@@ -124,11 +127,14 @@ export function FaqView() {
                   </div>
                   <span
                     className={cn(
-                      "w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 border transition-transform duration-300 text-[10px] sm:text-xs",
-                      isOpen ? "rotate-180" : "rotate-0",
-                      isParchment
-                        ? "bg-[#EFE4D3] border-[#DFCBB5] text-[#7E4A19]"
-                        : "bg-[#10192D] border-[#D4A65A]/25 text-[#D4A65A]"
+                      "w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 border transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] text-[10px] sm:text-xs",
+                      isOpen
+                        ? isParchment
+                          ? "rotate-180 bg-[#482D1C] text-[#FFF9F0] border-[#482D1C] scale-105"
+                          : "rotate-180 bg-[#E5A84B] text-[#0A0D18] border-[#E5A84B] shadow-[0_0_12px_rgba(229,168,75,0.4)] scale-105"
+                        : isParchment
+                          ? "rotate-0 bg-[#EFE4D3] border-[#DFCBB5] text-[#7E4A19] scale-100"
+                          : "rotate-0 bg-[#10192D] border-[#D4A65A]/25 text-[#D4A65A] scale-100"
                     )}
                     aria-hidden="true"
                   >
@@ -136,35 +142,42 @@ export function FaqView() {
                   </span>
                 </button>
 
+                {/* CSS Grid intrinsic height animation for buttery smooth opening */}
                 <div
                   id={`faq-answer-${item.id}`}
                   className={cn(
-                    "px-4 sm:px-6 text-left flex flex-col gap-4 transition-all duration-300 ease-in-out overflow-hidden",
-                    isOpen
-                      ? "max-h-[1000px] opacity-100 pb-6 pt-3 border-t"
-                      : "max-h-0 opacity-0 py-0 border-t-0 pointer-events-none",
-                    isParchment ? "border-[#DFCBB5]/60" : "border-[#D4A65A]/15"
+                    "grid transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden",
+                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                   )}
                   aria-hidden={!isOpen}
                 >
-                  {/* English Primary Answer */}
-                  <div className="flex flex-col gap-1">
-                    <span className={cn("text-[10px] font-mono tracking-widest uppercase", t.eyebrow)}>
-                      Answer · English
-                    </span>
-                    <p className={cn("font-sans text-xs sm:text-sm md:text-[14.5px] leading-relaxed", t.bodyEn)}>
-                      {item.answerEn}
-                    </p>
-                  </div>
+                  <div className="overflow-hidden">
+                    <div
+                      className={cn(
+                        "px-4 sm:px-6 pb-6 pt-3.5 border-t text-left flex flex-col gap-4",
+                        isParchment ? "border-[#9E672B]/30" : "border-[#E5A84B]/20"
+                      )}
+                    >
+                      {/* English Primary Answer */}
+                      <div className="flex flex-col gap-1">
+                        <span className={cn("text-[10px] font-mono tracking-widest uppercase", t.eyebrow)}>
+                          Answer · English
+                        </span>
+                        <p className={cn("font-sans text-xs sm:text-sm md:text-[14.5px] leading-relaxed", t.bodyEn)}>
+                          {item.answerEn}
+                        </p>
+                      </div>
 
-                  {/* Hindi Translated Answer */}
-                  <div className={cn("pt-3.5 border-t flex flex-col gap-1", isParchment ? "border-[#DFCBB5]/50" : "border-[#D4A65A]/15")}>
-                    <span className={cn("text-[10px] font-mono tracking-widest uppercase", t.eyebrow)}>
-                      उत्तर · हिन्दी
-                    </span>
-                    <p className={cn("font-hindi text-xs sm:text-sm md:text-[15px] leading-relaxed", t.bodyHi)}>
-                      {item.answerHi}
-                    </p>
+                      {/* Hindi Translated Answer */}
+                      <div className={cn("pt-3.5 border-t flex flex-col gap-1", isParchment ? "border-[#DFCBB5]/50" : "border-[#D4A65A]/15")}>
+                        <span className={cn("text-[10px] font-mono tracking-widest uppercase", t.eyebrow)}>
+                          उत्तर · हिन्दी
+                        </span>
+                        <p className={cn("font-hindi text-xs sm:text-sm md:text-[15px] leading-relaxed", t.bodyHi)}>
+                          {item.answerHi}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
