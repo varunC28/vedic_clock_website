@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { VEDIC_BLOG_ARTICLES } from "@/data/blog-articles";
+import { getArticleCitations } from "@/data/article-citations";
 import { ArticleView } from "@/components/views/ArticleView";
 
 interface PageProps {
@@ -118,23 +119,7 @@ export default async function ArticlePage({ params }: PageProps) {
             },
           },
         },
-        citation: [
-          {
-            "@type": "Book",
-            name: "Surya Siddhanta (सूर्य सिद्धान्त)",
-            sameAs: "https://en.wikipedia.org/wiki/Surya_Siddhanta",
-          },
-          {
-            "@type": "Book",
-            name: "Pancha-Siddhantika of Varāhamihira (पंचसिद्धान्तिका)",
-            sameAs: "https://en.wikipedia.org/wiki/Var%C4%81hamihira",
-          },
-          {
-            "@type": "Book",
-            name: "Vedh Shala Astronomical Astronomical Archives (Ujjain)",
-            sameAs: "https://en.wikipedia.org/wiki/Vedh_Shala",
-          },
-        ],
+        citation: getArticleCitations(article.slug),
         publisher: {
           "@type": "Organization",
           name: "Vikramaditya Vedic Clock",
