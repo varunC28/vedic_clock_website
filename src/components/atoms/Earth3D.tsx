@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useEffect } from 'react';
 import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber';
 import { Mesh, TextureLoader, SRGBColorSpace, Color, AdditiveBlending, DoubleSide, ShaderMaterial, FrontSide, NoToneMapping } from 'three';
 
@@ -30,7 +30,8 @@ function EarthSphere(): React.JSX.Element {
   const { gl } = useThree();
   const maxAnisotropy = useMemo(() => gl.capabilities.getMaxAnisotropy(), [gl]);
 
-  useMemo(() => {
+  useEffect(() => {
+    /* eslint-disable react-hooks/immutability */
     dayMap.colorSpace = SRGBColorSpace;
     dayMap.needsUpdate = true;
     
@@ -40,6 +41,7 @@ function EarthSphere(): React.JSX.Element {
     
     normalMap.needsUpdate = true;
     specularMap.needsUpdate = true;
+    /* eslint-enable react-hooks/immutability */
   }, [dayMap, normalMap, specularMap, maxAnisotropy]);
 
   // Slow continuous rotation
@@ -181,12 +183,12 @@ function EarthScene(): React.JSX.Element {
 }
 
 class EarthErrorBoundary extends React.Component<React.PropsWithChildren, { hasError: boolean }> {
-  constructor(props: any) {
+  constructor(props: React.PropsWithChildren) {
     super(props);
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(_error: any) {
+  static getDerivedStateFromError(_error: unknown) {
     return { hasError: true };
   }
 

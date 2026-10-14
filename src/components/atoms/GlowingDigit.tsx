@@ -29,20 +29,21 @@ export function GlowingDigit({ value, size = "md", className }: GlowingDigitProp
   const [prevValue, setPrevValue] = useState<string | null>(null);
   const [isFading, setIsFading] = useState(false);
 
+  if (value !== currentValue) {
+    setPrevValue(currentValue);
+    setCurrentValue(value);
+    setIsFading(true);
+  }
+
   useEffect(() => {
-    if (value !== currentValue) {
-      setPrevValue(currentValue);
-      setCurrentValue(value);
-      setIsFading(true);
+    if (!isFading) return;
+    const timer = setTimeout(() => {
+      setPrevValue(null);
+      setIsFading(false);
+    }, 200);
 
-      const timer = setTimeout(() => {
-        setPrevValue(null);
-        setIsFading(false);
-      }, 200);
-
-      return () => clearTimeout(timer);
-    }
-  }, [value, currentValue]);
+    return () => clearTimeout(timer);
+  }, [isFading]);
 
   const sizeConfig = {
     sm: { container: "h-8", imageH: 28 },

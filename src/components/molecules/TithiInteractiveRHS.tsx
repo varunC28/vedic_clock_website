@@ -108,7 +108,7 @@ export function TithiInteractiveRHS() {
 
   useEffect(() => {
     let animId: number;
-    let start = performance.now();
+    const start = performance.now();
     const animate = (time: number) => {
       const elapsed = (time - start) / 1000;
       setOrbitAngle((36 + elapsed * 20) % 360);

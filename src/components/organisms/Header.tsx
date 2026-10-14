@@ -24,10 +24,7 @@ export function Header({ alwaysVisible = false }: HeaderProps) {
 
   // Detect scroll to reveal header ONLY after maximum scrolled past the hero section (unless alwaysVisible)
   useEffect(() => {
-    if (alwaysVisible) {
-      setScrolled(true);
-      return;
-    }
+    if (alwaysVisible) return;
     const onScroll = () => {
       const heroThreshold = window.innerHeight * 0.7;
       setScrolled(window.scrollY >= heroThreshold);
