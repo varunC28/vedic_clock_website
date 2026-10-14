@@ -458,22 +458,22 @@ export function PanchangTableRow({
       </div>
 
       {/* 2. Bilingual Name (Track 2) */}
-      <div className={cn("min-w-0 flex flex-col justify-center text-left transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]", nameClassName)}>
+      <div className={cn("min-w-0 flex flex-col justify-center text-left py-0.5 overflow-visible", nameClassName)}>
         <span
           className={cn(
-            "font-hindi text-sm sm:text-base font-bold leading-tight transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] truncate origin-left",
+            "font-hindi text-sm sm:text-base font-bold leading-normal pt-1 pb-0.5 transition-colors duration-300",
             isParchment
               ? "text-[#3D2314]"
               : isHighlighted
-              ? "text-[#FCD34D] scale-[1.01]"
-              : "text-[#E5A84B] scale-100"
+              ? "text-[#FCD34D]"
+              : "text-[#E5A84B]"
           )}
         >
           {nameHi}
         </span>
         <span
           className={cn(
-            "font-sans text-[11px] sm:text-xs tracking-wide transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] mt-0.5 truncate",
+            "font-sans text-[11px] sm:text-xs tracking-wide transition-colors duration-300 mt-0.5",
             isParchment
               ? isHighlighted
                 ? "text-[#482D1C] font-semibold"
@@ -571,7 +571,7 @@ export function PanchangTableRow({
           )}
         >
           {detailHi && (
-            <span className="font-hindi text-xs sm:text-sm font-medium leading-tight">
+            <span className="font-hindi text-xs sm:text-sm font-medium leading-normal pt-0.5">
               {detailHi}
             </span>
           )}
