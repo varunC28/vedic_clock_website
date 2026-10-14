@@ -65,7 +65,7 @@ export function FaqView() {
           <div className="w-24 h-[1.5px] bg-[#D4A65A]/50 my-5" />
 
           <p className={cn("font-sans text-xs sm:text-sm md:text-base leading-relaxed max-w-xl", t.bodyEn)}>
-            Authoritative answers on the Vikramaditya Vedic Clock, ancient Ujjain $0^\circ$ meridian calculations, offline microcontroller engineering, and global institutional commissions.
+            Authoritative answers on the Vikramaditya Vedic Clock, ancient Ujjain 0° meridian calculations, offline microcontroller engineering, and global institutional commissions.
           </p>
         </div>
 
