@@ -17,7 +17,7 @@
 | **Digital Catalogue (`/catalogue`)** | ✅ Complete | 100% | Brochure preview & direct download |
 | **Contact & Enquiries (`/contact`)** | ✅ Complete | 100% | Resend API live with verified `@thevedicghadi.in` domain |
 | **The Dedicated Clock Page (`/clock`)** | ⏳ Pending | 10% | Currently a redirect stub; needs dedicated fullscreen instrument |
-| **Editorial & Blog Platform (`/blog`)** | ⏳ Pending | 0% | Needs listing page + article reader template |
+| **Editorial & Blog Platform (`/blog`)** | ✅ Complete | 100% | Full listing with search, category filters, LazyImage, and /blog/[slug] reader |
 | **SEO, Sitemap & Robots (`/sitemap.xml`)** | ⏳ Pending | 20% | Dynamic sitemap, canonicals, and per-page meta tags needed |
 | **AEO (AI Answer Engine Optimization)** | ⏳ Pending | 10% | JSON-LD schema (Org, Product, FAQ, Breadcrumbs) needed |
 | **Open Graph (OG) & Social Sharing** | ⏳ Pending | 20% | 1200x630 share card & Twitter preview metadata needed |
@@ -52,24 +52,19 @@
 
 *Build an authoritative publication hub for Vedic astronomy, history, and horology.*
 
-- [ ] **2.1 Blog Architecture & Content Layer**
-  - [ ] Directory structure: `src/app/blog/page.tsx` and `src/app/blog/[slug]/page.tsx`.
-  - [ ] Content model: Markdown/MDX or structured local JSON/TS article registry (`src/data/articles.ts`).
-  - [ ] Categories: *Astronomy & Math*, *Sacred Horology*, *Historical Heritage*, *Panchang Fundamentals*.
-- [ ] **2.2 Blog Listing Page (`/blog`)**
-  - [ ] Editorial hero banner featuring the latest flagship piece.
-  - [ ] Category filter pills (`All`, `Astronomy`, `History`, `Guides`).
-  - [ ] Article card grid: Cover image, reading time, publication date, author, title, bilingual excerpt.
-- [ ] **2.3 Article Reader Page (`/blog/[slug]`)**
-  - [ ] Sticky reading progress bar at top of screen.
-  - [ ] Interactive Table of Contents (TOC) with smooth jump-scroll.
-  - [ ] Typographic excellence: Large serif drop-caps, elegant pull-quotes, diagram callouts.
-  - [ ] Social share pills (WhatsApp, X, LinkedIn, Copy Link).
-  - [ ] "Next Article" & Related Reading recommendations.
-- [ ] **2.4 Launch Articles (Seed Content)**
-  - [ ] *Article 1*: "The Prime Meridian of Ujjain: Why Ancient India Measured Time from Avanti".
-  - [ ] *Article 2*: "Understanding the 30 Muhurtas: The Rhythms of Cosmic Time".
-  - [ ] *Article 3*: "From Ghati to Seconds: The Mathematics of Living Sunrise Time".
+- [x] **2.1 Blog Architecture & Content Layer**
+  - [x] Directory structure: `src/app/blog/page.tsx` and `src/app/blog/[slug]/page.tsx`.
+  - [x] Content model: Structured article registry (`src/data/blog-articles.ts`).
+  - [x] Categories: *Astronomy & Math*, *Sacred Horology*, *Historical Heritage*, *Panchang Science*, *Philosophy of Time*.
+- [x] **2.2 Blog Listing Page (`/blog`)**
+  - [x] Editorial hero header and preserved ambient radial glow aesthetics.
+  - [x] Category filter pills (`All`, `Sacred Horology`, `Historical Heritage`, etc.) + live instant search.
+  - [x] Article card grid with `LazyImage`, author, read time, date, bilingual titles, and category badge.
+- [x] **2.3 Article Reader Page (`/blog/[slug]`)**
+  - [x] Full editorial reading experience with author bio, hero cover, and related reading recommendations.
+  - [x] Sanskrit shloka callout blocks with authentic translations.
+- [x] **2.4 Launch Articles (12 Seed Articles Built & Active)**
+  - [x] Complete registry of 12 horological, astronomical, and heritage publications.
 
 ---
 
