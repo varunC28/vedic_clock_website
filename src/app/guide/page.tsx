@@ -253,6 +253,88 @@ const DAILY_USE_STEPS = [
   },
 ];
 
+interface PanchangGridCardItem {
+  num: number;
+  hi: string;
+  en: string;
+  descHi: string;
+  descEn: string;
+}
+
+function PanchangGridCard({
+  item,
+  isParchment,
+}: {
+  item: PanchangGridCardItem;
+  isParchment: boolean;
+}) {
+  return (
+    <div
+      className={cn(
+        "group relative rounded-xl p-3 sm:p-3.5 select-none origin-center cursor-pointer",
+        "transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+        // Responsive 2D Scale & Elevation
+        "scale-100 translate-y-0 z-0",
+        "hover:scale-[1.018] sm:hover:scale-[1.03] md:hover:scale-[1.035]",
+        "hover:-translate-y-0.5 sm:hover:-translate-y-1 hover:z-20",
+        "active:scale-[0.99]",
+        // Theme Colors & Shadows
+        isParchment
+          ? "bg-[#FAF4EA] border border-[#D9C4AB] hover:bg-[#FFF9F0] hover:border-[#9E672B] hover:shadow-[0_10px_24px_-4px_rgba(110,65,25,0.18)]"
+          : "bg-[#0A1224] border border-[#D4A65A]/20 hover:bg-[#111827] hover:border-[#E5A84B] hover:shadow-[0_12px_28px_-6px_rgba(229,168,75,0.32),0_4px_12px_rgba(0,0,0,0.5)]"
+      )}
+    >
+      <div className="flex items-baseline gap-1.5 mb-1.5 overflow-visible">
+        <span
+          className={cn(
+            "font-sans text-[11px] font-bold transition-all duration-300",
+            isParchment
+              ? "text-[#8C5D33] group-hover:text-[#7E4A19] group-hover:scale-105"
+              : "text-[#D4A65A] group-hover:text-[#FCD34D] group-hover:scale-105"
+          )}
+        >
+          {item.num}.
+        </span>
+        <span
+          className={cn(
+            "font-hindi font-bold text-sm leading-normal pt-0.5 transition-colors duration-300",
+            isParchment
+              ? "text-[#3D2314] group-hover:text-[#7E4A19]"
+              : "text-[#FBF5E7] group-hover:text-[#FCD34D]"
+          )}
+        >
+          {item.hi}
+        </span>
+        <span className={cn("text-xs transition-colors duration-300", isParchment ? "text-[#8C5D33]/60" : "text-[#D4A65A]/50")}>·</span>
+        <span
+          className={cn(
+            "font-sans text-xs font-medium transition-colors duration-300",
+            isParchment ? "text-[#70523C] group-hover:text-[#3D2314]" : "text-ivory/60 group-hover:text-ivory/90"
+          )}
+        >
+          {item.en}
+        </span>
+      </div>
+      <p
+        className={cn(
+          "font-hindi text-[11.5px] font-medium leading-normal pt-0.5 transition-colors duration-300",
+          isParchment ? "text-[#2D1B0E] group-hover:text-[#1A1208]" : "text-[#FBF5E7]/90 group-hover:text-[#FFFDF7]"
+        )}
+      >
+        {item.descHi}
+      </p>
+      <p
+        className={cn(
+          "font-sans text-[10.5px] leading-relaxed mt-0.5 transition-colors duration-300",
+          isParchment ? "text-[#70523C] group-hover:text-[#5C4230]" : "text-ivory/60 group-hover:text-ivory/80"
+        )}
+      >
+        {item.descEn}
+      </p>
+    </div>
+  );
+}
+
 export default function GuidePage() {
   const [isParchment, setIsParchment] = useState(false);
   const [selectedChapter, setSelectedChapter] = useState<string>("chapter-1");
@@ -857,29 +939,7 @@ export default function GuidePage() {
             {/* 3-Column Grid for 27 Nakshatras */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
               {NAKSHATRA_ITEMS.map((item) => (
-                <div
-                  key={item.num}
-                  className={cn("rounded-xl p-3 sm:p-3.5 shadow-sm border transition-colors", t.cardSm)}
-                >
-                  <div className="flex items-baseline gap-1.5 mb-1">
-                    <span className={cn("font-sans text-[11px] font-bold", t.eyebrow)}>
-                      {item.num}.
-                    </span>
-                    <span className={cn("font-hindi font-bold text-sm", t.titleHi)}>
-                      {item.hi}
-                    </span>
-                    <span className={cn(t.eyebrow, "text-xs")}>·</span>
-                    <span className={cn("font-sans text-xs font-medium", t.muted)}>
-                      {item.en}
-                    </span>
-                  </div>
-                  <p className={cn("font-hindi text-[11.5px] font-medium leading-tight", t.bodyHi)}>
-                    {item.descHi}
-                  </p>
-                  <p className={cn("font-sans text-[10.5px] leading-tight mt-0.5", t.muted)}>
-                    {item.descEn}
-                  </p>
-                </div>
+                <PanchangGridCard key={item.num} item={item} isParchment={isParchment} />
               ))}
             </div>
           </section>
@@ -907,29 +967,7 @@ export default function GuidePage() {
             {/* 3-Column Grid for 27 Yogas */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
               {YOGA_ITEMS.map((item) => (
-                <div
-                  key={item.num}
-                  className={cn("rounded-xl p-3 sm:p-3.5 shadow-sm border transition-colors", t.cardSm)}
-                >
-                  <div className="flex items-baseline gap-1.5 mb-1">
-                    <span className={cn("font-sans text-[11px] font-bold", t.eyebrow)}>
-                      {item.num}.
-                    </span>
-                    <span className={cn("font-hindi font-bold text-sm", t.titleHi)}>
-                      {item.hi}
-                    </span>
-                    <span className={cn(t.eyebrow, "text-xs")}>·</span>
-                    <span className={cn("font-sans text-xs font-medium", t.muted)}>
-                      {item.en}
-                    </span>
-                  </div>
-                  <p className={cn("font-hindi text-[11.5px] font-medium leading-tight", t.bodyHi)}>
-                    {item.descHi}
-                  </p>
-                  <p className={cn("font-sans text-[10.5px] leading-tight mt-0.5", t.muted)}>
-                    {item.descEn}
-                  </p>
-                </div>
+                <PanchangGridCard key={item.num} item={item} isParchment={isParchment} />
               ))}
             </div>
           </section>
