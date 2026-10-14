@@ -207,8 +207,10 @@ export default function Timeline({
         transformOrigin: isTop ? "bottom center" : "top center",
       });
       gsap.set(`.jd-${item.id}`, { scale: 0 });
-      gsap.set(`.title-${item.id}`, { opacity: 0, y: isTop ? -20 : 20 });
-      gsap.set(`.desc-${item.id}`, { opacity: 0, y: isTop ? -10 : 10 });
+      gsap.set(`.milestone-content-${item.id}`, {
+        opacity: 0,
+        y: isTop ? -20 : 20,
+      });
     });
     gsap.set(".journey-line", { width: "0%" });
 
@@ -216,8 +218,7 @@ export default function Timeline({
       allJourneyItems.forEach((item) => {
         gsap.set(`.jl-${item.id}`, { scaleY: 1 });
         gsap.set(`.jd-${item.id}`, { scale: 1 });
-        gsap.set(`.title-${item.id}`, { opacity: 1, y: 0 });
-        gsap.set(`.desc-${item.id}`, { opacity: 1, y: 0 });
+        gsap.set(`.milestone-content-${item.id}`, { opacity: 1, y: 0 });
       });
       gsap.set(".journey-line", { width: "98%" });
       return;
@@ -292,27 +293,16 @@ export default function Timeline({
           },
           triggerTime
         )
-        // Smoothly reveal title
+        // Smoothly reveal full milestone content (Year badge, Hindi tag, Title, Description together)
         .to(
-          `.title-${item.id}`,
+          `.milestone-content-${item.id}`,
           {
             opacity: 1,
             y: 0,
-            duration: 0.09,
+            duration: 0.1,
             ease: "power2.out",
           },
           triggerTime + 0.02
-        )
-        // Smoothly reveal description
-        .to(
-          `.desc-${item.id}`,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.09,
-            ease: "power2.out",
-          },
-          triggerTime + 0.03
         );
     });
 
@@ -413,7 +403,7 @@ export default function Timeline({
                     </div>
 
                     {/* Milestone Copy (Guaranteed safely ABOVE the line) */}
-                    <div className="space-y-1 pl-4">
+                    <div className={`milestone-content-${item.id} space-y-1 pl-4`}>
                       <div className="flex items-center gap-2">
                         <span
                           className="font-mono text-[11px] font-bold tracking-wider px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10"
@@ -484,7 +474,7 @@ export default function Timeline({
                     </div>
 
                     {/* Milestone Copy (Guaranteed safely BELOW the line) */}
-                    <div className="space-y-1 pl-4">
+                    <div className={`milestone-content-${item.id} space-y-1 pl-4`}>
                       <div className="flex items-center gap-2">
                         <span
                           className="font-mono text-[11px] font-bold tracking-wider px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10"
