@@ -86,11 +86,11 @@
     - `/contact` — *"Acquisitions & Institutional Enquiries · Contact Us"*
     - `/blog` — *"Chronicles of Celestial Horology · Research & Publications"*
     - `/blog/[slug]` — Dynamic `generateMetadata` and `generateStaticParams` per article with SSR `BlogPosting` JSON-LD schema.
-- [ ] **3.3 Automated XML Sitemap (`src/app/sitemap.ts`)**
-  - [ ] Dynamic sitemap returning all canonical routes + 12 dynamic blog posts with proper `priority` and `changeFrequency`.
-  - [ ] Accessible at `https://thevedicghadi.in/sitemap.xml`.
-- [ ] **3.4 Crawler Directives (`src/app/robots.ts`)**
-  - [ ] Set up `robots.txt` declaring allowed paths, disallowing `/api/*`, whitelisting AI bots (GPTBot, PerplexityBot, ClaudeBot), and referencing `/sitemap.xml`.
+- [x] **3.3 Automated XML Sitemap (`src/app/sitemap.ts`)**
+  - [x] Dynamic sitemap returning all canonical routes + 12 dynamic blog posts with proper `priority` and `changeFrequency`.
+  - [x] Accessible at `https://thevedicghadi.in/sitemap.xml`.
+- [x] **3.4 Crawler Directives (`src/app/robots.ts`)**
+  - [x] Set up `robots.txt` declaring allowed paths, disallowing `/api/*`, whitelisting AI bots (GPTBot, PerplexityBot, ClaudeBot, Google-Extended), and referencing `/sitemap.xml`.
 
 ---
 
