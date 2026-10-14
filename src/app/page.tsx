@@ -27,41 +27,43 @@ export default function Home() {
   const institutionsRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
 
-  // ── GSAP Natural ScrollTrigger Reveals ──────────────────────────────────────
+  // ── GSAP Natural ScrollTrigger Reveals (Scoped to pageRef) ─────────────────
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const sections = [
-      processStripRef.current,
-      dimensionsRef.current,
-      institutionsRef.current,
-      ctaRef.current,
-    ].filter(Boolean) as HTMLDivElement[];
+    const ctx = gsap.context(() => {
+      const sections = [
+        processStripRef.current,
+        dimensionsRef.current,
+        institutionsRef.current,
+        ctaRef.current,
+      ].filter(Boolean) as HTMLDivElement[];
 
-    sections.forEach((sec) => {
-      gsap.fromTo(
-        sec,
-        {
-          opacity: 0,
-          y: 35,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.0,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sec,
-            start: "top 85%",
-            toggleActions: "play none none none",
-            once: true,
+      sections.forEach((sec) => {
+        gsap.fromTo(
+          sec,
+          {
+            opacity: 0,
+            y: 35,
           },
-        }
-      );
-    });
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.0,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: sec,
+              start: "top 85%",
+              toggleActions: "play none none none",
+              once: true,
+            },
+          }
+        );
+      });
+    }, pageRef);
 
     return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
+      ctx.revert();
     };
   }, []);
 

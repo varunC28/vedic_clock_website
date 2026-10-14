@@ -315,6 +315,7 @@ export default function Timeline({
 
     // ── Multi-Stage Refresh for Next.js Client-Side Route Transitions ──
     const refreshTrigger = () => {
+      ScrollTrigger.sort();
       ScrollTrigger.refresh();
     };
 
@@ -332,13 +333,12 @@ export default function Timeline({
     const t3 = setTimeout(refreshTrigger, 800);
     const t4 = setTimeout(refreshTrigger, 1500);
 
-    // 4. ResizeObserver to track layout shifts above the timeline
+    // 4. ResizeObserver to track layout shifts above the timeline without recursive body loop
     let ro: ResizeObserver | null = null;
     if (typeof ResizeObserver !== "undefined" && typeof document !== "undefined") {
       ro = new ResizeObserver(() => {
         refreshTrigger();
       });
-      ro.observe(document.body);
       if (section.parentElement) {
         ro.observe(section.parentElement);
       }
