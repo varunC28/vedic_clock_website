@@ -366,7 +366,7 @@ export default function Timeline({
     <section
       ref={sectionRef}
       id="journey"
-      className="w-full max-w-full h-[480px] sm:h-[510px] md:h-[530px] relative overflow-hidden transition-colors duration-500 block select-none my-0 py-0"
+      className="w-full max-w-full h-[calc(100vh-64px)] sm:h-[calc(100vh-76px)] min-h-[500px] relative overflow-hidden transition-colors duration-500 flex flex-col justify-center select-none my-0 py-0"
       style={sectionStyle}
     >
       {/* ── Viewport Container: Locked to Exact Center Vertically ── */}
