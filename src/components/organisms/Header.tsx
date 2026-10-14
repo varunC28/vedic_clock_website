@@ -116,13 +116,13 @@ export function Header({ alwaysVisible = false }: HeaderProps) {
                   : "bg-[#080E1C] border border-[#D4A65A]/35 text-[#E8B94B] hover:border-[#D4A65A] hover:bg-[#0D152A] hover:shadow-[0_0_12px_rgba(212,166,90,0.3)]"
               )}
             >
-              {isParchment ? (
-                /* Moon icon when in parchment (click to switch to night cosmic) */
+              {!isParchment ? (
+                /* Moon icon when in dark mode (click moon to illuminate page to white/day) */
                 <svg className="w-4 h-4 transition-transform duration-300 hover:rotate-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                 </svg>
               ) : (
-                /* Sun icon when in cosmic (click to switch to day parchment) */
+                /* Sun icon when in parchment day mode (click sun to return to cosmic night) */
                 <svg className="w-4 h-4 transition-transform duration-500 hover:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="5" />
                   <line x1="12" y1="1" x2="12" y2="3" />
@@ -143,7 +143,7 @@ export function Header({ alwaysVisible = false }: HeaderProps) {
             <button
               type="button"
               onClick={(e) => toggleTheme(e)}
-              aria-label={isParchment ? "Switch to Cosmic Night Mode" : "Switch to Parchment Day Mode"}
+              aria-label={!isParchment ? "Switch to Parchment Day Mode" : "Switch to Cosmic Night Mode"}
               className={cn(
                 "relative w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer shrink-0 z-50",
                 isParchment
@@ -151,7 +151,7 @@ export function Header({ alwaysVisible = false }: HeaderProps) {
                   : "bg-[#080E1C] border border-[#D4A65A]/35 text-[#E8B94B]"
               )}
             >
-              {isParchment ? (
+              {!isParchment ? (
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                 </svg>

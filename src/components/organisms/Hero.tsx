@@ -65,8 +65,11 @@ export function Hero({ variant = "dark", className }: HeroProps) {
     gsap.set(clockContainerRef.current, { opacity: 0 });
     gsap.set(earthRef.current, { opacity: 0 });
     gsap.set(frameRef.current, { opacity: 0, scale: 1.15, rotation: -6 });
-    if (iconsRef.current?.children) {
-      gsap.set(iconsRef.current.children, { opacity: 0, scale: 0, rotation: -60 });
+    if (iconsRef.current) {
+      gsap.set(iconsRef.current, { opacity: 1 });
+      if (iconsRef.current.children) {
+        gsap.set(iconsRef.current.children, { opacity: 0, scale: 0, rotation: -60 });
+      }
     }
     gsap.set(archesRef.current, { opacity: 0, scale: 0.95 });
     gsap.set(progressRef.current, { opacity: 0 });
@@ -95,7 +98,7 @@ export function Hero({ variant = "dark", className }: HeroProps) {
           duration: 1.2 * LOAD_SPEED,
           stagger: 0.08 * LOAD_SPEED,
         },
-        0.9
+        0.7
       );
     }
 

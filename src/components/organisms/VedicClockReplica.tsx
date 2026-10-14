@@ -407,7 +407,6 @@ export function VedicClockReplica({
           inset: 0,
           zIndex: 4,
           pointerEvents: 'none',
-          opacity: hasAssembly ? 0 : 1,
         }}
       >
         {/* Top-Left: Nakshatra Cutout */}
