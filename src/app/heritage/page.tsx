@@ -4,7 +4,7 @@ import { HeritageView } from "@/components/views/HeritageView";
 export const metadata: Metadata = {
   title: "Sacred Meridian of Ujjain & Historical Heritage · Avanti 0°",
   description:
-    "Explore the deep history of ancient Indian astronomy. Why Ujjain was recognized as the prime meridian millennia before Greenwich, the legacy of Varahamihira and Sawai Jai Singh II, and the living science of the 30 Muhurtas.",
+    "Explore ancient Indian astronomy. Why Ujjain was recognized as the 0° prime meridian millennia before Greenwich, and Varahamihira's legacy.",
   alternates: {
     canonical: "/heritage",
     languages: {
@@ -15,15 +15,16 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Sacred Meridian of Ujjain & Historical Heritage | Avanti 0°",
+    siteName: "Vikramaditya Vedic Clock",
     description:
-      "Explore why ancient Indian astronomers calibrated all planetary ephemerides from Ujjain (Avanti), where the Tropic of Cancer intersects Earth's baseline axis.",
+      "Why ancient Indian astronomers calibrated planetary ephemerides from Ujjain (Avanti), the original 0° prime meridian.",
     url: "https://thevedicghadi.in/heritage",
     type: "article",
     images: [
       {
-        url: "/assets/blog/ujjain-zero-meridian.jpg",
+        url: "https://thevedicghadi.in/api/og?title=Sacred%200%C2%B0%20Meridian%20of%20Ujjain&subtitle=Ancient%20Indian%20Astronomy%20Millennia%20Before%20Greenwich&category=Heritage&cta=DISCOVER%20HISTORY%20%E2%86%92",
         width: 1200,
-        height: 675,
+        height: 630,
         alt: "Ujjain Prime Meridian and Historic Astronomical Vedh Shala",
       },
     ],
@@ -33,7 +34,9 @@ export const metadata: Metadata = {
     title: "Sacred Meridian of Ujjain & Historical Heritage | Avanti 0°",
     description:
       "Discover the 0° prime meridian of Ujjain, Varahamihira's clepsydras, and the living science of Vedic timekeeping.",
-    images: ["/assets/blog/ujjain-zero-meridian.jpg"],
+    images: [
+      "https://thevedicghadi.in/api/og?title=Sacred%200%C2%B0%20Meridian%20of%20Ujjain&subtitle=Ancient%20Indian%20Astronomy%20Millennia%20Before%20Greenwich&category=Heritage&cta=DISCOVER%20HISTORY%20%E2%86%92",
+    ],
   },
 };
 

@@ -4,7 +4,7 @@ import { GuideView } from "@/components/views/GuideView";
 export const metadata: Metadata = {
   title: "Panchang & Muhurta Guide · Astronomy of Vedic Timekeeping",
   description:
-    "A comprehensive master guide to Vedic timekeeping. Learn the five limbs of Panchang (Tithi, Vaar, Nakshatra, Yoga, Karana), the 30 Muhurtas, and sidereal zodiac astronomy.",
+    "Master guide to Vedic timekeeping. Learn the five limbs of Panchang (Tithi, Vaar, Nakshatra, Yoga, Karana), 30 Muhurtas, and sidereal zodiac astronomy.",
   alternates: {
     canonical: "/guide",
     languages: {
@@ -15,15 +15,16 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "The Panchang & Muhurta Guide | Astronomy of Vedic Timekeeping",
+    siteName: "Vikramaditya Vedic Clock",
     description:
-      "Master the astronomical foundations of Indian timekeeping: Tithi angles, Nakshatra constellations, Ghati/Pala mathematics, and the 12 sidereal Rashis.",
+      "Master Indian temporal science: Tithi angles, Nakshatra coordinates, Ghati mathematics, and 30 Muhurtas.",
     url: "https://thevedicghadi.in/guide",
     type: "article",
     images: [
       {
-        url: "/assets/blog/shastras-to-silicon.jpg",
+        url: "https://thevedicghadi.in/api/og?title=Panchang%20%26%20Muhurta%20Master%20Guide&subtitle=Astronomical%20Foundations%20of%20Indian%20Timekeeping&category=Astronomy%20Guide&cta=READ%20GUIDE%20%E2%86%92",
         width: 1200,
-        height: 675,
+        height: 630,
         alt: "Panchang Guide and Astronomical Vedic Horology Instruments",
       },
     ],
@@ -33,7 +34,9 @@ export const metadata: Metadata = {
     title: "The Panchang & Muhurta Guide | Astronomy of Vedic Timekeeping",
     description:
       "A complete guide to Tithi, Nakshatra, Yoga, Karana, and the 30 dynamic Muhurtas of day and night.",
-    images: ["/assets/blog/shastras-to-silicon.jpg"],
+    images: [
+      "https://thevedicghadi.in/api/og?title=Panchang%20%26%20Muhurta%20Master%20Guide&subtitle=Astronomical%20Foundations%20of%20Indian%20Timekeeping&category=Astronomy%20Guide&cta=READ%20GUIDE%20%E2%86%92",
+    ],
   },
 };
 

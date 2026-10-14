@@ -14,6 +14,7 @@ export async function GET(req: NextRequest) {
       "Living Diurnal Horology Calibrated to the Ancient 0° Prime Meridian of Ujjain";
     const category = searchParams.get("category") || "Vedic Horology";
     const author = searchParams.get("author") || "Vikramaditya Research & Horological Guild";
+    const cta = searchParams.get("cta") || "EXPLORE THE CLOCK →";
 
     return new ImageResponse(
       (
@@ -159,6 +160,25 @@ export async function GET(req: NextRequest) {
             >
               {subtitle}
             </p>
+
+            {/* High-Converting CTA Badge */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                backgroundColor: "#D4A65A",
+                color: "#0B0C10",
+                padding: "8px 22px",
+                borderRadius: "20px",
+                fontWeight: 700,
+                fontSize: 13,
+                letterSpacing: "0.12em",
+                alignSelf: "flex-start",
+                marginTop: 6,
+              }}
+            >
+              <span>{cta}</span>
+            </div>
           </div>
 
           {/* Footer Bar: Authority & Domain URL */}

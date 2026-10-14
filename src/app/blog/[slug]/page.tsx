@@ -45,6 +45,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     openGraph: {
       type: "article",
+      siteName: "Vikramaditya Vedic Clock",
       title: article.title,
       description: article.description,
       url: `https://thevedicghadi.in/blog/${article.slug}`,

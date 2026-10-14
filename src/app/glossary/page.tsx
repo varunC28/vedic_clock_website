@@ -5,7 +5,7 @@ import { VEDIC_GLOSSARY_TERMS } from "@/data/vedic-glossary";
 export const metadata: Metadata = {
   title: "Vedic Horology Lexicon & Glossary | वैदिक कालगणना शब्दकोश",
   description:
-    "Explore 42 canonical terms of ancient Indian timekeeping: Ghati, Pala, Truti, Muhurta, Dinamana, Ayanamsha, and the five limbs of Panchang with mathematical formulas and classical citations.",
+    "Explore 42 terms of ancient Indian timekeeping: Ghati, Pala, Muhurta, Dinamana, Ayanamsha, and Panchang with formulas and classical citations.",
   alternates: {
     canonical: "/glossary",
     languages: {
@@ -16,13 +16,14 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
+    siteName: "Vikramaditya Vedic Clock",
     title: "Vedic Horology Lexicon & Glossary | 42 Canonical Dimensions of Time",
     description:
-      "Mathematical definitions and classical Sanskrit citations for Ghati, Muhurta, Tithi, Ayanamsha, and Indian temporal science.",
+      "Mathematical definitions and classical Sanskrit citations for Ghati, Muhurta, Tithi, Ayanamsha, and temporal science.",
     url: "https://thevedicghadi.in/glossary",
     images: [
       {
-        url: "https://thevedicghadi.in/api/og?title=Vedic%20Horology%20Lexicon&subtitle=42%20Canonical%20Dimensions%20of%20Time%20%E2%80%A2%20Sanskrit%20Terminology&category=Kala-Vidya%20Lexicon",
+        url: "https://thevedicghadi.in/api/og?title=Vedic%20Horology%20Lexicon&subtitle=42%20Canonical%20Dimensions%20of%20Time%20%E2%80%A2%20Sanskrit%20Terminology&category=Kala-Vidya%20Lexicon&cta=EXPLORE%20LEXICON%20%E2%86%92",
         width: 1200,
         height: 630,
         alt: "Vedic Horology Lexicon and Glossary",
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     description:
       "Mathematical definitions and classical Sanskrit citations for Ghati, Muhurta, Tithi, Ayanamsha, and Indian temporal science.",
     images: [
-      "https://thevedicghadi.in/api/og?title=Vedic%20Horology%20Lexicon&subtitle=42%20Canonical%20Dimensions%20of%20Time%20%E2%80%A2%20Sanskrit%20Terminology&category=Kala-Vidya%20Lexicon",
+      "https://thevedicghadi.in/api/og?title=Vedic%20Horology%20Lexicon&subtitle=42%20Canonical%20Dimensions%20of%20Time%20%E2%80%A2%20Sanskrit%20Terminology&category=Kala-Vidya%20Lexicon&cta=EXPLORE%20LEXICON%20%E2%86%92",
     ],
   },
   keywords: [

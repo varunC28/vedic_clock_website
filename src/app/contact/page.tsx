@@ -4,7 +4,7 @@ import { ContactView } from "@/components/views/ContactView";
 export const metadata: Metadata = {
   title: "Acquisitions & Institutional Enquiries · Contact Us",
   description:
-    "Connect with the Vikramaditya Vedic Clock team. Inquire about bespoke horological commissions, temple installations, university astronomical dials, and institution acquisitions.",
+    "Connect with the Vikramaditya Vedic Clock team. Inquire about bespoke horological commissions, temple dials, and institutional acquisitions.",
   alternates: {
     canonical: "/contact",
     languages: {
@@ -15,15 +15,16 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Acquisitions & Institutional Enquiries | Contact Us",
+    siteName: "Vikramaditya Vedic Clock",
     description:
-      "Direct communication channel for bespoke commissions, sacred horology inquiries, and institutional partnerships with Shiv Enterprises.",
+      "Direct channel for bespoke commissions, sacred horology installations, and institutional partnerships.",
     url: "https://thevedicghadi.in/contact",
     type: "website",
     images: [
       {
-        url: "/assets/blog/shastras-to-silicon.jpg",
+        url: "https://thevedicghadi.in/api/og?title=Bespoke%20Horological%20Commissions&subtitle=Temple%20Installations%20%26%20Institutional%20Acquisitions&category=Acquisitions&cta=ENQUIRE%20NOW%20%E2%86%92",
         width: 1200,
-        height: 675,
+        height: 630,
         alt: "Vikramaditya Vedic Clock Institutional Acquisitions and Contact",
       },
     ],
@@ -33,7 +34,9 @@ export const metadata: Metadata = {
     title: "Acquisitions & Institutional Enquiries | Contact Us",
     description:
       "Inquire about bespoke Vedic horological commissions, museum installations, and temple timepieces.",
-    images: ["/assets/blog/shastras-to-silicon.jpg"],
+    images: [
+      "https://thevedicghadi.in/api/og?title=Bespoke%20Horological%20Commissions&subtitle=Temple%20Installations%20%26%20Institutional%20Acquisitions&category=Acquisitions&cta=ENQUIRE%20NOW%20%E2%86%92",
+    ],
   },
 };
 

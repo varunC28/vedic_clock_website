@@ -4,7 +4,7 @@ import { BlogView } from "@/components/views/BlogView";
 export const metadata: Metadata = {
   title: "Chronicles of Celestial Horology · Research & Publications",
   description:
-    "Scholarly publications and essays on ancient Indian astronomy, the prime meridian of Ujjain, Surya Siddhanta mathematical models, and the living circadian philosophy of Vedic time.",
+    "Scholarly publications and essays on ancient Indian astronomy, Ujjain prime meridian, Surya Siddhanta calculations, and circadian Vedic time.",
   alternates: {
     canonical: "/blog",
     languages: {
@@ -15,15 +15,16 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Chronicles of Celestial Horology | Research & Publications",
+    siteName: "Vikramaditya Vedic Clock",
     description:
-      "Discover the ancient mathematical sciences, royal histories, and living circadian philosophy behind the world's premier Vedic timepieces.",
+      "Explore ancient mathematical sciences, royal observatories, and circadian philosophy behind Vedic horology.",
     url: "https://thevedicghadi.in/blog",
     type: "website",
     images: [
       {
-        url: "/assets/blog/shastras-to-silicon.jpg",
+        url: "https://thevedicghadi.in/api/og?title=Chronicles%20of%20Celestial%20Horology&subtitle=Scholarly%20Essays%20on%20Ancient%20Indian%20Astronomical%20Sciences&category=Research%20Journal&cta=READ%20ARTICLES%20%E2%86%92",
         width: 1200,
-        height: 675,
+        height: 630,
         alt: "Chronicles of Celestial Horology Publications",
       },
     ],
@@ -33,7 +34,9 @@ export const metadata: Metadata = {
     title: "Chronicles of Celestial Horology | Research & Publications",
     description:
       "Essays and research on Ujjain's zero meridian, 30 Muhurtas, and ancient Indian astronomical science.",
-    images: ["/assets/blog/shastras-to-silicon.jpg"],
+    images: [
+      "https://thevedicghadi.in/api/og?title=Chronicles%20of%20Celestial%20Horology&subtitle=Scholarly%20Essays%20on%20Ancient%20Indian%20Astronomical%20Sciences&category=Research%20Journal&cta=READ%20ARTICLES%20%E2%86%92",
+    ],
   },
 };
 

@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s | Vikramaditya Vedic Clock",
   },
   description:
-    "Discover the world's premier Vedic timepiece. Calibrated to the ancient 0° Prime Meridian of Ujjain, featuring a living 30-Muhurta diurnal dial, five limbs of Panchang, and sidereal solar geometry.",
+    "The premier Vedic timepiece calibrated to Ujjain 0° Prime Meridian. Features 30 Muhurtas, five limbs of Panchang, and sidereal solar geometry.",
   keywords: [
     "Vedic Clock",
     "Vikramaditya Vedic Clock",
@@ -72,19 +72,13 @@ export const metadata: Metadata = {
     siteName: "Vikramaditya Vedic Clock",
     title: "Vikramaditya Vedic Clock | The Living Geometry of Time",
     description:
-      "Calibrated to the ancient 0° Prime Meridian of Ujjain. Experience the 30-Muhurta dial, offline Panchang, and 5,000 years of astronomical horology.",
+      "Calibrated to Ujjain 0° Prime Meridian. Discover 30 Muhurtas, live Panchang, and sidereal astronomical horology.",
     images: [
       {
-        url: "https://thevedicghadi.in/api/og?title=Vikramaditya%20Vedic%20Clock&subtitle=Living%20Diurnal%20Horology%20Calibrated%20to%20Ujjain%200%C2%B0%20Prime%20Meridian&category=Sacred%20Horology",
+        url: "https://thevedicghadi.in/api/og?title=Vikramaditya%20Vedic%20Clock&subtitle=Living%20Diurnal%20Horology%20Calibrated%20to%20Ujjain%200%C2%B0%20Prime%20Meridian&category=Sacred%20Horology&cta=EXPLORE%20LIVING%20CLOCK%20%E2%86%92",
         width: 1200,
         height: 630,
         alt: "Vikramaditya Vedic Clock Horological Dial and Ancient Indian Astronomy",
-      },
-      {
-        url: "/assets/blog/shastras-to-silicon.jpg",
-        width: 1200,
-        height: 675,
-        alt: "Vikramaditya Vedic Clock Horological Dial",
       },
     ],
   },
@@ -92,9 +86,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Vikramaditya Vedic Clock | World's Premier Astronomical Timepiece",
     description:
-      "Precision Vedic time calibrated to Ujjain 0° Prime Meridian. 30 Muhurtas, Tithi, Nakshatra, and solar zenith synchronization.",
+      "Precision Vedic time calibrated to Ujjain 0° Prime Meridian. 30 Muhurtas, live Panchang, and solar zenith synchronization.",
     images: [
-      "https://thevedicghadi.in/api/og?title=Vikramaditya%20Vedic%20Clock&subtitle=Living%20Diurnal%20Horology%20Calibrated%20to%20Ujjain%200%C2%B0%20Prime%20Meridian&category=Sacred%20Horology",
+      "https://thevedicghadi.in/api/og?title=Vikramaditya%20Vedic%20Clock&subtitle=Living%20Diurnal%20Horology%20Calibrated%20to%20Ujjain%200%C2%B0%20Prime%20Meridian&category=Sacred%20Horology&cta=EXPLORE%20LIVING%20CLOCK%20%E2%86%92",
     ],
     creator: "@thevedicghadi",
   },

@@ -4,7 +4,7 @@ import { CatalogueView } from "@/components/views/CatalogueView";
 export const metadata: Metadata = {
   title: "Artisan Timepieces & Institutional Commissions · Catalogue",
   description:
-    "Official specification monograph and editions catalogue for the Vikramaditya Vedic Clock. Sanctum wall mounts, museum pedestal monuments, and bespoke heirloom commissions in bell brass.",
+    "Official specification monograph and editions catalogue for the Vikramaditya Vedic Clock. Sanctum wall mounts and bespoke commissions in bell brass.",
   alternates: {
     canonical: "/catalogue",
     languages: {
@@ -15,15 +15,16 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Artisan Timepieces & Institutional Commissions | Catalogue",
+    siteName: "Vikramaditya Vedic Clock",
     description:
-      "Download the official monograph. Explore technical specifications, casing materials, and bespoke editions of the world's premier Vedic horological instrument.",
+      "Download the official monograph. Explore technical specifications, casing materials, and bespoke editions.",
     url: "https://thevedicghadi.in/catalogue",
     type: "website",
     images: [
       {
-        url: "/assets/blog/shastras-to-silicon.jpg",
+        url: "https://thevedicghadi.in/api/og?title=Artisan%20Editions%20%26%20Specifications&subtitle=Download%20the%20Official%20Horological%20Monograph%20Catalogue&category=Catalogue&cta=DOWNLOAD%20CATALOGUE%20%E2%86%92",
         width: 1200,
-        height: 675,
+        height: 630,
         alt: "Vikramaditya Vedic Clock Official Catalogue and Specifications",
       },
     ],
@@ -33,7 +34,9 @@ export const metadata: Metadata = {
     title: "Artisan Timepieces & Institutional Commissions | Catalogue",
     description:
       "Official editions catalogue for the Vikramaditya Vedic Clock. Sanctum mounts, pedestal monuments, and bespoke commissions.",
-    images: ["/assets/blog/shastras-to-silicon.jpg"],
+    images: [
+      "https://thevedicghadi.in/api/og?title=Artisan%20Editions%20%26%20Specifications&subtitle=Download%20the%20Official%20Horological%20Monograph%20Catalogue&category=Catalogue&cta=DOWNLOAD%20CATALOGUE%20%E2%86%92",
+    ],
   },
 };
 

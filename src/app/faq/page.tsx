@@ -5,7 +5,7 @@ import { MASTER_FAQ_ITEMS } from "@/data/faq-data";
 export const metadata: Metadata = {
   title: "Frequently Asked Questions · Horological & Astronomical Knowledge Base",
   description:
-    "Authoritative answers on the Vikramaditya Vedic Clock, ancient 0° Ujjain Prime Meridian, offline horological engineering, global location calibration, and institutional commissions.",
+    "Authoritative answers on the Vikramaditya Vedic Clock, 0° Ujjain meridian, offline microcontroller engineering, and temple commissions.",
   alternates: {
     canonical: "/faq",
     languages: {
@@ -16,15 +16,16 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Frequently Asked Questions | Master Horological Knowledge Base",
+    siteName: "Vikramaditya Vedic Clock",
     description:
-      "Comprehensive Q&A on Vedic timekeeping science, 30 Muhurtas, bell brass acoustic casework, offline microcontroller engineering, and temple acquisitions.",
+      "Comprehensive Q&A on Vedic horology, 30 Muhurtas, bell brass casework, and microcontroller engineering.",
     url: "https://thevedicghadi.in/faq",
     type: "website",
     images: [
       {
-        url: "/assets/blog/shastras-to-silicon.jpg",
+        url: "https://thevedicghadi.in/api/og?title=Horological%20Knowledge%20Base&subtitle=Frequently%20Asked%20Questions%20on%20Vedic%20Horology%20%26%20Astronomy&category=FAQ&cta=EXPLORE%20ANSWERS%20%E2%86%92",
         width: 1200,
-        height: 675,
+        height: 630,
         alt: "Vikramaditya Vedic Clock Frequently Asked Questions and Knowledge Base",
       },
     ],
@@ -34,7 +35,9 @@ export const metadata: Metadata = {
     title: "Frequently Asked Questions | Master Horological Knowledge Base",
     description:
       "Authoritative answers on Vedic astronomy, Ujjain 0° meridian, clock engineering, and bespoke commissions.",
-    images: ["/assets/blog/shastras-to-silicon.jpg"],
+    images: [
+      "https://thevedicghadi.in/api/og?title=Horological%20Knowledge%20Base&subtitle=Frequently%20Asked%20Questions%20on%20Vedic%20Horology%20%26%20Astronomy&category=FAQ&cta=EXPLORE%20ANSWERS%20%E2%86%92",
+    ],
   },
 };
 
