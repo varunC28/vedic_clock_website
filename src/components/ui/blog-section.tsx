@@ -127,7 +127,7 @@ export function BlogSection({
                   </div>
 
                   <div className="space-y-2 px-1 pt-1 pb-2">
-                    {/* Meta pill: Author, Date, Read Time */}
+                    {/* Meta pill: Author & Read Time */}
                     <div
                       className={cn(
                         "flex flex-wrap items-center gap-1.5 text-[11px] font-sans font-medium tracking-wide",
@@ -135,8 +135,6 @@ export function BlogSection({
                       )}
                     >
                       <span className="font-semibold">{blog.author}</span>
-                      <span className="opacity-40">·</span>
-                      <span className="opacity-75">{blog.createdAt}</span>
                       <span className="opacity-40">·</span>
                       <span className="opacity-75">{blog.readTime}</span>
                     </div>
@@ -187,30 +185,6 @@ export function BlogSection({
                       {blog.description}
                     </p>
                   </div>
-                </div>
-
-                {/* Card footer: Category badge + Read Arrow */}
-                <div className="pt-3 px-1 border-t border-current/10 flex items-center justify-between text-xs font-sans">
-                  <span
-                    className={cn(
-                      "px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider border",
-                      isParchment
-                        ? "bg-[#F2ECE1] border-[#DFCBB5] text-[#8C5D33]"
-                        : "bg-[#091122] border-[#D4A65A]/25 text-[#D4A65A]"
-                    )}
-                  >
-                    {blog.category}
-                  </span>
-
-                  <span
-                    className={cn(
-                      "font-semibold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform",
-                      isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
-                    )}
-                  >
-                    <span>Read Article</span>
-                    <span>→</span>
-                  </span>
                 </div>
               </Link>
             );
