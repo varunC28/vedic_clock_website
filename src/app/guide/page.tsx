@@ -405,7 +405,6 @@ export default function GuidePage() {
                   nameHi={item.titleHi}
                   nameEn={item.titleEn}
                   nameClassName="w-44 sm:w-64"
-                  badge={`अध्याय ${item.numHi}`}
                   detail="अध्याय पर जाएँ · Jump to Chapter →"
                   isHighlighted={selectedChapter === item.id}
                   onClick={() => scrollToSection(item.id)}
