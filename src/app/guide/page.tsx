@@ -388,7 +388,7 @@ export default function GuidePage() {
   const [selectedChapter, setSelectedChapter] = useState<string>("chapter-1");
   const [muhurtaFilter, setMuhurtaFilter] = useState<"all" | "day" | "night" | "auspicious" | "inauspicious">("all");
   const [selectedMuhurta, setSelectedMuhurta] = useState<number>(3); // Row 3 (Mitra) highlighted by default as in screenshot
-  const [rashiView, setRashiView] = useState<"wheel" | "table">("wheel");
+  const [showRashiTable, setShowRashiTable] = useState<boolean>(false);
 
   const t = {
     card: isParchment
@@ -1313,62 +1313,17 @@ export default function GuidePage() {
             </div>
           </div>
 
-          {/* ── Subheading Pill & Interactive View Switcher ── */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 max-w-full">
+          {/* ── Subheading Pill: 12 Signs ── */}
+          <div className="flex items-center justify-between mb-4 max-w-full">
             <BilingualPill
               hi="12 राशियाँ"
               en="The 12 Signs"
               size="md"
               variant={isParchment ? "light" : "dark"}
             />
-
-            {/* View Switcher: Interactive Wheel vs Backup Canonical Table */}
-            <div
-              className={cn(
-                "inline-flex items-center gap-1 p-1 rounded-full border transition-all text-xs font-sans self-start sm:self-auto shadow-sm",
-                isParchment
-                  ? "bg-[#EFE4D3] border-[#DFCBB5]"
-                  : "bg-[#0A1122] border-[#D4A65A]/25"
-              )}
-            >
-              <button
-                type="button"
-                onClick={() => setRashiView("wheel")}
-                className={cn(
-                  "px-3 py-1.5 rounded-full transition-all cursor-pointer flex items-center gap-1.5",
-                  rashiView === "wheel"
-                    ? isParchment
-                      ? "bg-[#2D1B0E] text-[#FAF6F0] shadow-sm font-semibold"
-                      : "bg-[#D4A65A] text-[#03060E] shadow-sm font-bold"
-                    : isParchment
-                      ? "text-[#6E5540] hover:text-[#2D1B0E]"
-                      : "text-ivory/60 hover:text-ivory"
-                )}
-              >
-                <span>🎡</span>
-                <span>चक्र दृश्य · Wheel View</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setRashiView("table")}
-                className={cn(
-                  "px-3 py-1.5 rounded-full transition-all cursor-pointer flex items-center gap-1.5",
-                  rashiView === "table"
-                    ? isParchment
-                      ? "bg-[#2D1B0E] text-[#FAF6F0] shadow-sm font-semibold"
-                      : "bg-[#D4A65A] text-[#03060E] shadow-sm font-bold"
-                    : isParchment
-                      ? "text-[#6E5540] hover:text-[#2D1B0E]"
-                      : "text-ivory/60 hover:text-ivory"
-                )}
-              >
-                <span>📋</span>
-                <span>तालिका दृश्य · Table View</span>
-              </button>
-            </div>
           </div>
 
-          {/* ── 12 Signs Wheel Carousel (with automatic failover to Canonical Table) ── */}
+          {/* ── 12 Signs Wheel Carousel & Backup Canonical Table ── */}
           {(() => {
             const BackupTable = (
               <div className={cn("w-full rounded-2xl sm:rounded-3xl shadow-sm p-2 sm:p-4 border", t.boxTable)}>
@@ -1399,47 +1354,55 @@ export default function GuidePage() {
               </div>
             );
 
-            if (rashiView === "wheel") {
-              return (
-                <div data-lenis-prevent="true" className="w-full flex flex-col gap-3">
-                  <SafeComponentBoundary fallback={BackupTable}>
-                    <WheelCarousel
-                      items={RASHI_WHEEL_ITEMS}
-                      photoSide="left"
-                      photoWidth={30}
-                      photoAspect="1/1"
-                      photoRadius={20}
-                      radius={300}
-                      spacing={14}
-                      visibleItems={7}
-                      className={cn(
-                        "w-full shadow-md",
-                        isParchment
-                          ? "bg-[#FAF4EA] border-[#DFCBB5]"
-                          : "bg-[#070D1A] border-[#D4A65A]/25"
-                      )}
-                    />
-                  </SafeComponentBoundary>
+            return (
+              <div data-lenis-prevent="true" className="w-full flex flex-col gap-3">
+                <SafeComponentBoundary fallback={BackupTable}>
+                  <WheelCarousel
+                    items={RASHI_WHEEL_ITEMS}
+                    photoSide="left"
+                    photoWidth={30}
+                    photoAspect="1/1"
+                    photoRadius={20}
+                    radius={300}
+                    spacing={14}
+                    visibleItems={7}
+                    className={cn(
+                      "w-full shadow-md",
+                      isParchment
+                        ? "bg-[#FAF4EA] border-[#DFCBB5]"
+                        : "bg-[#070D1A] border-[#D4A65A]/25"
+                    )}
+                  />
+                </SafeComponentBoundary>
 
-                  {/* Micro helper note */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 px-2 text-[11px] opacity-70 font-sans">
-                    <span className="flex items-center gap-1.5">
-                      <span>💡</span>
-                      <span>Drag vertically or click any Rashi sign to rotate the wheel</span>
-                    </span>
-                    <button
-                      type="button"
-                      onClick={() => setRashiView("table")}
-                      className="underline cursor-pointer hover:opacity-100 transition-opacity"
-                    >
-                      View all 12 signs in table format →
-                    </button>
-                  </div>
+                {/* Micro helper bar with table expander */}
+                <div className="flex flex-wrap items-center justify-between gap-2 px-2 text-[11px] opacity-75 font-sans">
+                  <span className="flex items-center gap-1.5">
+                    <span>💡</span>
+                    <span>Drag vertically or click any Rashi sign to rotate the wheel</span>
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setShowRashiTable((prev) => !prev)}
+                    className={cn(
+                      "cursor-pointer font-medium transition-all flex items-center gap-1.5 px-3 py-1 rounded-md border",
+                      isParchment
+                        ? "border-[#DFCBB5] bg-[#F2ECE1] text-[#482D1C] hover:bg-[#EAE1D3]"
+                        : "border-[#D4A65A]/30 bg-[#091122] text-[#D4A65A] hover:bg-[#0D1830]"
+                    )}
+                  >
+                    <span>{showRashiTable ? "Hide Table Format ▲" : "View all 12 signs in table format ▼"}</span>
+                  </button>
                 </div>
-              );
-            }
 
-            return BackupTable;
+                {/* Expandable Canonical Backup Table */}
+                {showRashiTable && (
+                  <div className="w-full mt-2 animate-in fade-in duration-300">
+                    {BackupTable}
+                  </div>
+                )}
+              </div>
+            );
           })()}
         </article>
 
