@@ -8,6 +8,29 @@ import { BilingualPill } from "@/components/atoms/BilingualPill";
 import { GoldDivider } from "@/components/atoms/GoldDivider";
 import { PanchangTableRow } from "@/components/molecules/PanchangTableRow";
 import { useTheme } from "@/components/providers/ThemeProvider";
+import { WheelCarousel, WheelCarouselItem } from "@/components/ui/wheel-carousel";
+
+class SafeComponentBoundary extends React.Component<
+  { fallback: React.ReactNode; children: React.ReactNode },
+  { hasError: boolean }
+> {
+  constructor(props: { fallback: React.ReactNode; children: React.ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  componentDidCatch(error: unknown) {
+    console.warn("WheelCarousel notice, seamlessly using backup table:", error);
+  }
+  render() {
+    if (this.state.hasError) {
+      return this.props.fallback;
+    }
+    return this.props.children;
+  }
+}
 
 interface TocItem {
   id: string;
@@ -208,6 +231,30 @@ const RASHI_GUIDE_ITEMS = [
   { num: 12, hi: "मीन", en: "Pisces (Meena)", signifiesHi: "अध्यात्म, करुणा", signifiesEn: "spirituality, compassion" },
 ];
 
+const RASHI_IMAGE_MAP: Record<number, string> = {
+  1: "/assets/rashi/aries.webp",
+  2: "/assets/rashi/taurus.webp",
+  3: "/assets/rashi/gemini.webp",
+  4: "/assets/rashi/cancer.webp",
+  5: "/assets/rashi/leo.webp",
+  6: "/assets/rashi/virgo.webp",
+  7: "/assets/rashi/libra.webp",
+  8: "/assets/rashi/scorpio.webp",
+  9: "/assets/rashi/sagittarius.webp",
+  10: "/assets/rashi/capricon.webp",
+  11: "/assets/rashi/aquarius.webp",
+  12: "/assets/rashi/pisces.webp",
+};
+
+const RASHI_WHEEL_ITEMS: WheelCarouselItem[] = RASHI_GUIDE_ITEMS.map((item) => ({
+  num: item.num,
+  label: `${item.num < 10 ? `0${item.num}` : item.num} · ${item.hi} · ${item.en.split(" ")[0]}`,
+  image: RASHI_IMAGE_MAP[item.num] || "/assets/rashi/aries.webp",
+  imageAlt: `${item.hi} - ${item.en}`,
+  detailHi: item.signifiesHi,
+  detailEn: item.signifiesEn,
+}));
+
 const PANCHANG_READING_STEPS = [
   {
     titleHi: "देखें कौन-सा मुहूर्त चल रहा है",
@@ -341,6 +388,7 @@ export default function GuidePage() {
   const [selectedChapter, setSelectedChapter] = useState<string>("chapter-1");
   const [muhurtaFilter, setMuhurtaFilter] = useState<"all" | "day" | "night" | "auspicious" | "inauspicious">("all");
   const [selectedMuhurta, setSelectedMuhurta] = useState<number>(3); // Row 3 (Mitra) highlighted by default as in screenshot
+  const [rashiView, setRashiView] = useState<"wheel" | "table">("wheel");
 
   const t = {
     card: isParchment
@@ -1265,43 +1313,134 @@ export default function GuidePage() {
             </div>
           </div>
 
-          {/* ── Subheading Pill: 12 Signs ── */}
-          <div className="flex items-center gap-2 mb-4 max-w-full">
+          {/* ── Subheading Pill & Interactive View Switcher ── */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 max-w-full">
             <BilingualPill
               hi="12 राशियाँ"
               en="The 12 Signs"
               size="md"
               variant={isParchment ? "light" : "dark"}
             />
+
+            {/* View Switcher: Interactive Wheel vs Backup Canonical Table */}
+            <div
+              className={cn(
+                "inline-flex items-center gap-1 p-1 rounded-full border transition-all text-xs font-sans self-start sm:self-auto shadow-sm",
+                isParchment
+                  ? "bg-[#EFE4D3] border-[#DFCBB5]"
+                  : "bg-[#0A1122] border-[#D4A65A]/25"
+              )}
+            >
+              <button
+                type="button"
+                onClick={() => setRashiView("wheel")}
+                className={cn(
+                  "px-3 py-1.5 rounded-full transition-all cursor-pointer flex items-center gap-1.5",
+                  rashiView === "wheel"
+                    ? isParchment
+                      ? "bg-[#2D1B0E] text-[#FAF6F0] shadow-sm font-semibold"
+                      : "bg-[#D4A65A] text-[#03060E] shadow-sm font-bold"
+                    : isParchment
+                      ? "text-[#6E5540] hover:text-[#2D1B0E]"
+                      : "text-ivory/60 hover:text-ivory"
+                )}
+              >
+                <span>🎡</span>
+                <span>चक्र दृश्य · Wheel View</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setRashiView("table")}
+                className={cn(
+                  "px-3 py-1.5 rounded-full transition-all cursor-pointer flex items-center gap-1.5",
+                  rashiView === "table"
+                    ? isParchment
+                      ? "bg-[#2D1B0E] text-[#FAF6F0] shadow-sm font-semibold"
+                      : "bg-[#D4A65A] text-[#03060E] shadow-sm font-bold"
+                    : isParchment
+                      ? "text-[#6E5540] hover:text-[#2D1B0E]"
+                      : "text-ivory/60 hover:text-ivory"
+                )}
+              >
+                <span>📋</span>
+                <span>तालिका दृश्य · Table View</span>
+              </button>
+            </div>
           </div>
 
-          {/* ── 12 Signs Document Table (Exact match of media_1791472831537 using M5 PanchangTableRow) ── */}
-          <div className={cn("w-full rounded-2xl sm:rounded-3xl shadow-sm p-2 sm:p-4 border", t.boxTable)}>
-            {/* Header Row (Deep walnut in parchment / cosmic dark in dark mode) */}
-            <div className={cn("w-full py-3 px-3.5 sm:px-6 flex items-center justify-between font-sans text-xs sm:text-sm font-bold select-none rounded-xl mb-1.5", t.th)}>
-              <div className="w-1/2 sm:w-2/5 shrink-0 text-left">
-                राशि · Sign
-              </div>
-              <div className="flex-1 text-left">
-                भाव · Signifies
-              </div>
-            </div>
+          {/* ── 12 Signs Wheel Carousel (with automatic failover to Canonical Table) ── */}
+          {(() => {
+            const BackupTable = (
+              <div className={cn("w-full rounded-2xl sm:rounded-3xl shadow-sm p-2 sm:p-4 border", t.boxTable)}>
+                {/* Header Row (Deep walnut in parchment / cosmic dark in dark mode) */}
+                <div className={cn("w-full py-3 px-3.5 sm:px-6 flex items-center justify-between font-sans text-xs sm:text-sm font-bold select-none rounded-xl mb-1.5", t.th)}>
+                  <div className="w-1/2 sm:w-2/5 shrink-0 text-left">
+                    राशि · Sign
+                  </div>
+                  <div className="flex-1 text-left">
+                    भाव · Signifies
+                  </div>
+                </div>
 
-            {/* 12 Rows using M5 PanchangTableRow (Dock Card layout matching all tables) */}
-            <div className="w-full flex flex-col gap-1.5 sm:gap-2 py-1">
-              {RASHI_GUIDE_ITEMS.map((item) => (
-                <PanchangTableRow
-                  key={item.en}
-                  index={item.num}
-                  nameHi={item.hi}
-                  nameEn={item.en}
-                  detailHi={item.signifiesHi}
-                  detail={item.signifiesEn}
-                  variant={isParchment ? "document" : "document-dark"}
-                />
-              ))}
-            </div>
-          </div>
+                {/* 12 Rows using M5 PanchangTableRow (Dock Card layout matching all tables) */}
+                <div className="w-full flex flex-col gap-1.5 sm:gap-2 py-1">
+                  {RASHI_GUIDE_ITEMS.map((item) => (
+                    <PanchangTableRow
+                      key={item.en}
+                      index={item.num}
+                      nameHi={item.hi}
+                      nameEn={item.en}
+                      detailHi={item.signifiesHi}
+                      detail={item.signifiesEn}
+                      variant={isParchment ? "document" : "document-dark"}
+                    />
+                  ))}
+                </div>
+              </div>
+            );
+
+            if (rashiView === "wheel") {
+              return (
+                <div className="w-full flex flex-col gap-3">
+                  <SafeComponentBoundary fallback={BackupTable}>
+                    <WheelCarousel
+                      items={RASHI_WHEEL_ITEMS}
+                      photoSide="left"
+                      photoWidth={30}
+                      photoAspect="1/1"
+                      photoRadius={20}
+                      radius={300}
+                      spacing={14}
+                      visibleItems={7}
+                      className={cn(
+                        "w-full shadow-md",
+                        isParchment
+                          ? "bg-[#FAF4EA] border-[#DFCBB5]"
+                          : "bg-[#070D1A] border-[#D4A65A]/25"
+                      )}
+                    />
+                  </SafeComponentBoundary>
+
+                  {/* Micro helper note */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 px-2 text-[11px] opacity-70 font-sans">
+                    <span className="flex items-center gap-1.5">
+                      <span>💡</span>
+                      <span>Drag vertically or click any Rashi sign to rotate the wheel</span>
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setRashiView("table")}
+                      className="underline cursor-pointer hover:opacity-100 transition-opacity"
+                    >
+                      View all 12 signs in table format →
+                    </button>
+                  </div>
+                </div>
+              );
+            }
+
+            return BackupTable;
+          })()}
         </article>
 
         {/* ========================================================
