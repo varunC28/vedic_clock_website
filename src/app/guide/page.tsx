@@ -1108,9 +1108,9 @@ export default function GuidePage() {
           </div>
 
           {/* ── 30 Muhurtas Document Table (Exact match of media_1791465161128) ── */}
-          <div className={cn("w-full rounded-2xl sm:rounded-3xl shadow-sm overflow-hidden border", t.boxTable)}>
+          <div className={cn("w-full rounded-2xl sm:rounded-3xl shadow-sm p-2 sm:p-4 border", t.boxTable)}>
             {/* Desktop / Tablet Header Row (md and above) */}
-            <div className={cn("hidden md:flex w-full py-3.5 px-6 items-center gap-4 font-sans text-sm font-bold select-none", t.th)}>
+            <div className={cn("hidden md:flex w-full py-3 px-6 items-center gap-4 font-sans text-sm font-bold select-none rounded-xl mb-1.5", t.th)}>
               <div className="w-12 text-center shrink-0">#</div>
               <div className="w-36 shrink-0 text-left">मुहूर्त · Muhurta</div>
               <div className="w-44 shrink-0 text-left">प्रकृति · Nature</div>
@@ -1119,7 +1119,7 @@ export default function GuidePage() {
             </div>
 
             {/* Mobile Header Bar (< md) */}
-            <div className={cn("md:hidden w-full py-3 px-4 flex items-center justify-between font-sans text-xs font-bold select-none", t.th)}>
+            <div className={cn("md:hidden w-full py-3 px-4 flex items-center justify-between font-sans text-xs font-bold select-none rounded-xl mb-1.5", t.th)}>
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#E5A84B]" />
                 <span className="tracking-wide">३० नित्य-मुहूर्त · 30 MUHURTAS</span>
@@ -1130,7 +1130,7 @@ export default function GuidePage() {
             </div>
 
             {/* Table Rows (Dock Card layout matching all tables) */}
-            <div className="w-full flex flex-col gap-1.5 sm:gap-2 py-2">
+            <div className="w-full flex flex-col gap-1.5 sm:gap-2 py-1">
               {filteredMuhurtas.map((item) => (
                 <PanchangTableRow
                   key={item.num}
