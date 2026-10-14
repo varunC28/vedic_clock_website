@@ -300,15 +300,52 @@ export default function Timeline({
         );
     });
 
-    const handleResize = () => {
+    // ── Multi-Stage Refresh for Next.js Client-Side Route Transitions ──
+    const refreshTrigger = () => {
       ScrollTrigger.refresh();
     };
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("orientationchange", handleResize);
+
+    // 1. Next animation frame
+    const rafId = requestAnimationFrame(refreshTrigger);
+
+    // 2. When web fonts are ready
+    if (typeof document !== "undefined" && document.fonts) {
+      document.fonts.ready.then(refreshTrigger).catch(() => {});
+    }
+
+    // 3. Staggered timers for Next.js hydration and image loading
+    const t1 = setTimeout(refreshTrigger, 100);
+    const t2 = setTimeout(refreshTrigger, 350);
+    const t3 = setTimeout(refreshTrigger, 800);
+    const t4 = setTimeout(refreshTrigger, 1500);
+
+    // 4. ResizeObserver to track layout shifts above the timeline
+    let ro: ResizeObserver | null = null;
+    if (typeof ResizeObserver !== "undefined" && typeof document !== "undefined") {
+      ro = new ResizeObserver(() => {
+        refreshTrigger();
+      });
+      ro.observe(document.body);
+      if (section.parentElement) {
+        ro.observe(section.parentElement);
+      }
+    }
+
+    // 5. Window event listeners
+    window.addEventListener("resize", refreshTrigger);
+    window.addEventListener("orientationchange", refreshTrigger);
+    window.addEventListener("load", refreshTrigger);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("orientationchange", handleResize);
+      cancelAnimationFrame(rafId);
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      clearTimeout(t4);
+      if (ro) ro.disconnect();
+      window.removeEventListener("resize", refreshTrigger);
+      window.removeEventListener("orientationchange", refreshTrigger);
+      window.removeEventListener("load", refreshTrigger);
     };
   }, { dependencies: [reducedMotion], scope: sectionRef });
 
@@ -355,6 +392,7 @@ export default function Timeline({
                 alt={imageAlt}
                 draggable={false}
                 className="h-full w-full object-cover scale-105"
+                onLoad={() => ScrollTrigger.refresh()}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4 sm:p-6 text-left">
                 <span className="font-mono text-[8px] sm:text-[10px] text-[#E8B94B] uppercase tracking-[0.25em]">

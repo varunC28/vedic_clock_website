@@ -1,12 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/organisms/Header";
 import { Footer } from "@/components/organisms/Footer";
 import { HorizontalTimeline } from "@/components/molecules/HorizontalTimeline";
 import Timeline from "@/components/ui/timeline";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 // ── 1. The 3 Core Pillars Data ──
 interface Pillar {
@@ -190,6 +196,16 @@ export default function HeritagePage() {
   const [activePillar, setActivePillar] = useState<string>(PILLARS[0].id);
   const [activePhase, setActivePhase] = useState<ArcPhase>(ARC_PHASES[0]);
   const [timelineVariant, setTimelineVariant] = useState<"hyperiux" | "rail">("hyperiux");
+
+  useEffect(() => {
+    // Ensure ScrollTrigger refreshes after Next.js client-side route transition
+    const t1 = setTimeout(() => ScrollTrigger.refresh(), 100);
+    const t2 = setTimeout(() => ScrollTrigger.refresh(), 400);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, []);
 
   return (
     <div
