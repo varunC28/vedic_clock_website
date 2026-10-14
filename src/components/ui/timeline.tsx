@@ -203,7 +203,7 @@ export default function Timeline({
       gsap.set(`.jd-${item.id}`, { scale: 0 });
       gsap.set(`.milestone-content-${item.id}`, {
         opacity: 0,
-        y: item.isTop ? -16 : 16,
+        y: item.isTop ? -18 : 18,
       });
     });
     gsap.set(".journey-line", { width: "0%" });
@@ -323,6 +323,7 @@ export default function Timeline({
       <div
         ref={viewportRef}
         className="w-full h-full relative overflow-hidden flex items-center"
+        style={{ height: "100%" }}
       >
         {/* ═══ ABSOLUTE HORIZONTAL AXIS (Exact 50% midpoint of screen) ═══ */}
         <div className="w-full absolute left-0 right-0 top-1/2 -translate-y-1/2 flex items-center pointer-events-none z-10">
@@ -340,36 +341,42 @@ export default function Timeline({
           />
         </div>
 
-        {/* ═══ THE HORIZONTAL SLIDER TRACK ═══ */}
+        {/* ═══ THE HORIZONTAL SLIDER TRACK (Explicitly 100% height) ═══ */}
         <div
           ref={wholeSliderRef}
-          className="flex items-center h-full will-change-transform gap-6 sm:gap-10 md:gap-14 px-5 sm:px-10 md:px-16 shrink-0 relative z-20"
+          className="flex will-change-transform gap-6 sm:gap-10 md:gap-14 px-5 sm:px-10 md:px-16 shrink-0 relative z-20 items-stretch"
+          style={{ height: "100%" }}
         >
           {/* 1. Leading Plaque (Epoch Continuum / Avanti Meridian) */}
-          <div className="h-[48vh] max-h-[380px] min-h-[260px] w-[180px] sm:w-[220px] md:w-[260px] overflow-hidden rounded-2xl md:rounded-3xl border border-black/10 dark:border-white/10 shadow-xl relative shrink-0">
-            <img
-              src={imageUrl}
-              alt={imageAlt}
-              draggable={false}
-              className="h-full w-full object-cover scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4 sm:p-6 text-left">
-              <span className="font-mono text-[8px] sm:text-[10px] text-[#E8B94B] uppercase tracking-[0.25em]">
-                Epoch Continuum
-              </span>
-              <h3 className="font-serif text-base sm:text-xl md:text-2xl text-white font-bold leading-tight mt-1">
-                Avanti Meridian
-              </h3>
-              <p className="font-hindi text-[11px] sm:text-xs text-[#F3E9D2]/90 mt-1">
-                उज्जैन · समय की शून्य रेखा
-              </p>
+          <div className="flex flex-col justify-center shrink-0">
+            <div className="h-[48vh] max-h-[380px] min-h-[260px] w-[180px] sm:w-[220px] md:w-[260px] overflow-hidden rounded-2xl md:rounded-3xl border border-black/10 dark:border-white/10 shadow-xl relative">
+              <img
+                src={imageUrl}
+                alt={imageAlt}
+                draggable={false}
+                className="h-full w-full object-cover scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4 sm:p-6 text-left">
+                <span className="font-mono text-[8px] sm:text-[10px] text-[#E8B94B] uppercase tracking-[0.25em]">
+                  Epoch Continuum
+                </span>
+                <h3 className="font-serif text-base sm:text-xl md:text-2xl text-white font-bold leading-tight mt-1">
+                  Avanti Meridian
+                </h3>
+                <p className="font-hindi text-[11px] sm:text-xs text-[#F3E9D2]/90 mt-1">
+                  उज्जैन · समय की शून्य रेखा
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* 2. Intro Title Column (Sits centered across the 50% line) */}
-          <div className="w-[120px] sm:w-[150px] md:w-[180px] shrink-0 h-full relative flex items-center text-left">
+          {/* 2. Intro Title Column: Upper Half Title, Lower Half Era Span */}
+          <div
+            className="w-[120px] sm:w-[150px] md:w-[180px] shrink-0 flex flex-col justify-between text-left"
+            style={{ height: "100%" }}
+          >
             {/* Top Half: Title */}
-            <div className="absolute bottom-1/2 mb-3 sm:mb-4 w-full pr-2">
+            <div className="h-1/2 flex flex-col justify-end pb-5 sm:pb-6 pr-2">
               <span className="font-mono text-[8px] sm:text-[9px] uppercase tracking-widest block mb-0.5 opacity-60">
                 Chronology
               </span>
@@ -379,7 +386,7 @@ export default function Timeline({
             </div>
 
             {/* Bottom Half: Era Span */}
-            <div className="absolute top-1/2 mt-3 sm:mt-4 w-full pr-2">
+            <div className="h-1/2 flex flex-col justify-start pt-5 sm:pt-6 pr-2">
               <span className="font-mono text-[8px] sm:text-[9px] uppercase tracking-widest block mb-0.5 opacity-60">
                 Era Span
               </span>
@@ -398,61 +405,115 @@ export default function Timeline({
             return (
               <div
                 key={item.id}
-                className="relative w-[210px] sm:w-[250px] md:w-[290px] h-full shrink-0 flex items-center"
+                className="relative w-[210px] sm:w-[250px] md:w-[290px] shrink-0 flex flex-col justify-between"
+                style={{ height: "100%" }}
               >
-                {/* Node Dot on Center Line */}
-                <div
-                  className={`size-2.5 sm:size-3 -translate-x-1/2 absolute left-4 top-1/2 -translate-y-1/2 rounded-full jd-${item.id} shadow-[0_0_8px_currentColor] z-30`}
-                  style={activeStyle}
-                />
-
-                {/* Vertical Stem */}
-                <div
-                  className={cn(
-                    "absolute left-4 -translate-x-1/2 w-[2px] z-20 rounded-full",
-                    `jl-${item.id}`,
-                    isTop
-                      ? "bottom-1/2 origin-bottom h-9 sm:h-12 md:h-16"
-                      : "top-1/2 origin-top h-9 sm:h-12 md:h-16"
-                  )}
-                  style={activeStyle}
-                />
-
-                {/* Milestone Copy Card */}
-                <div
-                  className={cn(
-                    "absolute left-0 w-full pl-7 sm:pl-8 pr-2 select-text text-left",
-                    `milestone-content-${item.id}`,
-                    isTop
-                      ? "bottom-1/2 mb-11 sm:mb-14 md:mb-18 flex flex-col justify-end"
-                      : "top-1/2 mt-11 sm:mt-14 md:mt-18 flex flex-col justify-start"
-                  )}
-                >
-                  <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
-                    <span
-                      className="font-mono text-[9px] sm:text-[11px] font-bold tracking-wider px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10"
-                      style={mutedTextStyle}
-                    >
-                      {item.year}
-                    </span>
-                    {item.eraHi && (
-                      <span
-                        className="font-hindi text-[9px] sm:text-[11px] opacity-75 font-medium"
-                        style={mutedTextStyle}
+                {/* ─── UPPER HALF (Always 50% height) ─── */}
+                <div className="h-1/2 flex flex-col justify-end items-start pb-0 relative">
+                  {isTop ? (
+                    <>
+                      {/* Milestone Card Copy */}
+                      <div
+                        className={cn(
+                          "w-full pl-6 sm:pl-7 pr-2 select-text text-left pb-4",
+                          `milestone-content-${item.id}`
+                        )}
                       >
-                        {item.eraHi}
-                      </span>
-                    )}
-                  </div>
-                  <h4 className="font-serif text-sm sm:text-base md:text-lg font-bold leading-snug">
-                    {item.era}
-                  </h4>
-                  <p
-                    className="font-sans text-[11px] sm:text-xs leading-relaxed mt-1 line-clamp-4 sm:line-clamp-none max-w-[270px]"
-                    style={mutedTextStyle}
-                  >
-                    {item.content}
-                  </p>
+                        <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
+                          <span
+                            className="font-mono text-[9px] sm:text-[11px] font-bold tracking-wider px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10"
+                            style={mutedTextStyle}
+                          >
+                            {item.year}
+                          </span>
+                          {item.eraHi && (
+                            <span
+                              className="font-hindi text-[9px] sm:text-[11px] opacity-75 font-medium"
+                              style={mutedTextStyle}
+                            >
+                              {item.eraHi}
+                            </span>
+                          )}
+                        </div>
+                        <h4 className="font-serif text-sm sm:text-base md:text-lg font-bold leading-snug">
+                          {item.era}
+                        </h4>
+                        <p
+                          className="font-sans text-[11px] sm:text-xs leading-relaxed mt-1 line-clamp-4 sm:line-clamp-none max-w-[270px]"
+                          style={mutedTextStyle}
+                        >
+                          {item.content}
+                        </p>
+                      </div>
+
+                      {/* Stem Line (Drops down to junction) */}
+                      <div
+                        className={cn(
+                          "w-[2px] h-9 sm:h-12 md:h-14 ml-3.5 origin-bottom rounded-full shrink-0",
+                          `jl-${item.id}`
+                        )}
+                        style={activeStyle}
+                      />
+                    </>
+                  ) : null}
+                </div>
+
+                {/* ─── EXACT CENTER JUNCTION (Directly on 50% axis) ─── */}
+                <div className="relative w-full h-0 flex items-center z-30">
+                  <div
+                    className={`size-2.5 sm:size-3 rounded-full ml-2.5 -translate-y-1/2 aspect-square jd-${item.id} shadow-[0_0_8px_currentColor]`}
+                    style={activeStyle}
+                  />
+                </div>
+
+                {/* ─── LOWER HALF (Always 50% height) ─── */}
+                <div className="h-1/2 flex flex-col justify-start items-start pt-0 relative">
+                  {!isTop ? (
+                    <>
+                      {/* Stem Line (Rises up from junction) */}
+                      <div
+                        className={cn(
+                          "w-[2px] h-9 sm:h-12 md:h-14 ml-3.5 origin-top rounded-full shrink-0",
+                          `jl-${item.id}`
+                        )}
+                        style={activeStyle}
+                      />
+
+                      {/* Milestone Card Copy */}
+                      <div
+                        className={cn(
+                          "w-full pl-6 sm:pl-7 pr-2 select-text text-left pt-4",
+                          `milestone-content-${item.id}`
+                        )}
+                      >
+                        <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
+                          <span
+                            className="font-mono text-[9px] sm:text-[11px] font-bold tracking-wider px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10"
+                            style={mutedTextStyle}
+                          >
+                            {item.year}
+                          </span>
+                          {item.eraHi && (
+                            <span
+                              className="font-hindi text-[9px] sm:text-[11px] opacity-75 font-medium"
+                              style={mutedTextStyle}
+                            >
+                              {item.eraHi}
+                            </span>
+                          )}
+                        </div>
+                        <h4 className="font-serif text-sm sm:text-base md:text-lg font-bold leading-snug">
+                          {item.era}
+                        </h4>
+                        <p
+                          className="font-sans text-[11px] sm:text-xs leading-relaxed mt-1 line-clamp-4 sm:line-clamp-none max-w-[270px]"
+                          style={mutedTextStyle}
+                        >
+                          {item.content}
+                        </p>
+                      </div>
+                    </>
+                  ) : null}
                 </div>
               </div>
             );
