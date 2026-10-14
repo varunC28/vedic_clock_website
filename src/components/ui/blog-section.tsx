@@ -162,28 +162,6 @@ export function BlogSection({
                         {blog.titleHi}
                       </p>
                     )}
-
-                    {/* Hindi Description */}
-                    {blog.descriptionHi && (
-                      <p
-                        className={cn(
-                          "line-clamp-2 font-hindi text-xs sm:text-[13px] font-medium leading-relaxed pt-0.5",
-                          isParchment ? "text-[#5C4533]" : "text-ivory/85"
-                        )}
-                      >
-                        {blog.descriptionHi}
-                      </p>
-                    )}
-
-                    {/* English Description */}
-                    <p
-                      className={cn(
-                        "line-clamp-2 text-xs sm:text-[12.5px] font-sans leading-relaxed pt-0.5",
-                        isParchment ? "text-[#7A614D]" : "text-ivory/60"
-                      )}
-                    >
-                      {blog.description}
-                    </p>
                   </div>
                 </div>
               </Link>
