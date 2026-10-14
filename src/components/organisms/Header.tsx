@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { NavItem } from "@/components/molecules/NavItem";
 import { BrassButton } from "@/components/atoms/BrassButton";
+import { CelestialThemeToggle } from "@/components/atoms/CelestialThemeToggle";
 import { useTheme } from "@/components/providers/ThemeProvider";
 
 const NAV_LINKS = [
@@ -103,72 +104,21 @@ export function Header({ alwaysVisible = false }: HeaderProps) {
           <div className="hidden lg:flex items-center gap-3">
             <BrassButton en="Enquire" size="sm" variant="primary" href="/contact" />
             
-            {/* Night / Sun Theme Toggle */}
-            <button
-              type="button"
-              onClick={(e) => toggleTheme(e)}
-              aria-label={isParchment ? "Switch to Cosmic Night Mode" : "Switch to Parchment Day Mode"}
-              title={isParchment ? "Switch to Cosmic Night Mode" : "Switch to Parchment Day Mode"}
-              className={cn(
-                "relative w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer shrink-0",
-                isParchment
-                  ? "bg-[#FAF5E8] border border-[#B8873D]/40 text-[#8C5D33] hover:border-[#B8873D] hover:bg-white shadow-sm"
-                  : "bg-[#080E1C] border border-[#D4A65A]/35 text-[#E8B94B] hover:border-[#D4A65A] hover:bg-[#0D152A] hover:shadow-[0_0_12px_rgba(212,166,90,0.3)]"
-              )}
-            >
-              {!isParchment ? (
-                /* Moon icon when in dark mode (click moon to illuminate page to white/day) */
-                <svg className="w-4 h-4 transition-transform duration-300 hover:rotate-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                </svg>
-              ) : (
-                /* Sun icon when in parchment day mode (click sun to return to cosmic night) */
-                <svg className="w-4 h-4 transition-transform duration-500 hover:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="5" />
-                  <line x1="12" y1="1" x2="12" y2="3" />
-                  <line x1="12" y1="21" x2="12" y2="23" />
-                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                  <line x1="1" y1="12" x2="3" y2="12" />
-                  <line x1="21" y1="12" x2="23" y2="12" />
-                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                </svg>
-              )}
-            </button>
+            {/* Luxury Celestial Horological Theme Toggle */}
+            <CelestialThemeToggle
+              isParchment={isParchment}
+              onToggle={(e) => toggleTheme(e)}
+            />
           </div>
 
           {/* Mobile Right Controls: Theme Toggle + Hamburger */}
           <div className="flex lg:hidden items-center gap-2">
-            <button
-              type="button"
-              onClick={(e) => toggleTheme(e)}
-              aria-label={!isParchment ? "Switch to Parchment Day Mode" : "Switch to Cosmic Night Mode"}
-              className={cn(
-                "relative w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer shrink-0 z-50",
-                isParchment
-                  ? "bg-[#FAF5E8] border border-[#B8873D]/40 text-[#8C5D33]"
-                  : "bg-[#080E1C] border border-[#D4A65A]/35 text-[#E8B94B]"
-              )}
-            >
-              {!isParchment ? (
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                </svg>
-              ) : (
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="5" />
-                  <line x1="12" y1="1" x2="12" y2="3" />
-                  <line x1="12" y1="21" x2="12" y2="23" />
-                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                  <line x1="1" y1="12" x2="3" y2="12" />
-                  <line x1="21" y1="12" x2="23" y2="12" />
-                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                </svg>
-              )}
-            </button>
+            <CelestialThemeToggle
+              isParchment={isParchment}
+              onToggle={(e) => toggleTheme(e)}
+              size="sm"
+              className="z-50"
+            />
 
             <button
               className="flex flex-col items-center justify-center w-10 h-10 gap-1.5 relative z-50"
