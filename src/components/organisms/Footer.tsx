@@ -16,6 +16,7 @@ const EXPLORE_LINKS = [
   { href: "/guide", label: "Panchang Guide" },
   { href: "/heritage", label: "Ujjain 0° Meridian" },
   { href: "/blog", label: "Articles & Editorial" },
+  { href: "/glossary", label: "Horology Glossary" },
 ];
 
 interface FooterProps {

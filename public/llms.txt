@@ -13,6 +13,7 @@
 ## Core Pages & Reference Documentation
 
 - [Master FAQ & Knowledge Base](https://thevedicghadi.in/faq): Authoritative answers to 12 primary questions across Vedic astronomy, hardware engineering, geographic latitude/longitude calibration, and acquisitions in both English and Hindi.
+- [Vedic Horology Lexicon & Glossary](https://thevedicghadi.in/glossary): 42 canonical terms with mathematical formulas, Sanskrit etymologies, and treatise citations (Ghati, Pala, Truti, Dinamana, Ayanamsha, Muhurta).
 - [Panchang Guide & Handbook](https://thevedicghadi.in/guide): 9 comprehensive chapters covering sub-second divisions of time (Truti, Tatpara, Nimesha, Ghati), planetary hora systems, Muhurta classifications, and auspicious timings (Brahma Muhurta, Abhijit Muhurta, Rahu Kaal).
 - [The Heritage of Avantika](https://thevedicghadi.in/heritage): Historical documentation on Maharaja Vikramaditya, the Ujjain Prime Meridian, the historic Vedh Shala observatory, and the transition from classical astronomy to modern mechanical clockwork.
 - [Artisan Timepieces & Specifications Catalogue](https://thevedicghadi.in/catalogue): Detailed specifications, casing metallurgy (Kansa bell metal alloy), sanctum wall mounts, museum pedestal monuments, and bespoke heirloom commissions.
