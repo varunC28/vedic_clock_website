@@ -207,7 +207,7 @@ export function FaqView() {
                   : "bg-gradient-to-r from-[#B8873D] via-[#D4A65A] to-[#E5B76A] text-[#03060E] hover:opacity-95 shadow-[0_4px_16px_rgba(212,166,90,0.25)]"
               )}
             >
-              Direct Acquisitions Portal →
+              Enquire Now →
             </Link>
             <a
               href="/catalogue.pdf"

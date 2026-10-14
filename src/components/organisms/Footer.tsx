@@ -16,7 +16,7 @@ const EXPLORE_LINKS = [
   { href: "/guide", label: "Panchang Guide" },
   { href: "/heritage", label: "Ujjain Prime Meridian" },
   { href: "/blog", label: "Articles & Editorial" },
-  { href: "/contact", label: "Reserve Timepiece" },
+  { href: "/contact", label: "Enquire" },
 ];
 
 interface FooterProps {
@@ -144,7 +144,7 @@ export function Footer({ variant = "dark", className }: FooterProps) {
               href="/contact"
               className="inline-flex items-center gap-1.5 text-xs font-sans text-[#E8B94B] hover:text-[#FFF5D1] font-medium tracking-wide transition-colors group"
             >
-              <span>Enquire for Commissions</span>
+              <span>Enquire Now</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </Link>
           </div>

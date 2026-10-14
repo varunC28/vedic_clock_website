@@ -80,8 +80,8 @@ export function CatalogueView() {
             </a>
 
             <BrassButton
-              en="Request Printed Monograph"
-              hi="हार्डकॉपी हेतु अनुरोध करें"
+              en="Enquire Now"
+              hi="पूछताछ करें"
               size="md"
               href="/contact"
             />
@@ -158,7 +158,7 @@ export function CatalogueView() {
                     href="/contact"
                     className="text-xs font-sans text-[#E8B94B] hover:text-[#FFF5D1] inline-flex items-center gap-1.5 transition-colors font-medium"
                   >
-                    <span>Enquire for Edition</span>
+                    <span>Enquire</span>
                     <span>→</span>
                   </Link>
                 </div>
@@ -176,8 +176,8 @@ export function CatalogueView() {
             Every Vedic Clock is customized to the longitude, latitude, and altitude of your specific sanctum or estate. Contact our curation team for architectural blueprints and custom dimensioning.
           </p>
           <BrassButton
-            en="Contact Curators"
-            hi="सलाहकार से संपर्क करें"
+            en="Enquire Now"
+            hi="पूछताछ करें"
             size="lg"
             href="/contact"
           />
