@@ -1709,12 +1709,13 @@ export function GuideView() {
               return (
                 <div
                   key={idx}
+                  onMouseEnter={() => setOpenFaqIndex(idx)}
                   className={cn(
                     "rounded-xl sm:rounded-2xl border transition-all duration-300 overflow-hidden",
                     isOpen
                       ? isParchment
-                        ? "bg-[#FFF9F0] border-[#B8873D]/60 shadow-[0_4px_16px_rgba(110,65,25,0.08)]"
-                        : "bg-[#0E1628] border-[#D4A65A]/50 shadow-[0_4px_20px_rgba(212,166,90,0.12)]"
+                        ? "bg-[#FFF9F0] border-[#B8873D]/70 shadow-[0_4px_20px_rgba(110,65,25,0.08)]"
+                        : "bg-[#0E1628] border-[#D4A65A]/60 shadow-[0_4px_24px_rgba(212,166,90,0.12)]"
                       : isParchment
                         ? "bg-[#FAF4EA] border-[#DFCBB5] hover:border-[#B8873D]/40"
                         : "bg-[#080D1A] border-[#D4A65A]/15 hover:border-[#D4A65A]/35"
@@ -1723,36 +1724,42 @@ export function GuideView() {
                   <button
                     type="button"
                     onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
-                    className="w-full p-4 sm:p-5 flex items-start justify-between gap-4 text-left cursor-pointer transition-colors"
+                    className="w-full p-4 sm:p-5 flex items-center justify-between gap-4 text-left cursor-pointer transition-colors"
                     aria-expanded={isOpen}
                   >
-                    <div className="flex items-start gap-3 sm:gap-4">
-                      <span className={cn(
-                        "font-mono text-xs sm:text-sm font-bold px-2 py-0.5 rounded-md mt-0.5 shrink-0",
-                        isParchment
-                          ? "bg-[#EFE4D3] text-[#7E4A19]"
-                          : "bg-[#D4A65A]/15 text-[#D4A65A]"
-                      )}>
+                    <div className="flex items-center gap-3.5 sm:gap-4 min-w-0">
+                      <span
+                        className={cn(
+                          "font-mono text-xs sm:text-sm font-bold px-2.5 py-1 rounded-md shrink-0 border transition-colors",
+                          isOpen
+                            ? isParchment
+                              ? "bg-[#482D1C] text-[#FFF9F0] border-[#482D1C]"
+                              : "bg-[#D4A65A] text-[#03060E] border-[#D4A65A]"
+                            : isParchment
+                              ? "bg-[#EFE4D3] text-[#7E4A19] border-[#DFCBB5]"
+                              : "bg-[#D4A65A]/15 text-[#D4A65A] border-[#D4A65A]/30"
+                        )}
+                      >
                         {item.num < 10 ? `0${item.num}` : item.num}
                       </span>
-                      <div className="flex flex-col">
-                        <span className={cn(
-                          "text-[10px] sm:text-[11px] font-mono tracking-wider uppercase mb-1",
-                          isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]/80"
-                        )}>
-                          {item.tag}
-                        </span>
-                        <span className={cn("font-hindi font-bold text-sm sm:text-base md:text-lg leading-snug", t.titleHi)}>
-                          {item.qHi}
-                        </span>
-                        <span className={cn("font-serif text-xs sm:text-sm mt-1 leading-snug", t.titleEn)}>
-                          {item.qEn}
-                        </span>
-                      </div>
+                      <h3
+                        className={cn(
+                          "font-serif text-sm sm:text-base md:text-lg font-medium tracking-tight leading-snug transition-colors",
+                          isOpen
+                            ? isParchment
+                              ? "text-[#3D2314]"
+                              : "text-[#FCD34D]"
+                            : isParchment
+                              ? "text-[#5C4230]"
+                              : "text-ivory/90"
+                        )}
+                      >
+                        {item.qEn}
+                      </h3>
                     </div>
                     <span
                       className={cn(
-                        "w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 border transition-transform duration-300 mt-0.5 text-[10px] sm:text-xs",
+                        "w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 border transition-transform duration-300 text-[10px] sm:text-xs",
                         isOpen ? "rotate-180" : "rotate-0",
                         isParchment
                           ? "bg-[#EFE4D3] border-[#DFCBB5] text-[#7E4A19]"
@@ -1765,16 +1772,31 @@ export function GuideView() {
                   </button>
 
                   {isOpen && (
-                    <div className={cn(
-                      "px-4 sm:px-5 pb-5 pt-1 border-t text-left flex flex-col gap-3",
-                      isParchment ? "border-[#DFCBB5]/60" : "border-[#D4A65A]/15"
-                    )}>
-                      <p className={cn("font-hindi text-xs sm:text-sm md:text-[15px] leading-relaxed pt-2", t.titleHi)}>
-                        {item.aHi}
-                      </p>
-                      <p className={cn("font-sans text-xs sm:text-sm leading-relaxed", t.bodyEn)}>
-                        {item.aEn}
-                      </p>
+                    <div
+                      className={cn(
+                        "px-4 sm:px-6 pb-6 pt-3 border-t text-left flex flex-col gap-4 animate-in fade-in-50 duration-200",
+                        isParchment ? "border-[#DFCBB5]/60" : "border-[#D4A65A]/15"
+                      )}
+                    >
+                      {/* English Primary Answer */}
+                      <div className="flex flex-col gap-1">
+                        <span className={cn("text-[10px] font-mono tracking-widest uppercase", t.eyebrow)}>
+                          Answer · English
+                        </span>
+                        <p className={cn("font-sans text-xs sm:text-sm md:text-[14.5px] leading-relaxed", t.bodyEn)}>
+                          {item.aEn}
+                        </p>
+                      </div>
+
+                      {/* Hindi Translated Answer */}
+                      <div className={cn("pt-3.5 border-t flex flex-col gap-1", isParchment ? "border-[#DFCBB5]/50" : "border-[#D4A65A]/15")}>
+                        <span className={cn("text-[10px] font-mono tracking-widest uppercase", t.eyebrow)}>
+                          उत्तर · हिन्दी
+                        </span>
+                        <p className={cn("font-hindi text-xs sm:text-sm md:text-[15px] leading-relaxed", t.titleHi)}>
+                          {item.aHi}
+                        </p>
+                      </div>
                     </div>
                   )}
                 </div>
