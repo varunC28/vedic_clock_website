@@ -100,6 +100,10 @@ export default async function ArticlePage({ params }: PageProps) {
         datePublished: article.createdAt,
         dateModified: article.createdAt,
         inLanguage: ["en", "hi"],
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: [".article-speakable-title", ".article-speakable-lead"],
+        },
         author: {
           "@type": "Person",
           name: article.author,

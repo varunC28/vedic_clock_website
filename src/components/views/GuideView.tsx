@@ -547,7 +547,7 @@ export function GuideView() {
             विक्रमादित्य वैदिक घड़ी
           </h1>
 
-          <h2 className={cn("font-serif text-xl sm:text-2xl md:text-3xl font-medium tracking-tight mt-1 text-center", t.titleEn)}>
+          <h2 className={cn("font-serif text-xl sm:text-2xl md:text-3xl font-medium tracking-tight mt-1 text-center guide-speakable-title", t.titleEn)}>
             Vikramaditya Vedic Clock
           </h2>
 
@@ -559,7 +559,7 @@ export function GuideView() {
             <p className={cn("font-hindi text-sm sm:text-base md:text-lg font-medium leading-relaxed", t.titleHi)}>
               सूर्योदय पर आधारित भारत की प्राचीन समय-प्रणाली को समझने की मार्गदर्शिका
             </p>
-            <p className={cn("font-sans text-xs sm:text-sm leading-relaxed", t.bodyEn)}>
+            <p className={cn("font-sans text-xs sm:text-sm leading-relaxed guide-speakable-lead", t.bodyEn)}>
               Understanding India&apos;s ancient, sunrise-based system of time
             </p>
           </div>
@@ -650,7 +650,7 @@ export function GuideView() {
               विक्रमादित्य वैदिक घड़ी भारत की प्राचीन समय-प्रणाली को आधुनिक डिजिटल रूप में सामने लाती है। इसमें एक दिन — अर्थात् एक सूर्योदय से अगले सूर्योदय तक — को 30 मुहूर्त में बाँटा गया है। प्रत्येक मुहूर्त 30 कला में और प्रत्येक कला 30 काष्ठा में विभाजित होती है। घड़ी किसी भी स्थान के अक्षांश, देशांतर और स्थानीय सूर्योदय के आधार पर यह समय सटीक रूप से निकालती है।
             </p>
 
-            <p className={cn("font-sans text-xs sm:text-[13.5px] leading-relaxed text-justify", t.bodyEn)}>
+            <p className={cn("font-sans text-xs sm:text-[13.5px] leading-relaxed text-justify guide-speakable-thesis", t.bodyEn)}>
               The Vikramaditya Vedic Clock brings India&apos;s ancient time system into a modern digital form. It divides a day — one sunrise to the next — into 30 Muhurtas. Each Muhurta contains 30 Kala, and each Kala contains 30 Kashtha. The clock calculates this precisely for any location, using its latitude, longitude, and local sunrise.
             </p>
           </div>
@@ -1745,7 +1745,7 @@ export function GuideView() {
                       </span>
                       <h3
                         className={cn(
-                          "font-serif text-sm sm:text-base md:text-lg font-medium tracking-tight leading-snug transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                          "font-serif text-sm sm:text-base md:text-lg font-medium tracking-tight leading-snug transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] guide-speakable-question",
                           isOpen
                             ? isParchment
                               ? "text-[#3D2314]"
@@ -1796,7 +1796,7 @@ export function GuideView() {
                           <span className={cn("text-[10px] font-mono tracking-widest uppercase", t.eyebrow)}>
                             Answer · English
                           </span>
-                          <p className={cn("font-sans text-xs sm:text-sm md:text-[14.5px] leading-relaxed", t.bodyEn)}>
+                          <p className={cn("font-sans text-xs sm:text-sm md:text-[14.5px] leading-relaxed guide-speakable-answer", t.bodyEn)}>
                             {item.aEn}
                           </p>
                         </div>

@@ -55,6 +55,12 @@ const faqJsonLd = {
     },
     {
       "@type": "FAQPage",
+      name: "Vikramaditya Vedic Clock Master Knowledge Base & FAQ",
+      url: "https://thevedicghadi.in/faq",
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: [".faq-speakable-question", ".faq-speakable-answer"],
+      },
       mainEntity: MASTER_FAQ_ITEMS.flatMap((item) => [
         {
           "@type": "Question",

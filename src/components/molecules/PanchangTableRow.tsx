@@ -103,14 +103,14 @@ export function PanchangTableRow({
               >
                 {nameHi}
               </span>
-              <span
+              <dfn
                 className={cn(
-                  "font-sans text-[11px] sm:text-xs mt-0.5 transition-colors duration-200",
+                  "font-sans not-italic font-normal text-[11px] sm:text-xs mt-0.5 transition-colors duration-200 block",
                   isDocDark ? "text-ivory/60" : "text-[#5C4230]"
                 )}
               >
                 {nameEn}
-              </span>
+              </dfn>
             </div>
           </div>
 
@@ -189,14 +189,14 @@ export function PanchangTableRow({
                 >
                   {nameHi}
                 </span>
-                <span
+                <dfn
                   className={cn(
-                    "font-sans text-[11px] transition-colors duration-200",
+                    "font-sans not-italic font-normal text-[11px] transition-colors duration-200 block",
                     isDocDark ? "text-ivory/60" : "text-[#5C4230]"
                   )}
                 >
                   {nameEn}
-                </span>
+                </dfn>
               </div>
             </div>
 
@@ -330,14 +330,14 @@ export function PanchangTableRow({
             >
               {nameHi}
             </span>
-            <span
+            <dfn
               className={cn(
-                "font-sans text-xs mt-0.5 transition-colors duration-200",
+                "font-sans not-italic font-normal text-xs mt-0.5 transition-colors duration-200 block",
                 isDocDark ? "text-ivory/60" : "text-[#5C4230]"
               )}
             >
               {nameEn}
-            </span>
+            </dfn>
           </div>
 
           {/* 3. प्रकृति · Nature */}
@@ -489,9 +489,9 @@ export function PanchangTableRow({
         >
           {nameHi}
         </span>
-        <span
+        <dfn
           className={cn(
-            "font-sans text-[11px] sm:text-xs tracking-wide transition-colors duration-300 mt-0.5",
+            "font-sans not-italic font-normal text-[11px] sm:text-xs tracking-wide transition-colors duration-300 mt-0.5 block",
             isParchment
               ? isHighlighted
                 ? "text-[#482D1C] font-semibold"
@@ -502,7 +502,7 @@ export function PanchangTableRow({
           )}
         >
           {nameEn}
-        </span>
+        </dfn>
       </div>
 
       {/* 3. Badge / Nature Pill (Track 3: strictly fixed width, wraps text so height can differ) */}

@@ -54,6 +54,12 @@ const guideJsonLd = {
     },
     {
       "@type": "FAQPage",
+      name: "Panchang & 30-Muhurta Vedic Horology FAQ",
+      url: "https://thevedicghadi.in/guide#faq",
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: [".guide-speakable-question", ".guide-speakable-answer"],
+      },
       mainEntity: [
         {
           "@type": "Question",
@@ -111,6 +117,53 @@ const guideJsonLd = {
           },
         },
       ],
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://thevedicghadi.in/guide#article",
+      headline: "Understanding Vedic Time: Panchang & 30-Muhurta Horological Guide",
+      alternativeHeadline: "विक्रमादित्य वैदिक घड़ी: एक सम्पूर्ण मार्गदर्शिका",
+      url: "https://thevedicghadi.in/guide",
+      description:
+        "Comprehensive handbook covering the 30 dynamic Muhurtas, 5 limbs of Panchang (Tithi, Vaar, Nakshatra, Yoga, Karana), and astronomical time divisions from Truti to Ahoratra.",
+      inLanguage: ["en-IN", "hi-IN"],
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: [
+          ".guide-speakable-title",
+          ".guide-speakable-lead",
+          ".guide-speakable-thesis",
+          ".guide-speakable-question",
+          ".guide-speakable-answer",
+        ],
+      },
+      about: [
+        {
+          "@type": "Thing",
+          name: "Muhurta",
+          sameAs: "https://en.wikipedia.org/wiki/Muhurta",
+        },
+        {
+          "@type": "Thing",
+          name: "Panchangam",
+          sameAs: "https://en.wikipedia.org/wiki/Panchangam",
+        },
+        {
+          "@type": "Place",
+          name: "Ujjain Prime Meridian",
+          sameAs: "https://en.wikipedia.org/wiki/Ujjain",
+        },
+      ],
+      author: {
+        "@type": "Organization",
+        name: "Vikramaditya Research & Horological Guild",
+        url: "https://thevedicghadi.in",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Vikramaditya Vedic Clock",
+        url: "https://thevedicghadi.in",
+      },
     },
   ],
 };

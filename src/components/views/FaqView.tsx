@@ -112,7 +112,7 @@ export function FaqView() {
                     </span>
                     <h3
                       className={cn(
-                        "font-serif text-sm sm:text-base md:text-lg font-medium tracking-tight leading-snug transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                        "font-serif text-sm sm:text-base md:text-lg font-medium tracking-tight leading-snug transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] faq-speakable-question",
                         isOpen
                           ? isParchment
                             ? "text-[#3D2314]"
@@ -163,7 +163,7 @@ export function FaqView() {
                         <span className={cn("text-[10px] font-mono tracking-widest uppercase", t.eyebrow)}>
                           Answer · English
                         </span>
-                        <p className={cn("font-sans text-xs sm:text-sm md:text-[14.5px] leading-relaxed", t.bodyEn)}>
+                        <p className={cn("font-sans text-xs sm:text-sm md:text-[14.5px] leading-relaxed faq-speakable-answer", t.bodyEn)}>
                           {item.answerEn}
                         </p>
                       </div>

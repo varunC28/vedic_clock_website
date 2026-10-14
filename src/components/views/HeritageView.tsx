@@ -293,7 +293,7 @@ export function HeritageView() {
           {/* Headline */}
           <h1
             className={cn(
-              "font-sans text-3xl sm:text-4xl lg:text-[46px] font-bold leading-[1.15] tracking-tight mb-4",
+              "font-sans text-3xl sm:text-4xl lg:text-[46px] font-bold leading-[1.15] tracking-tight mb-4 heritage-speakable-headline",
               isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
             )}
           >
@@ -313,7 +313,7 @@ export function HeritageView() {
           {/* Clean Editorial Lead */}
           <p
             className={cn(
-              "font-sans text-sm sm:text-base leading-relaxed max-w-2xl",
+              "font-sans text-sm sm:text-base leading-relaxed max-w-2xl heritage-speakable-lead",
               isParchment ? "text-[#6E5540]" : "text-ivory/70"
             )}
           >

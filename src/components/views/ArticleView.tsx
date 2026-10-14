@@ -56,7 +56,7 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
         {/* Title & Bilingual Subtitle */}
         <h1
           className={cn(
-            "font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.2] mb-4",
+            "font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.2] mb-4 article-speakable-title",
             isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
           )}
         >
@@ -115,7 +115,7 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
         )}
         <p
           className={cn(
-            "text-base sm:text-lg font-sans leading-relaxed mb-10 pb-6 border-b border-current/10 font-normal italic",
+            "text-base sm:text-lg font-sans leading-relaxed mb-10 pb-6 border-b border-current/10 font-normal italic article-speakable-lead",
             isParchment ? "text-[#5C4230]" : "text-ivory/80"
           )}
         >
