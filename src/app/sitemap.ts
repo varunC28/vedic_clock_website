@@ -12,36 +12,63 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "daily",
       priority: 1.0,
+      images: [
+        `${baseUrl}/assets/blog/shastras-to-silicon.jpg`,
+        `${baseUrl}/assets/blog/ujjain-zero-meridian.jpg`,
+      ],
     },
     {
       url: `${baseUrl}/heritage`,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
+      images: [
+        `${baseUrl}/assets/blog/ujjain-zero-meridian.jpg`,
+      ],
     },
     {
       url: `${baseUrl}/guide`,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
+      images: [
+        `${baseUrl}/assets/rashi/aries.webp`,
+        `${baseUrl}/assets/rashi/taurus.webp`,
+        `${baseUrl}/assets/rashi/gemini.webp`,
+        `${baseUrl}/assets/rashi/cancer.webp`,
+        `${baseUrl}/assets/rashi/leo.webp`,
+        `${baseUrl}/assets/rashi/virgo.webp`,
+        `${baseUrl}/assets/rashi/libra.webp`,
+        `${baseUrl}/assets/rashi/scorpio.webp`,
+      ],
     },
     {
       url: `${baseUrl}/catalogue`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
+      images: [
+        `${baseUrl}/assets/blog/shastras-to-silicon.jpg`,
+      ],
     },
     {
       url: `${baseUrl}/blog`,
       lastModified: now,
       changeFrequency: "daily",
       priority: 0.8,
+      images: [
+        `${baseUrl}/assets/blog/shastras-to-silicon.jpg`,
+        `${baseUrl}/assets/blog/ujjain-zero-meridian.jpg`,
+      ],
     },
     {
       url: `${baseUrl}/faq`,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.8,
+      images: [
+        `${baseUrl}/assets/blog/shastras-to-silicon.jpg`,
+      ],
     },
     {
       url: `${baseUrl}/contact`,
@@ -57,6 +84,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(article.createdAt),
     changeFrequency: "monthly",
     priority: 0.7,
+    images: article.image
+      ? [`${baseUrl}${article.image}`]
+      : [`${baseUrl}/assets/blog/shastras-to-silicon.jpg`],
   }));
 
   return [...staticRoutes, ...blogRoutes];

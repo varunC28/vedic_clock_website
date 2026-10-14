@@ -165,6 +165,45 @@ const guideJsonLd = {
         url: "https://thevedicghadi.in",
       },
     },
+    {
+      "@type": "HowTo",
+      "@id": "https://thevedicghadi.in/guide#howto-read-vedic-clock",
+      name: "How to Read the Vikramaditya Vedic Clock",
+      alternateName: "विक्रमादित्य वैदिक घड़ी का समय कैसे देखें?",
+      description:
+        "A 4-step astronomical guide to reading diurnal time, calculating active dynamic Muhurtas, and interpreting the Five Limbs of Panchang from local sunrise.",
+      inLanguage: ["en-IN", "hi-IN"],
+      step: [
+        {
+          "@type": "HowToStep",
+          position: 1,
+          name: "Identify Suryodaya (Local Astronomical Sunrise)",
+          text: "Unlike civil midnight (12:00 AM), Vedic time begins at Suryodaya (the exact moment the upper limb of the solar disc breaches the local horizon). This represents 00:00:00 Vedic time and resets the daily diurnal counter.",
+          url: "https://thevedicghadi.in/guide#chapter-1",
+        },
+        {
+          "@type": "HowToStep",
+          position: 2,
+          name: "Determine the Seasonal Diurnal Arc (Dinamana vs. Ratrimana)",
+          text: "Measure the daytime duration (Dinamana) from sunrise to sunset, and nighttime duration (Ratrimana) from sunset to the next sunrise. At equinox, Dinamana and Ratrimana are each exactly 12 hours (30 Ghatis).",
+          url: "https://thevedicghadi.in/guide#chapter-2",
+        },
+        {
+          "@type": "HowToStep",
+          position: 3,
+          name: "Calculate the Active Dynamic Muhurta",
+          text: "Divide daytime Dinamana by 15 to calculate the dynamic length of daytime Muhurtas, and nighttime Ratrimana by 15 for nighttime Muhurtas. Locate the active Muhurta counter (1 to 30) on the clock dial.",
+          url: "https://thevedicghadi.in/guide#chapter-3",
+        },
+        {
+          "@type": "HowToStep",
+          position: 4,
+          name: "Consult the Five Limbs of Panchang",
+          text: "Read the 5 active astronomical coordinates: Tithi (lunar phase), Vaar (planetary weekday lord), Nakshatra (sidereal lunar mansion), Yoga (angular solar-lunar sum), and Karana (half-tithi).",
+          url: "https://thevedicghadi.in/guide#chapter-4",
+        },
+      ],
+    },
   ],
 };
 

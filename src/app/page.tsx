@@ -32,6 +32,92 @@ export const metadata: Metadata = {
   },
 };
 
+const homeJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "@id": "https://thevedicghadi.in/#product",
+      name: "Vikramaditya Vedic Clock",
+      alternateName: [
+        "विक्रमादित्य वैदिक घड़ी",
+        "Vedic Clock India",
+        "Vikramaditya Vedic Horological Timepiece",
+      ],
+      image: [
+        "https://thevedicghadi.in/assets/blog/shastras-to-silicon.jpg",
+        "https://thevedicghadi.in/assets/blog/ujjain-zero-meridian.jpg",
+      ],
+      description:
+        "Handcrafted astronomical horological instrument calibrated to the historic 0° Prime Meridian of Ujjain. Computes real-time Panchang (Tithi, Vaar, Nakshatra, Yoga, Karana), 30 dynamic diurnal Muhurtas, and sidereal solar transit 100% offline via embedded Surya Siddhanta ephemerides.",
+      brand: {
+        "@type": "Brand",
+        name: "Vikramaditya Vedic Clock",
+      },
+      manufacturer: {
+        "@type": "Organization",
+        name: "Shiv Enterprises",
+        url: "https://thevedicghadi.in",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Ujjain",
+          addressRegion: "Madhya Pradesh",
+          addressCountry: "IN",
+        },
+      },
+      material:
+        "Acoustic Bell Brass (Kansa / कांस्य Alloy: 78% Copper, 22% Tin) and Aerospace Anodized Aluminum",
+      countryOfOrigin: {
+        "@type": "Country",
+        name: "India",
+      },
+      category: "Astronomical Horological Timepiece",
+      offers: {
+        "@type": "AggregateOffer",
+        priceCurrency: "INR",
+        lowPrice: "Upon Request",
+        offerCount: 3,
+        price: "Upon Request",
+        availability: "https://schema.org/InStock",
+        itemCondition: "https://schema.org/NewCondition",
+        url: "https://thevedicghadi.in/catalogue",
+        seller: {
+          "@type": "Organization",
+          name: "Shiv Enterprises",
+        },
+      },
+      hasVariant: [
+        {
+          "@type": "ProductModel",
+          name: "Sanctum Wall Mount Edition",
+          description:
+            "Solid bell-brass wall mounting chronometer engineered for sacred mandir sanctums, private estates, and architectural halls.",
+        },
+        {
+          "@type": "ProductModel",
+          name: "Monumental Pedestal Edition",
+          description:
+            "Freestanding architectural monument timepiece in antique bronze patina for cultural institutions, museums, and university courtyards.",
+        },
+        {
+          "@type": "ProductModel",
+          name: "Bespoke Heirloom Commission",
+          description:
+            "Custom artisan commission featuring heraldic inscriptions, personalized geo-coordinates, and temple-grade acoustic casing.",
+        },
+      ],
+    },
+  ],
+};
+
 export default function Home() {
-  return <HomeView />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
+      />
+      <HomeView />
+    </>
+  );
 }
