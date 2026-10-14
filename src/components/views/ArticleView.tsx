@@ -13,6 +13,41 @@ interface ArticleViewProps {
   article: BlogArticle;
   relatedArticles: BlogArticle[];
 }
+function renderFormattedText(text: string, isParchment: boolean) {
+  const regex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const parts: (string | React.ReactNode)[] = [];
+  let lastIndex = 0;
+  let match;
+
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    const label = match[1];
+    const href = match[2];
+    parts.push(
+      <Link
+        key={match.index}
+        href={href}
+        className={cn(
+          "font-medium underline decoration-1 underline-offset-4 transition-colors cursor-pointer",
+          isParchment
+            ? "text-[#8C5D33] decoration-[#8C5D33]/40 hover:text-[#3D2314] hover:decoration-[#3D2314]"
+            : "text-[#D4A65A] decoration-[#D4A65A]/40 hover:text-[#FFF5D1] hover:decoration-[#FFF5D1]"
+        )}
+      >
+        {label}
+      </Link>
+    );
+    lastIndex = regex.lastIndex;
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+
+  return parts.length > 0 ? parts : text;
+}
 
 export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
   const { isParchment } = useTheme();
@@ -156,7 +191,7 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
                     isParchment ? "text-[#3D2514]" : "text-ivory/95"
                   )}
                 >
-                  {block.textHi}
+                  {renderFormattedText(block.textHi, isParchment)}
                 </p>
               )}
 
@@ -167,7 +202,7 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
                   isParchment ? "text-[#5C4230]" : "text-ivory/75"
                 )}
               >
-                {block.text}
+                {renderFormattedText(block.text, isParchment)}
               </p>
 
               {/* Shloka Highlight Block */}
