@@ -19,9 +19,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const article = VEDIC_BLOG_ARTICLES.find((a) => a.slug === slug);
   if (!article) return {};
 
-  const ogImages = article.image
-    ? [{ url: article.image, width: 1200, height: 675, alt: article.title }]
-    : [{ url: "/assets/blog/shastras-to-silicon.jpg", width: 1200, height: 675, alt: article.title }];
+  const ogUrl = `https://thevedicghadi.in/api/og?title=${encodeURIComponent(
+    article.title
+  )}&subtitle=${encodeURIComponent(
+    article.titleHi || article.description
+  )}&category=${encodeURIComponent(article.category)}&author=${encodeURIComponent(
+    article.author
+  )}`;
+
+  const ogImages = [
+    { url: ogUrl, width: 1200, height: 630, alt: article.title },
+    ...(article.image ? [{ url: article.image, width: 1200, height: 675, alt: article.title }] : []),
+  ];
 
   return {
     title: article.title,
@@ -43,7 +52,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: "summary_large_image",
       title: article.title,
       description: article.description,
-      images: ogImages.map((img) => img.url),
+      images: [ogUrl],
     },
     keywords: [
       article.category,
