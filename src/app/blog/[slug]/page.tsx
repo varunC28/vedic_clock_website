@@ -87,21 +87,16 @@ export default function ArticlePage({ params }: PageProps) {
           </Link>
         </div>
 
-        {/* Category & Date Header */}
-        <div className="flex flex-wrap items-center gap-3 mb-4">
+        {/* Meta Header */}
+        <div className="flex items-center gap-2 mb-4">
           <span
             className={cn(
-              "px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider border",
-              isParchment
-                ? "bg-[#F2ECE1] border-[#DFCBB5] text-[#8C5D33]"
-                : "bg-[#091122] border-[#D4A65A]/30 text-[#D4A65A]"
+              "font-mono text-xs uppercase tracking-wider font-medium",
+              isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
             )}
           >
-            {article.category}
+            {article.readTime}
           </span>
-          <span className="text-xs opacity-60 font-sans">{article.createdAt}</span>
-          <span className="text-xs opacity-40">·</span>
-          <span className="text-xs opacity-60 font-sans">{article.readTime}</span>
         </div>
 
         {/* Title & Bilingual Subtitle */}
