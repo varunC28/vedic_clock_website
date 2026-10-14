@@ -397,7 +397,7 @@ export default function GuidePage() {
             </div>
 
             {/* List of 9 Chapters using PanchangTableRow (M5) */}
-            <div className={cn("divide-y", t.divideSubtle)}>
+            <div className="flex flex-col gap-1.5 sm:gap-2 py-2">
               {TOC_ITEMS.map((item) => (
                 <PanchangTableRow
                   key={item.id}

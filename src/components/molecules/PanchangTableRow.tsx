@@ -425,15 +425,16 @@ export function PanchangTableRow({
       role={onClick ? "button" : undefined}
       tabIndex={onClick ? 0 : undefined}
       className={cn(
-        "group relative grid items-center gap-2 sm:gap-4 px-3 sm:px-6 py-3 sm:py-3.5 transition-all duration-200 select-none",
+        "group relative grid items-center gap-2 sm:gap-4 px-3 sm:px-6 py-3 sm:py-3.5 select-none origin-center",
+        "transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
         gridColsClass,
         isParchment
           ? isHighlighted
-            ? "border-2 border-[#9E672B] border-l-[4px] border-l-[#7E4A19] bg-[#EBD6BE] rounded-2xl shadow-[0_4px_16px_rgba(110,65,25,0.12)] my-1"
-            : "border-b border-[#DFCBB5]/50 hover:bg-[#F3E6D3]/40 last:border-b-0"
+            ? "border-2 border-[#9E672B] border-l-[4px] border-l-[#7E4A19] bg-[#EBD6BE] rounded-2xl shadow-[0_10px_25px_-5px_rgba(110,65,25,0.18),0_4px_10px_rgba(110,65,25,0.08)] scale-[1.015] sm:scale-[1.025] -translate-y-0.5 sm:-translate-y-1 z-10"
+            : "border-2 border-transparent border-l-[4px] border-l-transparent hover:bg-[#F3E6D3]/40 rounded-2xl scale-100 translate-y-0 z-0"
           : isHighlighted
-          ? "border-2 border-[#E5A84B] border-l-[4px] border-l-[#F59E0B] bg-[#181512] rounded-2xl shadow-[0_0_16px_rgba(229,168,75,0.25)] my-1"
-          : "border-b border-white/[0.05] hover:bg-white/[0.02] last:border-b-0",
+          ? "border-2 border-[#E5A84B] border-l-[4px] border-l-[#F59E0B] bg-[#181512] rounded-2xl shadow-[0_12px_30px_-6px_rgba(229,168,75,0.32),0_4px_12px_rgba(0,0,0,0.5)] scale-[1.015] sm:scale-[1.025] -translate-y-0.5 sm:-translate-y-1 z-10"
+          : "border-2 border-transparent border-l-[4px] border-l-transparent hover:bg-white/[0.03] rounded-2xl scale-100 translate-y-0 z-0",
         onClick && "cursor-pointer",
         className
       )}
@@ -442,14 +443,14 @@ export function PanchangTableRow({
       <div className="flex items-center justify-start shrink-0">
         <div
           className={cn(
-            "w-7 h-7 sm:w-8 sm:h-8 shrink-0 rounded-full flex items-center justify-center font-sans text-[11px] sm:text-xs font-bold transition-all duration-200",
+            "w-7 h-7 sm:w-8 sm:h-8 shrink-0 rounded-full flex items-center justify-center font-sans text-[11px] sm:text-xs font-bold transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
             isParchment
               ? isHighlighted
-                ? "bg-[#B8873D] text-[#FFF9F0] shadow-sm scale-105"
-                : "bg-[#EADCCB] text-[#5C4230]"
+                ? "bg-[#B8873D] text-[#FFF9F0] shadow-md scale-110"
+                : "bg-[#EADCCB] text-[#5C4230] scale-100"
               : isHighlighted
-              ? "bg-[#E5A84B] text-[#120F0B] shadow-[0_0_12px_rgba(229,168,75,0.4)] scale-105"
-              : "bg-white/[0.08] text-white/70"
+              ? "bg-[#E5A84B] text-[#120F0B] shadow-[0_0_16px_rgba(229,168,75,0.55)] scale-110"
+              : "bg-white/[0.08] text-white/70 scale-100"
           )}
         >
           {index}
@@ -457,23 +458,29 @@ export function PanchangTableRow({
       </div>
 
       {/* 2. Bilingual Name (Track 2) */}
-      <div className={cn("min-w-0 flex flex-col justify-center text-left", nameClassName)}>
+      <div className={cn("min-w-0 flex flex-col justify-center text-left transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]", nameClassName)}>
         <span
           className={cn(
-            "font-hindi text-sm sm:text-base font-bold leading-tight transition-colors duration-200 truncate",
+            "font-hindi text-sm sm:text-base font-bold leading-tight transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] truncate origin-left",
             isParchment
               ? "text-[#3D2314]"
               : isHighlighted
-              ? "text-[#FCD34D]"
-              : "text-[#E5A84B]"
+              ? "text-[#FCD34D] scale-[1.01]"
+              : "text-[#E5A84B] scale-100"
           )}
         >
           {nameHi}
         </span>
         <span
           className={cn(
-            "font-sans text-[11px] sm:text-xs tracking-wide transition-colors duration-200 mt-0.5 truncate",
-            isParchment ? "text-[#70523C] font-medium" : "text-ivory/55"
+            "font-sans text-[11px] sm:text-xs tracking-wide transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] mt-0.5 truncate",
+            isParchment
+              ? isHighlighted
+                ? "text-[#482D1C] font-semibold"
+                : "text-[#70523C] font-medium"
+              : isHighlighted
+              ? "text-ivory/80 font-medium"
+              : "text-ivory/55"
           )}
         >
           {nameEn}
@@ -553,7 +560,7 @@ export function PanchangTableRow({
       {(detail || detailHi) && (
         <div
           className={cn(
-            "col-span-full sm:col-auto min-w-0 flex flex-col justify-center text-left pt-1 sm:pt-0",
+            "col-span-full sm:col-auto min-w-0 flex flex-col justify-center text-left pt-1 sm:pt-0 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
             isParchment
               ? isHighlighted
                 ? "text-[#2D1B0E]"
@@ -571,13 +578,18 @@ export function PanchangTableRow({
           {detail && (
             <span
               className={cn(
-                "text-xs sm:text-sm leading-relaxed",
+                "text-xs sm:text-sm leading-relaxed transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                isHighlighted && "translate-x-1.5",
                 isEquation
                   ? isParchment
                     ? "font-sans font-medium text-[#482D1C]"
                     : "font-sans font-medium text-ivory/85"
                   : isParchment
-                  ? "font-sans text-[#5C4230]"
+                  ? isHighlighted
+                    ? "font-sans font-medium text-[#2D1B0E]"
+                    : "font-sans text-[#5C4230]"
+                  : isHighlighted
+                  ? "font-sans font-medium text-ivory/95"
                   : "font-sans text-ivory/60"
               )}
             >
