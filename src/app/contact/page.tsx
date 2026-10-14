@@ -32,6 +32,57 @@ export const metadata: Metadata = {
   },
 };
 
+const contactJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thevedicghadi.in",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Contact & Acquisitions",
+          item: "https://thevedicghadi.in/contact",
+        },
+      ],
+    },
+    {
+      "@type": "ContactPage",
+      name: "Acquisitions & Institutional Enquiries",
+      description:
+        "Direct communication channel for bespoke commissions, sacred horology inquiries, and institutional partnerships with Shiv Enterprises.",
+      url: "https://thevedicghadi.in/contact",
+      mainEntity: {
+        "@type": "Organization",
+        name: "Shiv Enterprises",
+        url: "https://thevedicghadi.in",
+        email: "contact@thevedicghadi.in",
+        telephone: "+91-98270-12345",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Ujjain",
+          addressRegion: "Madhya Pradesh",
+          addressCountry: "IN",
+        },
+      },
+    },
+  ],
+};
+
 export default function ContactPage() {
-  return <ContactView />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
+      />
+      <ContactView />
+    </>
+  );
 }

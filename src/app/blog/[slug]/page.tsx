@@ -67,29 +67,56 @@ export default async function ArticlePage({ params }: PageProps) {
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: article.title,
-    alternativeHeadline: article.titleHi,
-    description: article.description,
-    ...(article.image ? { image: [article.image] } : {}),
-    datePublished: article.createdAt,
-    dateModified: article.createdAt,
-    inLanguage: ["en", "hi"],
-    author: {
-      "@type": "Person",
-      name: article.author,
-      jobTitle: article.authorRole,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Vikramaditya Vedic Clock",
-      url: "https://thevedicghadi.in",
-    },
-    articleSection: article.category,
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `https://thevedicghadi.in/blog/${article.slug}`,
-    },
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://thevedicghadi.in",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Publications",
+            item: "https://thevedicghadi.in/blog",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: article.title,
+            item: `https://thevedicghadi.in/blog/${article.slug}`,
+          },
+        ],
+      },
+      {
+        "@type": "BlogPosting",
+        headline: article.title,
+        alternativeHeadline: article.titleHi,
+        description: article.description,
+        image: [article.image || "/assets/blog/shastras-to-silicon.jpg"],
+        datePublished: article.createdAt,
+        dateModified: article.createdAt,
+        inLanguage: ["en", "hi"],
+        author: {
+          "@type": "Person",
+          name: article.author,
+          jobTitle: article.authorRole,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "Vikramaditya Vedic Clock",
+          url: "https://thevedicghadi.in",
+        },
+        articleSection: article.category,
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": `https://thevedicghadi.in/blog/${article.slug}`,
+        },
+      },
+    ],
   };
 
   return (

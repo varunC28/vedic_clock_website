@@ -32,6 +32,37 @@ export const metadata: Metadata = {
   },
 };
 
+const heritageJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thevedicghadi.in",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Heritage & The Ujjain 0° Meridian",
+          item: "https://thevedicghadi.in/heritage",
+        },
+      ],
+    },
+  ],
+};
+
 export default function HeritagePage() {
-  return <HeritageView />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(heritageJsonLd) }}
+      />
+      <HeritageView />
+    </>
+  );
 }

@@ -32,6 +32,49 @@ export const metadata: Metadata = {
   },
 };
 
+const blogIndexJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thevedicghadi.in",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Publications & Research",
+          item: "https://thevedicghadi.in/blog",
+        },
+      ],
+    },
+    {
+      "@type": "CollectionPage",
+      name: "Chronicles of Celestial Horology",
+      description:
+        "Scholarly publications and essays on ancient Indian astronomy, the prime meridian of Ujjain, Surya Siddhanta mathematical models, and the living circadian philosophy of Vedic time.",
+      url: "https://thevedicghadi.in/blog",
+      publisher: {
+        "@type": "Organization",
+        name: "Vikramaditya Vedic Clock",
+        url: "https://thevedicghadi.in",
+      },
+    },
+  ],
+};
+
 export default function BlogPage() {
-  return <BlogView />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogIndexJsonLd) }}
+      />
+      <BlogView />
+    </>
+  );
 }

@@ -32,6 +32,69 @@ export const metadata: Metadata = {
   },
 };
 
+const catalogueJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://thevedicghadi.in",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Catalogue & Specifications",
+          item: "https://thevedicghadi.in/catalogue",
+        },
+      ],
+    },
+    {
+      "@type": "Product",
+      name: "Vikramaditya Vedic Clock",
+      image: "https://thevedicghadi.in/assets/blog/shastras-to-silicon.jpg",
+      description:
+        "Handcrafted astronomical horological instrument calculating real-time Panchang, 30 dynamic Muhurtas, and sidereal zodiac positions calibrated to the ancient Ujjain 0° Prime Meridian.",
+      brand: {
+        "@type": "Brand",
+        name: "Shiv Enterprises",
+      },
+      manufacturer: {
+        "@type": "Organization",
+        name: "Shiv Enterprises",
+        url: "https://thevedicghadi.in",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Ujjain",
+          addressRegion: "Madhya Pradesh",
+          addressCountry: "IN",
+        },
+      },
+      material: "Acoustic Bell Brass (Kansa) and Aerospace Aluminum",
+      category: "Astronomical Horological Instrument",
+      offers: {
+        "@type": "Offer",
+        url: "https://thevedicghadi.in/catalogue",
+        priceCurrency: "INR",
+        price: "Upon Request",
+        availability: "https://schema.org/InStock",
+        itemCondition: "https://schema.org/NewCondition",
+      },
+    },
+  ],
+};
+
 export default function CataloguePage() {
-  return <CatalogueView />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(catalogueJsonLd) }}
+      />
+      <CatalogueView />
+    </>
+  );
 }
