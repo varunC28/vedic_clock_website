@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Fraunces, Noto_Sans_Devanagari } from "next/font/google";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 const inter = Inter({ 
   subsets: ["latin"], 
@@ -33,7 +34,9 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${fraunces.variable} ${notoDevanagari.variable}`}>
       <body className="font-sans selection:bg-brass/30 selection:text-ivory">
         <SmoothScrollProvider>
-          {children}
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
         </SmoothScrollProvider>
       </body>
     </html>

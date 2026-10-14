@@ -7,6 +7,7 @@ import { Footer } from "@/components/organisms/Footer";
 import { BilingualPill } from "@/components/atoms/BilingualPill";
 import { GoldDivider } from "@/components/atoms/GoldDivider";
 import { PanchangTableRow } from "@/components/molecules/PanchangTableRow";
+import { useTheme } from "@/components/providers/ThemeProvider";
 
 interface TocItem {
   id: string;
@@ -336,7 +337,7 @@ function PanchangGridCard({
 }
 
 export default function GuidePage() {
-  const [isParchment, setIsParchment] = useState(false);
+  const { isParchment } = useTheme();
   const [selectedChapter, setSelectedChapter] = useState<string>("chapter-1");
   const [muhurtaFilter, setMuhurtaFilter] = useState<"all" | "day" | "night" | "auspicious" | "inauspicious">("all");
   const [selectedMuhurta, setSelectedMuhurta] = useState<number>(3); // Row 3 (Mitra) highlighted by default as in screenshot
@@ -1512,57 +1513,6 @@ export default function GuidePage() {
 
       {/* Grounded Luxury Footer */}
       <Footer variant={isParchment ? "parchment" : "dark"} />
-
-      {/* ── Floating Theme Comparison Controller (Matching Home & Heritage Pages) ────────────────── */}
-      <aside
-        aria-label="Theme comparison controls"
-        className="fixed bottom-5 left-5 z-50 flex items-center gap-1.5 bg-[#060B18]/95 backdrop-blur-md border border-[#D4A65A]/30 rounded-full p-1.5 shadow-[0_4px_24px_rgba(0,0,0,0.6)]"
-      >
-        <span className="text-[10px] font-sans font-semibold uppercase tracking-wider text-[#D4A65A]/80 px-2 select-none hidden lg:inline">
-          Theme Mode
-        </span>
-
-        {/* 1. Full Cosmic */}
-        <button
-          type="button"
-          onClick={() => setIsParchment(false)}
-          className={cn(
-            "px-3 py-1.5 rounded-full text-[11px] font-sans transition-all cursor-pointer flex items-center gap-1.5",
-            !isParchment
-              ? "bg-[#D4A65A] text-[#050A14] font-semibold shadow-[0_0_12px_rgba(212,166,90,0.4)]"
-              : "text-ivory/70 hover:text-ivory hover:bg-white/5"
-          )}
-          title="Deep Cosmic Gold theme across all sections"
-        >
-          <span>🌌</span>
-          <span>Full Cosmic</span>
-        </button>
-
-        {/* 2. Full Parchment */}
-        <button
-          type="button"
-          onClick={() => setIsParchment(true)}
-          className={cn(
-            "px-3 py-1.5 rounded-full text-[11px] font-sans transition-all cursor-pointer flex items-center gap-1.5",
-            isParchment
-              ? "bg-[#F3E9D2] text-[#2A1B10] font-semibold shadow-[0_0_12px_rgba(243,233,210,0.4)]"
-              : "text-ivory/70 hover:text-ivory hover:bg-white/5"
-          )}
-          title="Light Parchment theme across all sections"
-        >
-          <span>📜</span>
-          <span>Full Parchment</span>
-        </button>
-
-        {/* Link to Workbench */}
-        <a
-          href="/workbench"
-          className="text-[10px] font-mono text-[#D4A65A]/60 hover:text-[#FFF5D1] px-2.5 transition-colors border-l border-white/10 hidden md:inline"
-          title="View All Component Atoms & Molecules Workbench"
-        >
-          Workbench →
-        </a>
-      </aside>
     </div>
   );
 }

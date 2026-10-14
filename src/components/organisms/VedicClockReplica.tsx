@@ -90,6 +90,7 @@ export function VedicClockReplica({
 }: VedicClockReplicaProps) {
   const half = size / 2;
   const scale = size / 600;
+  const hasAssembly = Boolean(frameRef);
 
   // ── Derived dynamic values from live state (locked to Ujjain) ──────────
   const mm = state ? pad2(state.muhurtaInDay) : '17';
@@ -367,6 +368,7 @@ export function VedicClockReplica({
           overflow: 'hidden',
           backgroundColor: 'transparent',
           zIndex: 1,
+          opacity: hasAssembly ? 0 : 1,
         }}
       >
         <Earth3D size={videoSize} />
@@ -383,6 +385,7 @@ export function VedicClockReplica({
           top: (size - frameH) / 2 + 10 * scale,
           pointerEvents: 'none',
           zIndex: 3,
+          opacity: hasAssembly ? 0 : 1,
         }}
       >
         <img
@@ -397,7 +400,16 @@ export function VedicClockReplica({
       </div>
 
       {/* ── Layer 3: 4 Diagonal Cutout Medallions ───────────────────────────── */}
-      <div ref={iconsRef} style={{ position: 'absolute', inset: 0, zIndex: 4, pointerEvents: 'none' }}>
+      <div
+        ref={iconsRef}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 4,
+          pointerEvents: 'none',
+          opacity: hasAssembly ? 0 : 1,
+        }}
+      >
         {/* Top-Left: Nakshatra Cutout */}
         <div
           style={{
@@ -506,6 +518,7 @@ export function VedicClockReplica({
           top: -svgOffset,
           pointerEvents: 'none',
           zIndex: 5,
+          opacity: hasAssembly ? 0 : 1,
         }}
       >
         {/* 1. Top-Left: Nakshatra Arch */}
@@ -572,6 +585,7 @@ export function VedicClockReplica({
           justifyContent: 'center',
           pointerEvents: 'none',
           zIndex: 6,
+          opacity: hasAssembly ? 0 : 1,
         }}
       >
         <div
@@ -715,6 +729,7 @@ export function VedicClockReplica({
           inset: 0,
           pointerEvents: 'none',
           zIndex: 7,
+          opacity: hasAssembly ? 0 : 1,
         }}
       >
         {/* Left Plaque (Sunset / 18:02 / सूर्यास्त) */}

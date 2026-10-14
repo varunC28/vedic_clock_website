@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { NavItem } from "@/components/molecules/NavItem";
 import { BrassButton } from "@/components/atoms/BrassButton";
+import { useTheme } from "@/components/providers/ThemeProvider";
 
 const NAV_LINKS = [
   { href: "/", en: "Home", hi: "मुख्य पृष्ठ" },
@@ -23,6 +24,7 @@ export function Header({ alwaysVisible = false }: HeaderProps) {
   const [scrolled, setScrolled] = useState(alwaysVisible);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { isParchment, toggleTheme } = useTheme();
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname === "/") {
@@ -97,36 +99,102 @@ export function Header({ alwaysVisible = false }: HeaderProps) {
             ))}
           </nav>
 
-          {/* Right: Desktop CTA */}
-          <div className="hidden lg:block">
+          {/* Right: Desktop CTA + Sun/Night Theme Toggle */}
+          <div className="hidden lg:flex items-center gap-3">
             <BrassButton en="Enquire" size="sm" variant="primary" href="/contact" />
+            
+            {/* Night / Sun Theme Toggle */}
+            <button
+              type="button"
+              onClick={(e) => toggleTheme(e)}
+              aria-label={isParchment ? "Switch to Cosmic Night Mode" : "Switch to Parchment Day Mode"}
+              title={isParchment ? "Switch to Cosmic Night Mode" : "Switch to Parchment Day Mode"}
+              className={cn(
+                "relative w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer shrink-0",
+                isParchment
+                  ? "bg-[#FAF5E8] border border-[#B8873D]/40 text-[#8C5D33] hover:border-[#B8873D] hover:bg-white shadow-sm"
+                  : "bg-[#080E1C] border border-[#D4A65A]/35 text-[#E8B94B] hover:border-[#D4A65A] hover:bg-[#0D152A] hover:shadow-[0_0_12px_rgba(212,166,90,0.3)]"
+              )}
+            >
+              {isParchment ? (
+                /* Moon icon when in parchment (click to switch to night cosmic) */
+                <svg className="w-4 h-4 transition-transform duration-300 hover:rotate-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+              ) : (
+                /* Sun icon when in cosmic (click to switch to day parchment) */
+                <svg className="w-4 h-4 transition-transform duration-500 hover:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="5" />
+                  <line x1="12" y1="1" x2="12" y2="3" />
+                  <line x1="12" y1="21" x2="12" y2="23" />
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                  <line x1="1" y1="12" x2="3" y2="12" />
+                  <line x1="21" y1="12" x2="23" y2="12" />
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                </svg>
+              )}
+            </button>
           </div>
 
-          {/* Mobile: Hamburger Toggle */}
-          <button
-            className="lg:hidden flex flex-col items-center justify-center w-10 h-10 gap-1.5 relative z-50"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle Menu"
-          >
-            <span
+          {/* Mobile Right Controls: Theme Toggle + Hamburger */}
+          <div className="flex lg:hidden items-center gap-2">
+            <button
+              type="button"
+              onClick={(e) => toggleTheme(e)}
+              aria-label={isParchment ? "Switch to Cosmic Night Mode" : "Switch to Parchment Day Mode"}
               className={cn(
-                "w-6 h-px bg-antique-gold transition-all duration-300 origin-center",
-                menuOpen && "rotate-45 translate-y-[7px]"
+                "relative w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer shrink-0 z-50",
+                isParchment
+                  ? "bg-[#FAF5E8] border border-[#B8873D]/40 text-[#8C5D33]"
+                  : "bg-[#080E1C] border border-[#D4A65A]/35 text-[#E8B94B]"
               )}
-            />
-            <span
-              className={cn(
-                "w-6 h-px bg-antique-gold transition-all duration-300",
-                menuOpen && "opacity-0"
+            >
+              {isParchment ? (
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+              ) : (
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="5" />
+                  <line x1="12" y1="1" x2="12" y2="3" />
+                  <line x1="12" y1="21" x2="12" y2="23" />
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                  <line x1="1" y1="12" x2="3" y2="12" />
+                  <line x1="21" y1="12" x2="23" y2="12" />
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                </svg>
               )}
-            />
-            <span
-              className={cn(
-                "w-6 h-px bg-antique-gold transition-all duration-300 origin-center",
-                menuOpen && "-rotate-45 -translate-y-[7px]"
-              )}
-            />
-          </button>
+            </button>
+
+            <button
+              className="flex flex-col items-center justify-center w-10 h-10 gap-1.5 relative z-50"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle Menu"
+            >
+              <span
+                className={cn(
+                  "w-6 h-px bg-antique-gold transition-all duration-300 origin-center",
+                  menuOpen && "rotate-45 translate-y-[7px]"
+                )}
+              />
+              <span
+                className={cn(
+                  "w-6 h-px bg-antique-gold transition-all duration-300",
+                  menuOpen && "opacity-0"
+                )}
+              />
+              <span
+                className={cn(
+                  "w-6 h-px bg-antique-gold transition-all duration-300 origin-center",
+                  menuOpen && "-rotate-45 -translate-y-[7px]"
+                )}
+              />
+            </button>
+          </div>
         </div>
       </header>
 

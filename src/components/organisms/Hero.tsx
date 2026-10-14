@@ -31,7 +31,7 @@ export function Hero({ variant = "dark", className }: HeroProps) {
   const earthRef = useRef<HTMLDivElement>(null);
   const digitsRef = useRef<HTMLDivElement>(null);
 
-  const [clockSize, setClockSize] = useState(300);
+  const [clockSize, setClockSize] = useState<number | null>(null);
 
   useEffect(() => {
     const updateSize = () => {
@@ -58,7 +58,7 @@ export function Hero({ variant = "dark", className }: HeroProps) {
   }, []);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!clockSize || !containerRef.current) return;
 
     // ── INITIAL STATES ───────────────────────────────────────────────────────
     gsap.set(leftColRef.current, { opacity: 0, y: 24 });
@@ -77,15 +77,14 @@ export function Hero({ variant = "dark", className }: HeroProps) {
 
     // 1. Text reveals immediately
     tl.to(leftColRef.current, { opacity: 1, y: 0, duration: 1.2 * LOAD_SPEED }, 0.1);
-    tl.to(clockContainerRef.current, { opacity: 1, duration: 0.8 * LOAD_SPEED }, 0.2);
+    tl.to(clockContainerRef.current, { opacity: 1, duration: 0.6 * LOAD_SPEED }, 0.2);
 
-    // 2. 3D Globe enters
-    tl.to(earthRef.current, { opacity: 1, duration: 1.5 * LOAD_SPEED }, 0.3);
+    // 2. Brass Frame and 3D Globe assemble together in harmonious unison
+    // The frame wraps the Earth right from the start so the Earth is never floating bare
+    tl.to(frameRef.current, { opacity: 1, scale: 1, rotation: 0, duration: 1.6 * LOAD_SPEED }, 0.3);
+    tl.to(earthRef.current, { opacity: 1, duration: 1.4 * LOAD_SPEED }, 0.3);
 
-    // 3. Brass Frame wraps around Earth
-    tl.to(frameRef.current, { opacity: 1, scale: 1, rotation: 0, duration: 1.8 * LOAD_SPEED }, 0.7);
-
-    // 4. 4 Medallions fly into their cutouts
+    // 3. 4 Medallions fly into their cutouts
     if (iconsRef.current?.children) {
       tl.to(
         iconsRef.current.children,
@@ -96,26 +95,26 @@ export function Hero({ variant = "dark", className }: HeroProps) {
           duration: 1.2 * LOAD_SPEED,
           stagger: 0.08 * LOAD_SPEED,
         },
-        1.2
+        0.9
       );
     }
 
-    // 5. 6 Sanskrit arched labels bloom
-    tl.to(archesRef.current, { opacity: 1, scale: 1, duration: 1.4 * LOAD_SPEED }, 1.6);
+    // 4. 6 Sanskrit arched labels bloom
+    tl.to(archesRef.current, { opacity: 1, scale: 1, duration: 1.4 * LOAD_SPEED }, 1.3);
 
-    // 6. Karana & Yoga progress arcs fade in
-    tl.to(progressRef.current, { opacity: 1, duration: 1.2 * LOAD_SPEED }, 2.0);
+    // 5. Karana & Yoga progress arcs fade in
+    tl.to(progressRef.current, { opacity: 1, duration: 1.2 * LOAD_SPEED }, 1.7);
 
-    // 7. Sunrise & Sunset wing plaques appear
-    tl.to(plaquesRef.current, { opacity: 1, scale: 1, duration: 1.2 * LOAD_SPEED }, 2.3);
+    // 6. Sunrise & Sunset wing plaques appear
+    tl.to(plaquesRef.current, { opacity: 1, scale: 1, duration: 1.2 * LOAD_SPEED }, 2.0);
 
-    // 8. 3D Gold marble digits ignite
-    tl.to(digitsRef.current, { opacity: 1, scale: 1, duration: 1.4 * LOAD_SPEED }, 2.6);
+    // 7. 3D Gold marble digits ignite
+    tl.to(digitsRef.current, { opacity: 1, scale: 1, duration: 1.4 * LOAD_SPEED }, 2.3);
 
     return () => {
       tl.kill();
     };
-  }, []);
+  }, [clockSize]);
 
   return (
     <section
@@ -207,18 +206,21 @@ export function Hero({ variant = "dark", className }: HeroProps) {
         {/* ── RIGHT COLUMN: 60% Width Showcase Clock (~60-62%) ─────────────── */}
         <div
           ref={clockContainerRef}
+          style={{ opacity: 0 }}
           className="w-full lg:w-[60%] xl:w-[62%] flex items-center justify-center relative min-h-[320px] sm:min-h-[400px] lg:min-h-[480px]"
         >
-          <VedicClockReplica
-            size={clockSize}
-            frameRef={frameRef}
-            iconsRef={iconsRef}
-            archesRef={archesRef}
-            progressRef={progressRef}
-            plaquesRef={plaquesRef}
-            earthRef={earthRef}
-            digitsRef={digitsRef}
-          />
+          {clockSize && (
+            <VedicClockReplica
+              size={clockSize}
+              frameRef={frameRef}
+              iconsRef={iconsRef}
+              archesRef={archesRef}
+              progressRef={progressRef}
+              plaquesRef={plaquesRef}
+              earthRef={earthRef}
+              digitsRef={digitsRef}
+            />
+          )}
         </div>
       </div>
     </section>
