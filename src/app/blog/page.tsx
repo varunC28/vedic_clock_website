@@ -1,32 +1,37 @@
-"use client";
+import type { Metadata } from "next";
+import { BlogView } from "@/components/views/BlogView";
 
-import React from "react";
-import { cn } from "@/lib/utils";
-import { Header } from "@/components/organisms/Header";
-import { Footer } from "@/components/organisms/Footer";
-import { BlogSection } from "@/components/ui/blog-section";
-import { useTheme } from "@/components/providers/ThemeProvider";
+export const metadata: Metadata = {
+  title: "Chronicles of Celestial Horology · Research & Publications",
+  description:
+    "Scholarly publications and essays on ancient Indian astronomy, the prime meridian of Ujjain, Surya Siddhanta mathematical models, and the living circadian philosophy of Vedic time.",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Chronicles of Celestial Horology | Research & Publications",
+    description:
+      "Discover the ancient mathematical sciences, royal histories, and living circadian philosophy behind the world's premier Vedic timepieces.",
+    url: "https://thevedicghadi.in/blog",
+    type: "website",
+    images: [
+      {
+        url: "/assets/blog/shastras-to-silicon.jpg",
+        width: 1200,
+        height: 675,
+        alt: "Chronicles of Celestial Horology Publications",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Chronicles of Celestial Horology | Research & Publications",
+    description:
+      "Essays and research on Ujjain's zero meridian, 30 Muhurtas, and ancient Indian astronomical science.",
+    images: ["/assets/blog/shastras-to-silicon.jpg"],
+  },
+};
 
 export default function BlogPage() {
-  const { isParchment } = useTheme();
-
-  return (
-    <div
-      className={cn(
-        "relative w-full max-w-full min-h-screen overflow-x-hidden transition-colors duration-500",
-        isParchment ? "bg-[#FAF6F0] text-[#2D1B0E]" : "bg-[#03060E] text-ivory"
-      )}
-    >
-      {/* ── Fixed Sticky Navigation Header ── */}
-      <Header alwaysVisible />
-
-      {/* ── Main Publication Container ── */}
-      <main className="relative z-10 pt-28 sm:pt-36 pb-20">
-        <BlogSection />
-      </main>
-
-      {/* ── Grounded 4-Column Luxury Footer ── */}
-      <Footer variant="dark" />
-    </div>
-  );
+  return <BlogView />;
 }
