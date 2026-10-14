@@ -125,17 +125,83 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
           </div>
         </div>
 
-        {/* Hero Image */}
-        {article.image && (
-          <div className="mb-10 rounded-2xl overflow-hidden shadow-xl border border-current/10">
-            <LazyImage
-              src={article.image}
-              alt={article.title}
-              ratio={16 / 9}
-              className="w-full"
-            />
-          </div>
-        )}
+        {/* ── Semantic Hero Visual & Figure Architecture ── */}
+        {(() => {
+          const heroSrc =
+            article.image ||
+            `/api/og?title=${encodeURIComponent(article.title)}&subtitle=${encodeURIComponent(article.titleHi || "")}&category=${encodeURIComponent(article.category)}`;
+          const heroAlt = article.imageAlt || `${article.title} · ${article.titleHi || "Vedic Horology"}`;
+          const heroCaptionEn = article.imageCaption || article.description;
+          const heroCaptionHi = article.imageCaptionHi || article.descriptionHi;
+          const heroCredit = article.imageCredit || "Vikramaditya Vedic Clock Archives · Ujjain";
+
+          return (
+            <figure
+              itemScope
+              itemType="https://schema.org/ImageObject"
+              className={cn(
+                "mb-10 rounded-2xl overflow-hidden border shadow-xl transition-all duration-300",
+                isParchment ? "bg-[#FAF4EA] border-[#DFCBB5]" : "bg-[#0A1224] border-[#D4A65A]/25"
+              )}
+            >
+              <div className="relative w-full overflow-hidden">
+                <LazyImage
+                  src={heroSrc}
+                  alt={heroAlt}
+                  ratio={16 / 9}
+                  className="w-full object-cover transition-transform duration-700 ease-out hover:scale-[1.015]"
+                />
+                <meta
+                  itemProp="url"
+                  content={heroSrc.startsWith("http") ? heroSrc : `https://thevedicghadi.in${heroSrc}`}
+                />
+                <meta itemProp="name" content={heroAlt} />
+              </div>
+
+              {/* Caption & Attribution Bar */}
+              <figcaption
+                className={cn(
+                  "p-3.5 sm:p-4 border-t flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs",
+                  isParchment
+                    ? "bg-[#F5EDE0] border-[#DFCBB5] text-[#5C4230]"
+                    : "bg-[#060B18] border-[#D4A65A]/20 text-ivory/70"
+                )}
+              >
+                <div className="flex-1 text-left">
+                  {heroCaptionHi && (
+                    <p
+                      className={cn(
+                        "font-hindi text-[12.5px] font-medium leading-relaxed mb-0.5",
+                        isParchment ? "text-[#3D2314]" : "text-[#FBF5E7]"
+                      )}
+                    >
+                      {heroCaptionHi}
+                    </p>
+                  )}
+                  <p
+                    className={cn(
+                      "font-sans text-[11.5px] leading-relaxed italic opacity-85",
+                      isParchment ? "text-[#70523C]" : "text-ivory/65"
+                    )}
+                  >
+                    {heroCaptionEn}
+                  </p>
+                </div>
+                <div
+                  className={cn(
+                    "shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wider uppercase border",
+                    isParchment
+                      ? "bg-[#8C5D33]/10 text-[#7E4A19] border-[#8C5D33]/20"
+                      : "bg-[#D4A65A]/10 text-[#D4A65A] border-[#D4A65A]/25"
+                  )}
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4A65A]" />
+                  <span>{heroCredit}</span>
+                </div>
+              </figcaption>
+            </figure>
+          );
+        })()}
 
         {/* Article Excerpt */}
         {article.descriptionHi && (

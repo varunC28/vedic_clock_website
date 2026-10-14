@@ -90,9 +90,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(article.createdAt),
     changeFrequency: "monthly",
     priority: 0.7,
-    images: article.image
-      ? [`${baseUrl}${article.image}`]
-      : [`${baseUrl}/assets/blog/shastras-to-silicon.jpg`],
+    images: [
+      article.image
+        ? `${baseUrl}${article.image}`
+        : `${baseUrl}/api/og?title=${encodeURIComponent(article.title)}&subtitle=${encodeURIComponent(article.titleHi || "")}&category=${encodeURIComponent(article.category)}`,
+    ],
   }));
 
   return [...staticRoutes, ...blogRoutes];

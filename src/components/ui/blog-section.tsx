@@ -114,19 +114,19 @@ export function BlogSection({
                 )}
               >
                 <div className="flex flex-col gap-3">
-                  {/* Aspect Ratio 16/9 Lazy Image (only if image exists) */}
-                  {blog.image && (
-                    <div className="overflow-hidden rounded-xl">
-                      <LazyImage
-                        src={blog.image}
-                        fallback="https://cdn.21st.dev/assets/mirror/cc/ccf6e78beb7f7cc5b720069cb4f86696912be109614973d49df165d1e51631c8.svg"
-                        inView={true}
-                        alt={blog.title}
-                        ratio={16 / 9}
-                        className="transition-transform duration-500 ease-out group-hover:scale-105"
-                      />
-                    </div>
-                  )}
+                  {/* Aspect Ratio 16/9 Image for every card (photography or dynamic OG fallback) */}
+                  <div className="overflow-hidden rounded-xl border border-current/10">
+                    <LazyImage
+                      src={
+                        blog.image ||
+                        `/api/og?title=${encodeURIComponent(blog.title)}&subtitle=${encodeURIComponent(blog.titleHi || "")}&category=${encodeURIComponent(blog.category)}`
+                      }
+                      inView={true}
+                      alt={blog.imageAlt || `${blog.title} · ${blog.titleHi || "Vedic Horology"}`}
+                      ratio={16 / 9}
+                      className="transition-transform duration-500 ease-out group-hover:scale-105"
+                    />
+                  </div>
 
                   <div className="space-y-2 px-1 pt-1 pb-2">
                     {/* Meta pill: Author & Read Time */}

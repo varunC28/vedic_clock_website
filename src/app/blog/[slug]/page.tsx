@@ -80,6 +80,10 @@ export default async function ArticlePage({ params }: PageProps) {
 
   const relatedArticles = VEDIC_BLOG_ARTICLES.filter((a) => a.slug !== slug).slice(0, 3);
 
+  const primaryImageUrl = article.image
+    ? `https://thevedicghadi.in${article.image}`
+    : `https://thevedicghadi.in/api/og?title=${encodeURIComponent(article.title)}&subtitle=${encodeURIComponent(article.titleHi || article.description)}&category=${encodeURIComponent(article.category)}&author=${encodeURIComponent(article.author)}`;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -111,7 +115,25 @@ export default async function ArticlePage({ params }: PageProps) {
         headline: article.title,
         alternativeHeadline: article.titleHi,
         description: article.description,
-        image: [article.image || "/assets/blog/shastras-to-silicon.jpg"],
+        image: {
+          "@type": "ImageObject",
+          "@id": `${primaryImageUrl}#primaryimage`,
+          url: primaryImageUrl,
+          contentUrl: primaryImageUrl,
+          width: 1200,
+          height: 675,
+          caption: article.imageCaption || article.title,
+          description: article.description,
+          creditText: article.imageCredit || "Vikramaditya Vedic Clock Archives · Ujjain",
+          creator: {
+            "@type": "Organization",
+            name: "Vikramaditya Vedic Clock",
+            url: "https://thevedicghadi.in",
+          },
+          copyrightNotice: "© 2026 Shiv Enterprises. All rights reserved.",
+          license: "https://thevedicghadi.in/heritage",
+          acquireLicensePage: "https://thevedicghadi.in/contact",
+        },
         datePublished: article.createdAt,
         dateModified: article.createdAt,
         inLanguage: ["en", "hi"],
