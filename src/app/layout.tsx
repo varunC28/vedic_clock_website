@@ -133,6 +133,16 @@ const rootJsonLd = {
         name: "India",
         sameAs: "https://en.wikipedia.org/wiki/India",
       },
+      telephone: "+91-94066-64444",
+      email: "contact@thevedicghadi.in",
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+91-94066-64444",
+        contactType: "Customer Support & Acquisitions",
+        email: "contact@thevedicghadi.in",
+        areaServed: "IN",
+        availableLanguage: ["en", "hi"],
+      },
       knowsAbout: [
         {
           "@type": "Thing",

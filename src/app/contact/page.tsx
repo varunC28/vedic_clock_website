@@ -63,7 +63,7 @@ const contactJsonLd = {
         name: "Shiv Enterprises",
         url: "https://thevedicghadi.in",
         email: "contact@thevedicghadi.in",
-        telephone: "+91-98270-12345",
+        telephone: "+91-94066-64444",
         address: {
           "@type": "PostalAddress",
           addressLocality: "Ujjain",

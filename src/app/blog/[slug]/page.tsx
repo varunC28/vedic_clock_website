@@ -108,7 +108,33 @@ export default async function ArticlePage({ params }: PageProps) {
           "@type": "Person",
           name: article.author,
           jobTitle: article.authorRole,
+          worksFor: {
+            "@type": "Organization",
+            name: "Vikramaditya Research & Horological Guild",
+            url: "https://thevedicghadi.in",
+            location: {
+              "@type": "Place",
+              name: "Ujjain, Madhya Pradesh, Bharat",
+            },
+          },
         },
+        citation: [
+          {
+            "@type": "Book",
+            name: "Surya Siddhanta (सूर्य सिद्धान्त)",
+            sameAs: "https://en.wikipedia.org/wiki/Surya_Siddhanta",
+          },
+          {
+            "@type": "Book",
+            name: "Pancha-Siddhantika of Varāhamihira (पंचसिद्धान्तिका)",
+            sameAs: "https://en.wikipedia.org/wiki/Var%C4%81hamihira",
+          },
+          {
+            "@type": "Book",
+            name: "Vedh Shala Astronomical Astronomical Archives (Ujjain)",
+            sameAs: "https://en.wikipedia.org/wiki/Vedh_Shala",
+          },
+        ],
         publisher: {
           "@type": "Organization",
           name: "Vikramaditya Vedic Clock",
