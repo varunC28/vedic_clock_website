@@ -150,12 +150,62 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
         )}
         <p
           className={cn(
-            "text-base sm:text-lg font-sans leading-relaxed mb-10 pb-6 border-b border-current/10 font-normal italic article-speakable-lead",
+            "text-base sm:text-lg font-sans leading-relaxed mb-8 pb-6 border-b border-current/10 font-normal italic article-speakable-lead",
             isParchment ? "text-[#5C4230]" : "text-ivory/80"
           )}
         >
           {article.description}
         </p>
+
+        {/* ── AEO Direct Answer / Key Insights Callout Box ── */}
+        {article.keyInsights && (
+          <aside
+            aria-label="Executive Key Insights"
+            className={cn(
+              "rounded-2xl p-6 sm:p-7 mb-10 border transition-all duration-300 article-speakable-takeaways",
+              isParchment
+                ? "bg-[#FAF4EA] border-[#8C5D33]/30 shadow-[0_4px_24px_rgba(61,35,20,0.04)]"
+                : "bg-[#0C101A] border-[#D4A65A]/30 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+            )}
+          >
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-[#D4A65A] text-base">✦</span>
+              <h2
+                className={cn(
+                  "font-serif text-xs sm:text-sm font-bold tracking-widest uppercase",
+                  isParchment ? "text-[#3D2314]" : "text-[#FFF5D1]"
+                )}
+              >
+                Executive Key Insights • मुख्य निष्कर्ष
+              </h2>
+            </div>
+
+            <ul className="space-y-3 font-sans text-xs sm:text-[13.5px] leading-relaxed mb-4">
+              {article.keyInsights.en.map((bullet, bIdx) => (
+                <li key={bIdx} className="flex items-start gap-2.5">
+                  <span className="text-[#D4A65A] text-xs mt-1 shrink-0">✦</span>
+                  <span className={cn(isParchment ? "text-[#2D1B0E]" : "text-ivory/90")}>
+                    {bullet}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <div
+              className={cn(
+                "pt-3.5 border-t font-hindi text-xs sm:text-[13px] leading-relaxed space-y-2",
+                isParchment ? "border-[#8C5D33]/15 text-[#5C4033]" : "border-white/5 text-ivory/70"
+              )}
+            >
+              {article.keyInsights.hi.map((bulletHi, bIdx) => (
+                <p key={bIdx} className="flex items-start gap-2">
+                  <span className="opacity-50 mt-0.5">•</span>
+                  <span>{bulletHi}</span>
+                </p>
+              ))}
+            </div>
+          </aside>
+        )}
 
         {/* Body Content Sections */}
         <article className="flex flex-col gap-8 mb-16">

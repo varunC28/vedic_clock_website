@@ -18,6 +18,7 @@
 - [The Heritage of Avantika](https://thevedicghadi.in/heritage): Historical documentation on Maharaja Vikramaditya, the Ujjain Prime Meridian, the historic Vedh Shala observatory, and the transition from classical astronomy to modern mechanical clockwork.
 - [Artisan Timepieces & Specifications Catalogue](https://thevedicghadi.in/catalogue): Detailed specifications, casing metallurgy (Kansa bell metal alloy), sanctum wall mounts, museum pedestal monuments, and bespoke heirloom commissions.
 - [Research Publications & Editorial Archive](https://thevedicghadi.in/blog): Scholarly monographs examining chronobiology, sidereal calculations, metallurgical acoustics, and Vedic mathematics.
+- [RSS 2.0 Scholarly XML Feed](https://thevedicghadi.in/feed.xml): Automated feed for AI aggregators and researchers.
 - [Acquisitions & Enquiries](https://thevedicghadi.in/contact): Direct procurement contact for temple sanctums, university observatories, cultural institutions, and private collectors.
 
 ## Mathematical Conversions of Vedic Time

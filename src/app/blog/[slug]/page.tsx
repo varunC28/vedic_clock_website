@@ -112,7 +112,11 @@ export default async function ArticlePage({ params }: PageProps) {
         inLanguage: ["en", "hi"],
         speakable: {
           "@type": "SpeakableSpecification",
-          cssSelector: [".article-speakable-title", ".article-speakable-lead"],
+          cssSelector: [
+            ".article-speakable-title",
+            ".article-speakable-lead",
+            ".article-speakable-takeaways",
+          ],
         },
         author: {
           "@type": "Person",

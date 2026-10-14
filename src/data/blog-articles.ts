@@ -12,6 +12,10 @@ export interface BlogArticle {
   category: "Sacred Horology" | "Astronomy & Math" | "Historical Heritage" | "Panchang Science" | "Philosophy of Time";
   categoryHi?: string;
   featured?: boolean;
+  keyInsights?: {
+    en: string[];
+    hi: string[];
+  };
   content: {
     heading?: string;
     headingHi?: string;
@@ -27,6 +31,18 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     title: "The 0° Prime Meridian of Ujjain: Why Ancient India Reckoned Earth's Center at Avanti",
     titleHi: "अवंतिका की शून्य रेखा: उज्जयिनी क्यों थी पृथ्वी की स्वाभाविक प्रधान मध्याह्न रेखा",
     slug: "ujjain-zero-meridian",
+    keyInsights: {
+    "en": [
+        "Classical Indian treatises (Surya Siddhanta, Pancha-Siddhantika) established Ujjain (ancient Avanti) as the natural 0° baseline meridian centuries before Greenwich was designated in 1884.",
+        "Ujjain sits at the intersection of the Tropic of Cancer (23.18° N) and the zero-longitude meridian, casting zero shadow from vertical gnomons at solar noon during summer solstice.",
+        "The prime meridian plumb line connects the equatorial baseline (Lanka) to the North Pole (Mount Meru) straight through Avanti, calibrating ancient global ephemerides."
+    ],
+    "hi": [
+        "सूर्य सिद्धान्त और पंचसिद्धान्तिका में १८८४ के ग्रीनविच सम्मेलन से शताब्दियों पूर्व अवंतिका (उज्जैन) को पृथ्वी की स्वाभाविक शून्य देशांतर रेखा माना गया।",
+        "उज्जैन कर्क रेखा (२३.१८° उत्तर) और प्रधान मध्याह्न रेखा के संपात पर स्थित है, जहाँ ग्रीष्म संक्रांति पर दोपहर को परछाई शून्य हो जाती है।",
+        "भूमध्य रेखा (लंका) से उत्तरी ध्रुव (सुमेरु पर्वत) को मिलाने वाली सीधी रेखा ठीक उज्जैन के ऊपर से होकर गुजरती है।"
+    ]
+},
     description: "Centuries before Greenwich was designated in 1884, classical astronomers calibrated all planetary ephemerides from the intersection of the Tropic of Cancer and Ujjain's meridian.",
     descriptionHi: "ग्रीनविच से शताब्दियों पूर्व, वराहमिहिर और भास्कराचार्य ने कर्क रेखा और शून्य देशांतर के संगम पर स्थित उज्जयिनी को समय-गणना का वैश्विक केंद्र माना था।",
     image: "/assets/blog/ujjain-zero-meridian.jpg",
@@ -64,6 +80,18 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     title: "From Ancient Shastras to Modern Silicon: Building the Vikramaditya Clock",
     titleHi: "प्राचीन सूत्रों से आधुनिक सिलिकॉन तक: विक्रमादित्य वेदिक घड़ी का निर्माण",
     slug: "shastras-to-silicon",
+    keyInsights: {
+    "en": [
+        "Western horology is fixed to invariant civil seconds, whereas Vedic time measures living daylight via Dinamana / 15, expanding during summer and contracting in winter.",
+        "Physical micro-stepper movements in the Vikramaditya Vedic Clock execute non-linear gear ratios calibrated to real-time satellite solar elevation tables.",
+        "The clock operates 100% autonomously offline using embedded astronomical algorithms derived from classical Sanskrit Surya Siddhanta ephemerides."
+    ],
+    "hi": [
+        "पाश्चात्य घड़ियों के स्थिर सेकंडों के विपरीत, वैदिक समय 'दिनमान/१५' के अनुसार ऋतुओं के साथ घटता-बढ़ता है।",
+        "विक्रमादित्य वैदिक घड़ी के भौतिक स्टेपर डायल उपग्रह सौर उन्नयन डेटा द्वारा गैर-रेखीय गियर अनुपात से संचालित होते हैं।",
+        "यह घड़ी बिना इंटरनेट या क्लाउड के १००% स्वायत्त रूप से सूर्य सिद्धान्त के अंतर्निहित सूत्रों पर कार्य करती है।"
+    ]
+},
     description: "How five thousand years of Sanskrit astronomical geometry was transformed into living digital horology and micro-stepper mechanical dials.",
     descriptionHi: "सूर्य सिद्धान्त के सूक्ष्म गणितीय सूत्रों को आधुनिक माइक्रो-प्रोसेसर और स्टेपर मोटर तकनीक से जीवंत करने की अभूतपूर्व यात्रा।",
     image: "/assets/blog/shastras-to-silicon.jpg",
@@ -93,6 +121,18 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     title: "Sunrise Over Midnight: The Chronobiological Genius of Suryodaya",
     titleHi: "सूर्योदय बनाम मध्यरात्रि: सृजन-आधारित वैदिक समय का वैज्ञानिक आधार",
     slug: "sunrise-over-midnight",
+    keyInsights: {
+    "en": [
+        "Civil midnight (12:00 AM) is an artificial administrative convention set in darkness, whereas Vedic time reckons the new day at local Suryodaya (sunrise).",
+        "Atmospheric ionization and human cortisol secretion initiate precisely as the solar disc breaches the local horizon, synchronizing human circadian biology.",
+        "Starting time at solar dawn anchors conscious metabolic rhythms to the sun rather than arbitrary mechanical ticks."
+    ],
+    "hi": [
+        "१२:०० पूर्वाह्न की मध्यरात्रि एक कृत्रिम विभाजन है, जबकि वैदिक दिन का आरंभ स्थानीय सूर्योदय (प्रथम सूर्य किरण) से होता है।",
+        "सूर्य के क्षितिज स्पर्श करते ही वायुमंडलीय आयनीकरण और मानव कॉर्टिसोल स्राव आरंभ होकर जैविक घड़ी को सक्रिय करता है।",
+        "सूर्योदय पर दिन का प्रारंभ मानव चयापचय और चेतना को प्राकृतिक सौर चक्र के साथ सीधा जोड़ता है।"
+    ]
+},
     description: "Civil midnight is an artificial abstraction set in total darkness. Vedic time begins at Suryodaya — synchronizing human biology with the solar arc.",
     descriptionHi: "12:00 AM का कृत्रिम विभाजन रात्रि के गहनतम अंधकार में होता है, जबकि वैदिक दिन प्रथम सूर्य किरण के साथ जागता है।",
     createdAt: "2026-02-14",
@@ -116,6 +156,18 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     title: "The 30 Muhurtas: Decoding the Living Expansion of Day and Night",
     titleHi: "३० मुहूर्त: अहोरात्र चक्र और गतिशील समय विभाजन",
     slug: "thirty-muhurtas-diurnal-geometry",
+    keyInsights: {
+    "en": [
+        "A complete 24-hour day-and-night cycle (Ahoratra) consists of 30 dynamic Muhurtas (60 Ghatis) equal to 48 minutes each at the equinoxes.",
+        "The 15 daytime Muhurtas begin at dawn with Rudra and culminate at sunset with Rakshasa, adjusting daily to seasonal day lengths.",
+        "The 15 nocturnal Muhurtas traverse midnight (Nisheetha) and culminate in the pre-dawn Brahma Muhurta (optimal for cognitive insight)."
+    ],
+    "hi": [
+        "२४ घंटे के संपूर्ण अहोरात्र में ३० मुहूर्त (६० घटी) होते हैं, जो विषुव के दिन ठीक ४८-४८ मिनट के होते हैं।",
+        "दिन के १५ मुहूर्त सूर्योदय पर 'रुद्र' से आरंभ होकर सूर्यास्त पर 'राक्षस' पर पूर्ण होते हैं, जो ऋतु अनुसार बदलते हैं।",
+        "रात्रि के १५ मुहूर्त निशीथ (मध्यरात्रि) से होते हुए सूर्योदय पूर्व के ब्रह्म मुहूर्त में समाप्त होते हैं।"
+    ]
+},
     description: "A complete day-and-night cycle comprises 30 Muhurtas. Discover how ancient astronomers mapped subtle psychological undertones to each 48-minute span.",
     descriptionHi: "एक अहोरात्र में 30 मुहूर्त और 60 घटी होती हैं। जानिए कैसे प्रत्येक मुहूर्त की विशिष्ट ऊर्जा मानव चेतना को प्रभावित करती है।",
     createdAt: "2026-01-20",
@@ -137,6 +189,18 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     title: "Varahamihira's Clepsydras: Standardizing the 24-Minute Ghati",
     titleHi: "वराहमिहिर का घटी-यंत्र: प्राचीन जल घड़ी और शंकु विज्ञान",
     slug: "varahamihira-clepsydras-gnomons",
+    keyInsights: {
+    "en": [
+        "In 6th-century Ujjain, Varahamihira standardized the Ghati-Yantra (clepsydra water-bowl) in the Pancha-Siddhantika to weigh 10 Palas copper.",
+        "Floating in clean water with a golden needle aperture, the bowl filled and sank in exactly 60 Palas of time (24 modern civil minutes).",
+        "This acoustic and hydraulic benchmark established sub-second temporal precision across Indian astronomical observatories."
+    ],
+    "hi": [
+        "छठी शताब्दी में वराहमिहिर ने पंचसिद्धान्तिका में १० पल तांबे के वजन वाले मानकीकृत घटी-यंत्र (जल घड़ी) का निर्माण किया।",
+        "स्वच्छ जल में तैरता यह ताम्र पात्र स्वर्ण सुई के छिद्र से पानी भरकर ठीक ६० पल (२४ मिनट) में डूब जाता था।",
+        "इस जल-यांत्रिकी ने भारत की वेधशालाओं में सेकंड के सूक्ष्म अंशों तक सटीक कालगणना का मानक स्थापित किया।"
+    ]
+},
     description: "In 6th-century Ujjain, Varahamihira calibrated copper water bowls with microscopic apertures, creating timepieces accurate to fractions of a second.",
     descriptionHi: "ताम्र पात्र में सूक्ष्म छिद्र द्वारा जल के प्रवाह से २४ मिनट की घटी नापने वाले प्राचीन भारतीय जल-यंत्र का वैज्ञानिक विश्लेषण।",
     createdAt: "2025-12-18",
@@ -158,6 +222,18 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     title: "Decoding the Five Limbs of Panchang: A Practical Modern Guide",
     titleHi: "पंचांग के पाँच अंग: आधुनिक जीवन में इनका व्यावहारिक महत्व",
     slug: "decoding-five-limbs-panchang",
+    keyInsights: {
+    "en": [
+        "Panchang coordinates five astronomical dimensions: Tithi (12° lunar-solar elongation), Vaar (solar weekday lord), Nakshatra (13° 20' sidereal lunar mansion), Yoga (angular sum), and Karana (half-Tithi).",
+        "Western calendars only track solar rotations, missing the intricate lunar gravito-orbital interactions measured by the Panchang.",
+        "Coordinating activities with favorable Nakshatras and Muhurtas aligns human decision-making with cosmic rhythms."
+    ],
+    "hi": [
+        "पंचांग पाँच खगोलीय आयामों का समन्वय है: तिथि (१२° चंद्र-सौर अंतर), वार (दिन का स्वामी), नक्षत्र (१३° २०' भचक्र), योग (देशांतर योग), और करण (आधा तिथि)।",
+        "केवल सौर वर्ष नापने वाले पश्चिमी कैलेंडर के विपरीत, पंचांग चंद्रमा और सूर्य की सूक्ष्म गुरुत्वाकर्षण गतियों को दर्ज करता है।",
+        "पंचांग के पाँचों अंगों का ज्ञान मानव कर्मों को ब्रह्मांडीय अनुकूलता और समय की ऊर्जा के साथ जोड़ता है।"
+    ]
+},
     description: "Tithi, Vaar, Nakshatra, Yoga, and Karana — understanding how the interaction of the Sun and Moon shapes daily focus and decision-making.",
     descriptionHi: "तिथि, वार, नक्षत्र, योग और करण — सूर्य और चंद्रमा के कोणों से निर्धारित होने वाले पाँच खगोलीय तत्वों की सरल व्याख्या।",
     createdAt: "2025-11-25",
@@ -179,6 +255,18 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     title: "The 360-Spoke Cosmic Wheel in Rigvedic Astronomy",
     titleHi: "ऋग्वेद में ३६० अरों वाला काल-चक्र: ब्रह्मांडीय खगोलशास्त्र",
     slug: "cosmic-wheel-rigveda",
+    keyInsights: {
+    "en": [
+        "Rigveda (1.164.48) first articulated the 360-degree circular zodiac wheel with 12 spokes (months) and 720 sons (360 civil days and 360 nights).",
+        "Rishi Dirghatamas described time as an undying chariot wheel traversing space without structural decay or friction.",
+        "This ancient Rigvedic geometry formed the foundational basis of modern 360° trigonometric angle systems and sidereal divisions."
+    ],
+    "hi": [
+        "ऋग्वेद (१.१६४.४८) में ऋषि दीर्घतमा ने १२ अरों (माह) और ७२० युग्म पुत्रों (३६० दिन और ३६० रातें) वाले ३६०° काल-चक्र का वर्णन किया।",
+        "समय को एक ऐसे अजर-अमर ब्रह्मांडीय रथ के पहिए के रूप में चित्रित किया गया जो बिना घिसे आकाश में गतिमान रहता है।",
+        "यह ऋग्वैदिक खगोलशास्त्र आज भी संपूर्ण विश्व की ३६० अंश वाली ज्यामिति और त्रिकोणमिति का ऐतिहासिक स्रोत है।"
+    ]
+},
     description: "The 12-month solar cycle and 360-degree ecliptic circle first articulated in Rigvedic hymns millennia before modern geometry.",
     descriptionHi: "द्वादश प्रधयश्चक्रमेकं त्रीणि नभ्यानि क उ तच्चिकेत — ऋग्वेद के प्रथम मण्डल में वर्णित सौर मंडल की ज्यामिति।",
     createdAt: "2025-10-30",
@@ -200,6 +288,18 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     title: "The Vikram Samvat Royal Calendar (57 BCE): India's Living Heritage",
     titleHi: "विक्रम संवत् (५७ ईसा पूर्व): भारतीय राष्ट्रीय काल-गणना का गौरव",
     slug: "vikram-samvat-calendar",
+    keyInsights: {
+    "en": [
+        "Established in 57 BCE by Emperor Vikramaditya of Ujjain, Vikram Samvat predates the Gregorian calendar by nearly six decades.",
+        "It utilizes an accurate lunisolar intercalary month system (Adhik Maas every ~32.5 months), preserving seasonal equilibrium forever without drift.",
+        "Commencing after defeating Saka invaders, it celebrated liberation by wiping out all citizen debts across the Malwa kingdom."
+    ],
+    "hi": [
+        "ईसा पूर्व ५७ में महाराजा विक्रमादित्य द्वारा आरंभ विक्रम संवत् ग्रेगोरियन कैलेंडर से लगभग ५७ वर्ष प्राचीन है।",
+        "यह अधिक मास (मलमास) के खगोलीय नियम से सौर और चंद्र गतियों का ऐसा समन्वय करता है जो ऋतुओं से कभी विचलित नहीं होता।",
+        "शक आक्रांताओं पर विजय के उपलक्ष्य में प्रजा का संपूर्ण ऋण माफ कर इस कल्याणकारी संवत्सर का शुभारंभ किया गया था।"
+    ]
+},
     description: "Pre-dating the Gregorian calendar by nearly six decades, Vikram Samvat remains the premier lunisolar standard for national festivals and administration.",
     descriptionHi: "सम्राट विक्रमादित्य द्वारा शक विजय के उपलक्ष्य में आरंभ किया गया संवत्सर, जो आज भी भारत की सांस्कृतिक आत्मा को जोड़ता है।",
     createdAt: "2025-09-14",
@@ -221,6 +321,18 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     title: "Ayanamsha and Precession: Why Sidereal Rashi Differs from Tropical",
     titleHi: "अयनांश एवं विषुव अयन: सायन और निरयण राशि चक्र का सूक्ष्म अंतर",
     slug: "ayanamsha-precession-equinoxes",
+    keyInsights: {
+    "en": [
+        "Earth's rotational axis executes a slow 25,772-year conical wobble (precession of equinoxes), causing tropical signs to drift by 1° every ~72 years.",
+        "Vedic sidereal (Nirayana) coordinates correct for this drift using Ayanamsha (~24° offset today), keeping calculations locked to physical stars.",
+        "On April 15th, modern astronomy confirms the sun physically enters constellation Aries (Mesha), exactly matching Vedic Nirayana ephemerides."
+    ],
+    "hi": [
+        "पृथ्वी की धुरी लगभग २५,७७२ वर्षों में एक चक्कर पूरा करती है, जिससे सायन विषुव बिंदु प्रति ७२ वर्ष में १° पीछे खिसक जाता है।",
+        "वैदिक निरयण प्रणाली इस विचलन को अयनांश (वर्तमान में लगभग २४°) द्वारा शुद्ध कर वास्तविक दृश्यमान तारों से जोड़े रखती है।",
+        "१५ अप्रैल को आधुनिक दूरबीनें पुष्टि करती हैं कि सूर्य वास्तव में मेष तारामंडल में है, जो वैदिक निरयण गणना से शत-प्रतिशत मेल खाता है।"
+    ]
+},
     description: "Earth's 25,772-year axial wobble causes tropical Western signs to drift 24° away from actual physical constellations. Here is how Vedic math corrects it.",
     descriptionHi: "पृथ्वी की धुरी के धीमे घूर्णन से होने वाले अयनांश का वैदिक खगोलशास्त्र में अचूक समाधान।",
     createdAt: "2025-08-22",
@@ -242,6 +354,18 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     title: "Sanctum Horology: Synchronizing Temple Aartis with Solar Zenith",
     titleHi: "गर्भगृह होरोलॉजी: सूर्य की किरणों से आरती और अनुष्ठान का समन्वय",
     slug: "sanctum-horology-temple-aartis",
+    keyInsights: {
+    "en": [
+        "Ancient Indian temples (Modhera, Konark, Ujjain Mahakal) functioned as giant stone observatories designed to capture equinoctial sunlight on inner idols.",
+        "Temple aartis were scheduled not to rigid mechanical minutes, but to exact solar shadow angles cast by gnomons onto threshold alignments.",
+        "Synchronizing sanctum rituals with dynamic solar zeniths and Brahma Muhurta maximized the energetic resonance of sacred spaces."
+    ],
+    "hi": [
+        "मोढेरा, कोणार्क और उज्जैन महाकालेश्वर जैसे प्राचीन मंदिर विशाल खगोलीय वेधशालाओं के रूप में रचे गए थे जहाँ सूर्य किरणें गर्भगृह तक पहुँचती थीं।",
+        "देवालयों की आरतियाँ स्थिर घड़ियों से नहीं, अपितु गर्भगृह के द्वारों पर पड़ने वाली सूर्य की सटीक छाया और कोणों से निर्धारित होती थीं।",
+        "सौर संक्रांति और ब्रह्म मुहूर्त के साथ पूजा-अर्चना का यह समन्वय परिसरों में आध्यात्मिक ऊर्जा को चरमोत्कर्ष प्रदान करता था।"
+    ]
+},
     description: "Ancient Indian temples were giant astronomical observatories designed to capture solar equinox beams on inner sanctum idols at precise Muhurtas.",
     descriptionHi: "मोढेरा, कोणार्क और उज्जैन के महाकाल मंदिर में खगोलीय गणनाओं के आधार पर रचित वास्तुकला और समय-प्रबंधन।",
     createdAt: "2025-07-19",
@@ -263,6 +387,18 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     title: "The Architecture of Brass: Crafting Heirloom Horological Artifacts",
     titleHi: "पीतल की वास्तुकला: धरोहर वेदिक घड़ियों का कारीगरी शिल्प",
     slug: "bespoke-architectural-horology",
+    keyInsights: {
+    "en": [
+        "Authentic Vedic clocks are cast in sacred virgin bell brass (Kansa: 78% copper, 22% tin) prescribed in Rasashastra for acoustic and harmonic resonance.",
+        "Traditional craftsmanship incorporates organic oxidization patinas, deep obsidian dials, and classical Devanagari numerals.",
+        "Engineered as heirloom architectural monuments for institutional sanctuaries, royal residences, and family estates across generations."
+    ],
+    "hi": [
+        "प्रामाणिक वैदिक घड़ियों का निर्माण शुद्ध कांसा (७८% तांबा और २२% रांगा) से किया जाता है, जो रसशास्त्र में दिव्य ध्वनि तरंगों हेतु वर्णित है।",
+        "इसमें पारंपरिक हस्तशिल्प, नक्काशीदार पीतल, प्राचीन देवनागरी अंक और प्राकृतिक ऑक्सीकरण पॉलिश का उपयोग होता है।",
+        "यह पीढ़ियों तक चलने वाले एक जीवंत वास्तु स्मारक के रूप में देवालयों, प्रतिष्ठित संस्थानों और निजी संग्रहों हेतु गढ़ा जाता है।"
+    ]
+},
     description: "The tactile art of hand-finished brass, deep obsidian dials, and celestial wheel iconography forged for royal residences and institutions.",
     descriptionHi: "हस्तशिल्प और नक्काशीदार पीतल के आवरण में सजी विक्रमादित्य वेदिक घड़ी की कारीगरी और डिजाइन सौंदर्य।",
     createdAt: "2025-06-11",
@@ -284,6 +420,18 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     title: "The Living Day: Reclaiming Contemplative Stillness in Modern Life",
     titleHi: "जीवंत दिवस: संध्या और ब्रह्म मुहूर्त में मानसिक शांति की पुनः खोज",
     slug: "living-day-dawn-to-pre-dawn",
+    keyInsights: {
+    "en": [
+        "Brahma Muhurta (96 to 48 minutes before sunrise) exhibits minimum atmospheric electromagnetic noise and peak ambient ozone (O3) concentration.",
+        "Awakening during this pre-dawn window optimizes human cortisol curves, circadian melatonin clearing, and cognitive mental plasticity.",
+        "Synchronizing morning contemplation and habit loops with solar dawn restores grounded biological stillness amidst modern burnout."
+    ],
+    "hi": [
+        "सूर्योदय से ९६ से ४८ मिनट पूर्व (ब्रह्म मुहूर्त) में न्यूनतम विद्युत-चुंबकीय विक्षोभ और वातावरण में शुद्ध प्राणवायु की प्रचुरता होती है।",
+        "इस समय जागने से कॉर्टिसोल का संतुलन, मेलाटोनिन का स्वाभाविक समापन और मस्तिष्क की ग्रहणशीलता अपने उच्चतम स्तर पर होती है।",
+        "प्राकृतिक सूर्योदय के साथ दिनचर्या का समन्वय आधुनिक तनाव और भागदौड़ के युग में गहरी मानसिक शांति व संतुलन प्रदान करता है।"
+    ]
+},
     description: "How synchronizing daily habits with Sandhya twilights and Brahma Muhurta restores clarity, mental plasticity, and biological balance.",
     descriptionHi: "भागदौड़ भरे आधुनिक युग में वैदिक काल विभाजन द्वारा मानसिक शांति और कार्यकुशलता प्राप्त करने का मार्ग।",
     createdAt: "2025-05-04",

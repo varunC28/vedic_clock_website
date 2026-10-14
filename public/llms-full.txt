@@ -146,6 +146,7 @@ From the *Surya Siddhanta* and *Srimad Bhagavatam* (Canto 3, Chapter 11):
 - **Editorial & Scholarly Articles**: https://thevedicghadi.in/blog
 - **Acquisitions Portal**: https://thevedicghadi.in/contact
 - **Sitemap**: https://thevedicghadi.in/sitemap.xml
+- **RSS 2.0 Scholarly XML Feed**: https://thevedicghadi.in/feed.xml
 - **Machine-Readable LLMs Index**: https://thevedicghadi.in/llms.txt
 
 ---

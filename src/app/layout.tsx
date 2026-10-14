@@ -250,7 +250,7 @@ const rootJsonLd = {
         "@type": "SearchAction",
         target: {
           "@type": "EntryPoint",
-          urlTemplate: "https://thevedicghadi.in/faq?q={search_term_string}",
+          urlTemplate: "https://thevedicghadi.in/glossary?q={search_term_string}",
         },
         "query-input": "required name=search_term_string",
       },
@@ -266,6 +266,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${fraunces.variable} ${notoDevanagari.variable}`}>
       <head>
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Vikramaditya Vedic Clock Research Feed"
+          href="/feed.xml"
+        />
+        <link
+          rel="search"
+          type="application/opensearchdescription+xml"
+          title="Vedic Clock Horology Search"
+          href="/opensearch.xml"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(rootJsonLd) }}
