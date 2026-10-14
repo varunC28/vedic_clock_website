@@ -1129,9 +1129,9 @@ export default function GuidePage() {
               </span>
             </div>
 
-            {/* Table Rows (Zebra striped: alternating #FAF5EC/#F2E6D4 in parchment or #060C1A/#0A1224 in cosmic) */}
-            <div className={cn("w-full divide-y", t.divideSubtle)}>
-              {filteredMuhurtas.map((item, idx) => (
+            {/* Table Rows (Dock Card layout matching all tables) */}
+            <div className="w-full flex flex-col gap-1.5 sm:gap-2 py-2">
+              {filteredMuhurtas.map((item) => (
                 <PanchangTableRow
                   key={item.num}
                   index={item.num}
@@ -1146,11 +1146,6 @@ export default function GuidePage() {
                   variant={isParchment ? "document" : "document-dark"}
                   isHighlighted={selectedMuhurta === item.num}
                   onClick={() => setSelectedMuhurta(item.num)}
-                  className={
-                    isParchment
-                      ? (idx % 2 === 1 ? "bg-[#F2E6D4]" : "bg-[#FAF5EC]")
-                      : (idx % 2 === 1 ? "bg-[#0A1224]" : "bg-[#060C1A]")
-                  }
                 />
               ))}
             </div>
@@ -1241,9 +1236,9 @@ export default function GuidePage() {
           </div>
 
           {/* ── 12 Signs Document Table (Exact match of media_1791472831537 using M5 PanchangTableRow) ── */}
-          <div className={cn("w-full rounded-2xl sm:rounded-3xl shadow-sm overflow-hidden border", t.boxTable)}>
+          <div className={cn("w-full rounded-2xl sm:rounded-3xl shadow-sm p-2 sm:p-4 border", t.boxTable)}>
             {/* Header Row (Deep walnut in parchment / cosmic dark in dark mode) */}
-            <div className={cn("w-full py-3.5 px-3.5 sm:px-6 flex items-center justify-between font-sans text-xs sm:text-sm font-bold select-none", t.th)}>
+            <div className={cn("w-full py-3 px-3.5 sm:px-6 flex items-center justify-between font-sans text-xs sm:text-sm font-bold select-none rounded-xl mb-1.5", t.th)}>
               <div className="w-1/2 sm:w-2/5 shrink-0 text-left">
                 राशि · Sign
               </div>
@@ -1252,9 +1247,9 @@ export default function GuidePage() {
               </div>
             </div>
 
-            {/* 12 Rows using M5 PanchangTableRow (Zebra striped) */}
-            <div className={cn("w-full divide-y", t.divideSubtle)}>
-              {RASHI_GUIDE_ITEMS.map((item, idx) => (
+            {/* 12 Rows using M5 PanchangTableRow (Dock Card layout matching all tables) */}
+            <div className="w-full flex flex-col gap-1.5 sm:gap-2 py-1">
+              {RASHI_GUIDE_ITEMS.map((item) => (
                 <PanchangTableRow
                   key={item.en}
                   index={item.num}
@@ -1263,11 +1258,6 @@ export default function GuidePage() {
                   detailHi={item.signifiesHi}
                   detail={item.signifiesEn}
                   variant={isParchment ? "document" : "document-dark"}
-                  className={
-                    isParchment
-                      ? (idx % 2 === 1 ? "bg-[#F2E6D4]" : "bg-[#FAF5EC]")
-                      : (idx % 2 === 1 ? "bg-[#0A1224]" : "bg-[#060C1A]")
-                  }
                 />
               ))}
             </div>
