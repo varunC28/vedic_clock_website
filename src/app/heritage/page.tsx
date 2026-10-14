@@ -731,7 +731,7 @@ export default function HeritagePage() {
               className={cn(
                 "px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide transition-all",
                 isParchment
-                  ? "bg-[#482D1C] hover:bg-[#382315] text-[#FAF6F0]"
+                  ? "bg-black hover:bg-neutral-900 text-white shadow-sm"
                   : "bg-gradient-to-r from-[#B8873D] to-[#D4A65A] hover:from-[#C9974D] hover:to-[#E5B76A] text-[#03060E] shadow-sm font-bold"
               )}
             >
