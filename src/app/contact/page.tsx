@@ -42,17 +42,36 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.email.trim()) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setErrorMessage(null);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to send message. Please try again.");
+      }
+
       setSubmitted(true);
       setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
-    }, 600);
+    } catch (err: unknown) {
+      setErrorMessage(
+        err instanceof Error ? err.message : "An unexpected error occurred. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -409,6 +428,13 @@ export default function ContactPage() {
                       )}
                     />
                   </div>
+
+                  {/* Error Alert */}
+                  {errorMessage && (
+                    <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs sm:text-sm">
+                      {errorMessage}
+                    </div>
+                  )}
 
                   {/* Submit Button */}
                   <div className="pt-3 flex justify-start">

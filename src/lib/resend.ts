@@ -1,0 +1,8 @@
+import { Resend } from "resend";
+
+if (!process.env.RESEND_API_KEY) {
+  console.warn("⚠️ Warning: RESEND_API_KEY environment variable is not defined.");
+}
+
+export const resend = new Resend(process.env.RESEND_API_KEY || "re_xxxxxxxxx");
+export const RECIPIENT_EMAIL = process.env.CONTACT_NOTIFICATION_EMAIL || "chaturvedivarun28@gmail.com";
