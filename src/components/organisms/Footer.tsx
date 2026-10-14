@@ -8,15 +8,14 @@ import { cn } from "@/lib/utils";
 const NAVIGATE_LINKS = [
   { href: "/", label: "Home" },
   { href: "/clock", label: "The Clock" },
-  { href: "/faq", label: "FAQ & Knowledge Base" },
-  { href: "/catalogue.pdf", label: "Product Catalogue (PDF)", download: "Vedic_Watch_Catalogue.pdf" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/catalogue.pdf", label: "Catalogue (PDF)", download: "Vedic_Watch_Catalogue.pdf" },
 ];
 
 const EXPLORE_LINKS = [
   { href: "/guide", label: "Panchang Guide" },
-  { href: "/heritage", label: "Ujjain Prime Meridian" },
+  { href: "/heritage", label: "Ujjain 0° Meridian" },
   { href: "/blog", label: "Articles & Editorial" },
-  { href: "/contact", label: "Enquire" },
 ];
 
 interface FooterProps {
@@ -52,9 +51,9 @@ export function Footer({ variant = "dark", className }: FooterProps) {
     >
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-16 sm:py-20">
         {/* ── Main 4-Column Grid ── */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 pb-14 border-b border-white/5">
-          {/* Col 1: Brand & Origin (Spans 5 cols) */}
-          <div className="md:col-span-5 flex flex-col items-start text-left">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10 pb-14 border-b border-white/5">
+          {/* Col 1: Brand & Origin (Spans 4 cols) */}
+          <div className="md:col-span-4 flex flex-col items-start text-left">
             <Link
               href="/"
               onClick={handleLogoClick}
@@ -87,20 +86,29 @@ export function Footer({ variant = "dark", className }: FooterProps) {
             <ul className="space-y-3">
               {NAVIGATE_LINKS.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    download={link.download}
-                    className="font-sans text-xs text-ivory/65 hover:text-[#FFF5D1] transition-colors"
-                  >
-                    {link.label}
-                  </a>
+                  {link.download ? (
+                    <a
+                      href={link.href}
+                      download={link.download}
+                      className="font-sans text-xs text-ivory/65 hover:text-[#FFF5D1] transition-colors whitespace-nowrap"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="font-sans text-xs text-ivory/65 hover:text-[#FFF5D1] transition-colors whitespace-nowrap"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Col 3: Heritage & Guides (Spans 2 cols) */}
-          <div className="md:col-span-2 flex flex-col items-start">
+          {/* Col 3: Heritage & Guides (Spans 3 cols) */}
+          <div className="md:col-span-3 flex flex-col items-start">
             <h4 className="font-sans text-[11px] font-semibold text-[#D4A65A] uppercase tracking-[0.25em] mb-5">
               Heritage
             </h4>
@@ -109,7 +117,7 @@ export function Footer({ variant = "dark", className }: FooterProps) {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="font-sans text-xs text-ivory/65 hover:text-[#FFF5D1] transition-colors"
+                    className="font-sans text-xs text-ivory/65 hover:text-[#FFF5D1] transition-colors whitespace-nowrap"
                   >
                     {link.label}
                   </Link>

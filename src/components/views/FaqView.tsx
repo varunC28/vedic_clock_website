@@ -219,7 +219,7 @@ export function FaqView() {
                   : "border-[#D4A65A]/40 text-[#D4A65A] hover:bg-[#D4A65A]/10"
               )}
             >
-              Download Monograph (PDF) ↓
+              Download Catalogue (PDF) ↓
             </a>
           </div>
         </div>
