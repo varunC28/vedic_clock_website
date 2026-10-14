@@ -114,6 +114,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google: "XvWDa7owOFDVTB2O2LY6k77fam9mKN7SnvO4JK9R-TQ",
+  },
 };
 
 const rootJsonLd = {
