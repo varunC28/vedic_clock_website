@@ -30,9 +30,9 @@ export function TithiDimensionCard({
   }, []);
 
   const pills = [
-    "30 Lunar Days",
-    "12° Angular Step",
-    "Tidal & Biological Rhythm",
+    "30 Moon Phases",
+    "Live Sky Sync",
+    "Natural Energy Rhythm",
   ];
 
   return (
@@ -187,7 +187,7 @@ export function TithiDimensionCard({
               isParchment ? "text-[#8A5A1A]" : "text-[#E8B94B]/90"
             )}
           >
-            The Living Phases of the Moon
+            The Living Moon Calendar
           </p>
         </div>
 
@@ -197,7 +197,7 @@ export function TithiDimensionCard({
             isParchment ? "text-[#3D2A1A]/85" : "text-ivory/75"
           )}
         >
-          Unlike static civil calendar dates, a Tithi measures the real-time 12° angular journey between the Sun and Moon. Dividing each lunar month into 30 phases across Shukla (waxing light) and Krishna (waning shadow) pakshas, it directly governs planetary ocean tides, cellular fluid balance, and traditional fasting rhythms.
+          Normal clocks only show random numbers like &quot;October 14&quot;. A Tithi tracks the real shape of the Moon in the night sky as it grows full or fades to dark across 30 phases. It connects your day to the actual rhythm of nature, oceans, and natural energy.
         </p>
 
         {/* Minimal Spec Badges */}

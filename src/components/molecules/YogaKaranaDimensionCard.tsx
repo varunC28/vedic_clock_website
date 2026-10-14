@@ -22,9 +22,9 @@ export function YogaKaranaDimensionCard({
 }: YogaKaranaDimensionCardProps) {
   const isParchment = variant === "parchment";
   const pills = [
-    "27 Nitya Yogas",
-    "11 Pragmatic Karanas",
-    "Bio-Polarity Balance",
+    "Daily Vibe Check",
+    "Best Time to Act",
+    "Sun & Moon Harmony",
   ];
 
   return (
@@ -182,7 +182,7 @@ export function YogaKaranaDimensionCard({
               isParchment ? "text-[#8A5A1A]" : "text-[#E8B94B]/90"
             )}
           >
-            Solar-Lunar Synergy &amp; Pragmatic Windows
+            Daily Vibe &amp; Action Timing
           </p>
         </div>
 
@@ -192,7 +192,7 @@ export function YogaKaranaDimensionCard({
             isParchment ? "text-[#3D2A1A]/85" : "text-ivory/75"
           )}
         >
-          Synthesizes the solar vitality of the soul (Pingala) with the lunar receptivity of the mind (Ida). 27 Nitya Yogas measure subtle angular harmony, while 11 Karana half-tithi windows guide the pragmatic timing and efficacy of worldly endeavors.
+          When the Sun and Moon&apos;s energies mix, they create the day&apos;s &quot;Yoga&quot; — the overall mood and vibe of the day. &quot;Karana&quot; divides each half-day into practical action windows, letting you know if right now is ideal for starting new work, taking risks, or chilling out.
         </p>
 
         {/* Minimal Spec Badges */}

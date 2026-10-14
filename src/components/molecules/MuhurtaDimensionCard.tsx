@@ -26,9 +26,9 @@ export function MuhurtaDimensionCard({
   const handY = Math.round((100 + 58 * Math.sin(pointerRad)) * 1000) / 1000;
 
   const pills = [
-    "30 Diurnal Windows",
-    "48 Minutes / Cycle",
-    "Sunrise Calibrated",
+    "30 Daily Windows",
+    "Calibrated to Local Sunrise",
+    "Golden Focus Hours",
   ];
 
   return (
@@ -182,7 +182,7 @@ export function MuhurtaDimensionCard({
               isParchment ? "text-[#8A5A1A]" : "text-[#E8B94B]/90"
             )}
           >
-            Diurnal Cycles &amp; Solar Rhythm
+            48-Minute Golden Windows
           </p>
         </div>
 
@@ -192,7 +192,7 @@ export function MuhurtaDimensionCard({
             isParchment ? "text-[#3D2A1A]/85" : "text-ivory/75"
           )}
         >
-          Every 24-hour day is divided into 30 dynamic 48-minute cycles anchored to your true local sunrise. Rather than rigid artificial GMT zones, Vedic micro-time expands and contracts in living harmony with the Sun — cascading downward through Kalas and Kasthas to the atomic blink of an eye.
+          Instead of 60 flat minutes, the Vedic clock starts when the sun actually rises in your city. The day is divided into thirty 48-minute windows called Muhurtas. It highlights prime golden hours — like Brahma Muhurta at dawn or Abhijit at noon — for workouts, exams, or starting important things.
         </p>
 
         {/* Minimal Spec Badges */}

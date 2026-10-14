@@ -23,9 +23,9 @@ export function NakshatraDimensionCard({
   const activeSectorDeg = (safeIndex / 27) * 360;
 
   const pills = [
-    "27 Stellar Mansions",
-    "108 Sacred Harmonics",
-    "Cosmic Archetypes",
+    "27 Star Clusters",
+    "Your True Star Sign",
+    "Real-Time Star Map",
   ];
 
   return (
@@ -175,7 +175,7 @@ export function NakshatraDimensionCard({
               isParchment ? "text-[#8A5A1A]" : "text-[#E8B94B]/90"
             )}
           >
-            Stellar Gates of the Sidereal Moon
+            The 27 Cosmic Star Constellations
           </p>
         </div>
 
@@ -185,7 +185,7 @@ export function NakshatraDimensionCard({
             isParchment ? "text-[#3D2A1A]/85" : "text-ivory/75"
           )}
         >
-          The 360° celestial sphere is partitioned into 27 stellar gates traversed by the Moon every sidereal month. Each mansion splits into 4 Padas (3°20&apos;), creating 108 cosmic harmonics bridging human breath to the cosmos, presided over by Vedic deities and planetary rulers.
+          As the Moon travels around Earth each month, it passes through 27 ancient star clusters. In Indian astrology, your birth Nakshatra is your true cosmic star sign. The clock highlights which constellation the Moon is visiting in the sky right now.
         </p>
 
         {/* Minimal Spec Badges */}

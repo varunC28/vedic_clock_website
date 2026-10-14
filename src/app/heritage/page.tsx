@@ -224,7 +224,7 @@ const CANON_QUOTES: CanonQuote[] = [
 ];
 
 export default function HeritagePage() {
-  const [isParchment, setIsParchment] = useState(true);
+  const [isParchment, setIsParchment] = useState(false);
   const [activePillar, setActivePillar] = useState<string>(PILLARS[0].id);
   const [activePhase, setActivePhase] = useState<ArcPhase>(ARC_PHASES[0]);
   const [timelineVariant, setTimelineVariant] = useState<"hyperiux" | "rail">("hyperiux");
