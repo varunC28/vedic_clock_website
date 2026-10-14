@@ -157,6 +157,7 @@ export function WheelCarousel({
   const [rotation, setRotation] = useState(startingIndex);
   const [selectedIndex, setSelectedIndex] = useState(startingIndex);
   const [isDragging, setIsDragging] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const rotationRef = useRef(startingIndex);
   const selectedRef = useRef(startingIndex);
@@ -271,20 +272,25 @@ export function WheelCarousel({
   );
 
   useEffect(() => {
-    const stage = stageRef.current;
-    if (!stage) return;
+    const container = containerRef.current;
+    if (!container) return;
 
     const handleWheel = (event: globalThis.WheelEvent) => {
       if (event.ctrlKey || event.metaKey) return;
       event.preventDefault();
+      event.stopPropagation();
+      // Prevent Lenis smooth scroll and native window scroll
+      if (typeof event.stopImmediatePropagation === "function") {
+        event.stopImmediatePropagation();
+      }
       const delta = event.deltaY * scrollSpeed;
       commitRotation(rotationRef.current + delta);
       velocityRef.current = delta * 0.2;
       runAnimation();
     };
 
-    stage.addEventListener("wheel", handleWheel, { passive: false });
-    return () => stage.removeEventListener("wheel", handleWheel);
+    container.addEventListener("wheel", handleWheel, { passive: false });
+    return () => container.removeEventListener("wheel", handleWheel);
   }, [commitRotation, runAnimation, scrollSpeed]);
 
   useEffect(() => {
@@ -368,8 +374,10 @@ export function WheelCarousel({
 
   return (
     <div
+      ref={containerRef}
+      data-lenis-prevent="true"
       className={cn(
-        "flex min-h-[380px] sm:min-h-[440px] w-full items-center justify-center overflow-hidden rounded-2xl sm:rounded-3xl border transition-all duration-500",
+        "flex min-h-[380px] sm:min-h-[440px] w-full items-center justify-center overflow-hidden rounded-2xl sm:rounded-3xl border transition-all duration-500 overscroll-contain",
         className,
       )}
       style={{

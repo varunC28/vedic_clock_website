@@ -1401,7 +1401,7 @@ export default function GuidePage() {
 
             if (rashiView === "wheel") {
               return (
-                <div className="w-full flex flex-col gap-3">
+                <div data-lenis-prevent="true" className="w-full flex flex-col gap-3">
                   <SafeComponentBoundary fallback={BackupTable}>
                     <WheelCarousel
                       items={RASHI_WHEEL_ITEMS}
