@@ -39,10 +39,8 @@ export function InstitutionCard({
   const dividerColor = isDark ? "border-brass/20" : "border-brass/25";
 
   const capsuleClasses = isDark
-    ? "bg-[#D4A65A]/10 border-[#D4A65A]/30 text-[#FFF5D1] hover:border-[#D4A65A]/60 hover:bg-[#D4A65A]/15"
-    : "bg-[#B8873D]/10 border-[#B8873D]/35 text-[#2A1B10] hover:border-[#B8873D]/60 hover:bg-[#B8873D]/15";
-
-  const dotColor = isDark ? "bg-[#D4A65A]" : "bg-[#B8873D]";
+    ? "bg-brass/15 border border-brass/35 text-antique-gold hover:border-antique-gold/60 hover:bg-brass/25 shadow-[0_0_12px_rgba(212,166,90,0.06)]"
+    : "bg-deep-bronze/10 border border-deep-bronze/25 text-deep-bronze hover:border-deep-bronze/50 hover:bg-deep-bronze/15 shadow-sm";
 
   return (
     <div
@@ -96,19 +94,18 @@ export function InstitutionCard({
         </p>
       </div>
 
-      {/* Capsule Bullets with uniform single-line height */}
+      {/* Capsule Bullets with uniform single-line height matching BilingualPill aesthetic */}
       {bullets.length > 0 && (
         <div className={cn("pt-4 border-t flex flex-col gap-2 w-full", dividerColor)}>
           {bullets.map((bullet, idx) => (
             <div
               key={idx}
               className={cn(
-                "h-9 px-3 rounded-full text-[11px] xl:text-xs font-medium border flex items-center gap-2 shadow-sm transition-all duration-200 whitespace-nowrap overflow-hidden",
+                "h-8 sm:h-8.5 px-3 rounded-full text-[10px] sm:text-[10.5px] xl:text-[11px] font-sans font-medium uppercase tracking-wider sm:tracking-widest flex items-center justify-center text-center transition-all duration-200 whitespace-nowrap overflow-hidden select-none",
                 capsuleClasses
               )}
             >
-              <span className={cn("w-1.5 h-1.5 rounded-full shrink-0", dotColor)} />
-              <span className="truncate tracking-tight">{bullet}</span>
+              <span className="truncate">{bullet}</span>
             </div>
           ))}
         </div>
