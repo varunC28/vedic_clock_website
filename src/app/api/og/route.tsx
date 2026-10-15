@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 export async function GET(req: NextRequest) {
   try {
@@ -236,6 +236,10 @@ export async function GET(req: NextRequest) {
       {
         width: 1200,
         height: 630,
+        headers: {
+          "Cache-Control":
+            "public, immutable, no-transform, max-age=86400, s-maxage=604800, stale-while-revalidate=86400",
+        },
       }
     );
   } catch (error) {
