@@ -257,7 +257,6 @@ const CANON_QUOTES: CanonQuote[] = [
 
 export function HeritageView() {
   const { isParchment } = useTheme();
-  const [activePillar, setActivePillar] = useState<string>(PILLARS[0].id);
   const [activePhase, setActivePhase] = useState<ArcPhase>(ARC_PHASES[0]);
   const [timelineVariant, setTimelineVariant] = useState<"hyperiux" | "rail">("hyperiux");
   const [activeQuoteIndex, setActiveQuoteIndex] = useState(0);
@@ -353,130 +352,143 @@ export function HeritageView() {
         </section>
 
         {/* ═══════════════════════════════════════════════════════
-            SECTION 2: 3 PILLARS (HOVER-TO-DISCOVER INTERACTION)
+            SECTION 2: 3 PILLARS (EDITORIAL BLENDED LAYOUT)
            ═══════════════════════════════════════════════════════ */}
-        <section className="flex flex-col gap-8">
-          <div className="flex flex-col gap-1">
+        <section className="flex flex-col gap-10">
+          <div className="flex flex-col gap-1.5">
             <span
               className={cn(
                 "font-mono text-xs uppercase tracking-wider",
                 isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
               )}
             >
-              Interactive Principles · Hover to reveal
+              ASTRONOMICAL PRINCIPLES · त्रिसूत्री सिद्धांत
             </span>
             <h2
               className={cn(
-                "font-sans text-2xl sm:text-3xl font-bold tracking-tight",
+                "font-serif text-2xl sm:text-3xl lg:text-4xl font-normal tracking-tight",
                 isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
               )}
             >
               The Three Tenets of Vedic Chronometry
             </h2>
+            <p
+              className={cn(
+                "font-sans text-xs sm:text-sm max-w-xl leading-relaxed mt-1",
+                isParchment ? "text-[#6E5540]" : "text-ivory/65"
+              )}
+            >
+              Foundational principles that distinguish classical Indian astronomical timekeeping from arbitrary civil conventions.
+            </p>
           </div>
 
-          {/* 3 Pillars Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {PILLARS.map((pillar) => {
-              const isHovered = activePillar === pillar.id;
-              return (
-                <div
-                  key={pillar.id}
-                  onMouseEnter={() => setActivePillar(pillar.id)}
-                  onClick={() => setActivePillar(pillar.id)}
-                  tabIndex={0}
-                  role="button"
-                  aria-label={`${pillar.titleEn} details`}
-                  className={cn(
-                    "group relative p-7 rounded-2xl cursor-pointer transition-all duration-300 text-left outline-none flex flex-col justify-between min-h-[300px]",
-                    isHovered
-                      ? isParchment
-                        ? "bg-[#F2ECE1] border border-[#B8873D]/60 shadow-md translate-y-[-2px]"
-                        : "bg-[#0A1122] border border-[#D4A65A]/60 shadow-lg shadow-[#D4A65A]/5 translate-y-[-2px]"
-                      : isParchment
-                        ? "bg-[#FAF6F0] border border-[#DFCBB5] hover:border-[#B8873D]/40"
-                        : "bg-[#060B18]/70 border border-[#D4A65A]/20 hover:border-[#D4A65A]/40"
-                  )}
-                >
-                  {/* Top: Number & Title */}
-                  <div className="flex flex-col gap-3">
-                    <div className="flex items-center justify-between">
-                      <span
-                        className={cn(
-                          "font-mono text-xs font-bold tracking-wider",
-                          isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
-                        )}
-                      >
-                        {pillar.number}
-                      </span>
-                      <span
-                        className={cn(
-                          "text-[10px] uppercase font-mono tracking-widest transition-opacity duration-300",
-                          isHovered
-                            ? "opacity-100 text-[#B8873D]"
-                            : "opacity-40 text-current"
-                        )}
-                      >
-                        {isHovered ? "Expanded" : "Hover / Tap"}
-                      </span>
-                    </div>
-
-                    <div>
-                      <h3
-                        className={cn(
-                          "font-sans text-lg font-bold transition-colors",
-                          isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
-                        )}
-                      >
-                        {pillar.titleEn}
-                      </h3>
-                      <p
-                        className={cn(
-                          "font-hindi text-sm mt-0.5",
-                          isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
-                        )}
-                      >
-                        {pillar.titleHi}
-                      </p>
-                    </div>
-
-                    {/* Tagline / Subtitle */}
-                    <p
-                      className={cn(
-                        "font-sans text-xs leading-relaxed",
-                        isParchment ? "text-[#6E5540]" : "text-ivory/60"
-                      )}
-                    >
-                      {pillar.tagline}
-                    </p>
-                  </div>
-
-                  {/* Bottom: Hover-Revealed Wisdom */}
-                  <div className="pt-4 border-t border-current/10 flex flex-col gap-2 mt-4">
-                    <p
-                      className={cn(
-                        "font-sans text-xs leading-relaxed transition-opacity duration-300",
-                        isHovered ? "opacity-100" : "opacity-75",
-                        isParchment ? "text-[#482D1C]" : "text-ivory/90"
-                      )}
-                    >
-                      {pillar.hoverDetail}
-                    </p>
-
-                    {pillar.shloka && (
-                      <div className="pt-1 flex items-baseline justify-between text-[11px]">
-                        <span className="font-hindi italic text-[#B8873D]">
-                          {pillar.shloka}
-                        </span>
-                        <span className="font-sans text-[10px] opacity-60">
-                          {pillar.shlokaSource}
-                        </span>
-                      </div>
+          {/* 3 Pillars Grid (Unboxed Editorial Columns Blended With Background) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 lg:gap-8 items-start">
+            {PILLARS.map((pillar, idx) => (
+              <div
+                key={pillar.id}
+                className={cn(
+                  "group relative flex flex-col justify-between w-full h-full p-2 sm:p-3 bg-transparent select-none motion-safe:transition-transform motion-safe:duration-300 group-hover:-translate-y-1.5",
+                  idx !== 0 && "md:border-l md:border-white/[0.08] md:pl-6 lg:pl-8",
+                  isParchment && idx !== 0 && "md:border-l md:border-[#3D2A1A]/10 md:pl-6 lg:pl-8"
+                )}
+              >
+                <div>
+                  {/* Expanding Top Golden Accent Filament */}
+                  <div
+                    className={cn(
+                      "w-8 h-[1.5px] mb-4 rounded-full transition-all duration-300 ease-out group-hover:w-16",
+                      isParchment
+                        ? "bg-gradient-to-r from-[#B8873D]/70 to-transparent group-hover:from-[#8B6425]"
+                        : "bg-gradient-to-r from-[#D4A65A]/70 to-transparent group-hover:from-[#E8B94B]"
                     )}
+                  />
+
+                  {/* Header: Number Badge + Hindi Subtitle */}
+                  <div className="flex items-center gap-2 mb-3">
+                    <span
+                      className={cn(
+                        "font-mono text-xs font-semibold px-2 py-0.5 rounded-full border tracking-wider transition-all duration-300 group-hover:scale-105",
+                        isParchment
+                          ? "bg-[#B8873D]/10 border-[#B8873D]/30 text-[#8B6425] group-hover:border-[#B8873D]/60 group-hover:bg-[#B8873D]/20 shadow-sm"
+                          : "bg-[#D4A65A]/10 border-[#D4A65A]/30 text-[#E8B94B] group-hover:border-[#D4A65A]/70 group-hover:bg-[#D4A65A]/20 group-hover:shadow-[0_0_14px_rgba(212,166,90,0.25)]"
+                      )}
+                    >
+                      {pillar.number}
+                    </span>
+                    <span
+                      className={cn(
+                        "text-xs font-hindi tracking-wide transition-colors duration-300",
+                        isParchment ? "text-[#8B6425]/80" : "text-[#D4A65A]/85"
+                      )}
+                    >
+                      {pillar.titleHi}
+                    </span>
                   </div>
+
+                  {/* English Title */}
+                  <h3
+                    className={cn(
+                      "font-serif text-xl sm:text-2xl font-normal leading-snug mb-2 transition-colors duration-300",
+                      isParchment
+                        ? "text-[#2D1B0E] group-hover:text-[#8B6425]"
+                        : "text-[#FBF5E7] group-hover:text-[#E8B94B]"
+                    )}
+                  >
+                    {pillar.titleEn}
+                  </h3>
+
+                  {/* Tagline / Subtitle */}
+                  <p
+                    className={cn(
+                      "font-sans text-xs sm:text-[13px] font-medium tracking-wide mb-3 transition-colors duration-300",
+                      isParchment ? "text-[#8A5A1A]" : "text-[#E8B94B]/90"
+                    )}
+                  >
+                    {pillar.tagline}
+                  </p>
+
+                  {/* Detailed Description */}
+                  <p
+                    className={cn(
+                      "font-sans text-xs sm:text-[13.5px] leading-relaxed transition-colors duration-300",
+                      isParchment
+                        ? "text-[#3D2A1A]/75 group-hover:text-[#3D2A1A]/95"
+                        : "text-ivory/70 group-hover:text-ivory/90"
+                    )}
+                  >
+                    {pillar.hoverDetail}
+                  </p>
                 </div>
-              );
-            })}
+
+                {/* Classical Shloka Citation */}
+                {pillar.shloka && (
+                  <div
+                    className={cn(
+                      "mt-6 pt-4 border-t flex flex-col gap-1 transition-colors duration-300",
+                      isParchment ? "border-[#3D2A1A]/10" : "border-white/10"
+                    )}
+                  >
+                    <span
+                      className={cn(
+                        "font-hindi text-xs sm:text-[13px] italic tracking-wide leading-relaxed",
+                        isParchment ? "text-[#8B6425]" : "text-[#D4A65A]"
+                      )}
+                    >
+                      {pillar.shloka}
+                    </span>
+                    <span
+                      className={cn(
+                        "font-sans text-[11px] font-medium uppercase tracking-wider",
+                        isParchment ? "text-[#6E5540]/70" : "text-ivory/50"
+                      )}
+                    >
+                      {pillar.shlokaSource}
+                    </span>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </section>
       </main>
