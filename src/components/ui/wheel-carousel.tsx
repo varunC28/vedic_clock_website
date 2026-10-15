@@ -60,6 +60,7 @@ export interface WheelCarouselProps {
   className?: string;
   photoClassName?: string;
   itemClassName?: string;
+  showPhotoBox?: boolean;
 }
 
 export const wheelCarouselDefaultItems: WheelCarouselItem[] = [
@@ -130,6 +131,7 @@ export function WheelCarousel({
   className,
   photoClassName,
   itemClassName,
+  showPhotoBox = true,
 }: WheelCarouselProps) {
   const instanceId = useId();
   const { isParchment } = useTheme();
@@ -418,14 +420,15 @@ export function WheelCarousel({
         >
           <div
             className={cn(
-              "relative w-full overflow-hidden shadow-lg border transition-all duration-300",
+              "relative w-full overflow-hidden transition-all duration-300",
+              showPhotoBox && "shadow-lg border",
               photoClassName,
             )}
             style={{
               aspectRatio: aspectRatios[photoAspect],
-              borderRadius: photoRadius,
-              backgroundColor: palette.panel,
-              borderColor: palette.border,
+              borderRadius: showPhotoBox ? photoRadius : undefined,
+              backgroundColor: showPhotoBox ? palette.panel : "transparent",
+              borderColor: showPhotoBox ? palette.border : "transparent",
             }}
           >
             {/* Smooth Crossfading Image */}
@@ -433,7 +436,10 @@ export function WheelCarousel({
               key={`${safeSelectedIndex}-${selectedItem.image}`}
               src={selectedItem.image}
               alt={selectedItem.imageAlt ?? selectedItem.label}
-              className="absolute inset-0 h-full w-full object-contain p-2 sm:p-4 transition-all duration-500 animate-in fade-in zoom-in-95"
+              className={cn(
+                "absolute inset-0 h-full w-full object-contain transition-all duration-500 animate-in fade-in zoom-in-95",
+                showPhotoBox ? "p-2 sm:p-4" : "p-1 filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
+              )}
               draggable={false}
             />
           </div>

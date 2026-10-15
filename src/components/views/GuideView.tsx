@@ -1475,7 +1475,7 @@ export function GuideView() {
                     photoSide="left"
                     photoWidth={30}
                     photoAspect="1/1"
-                    photoRadius={20}
+                    showPhotoBox={false}
                     radius={300}
                     spacing={14}
                     visibleItems={7}
