@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useRef, useMemo, useEffect, useState } from 'react';
+import React, { useRef, useMemo, useEffect, useState, useCallback } from 'react';
 import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber';
 import { Mesh, TextureLoader, SRGBColorSpace, Color, AdditiveBlending, DoubleSide, ShaderMaterial, FrontSide, NoToneMapping } from 'three';
 
 const EARTH_TEXTURE = '/assets/earth.webp';
 const EARTH_NORMAL = '/assets/images/earth_normal.webp';
 const EARTH_SPECULAR = '/assets/images/earth_specular.webp';
+const EARTH_NIGHT = '/assets/images/earth_night.webp';
 const EARTH_CLOUDS = '/assets/images/earth_clouds.webp';
 
 interface Earth3DProps {
@@ -15,16 +16,18 @@ interface Earth3DProps {
 }
 
 /**
- * The Earth sphere mesh — auto-rotates and applies the day-map texture.
- * Exact 1:1 port of Vedic Clock app (Earth3D.native.tsx).
+ * The Earth sphere mesh — auto-rotates and applies the day-map, normal relief,
+ * specular oceans, and night lights with smooth terminator.
+ * Exact 1:1 match of reference 3D dark globe.
  */
-function EarthSphere(): React.JSX.Element {
+function EarthSphere({ onLoaded }: { onLoaded?: () => void }): React.JSX.Element {
   const meshRef = useRef<Mesh>(null);
 
-  const [dayMap, normalMap, specularMap] = useLoader(TextureLoader, [
+  const [dayMap, normalMap, specularMap, nightMap] = useLoader(TextureLoader, [
     EARTH_TEXTURE,
     EARTH_NORMAL,
     EARTH_SPECULAR,
+    EARTH_NIGHT,
   ]);
 
   const { gl } = useThree();
@@ -34,33 +37,38 @@ function EarthSphere(): React.JSX.Element {
     /* eslint-disable react-hooks/immutability */
     dayMap.colorSpace = SRGBColorSpace;
     dayMap.needsUpdate = true;
-    
-    // Clamp anisotropy to 4x to save GPU sampling bandwidth without losing sharpness
+
+    nightMap.colorSpace = SRGBColorSpace;
+    nightMap.needsUpdate = true;
+
     const anisotropy = Math.min(maxAnisotropy, 4);
     dayMap.anisotropy = anisotropy;
+    nightMap.anisotropy = anisotropy;
     normalMap.anisotropy = anisotropy;
     specularMap.anisotropy = anisotropy;
-    
+
     normalMap.needsUpdate = true;
     specularMap.needsUpdate = true;
 
-    // Hardware-accelerated GPU pre-upload: pushes texture data to VRAM ahead of the 1st frame
     if (gl && typeof gl.initTexture === 'function') {
       try {
         gl.initTexture(dayMap);
+        gl.initTexture(nightMap);
         gl.initTexture(normalMap);
         gl.initTexture(specularMap);
       } catch {
-        // Safe no-op if context is busy
+        // Safe no-op
       }
     }
-    /* eslint-enable react-hooks/immutability */
-  }, [dayMap, normalMap, specularMap, maxAnisotropy, gl]);
 
-  // Slow continuous rotation
+    onLoaded?.();
+    /* eslint-enable react-hooks/immutability */
+  }, [dayMap, nightMap, normalMap, specularMap, maxAnisotropy, gl, onLoaded]);
+
+  // Slow continuous rotation (~2.4° per second)
   useFrame((_state, delta) => {
     if (meshRef.current) {
-      meshRef.current.rotation.y += 0.04 * delta; // ~2.4° per second
+      meshRef.current.rotation.y += 0.04 * delta;
     }
   });
 
@@ -71,24 +79,44 @@ function EarthSphere(): React.JSX.Element {
         map={dayMap}
         normalMap={normalMap}
         specularMap={specularMap}
-        specular={new Color(0x444444)}
-        shininess={25}
+        specular={new Color(0x333333)}
+        shininess={15}
         onBeforeCompile={(shader) => {
+          shader.uniforms.tNight = { value: nightMap };
+
+          shader.fragmentShader = `
+            uniform sampler2D tNight;
+            ${shader.fragmentShader}
+          `;
+
           shader.fragmentShader = shader.fragmentShader.replace(
+            '#include <emissivemap_fragment>',
+            `
+            #include <emissivemap_fragment>
+            
+            vec4 nightColor = texture2D( tNight, vMapUv );
+            
+            // Assume sun light is at [5.0, 3.0, 5.0] in world space
+            vec3 lightDirWorld = normalize(vec3(5.0, 3.0, 5.0));
+            vec3 lightDirView = normalize((viewMatrix * vec4(lightDirWorld, 0.0)).xyz);
+            
+            // Dot product of normal and light dir
+            float nDotL = dot(vNormal, lightDirView);
+            
+            // When nDotL is less than 0, it is night. Smoothstep gives a soft terminator.
+            float nightFactor = smoothstep(0.1, -0.2, nDotL);
+            
+            // Add night lights to totalEmissiveRadiance
+            totalEmissiveRadiance += nightColor.rgb * nightFactor * vec3(1.0, 0.9, 0.8) * 1.5;
+            `
+          ).replace(
             '#include <specularmap_fragment>',
             `
             #include <specularmap_fragment>
             #ifdef USE_SPECULARMAP
-              // Deepen ocean water to deep cosmic sapphire
-              diffuseColor.rgb = mix(diffuseColor.rgb, diffuseColor.rgb * 0.52, specularStrength);
+              // Deepen and darken the water where specular map is bright
+              diffuseColor.rgb = mix(diffuseColor.rgb, diffuseColor.rgb * 0.4, specularStrength);
             #endif
-
-            // Contrast: deepen darks and rich midtones (rich emerald green & deep ocean blue)
-            diffuseColor.rgb = pow(diffuseColor.rgb, vec3(1.22));
-
-            // Saturation boost: make colors intensely poppy and vibrant
-            float luma = dot(diffuseColor.rgb, vec3(0.299, 0.587, 0.114));
-            diffuseColor.rgb = mix(vec3(luma), diffuseColor.rgb, 1.55);
             `
           );
         }}
@@ -167,11 +195,11 @@ function AtmosphereGlow(): React.JSX.Element {
           float fresnel = 1.0 - dot(viewDir, vNormal);
           fresnel = pow(fresnel, 3.0);
           vec3 atmosphereColor = mix(
-            vec3(0.18, 0.45, 0.95),
-            vec3(0.45, 0.75, 1.0),
+            vec3(0.3, 0.6, 1.0),
+            vec3(0.6, 0.8, 1.0),
             fresnel
           );
-          gl_FragColor = vec4(atmosphereColor, fresnel * 0.65);
+          gl_FragColor = vec4(atmosphereColor, fresnel * 0.6);
         }
       `,
       transparent: true,
@@ -191,20 +219,19 @@ function AtmosphereGlow(): React.JSX.Element {
 
 /**
  * Scene setup — camera, lights, and the earth + atmosphere meshes.
- * Exact 1:1 port of Vedic Clock app.
  */
-function EarthScene(): React.JSX.Element {
+function EarthScene({ onLoaded }: { onLoaded?: () => void }): React.JSX.Element {
   return (
     <>
-      {/* Ambient fill tuned so colors stay punchy and saturated */}
-      <ambientLight intensity={0.18} />
+      {/* Ambient fill so the dark side isn't pitch black */}
+      <ambientLight intensity={0.3} />
       {/* Main sunlight from upper-right */}
-      <directionalLight position={[5, 3, 5]} intensity={1.45} />
+      <directionalLight position={[5, 3, 5]} intensity={1.5} />
       {/* Subtle rim light from behind */}
       <directionalLight position={[-3, -1, -5]} intensity={0.2} />
 
       <group scale={[0.8505, 0.8505, 0.8505]}>
-        <EarthSphere />
+        <EarthSphere onLoaded={onLoaded} />
         <CloudSphere />
         <AtmosphereGlow />
       </group>
@@ -225,9 +252,7 @@ class EarthErrorBoundary extends React.Component<React.PropsWithChildren, { hasE
   render() {
     if (this.state.hasError) {
       return (
-        <div style={{ width: '100%', height: '100%', backgroundColor: 'transparent', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <img src="/assets/earth.webp" alt="Earth fallback" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
-        </div>
+        <div style={{ width: '100%', height: '100%', backgroundColor: 'transparent' }} />
       );
     }
     return this.props.children;
@@ -239,7 +264,11 @@ class EarthErrorBoundary extends React.Component<React.PropsWithChildren, { hasE
 export function Earth3D({ size }: Earth3DProps): React.JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(true);
-  const [isReady, setIsReady] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const handleLoaded = useCallback(() => {
+    setIsLoaded(true);
+  }, []);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -271,24 +300,6 @@ export function Earth3D({ size }: Earth3DProps): React.JSX.Element {
         backgroundColor: 'transparent',
       }}
     >
-      {/* Instant 2D placeholder while WebGL initializes and compiles shaders */}
-      <img
-        src="/assets/earth.webp"
-        alt="Earth"
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          borderRadius: '50%',
-          objectFit: 'cover',
-          opacity: isReady ? 0 : 1,
-          transition: 'opacity 0.4s ease-out',
-          pointerEvents: 'none',
-        }}
-      />
-
       <EarthErrorBoundary>
         <Canvas
           dpr={[1, 2]}
@@ -301,20 +312,17 @@ export function Earth3D({ size }: Earth3DProps): React.JSX.Element {
             toneMapping: NoToneMapping,
             outputColorSpace: SRGBColorSpace,
           }}
-          onCreated={({ gl }) => {
-            gl.toneMapping = NoToneMapping;
-            gl.outputColorSpace = SRGBColorSpace;
-            setIsReady(true);
-          }}
           camera={{ position: [0, 0, 2.8], fov: 45 }}
           style={{
             width: size,
             height: size,
             backgroundColor: 'transparent',
+            opacity: isLoaded ? 1 : 0,
+            transition: 'opacity 0.6s ease-out',
           }}
         >
           <React.Suspense fallback={null}>
-            <EarthScene />
+            <EarthScene onLoaded={handleLoaded} />
           </React.Suspense>
         </Canvas>
       </EarthErrorBoundary>
