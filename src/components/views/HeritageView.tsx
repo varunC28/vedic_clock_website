@@ -214,7 +214,7 @@ export function HeritageView() {
       <div
         aria-hidden="true"
         className={cn(
-          "absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[450px] blur-3xl pointer-events-none rounded-full transition-opacity duration-500",
+          "absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[450px] blur-3xl pointer-events-none rounded-full transition-opacity duration-500 transform-gpu",
           isParchment
             ? "bg-gradient-to-tr from-[#B8873D]/10 via-[#D4A65A]/8 to-transparent"
             : "bg-gradient-to-tr from-[#D4A65A]/12 via-[#E8B94B]/6 to-transparent"
@@ -509,7 +509,7 @@ export function HeritageView() {
           {/* Active Phase Dynamic Spotlight (Transparent glass card blended into background) */}
           <div
             className={cn(
-              "p-6 sm:p-7 rounded-2xl border transition-colors duration-500 flex flex-col md:flex-row md:items-center justify-between gap-6 text-left backdrop-blur-sm",
+              "p-6 sm:p-7 rounded-2xl border transition-colors duration-500 flex flex-col md:flex-row md:items-center justify-between gap-6 text-left transform-gpu",
               isParchment
                 ? "border-[#DFCBB5] bg-[#FAF6F0]/60 shadow-sm"
                 : "border-[#D4A65A]/20 bg-white/[0.02] shadow-[0_8px_32px_rgba(0,0,0,0.2)]"
@@ -560,12 +560,14 @@ export function HeritageView() {
           onMouseLeave={() => setIsQuoteHovered(false)}
           className="w-full py-6 sm:py-8 px-2 sm:px-4 bg-transparent text-left flex flex-col justify-between gap-6 relative select-none min-h-[260px] sm:min-h-[230px]"
         >
-          {/* Subtle cosmic glow */}
+          {/* Subtle cosmic glow (Radial gradient for silky 60fps rendering in Safari without blur filter cost) */}
           <div
             aria-hidden="true"
             className={cn(
-              "absolute -top-16 -right-16 w-64 h-64 rounded-full blur-3xl pointer-events-none transition-colors duration-500",
-              isParchment ? "bg-[#B8873D]/8" : "bg-[#D4A65A]/10"
+              "absolute -top-16 -right-16 w-64 h-64 rounded-full pointer-events-none transition-all duration-500 transform-gpu",
+              isParchment
+                ? "bg-[radial-gradient(circle_at_center,rgba(184,135,61,0.12)_0%,transparent_70%)] opacity-80"
+                : "bg-[radial-gradient(circle_at_center,rgba(212,166,90,0.15)_0%,transparent_70%)] opacity-100"
             )}
           />
 

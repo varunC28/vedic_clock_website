@@ -185,10 +185,19 @@
 }
 
 /* ── Luxury Circular Theme Reveal Transition (Originating from Toggle Button) ── */
+::view-transition-group(root) {
+  animation: none;
+}
+
+::view-transition-image-pair(root) {
+  isolation: isolate;
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
+  will-change: clip-path;
 }
 
 ::view-transition-old(root) {
@@ -196,7 +205,7 @@
 }
 
 ::view-transition-new(root) {
-  z-index: 99999;
+  z-index: 2147483647;
 }
 
 /* ── Clean Focus for Theme Toggle Button (No Browser Blue Outline) ── */

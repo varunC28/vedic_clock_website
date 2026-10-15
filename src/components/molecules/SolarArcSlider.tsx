@@ -159,7 +159,7 @@ export function SolarArcSlider({
           aria-valuenow={activeIndex}
           aria-valuetext={`${activePhase.nameEn} (${activePhase.timeHint})`}
           className={cn(
-            "absolute top-1/2 -translate-y-1/2 -translate-x-1/2 z-20 outline-none cursor-grab active:cursor-grabbing",
+            "absolute top-1/2 -translate-y-1/2 -translate-x-1/2 z-20 outline-none cursor-grab active:cursor-grabbing transform-gpu",
             isDragging
               ? "scale-110 cursor-grabbing transition-none"
               : "transition-[left,transform] duration-350 ease-out hover:scale-105"
