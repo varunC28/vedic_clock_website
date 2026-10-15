@@ -9,6 +9,7 @@ export interface LazyImageProps extends React.ImgHTMLAttributes<HTMLImageElement
   alt?: string;
   ratio?: number;
   inView?: boolean;
+  priority?: boolean;
   className?: string;
 }
 
@@ -29,17 +30,18 @@ export function LazyImage({
   fallback = VEDIC_IMAGE_FALLBACK,
   alt = "",
   ratio = 16 / 9,
-  inView = true,
+  inView,
+  priority = false,
   className,
   ...props
 }: LazyImageProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [shouldLoad, setShouldLoad] = useState(inView);
+  const [shouldLoad, setShouldLoad] = useState(priority || inView === true);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (inView) {
+    if (priority || inView === true) {
       setShouldLoad(true);
       return;
     }
@@ -56,11 +58,11 @@ export function LazyImage({
           }
         });
       },
-      { rootMargin: "150px" }
+      { rootMargin: "250px" }
     );
     if (containerRef.current) observer.observe(containerRef.current);
     return () => observer.disconnect();
-  }, [inView]);
+  }, [inView, priority]);
 
   return (
     <div

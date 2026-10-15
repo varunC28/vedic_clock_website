@@ -2,10 +2,19 @@
 
 import React, { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { Header } from "@/components/organisms/Header";
-import { Footer } from "@/components/organisms/Footer";
 import { cn } from "@/lib/utils";
+
+const Footer = dynamic(
+  () => import("@/components/organisms/Footer").then((m) => m.Footer),
+  {
+    loading: () => (
+      <footer className="w-full py-16 bg-[#020408] border-t border-[#D4A65A]/15 min-h-[280px]" />
+    ),
+  }
+);
 import { VEDIC_GLOSSARY_TERMS, GlossaryTerm } from "@/data/vedic-glossary";
 import { getPendingHash } from "@/lib/hash-navigation";
 

@@ -3,11 +3,20 @@
 import React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import dynamic from "next/dynamic";
 import { Header } from "@/components/organisms/Header";
-import { Footer } from "@/components/organisms/Footer";
 import { SectionEyebrow } from "@/components/atoms/SectionEyebrow";
 import { GoldDivider } from "@/components/atoms/GoldDivider";
 import { BrassButton } from "@/components/atoms/BrassButton";
+
+const Footer = dynamic(
+  () => import("@/components/organisms/Footer").then((m) => m.Footer),
+  {
+    loading: () => (
+      <footer className="w-full py-16 bg-[#020408] border-t border-[#D4A65A]/15 min-h-[280px]" />
+    ),
+  }
+);
 
 export function CatalogueView() {
   const specs = [

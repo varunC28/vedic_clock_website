@@ -5,11 +5,42 @@ import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
+import dynamic from "next/dynamic";
 import { Header } from "@/components/organisms/Header";
-import { Footer } from "@/components/organisms/Footer";
-import { HorizontalTimeline } from "@/components/molecules/HorizontalTimeline";
-import Timeline from "@/components/ui/timeline";
 import { useTheme } from "@/components/providers/ThemeProvider";
+
+const Footer = dynamic(
+  () => import("@/components/organisms/Footer").then((m) => m.Footer),
+  {
+    loading: () => (
+      <footer className="w-full py-16 bg-[#020408] border-t border-[#D4A65A]/15 min-h-[280px]" />
+    ),
+  }
+);
+
+const Timeline = dynamic(() => import("@/components/ui/timeline"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full min-h-[480px] flex flex-col items-center justify-center p-8 bg-[#03060E] rounded-2xl border border-[#D4A65A]/20">
+      <div className="w-10 h-10 border-2 border-[#D4A65A] border-t-transparent rounded-full animate-spin mb-4" />
+      <span className="font-serif text-sm text-[#D4A65A] tracking-widest uppercase">
+        Loading Vedic Chronology · कालक्रम लोड हो रहा है...
+      </span>
+    </div>
+  ),
+});
+
+const HorizontalTimeline = dynamic(
+  () => import("@/components/molecules/HorizontalTimeline").then((m) => m.HorizontalTimeline),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full min-h-[300px] flex items-center justify-center p-8 bg-[#03060E] rounded-2xl border border-[#D4A65A]/20">
+        <div className="w-8 h-8 border-2 border-[#D4A65A] border-t-transparent rounded-full animate-spin" />
+      </div>
+    ),
+  }
+);
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);

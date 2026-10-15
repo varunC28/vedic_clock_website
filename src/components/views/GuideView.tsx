@@ -4,12 +4,36 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/organisms/Header";
-import { Footer } from "@/components/organisms/Footer";
 import { BilingualPill } from "@/components/atoms/BilingualPill";
 import { GoldDivider } from "@/components/atoms/GoldDivider";
 import { PanchangTableRow } from "@/components/molecules/PanchangTableRow";
+import dynamic from "next/dynamic";
 import { useTheme } from "@/components/providers/ThemeProvider";
-import { WheelCarousel, WheelCarouselItem } from "@/components/ui/wheel-carousel";
+import type { WheelCarouselItem } from "@/components/ui/wheel-carousel";
+
+const Footer = dynamic(
+  () => import("@/components/organisms/Footer").then((m) => m.Footer),
+  {
+    loading: () => (
+      <footer className="w-full py-16 bg-[#020408] border-t border-[#D4A65A]/15 min-h-[280px]" />
+    ),
+  }
+);
+
+const WheelCarousel = dynamic(
+  () => import("@/components/ui/wheel-carousel").then((m) => m.WheelCarousel),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full min-h-[380px] flex flex-col items-center justify-center p-8 bg-[#070D1A] rounded-2xl border border-[#D4A65A]/25">
+        <div className="w-8 h-8 border-2 border-[#D4A65A] border-t-transparent rounded-full animate-spin mb-3" />
+        <span className="font-serif text-xs text-[#D4A65A] tracking-widest uppercase">
+          Loading 12 Rashi Celestial Wheel · राशि चक्र लोड हो रहा है...
+        </span>
+      </div>
+    ),
+  }
+);
 
 class SafeComponentBoundary extends React.Component<
   { fallback: React.ReactNode; children: React.ReactNode },

@@ -3,11 +3,20 @@
 import React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import dynamic from "next/dynamic";
 import { Header } from "@/components/organisms/Header";
-import { Footer } from "@/components/organisms/Footer";
 import { LazyImage } from "@/components/ui/lazy-image";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { BlogArticle } from "@/data/blog-articles";
+
+const Footer = dynamic(
+  () => import("@/components/organisms/Footer").then((m) => m.Footer),
+  {
+    loading: () => (
+      <footer className="w-full py-16 bg-[#020408] border-t border-[#D4A65A]/15 min-h-[280px]" />
+    ),
+  }
+);
 
 interface ArticleViewProps {
   article: BlogArticle;
@@ -149,6 +158,7 @@ export function ArticleView({ article, relatedArticles }: ArticleViewProps) {
                   src={heroSrc}
                   alt={heroAlt}
                   ratio={16 / 9}
+                  priority={true}
                   className="w-full object-cover transition-transform duration-700 ease-out hover:scale-[1.015]"
                 />
                 <meta

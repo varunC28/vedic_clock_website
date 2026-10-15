@@ -4,14 +4,63 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
+import dynamic from "next/dynamic";
 import { Header } from "@/components/organisms/Header";
 import { Hero } from "@/components/organisms/Hero";
-import { ProcessStrip } from "@/components/organisms/ProcessStrip";
-import { FeatureGrid } from "@/components/organisms/FeatureGrid";
-import { InstitutionGrid } from "@/components/organisms/InstitutionGrid";
-import { ClosingCtaSection } from "@/components/organisms/ClosingCtaSection";
-import { Footer } from "@/components/organisms/Footer";
 import { useTheme } from "@/components/providers/ThemeProvider";
+
+const ProcessStrip = dynamic(
+  () => import("@/components/organisms/ProcessStrip").then((m) => m.ProcessStrip),
+  {
+    loading: () => (
+      <div className="w-full py-24 bg-[#050A14] flex items-center justify-center min-h-[360px]">
+        <div className="w-8 h-8 border-2 border-[#D4A65A]/40 border-t-transparent rounded-full animate-spin" />
+      </div>
+    ),
+  }
+);
+
+const FeatureGrid = dynamic(
+  () => import("@/components/organisms/FeatureGrid").then((m) => m.FeatureGrid),
+  {
+    loading: () => (
+      <div className="w-full min-h-[500px] py-24 flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-[#D4A65A]/40 border-t-transparent rounded-full animate-spin" />
+      </div>
+    ),
+  }
+);
+
+const InstitutionGrid = dynamic(
+  () => import("@/components/organisms/InstitutionGrid").then((m) => m.InstitutionGrid),
+  {
+    loading: () => (
+      <div className="w-full min-h-[440px] py-24 bg-[#050A14] flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-[#D4A65A]/40 border-t-transparent rounded-full animate-spin" />
+      </div>
+    ),
+  }
+);
+
+const ClosingCtaSection = dynamic(
+  () => import("@/components/organisms/ClosingCtaSection").then((m) => m.ClosingCtaSection),
+  {
+    loading: () => (
+      <div className="w-full min-h-[320px] py-20 flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-[#D4A65A]/40 border-t-transparent rounded-full animate-spin" />
+      </div>
+    ),
+  }
+);
+
+const Footer = dynamic(
+  () => import("@/components/organisms/Footer").then((m) => m.Footer),
+  {
+    loading: () => (
+      <footer className="w-full py-16 bg-[#020408] border-t border-[#D4A65A]/15 min-h-[280px]" />
+    ),
+  }
+);
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
