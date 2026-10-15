@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import dynamic from "next/dynamic";
 import { Header } from "@/components/organisms/Header";
 import { useTheme } from "@/components/providers/ThemeProvider";
+import { SolarArcSlider } from "@/components/molecules/SolarArcSlider";
 
 const Footer = dynamic(
   () => import("@/components/organisms/Footer").then((m) => m.Footer),
@@ -473,7 +474,7 @@ export function HeritageView() {
       <div className="relative z-10 pt-16 sm:pt-20 pb-24 px-5 sm:px-8 lg:px-12 max-w-5xl mx-auto flex flex-col gap-20 sm:gap-24 text-left">
 
         {/* ═══════════════════════════════════════════════════════
-            SECTION 4: SUN-ARC DIURNAL DIAL (HOVER TO EXPLORE)
+            SECTION 4: SUN-ARC DIURNAL DIAL (DRAGGABLE CELESTIAL ORB)
            ═══════════════════════════════════════════════════════ */}
         <section className="flex flex-col gap-8">
           <div className="flex flex-col gap-1">
@@ -483,7 +484,7 @@ export function HeritageView() {
                 isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
               )}
             >
-              Circadian Ephemeris · Hover Phases
+              Circadian Ephemeris · Interactive Solar Arc
             </span>
             <h2
               className={cn(
@@ -499,38 +500,17 @@ export function HeritageView() {
                 isParchment ? "text-[#6E5540]" : "text-ivory/70"
               )}
             >
-              Unlike artificial clock hands ticking evenly in a circle, the Vedic diurnal cycle is rooted in dynamic solar elevation angles. Hover over the celestial markers below.
+              Unlike uniform mechanical clock hours, the Vedic diurnal cycle is calibrated by dynamic solar elevation angles. Drag the celestial marker across the horizon to explore each circadian transition.
             </p>
           </div>
 
-          {/* Phase Selector Chips (Blended directly into background) */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-            {ARC_PHASES.map((phase) => {
-              const isActive = activePhase.id === phase.id;
-              return (
-                <button
-                  key={phase.id}
-                  type="button"
-                  onMouseEnter={() => setActivePhase(phase)}
-                  onClick={() => setActivePhase(phase)}
-                  className={cn(
-                    "px-3.5 sm:px-4 py-2 rounded-xl text-xs font-sans transition-all duration-300 cursor-pointer flex items-center gap-2 border",
-                    isActive
-                      ? isParchment
-                        ? "bg-[#482D1C] text-[#FAF6F0] border-[#482D1C] shadow-sm font-medium"
-                        : "bg-gradient-to-r from-[#B8873D] to-[#D4A65A] text-[#03060E] border-[#D4A65A] font-semibold shadow-md shadow-[#D4A65A]/20"
-                      : isParchment
-                        ? "bg-[#FAF6F0]/80 text-[#5C4533] border-[#DFCBB5] hover:border-[#B8873D] hover:bg-[#FAF6F0]"
-                        : "bg-[#060B18]/60 text-ivory/70 border-white/10 hover:border-[#D4A65A]/40 hover:text-ivory hover:bg-white/[0.04]"
-                  )}
-                >
-                  <span className="text-sm">{phase.icon}</span>
-                  <span className="font-medium">{phase.nameEn}</span>
-                  <span className="opacity-60 text-[10px] hidden sm:inline">{phase.timeHint}</span>
-                </button>
-              );
-            })}
-          </div>
+          {/* Draggable Celestial Rail & Orb Slider */}
+          <SolarArcSlider
+            phases={ARC_PHASES}
+            activePhase={activePhase}
+            onPhaseChange={setActivePhase}
+            isParchment={isParchment}
+          />
 
           {/* Active Phase Dynamic Spotlight (Transparent glass card blended into background) */}
           <div
@@ -541,12 +521,12 @@ export function HeritageView() {
                 : "border-[#D4A65A]/20 bg-gradient-to-b from-white/[0.03] to-transparent backdrop-blur-sm"
             )}
           >
-            <div className="flex flex-col gap-1.5 max-w-xl">
+            <div key={activePhase.id} className="flex flex-col gap-1.5 max-w-xl animate-in fade-in duration-300">
               <div className="flex items-center gap-2">
-                <span className="text-xl">{activePhase.icon}</span>
+                <span className="text-xl sm:text-2xl">{activePhase.icon}</span>
                 <h3
                   className={cn(
-                    "font-sans text-lg font-bold",
+                    "font-sans text-lg sm:text-xl font-bold",
                     isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
                   )}
                 >
@@ -556,7 +536,7 @@ export function HeritageView() {
 
               <p
                 className={cn(
-                  "font-sans text-sm leading-relaxed",
+                  "font-sans text-sm sm:text-[14.5px] leading-relaxed",
                   isParchment ? "text-[#5C4533]" : "text-ivory/80"
                 )}
               >
@@ -566,8 +546,9 @@ export function HeritageView() {
 
             {/* Pill Badge */}
             <div
+              key={`${activePhase.id}-badge`}
               className={cn(
-                "shrink-0 px-4 py-2.5 rounded-xl border flex flex-col items-start md:items-end text-xs transition-colors",
+                "shrink-0 px-4 py-2.5 rounded-xl border flex flex-col items-start md:items-end text-xs transition-colors animate-in fade-in duration-300",
                 isParchment
                   ? "bg-transparent border-[#DFCBB5] text-[#8C5D33]"
                   : "bg-transparent border-[#D4A65A]/25 text-[#D4A65A]"
