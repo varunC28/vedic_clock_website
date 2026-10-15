@@ -174,6 +174,7 @@ export function WheelCarousel({
   const startingIndex = wrapIndex(activeIndex ?? initialIndex, itemCount);
   const [rotation, setRotation] = useState(startingIndex);
   const [selectedIndex, setSelectedIndex] = useState(startingIndex);
+  const [direction, setDirection] = useState<"next" | "prev">("next");
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
@@ -239,6 +240,8 @@ export function WheelCarousel({
       setRotation(nextRotation);
       const nextIndex = wrapIndex(Math.round(nextRotation), itemCount);
       if (nextIndex !== selectedRef.current) {
+        const offset = shortestOffset(nextIndex, selectedRef.current, itemCount);
+        setDirection(offset >= 0 ? "next" : "prev");
         selectedRef.current = nextIndex;
         setSelectedIndex(nextIndex);
         onActiveChange?.(carouselItems[nextIndex]!, nextIndex);
@@ -320,6 +323,7 @@ export function WheelCarousel({
     let delta = controlledIndex - currentIndex;
     if (delta > itemCount / 2) delta -= itemCount;
     if (delta < -itemCount / 2) delta += itemCount;
+    setDirection(delta >= 0 ? "next" : "prev");
     selectedRef.current = controlledIndex;
     setSelectedIndex(controlledIndex);
     commitRotationRef.current(rotationRef.current + delta);
@@ -448,22 +452,35 @@ export function WheelCarousel({
               borderColor: showPhotoBox ? palette.border : "transparent",
             }}
           >
-            {/* Smooth Crossfading Image */}
+            {/* Smooth Crossfading Image with Directional Shift Animation */}
             <img
               key={`${safeSelectedIndex}-${selectedItem.image}`}
               src={selectedItem.image}
               alt={selectedItem.imageAlt ?? selectedItem.label}
               className={cn(
-                "absolute inset-0 h-full w-full object-contain transition-all duration-500 animate-in fade-in zoom-in-95",
+                "absolute inset-0 h-full w-full object-contain",
                 showPhotoBox ? "p-2 sm:p-4" : "p-0.5 filter drop-shadow-[0_8px_18px_rgba(0,0,0,0.5)]"
               )}
+              style={{
+                animation: reduceMotion
+                  ? "none"
+                  : `${direction === "next" ? "zodiacShiftNext" : "zodiacShiftPrev"} 0.42s cubic-bezier(0.16, 1, 0.3, 1) both`,
+              }}
               draggable={false}
             />
           </div>
 
-          {/* Rashi Signifies Sub-badge */}
+          {/* Rashi Signifies Sub-badge with smooth text shift */}
           {(selectedItem.detailHi || selectedItem.detailEn) && (
-            <div className="flex flex-col items-center text-center px-1">
+            <div
+              key={`${safeSelectedIndex}-detail`}
+              className="flex flex-col items-center text-center px-1"
+              style={{
+                animation: reduceMotion
+                  ? "none"
+                  : "zodiacTextShift 0.36s cubic-bezier(0.16, 1, 0.3, 1) both",
+              }}
+            >
               {selectedItem.detailHi && (
                 <span className="font-hindi text-[11px] sm:text-sm font-semibold tracking-wide" style={{ color: palette.selected }}>
                   {selectedItem.detailHi}
@@ -518,6 +535,7 @@ export function WheelCarousel({
                 aria-selected={selected}
                 onClick={() => {
                   const delta = shortestOffset(index, rotationRef.current, itemCount);
+                  setDirection(delta >= 0 ? "next" : "prev");
                   moveBy(delta);
                 }}
                 className={cn(
