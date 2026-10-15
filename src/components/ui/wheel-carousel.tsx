@@ -136,6 +136,7 @@ export function WheelCarousel({
   const instanceId = useId();
   const { isParchment } = useTheme();
   const [reduceMotion, setReduceMotion] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -143,8 +144,23 @@ export function WheelCarousel({
     setReduceMotion(mq.matches);
     const handler = (e: MediaQueryListEvent) => setReduceMotion(e.matches);
     mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
+
+    const checkMobile = () => setIsMobile(window.innerWidth < 640);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => {
+      mq.removeEventListener("change", handler);
+      window.removeEventListener("resize", checkMobile);
+    };
   }, []);
+
+  const effectiveApexInset = isMobile ? Math.min(apexInset, 8) : apexInset;
+  const effectiveRadius = isMobile ? Math.min(radius, 220) : radius;
+  const effectiveSpacing = isMobile ? Math.min(spacing, 13) : spacing;
+  const effectiveMarkerSize = isMobile ? Math.min(markerSize, 10) : markerSize;
+  const effectiveMarkerGap = isMobile ? Math.min(markerGap, 12) : markerGap;
+  const effectiveGap = isMobile ? 8 : gap;
 
   const resolvedMode =
     mode === "system"
@@ -399,11 +415,11 @@ export function WheelCarousel({
         }
         tabIndex={0}
         className={cn(
-          "flex h-full w-full touch-none select-none items-center overflow-hidden outline-none p-4 sm:p-8",
+          "flex h-full w-full touch-none select-none items-center overflow-hidden outline-none px-2.5 py-4 sm:p-8",
           photoSide === "right" && "flex-row-reverse",
           isDragging ? "cursor-grabbing" : "cursor-grab",
         )}
-        style={{ maxWidth: contentWidth, gap }}
+        style={{ maxWidth: contentWidth, gap: effectiveGap }}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerEnd}
@@ -412,10 +428,11 @@ export function WheelCarousel({
       >
         {/* ── Left Column: Active Item Spotlight & Artwork ── */}
         <div
-          className="flex flex-col shrink-0 items-center justify-center gap-3"
+          className="flex flex-col shrink-0 items-center justify-center gap-2 sm:gap-3"
           style={{
-            width: `${photoWidth}%`,
-            minWidth: "140px",
+            width: isMobile ? "28%" : `${photoWidth}%`,
+            minWidth: isMobile ? "96px" : "140px",
+            maxWidth: isMobile ? "115px" : undefined,
           }}
         >
           <div
@@ -438,7 +455,7 @@ export function WheelCarousel({
               alt={selectedItem.imageAlt ?? selectedItem.label}
               className={cn(
                 "absolute inset-0 h-full w-full object-contain transition-all duration-500 animate-in fade-in zoom-in-95",
-                showPhotoBox ? "p-2 sm:p-4" : "p-1 filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
+                showPhotoBox ? "p-2 sm:p-4" : "p-0.5 filter drop-shadow-[0_8px_18px_rgba(0,0,0,0.5)]"
               )}
               draggable={false}
             />
@@ -446,14 +463,14 @@ export function WheelCarousel({
 
           {/* Rashi Signifies Sub-badge */}
           {(selectedItem.detailHi || selectedItem.detailEn) && (
-            <div className="flex flex-col items-center text-center px-2">
+            <div className="flex flex-col items-center text-center px-1">
               {selectedItem.detailHi && (
-                <span className="font-hindi text-xs sm:text-sm font-semibold tracking-wide" style={{ color: palette.selected }}>
+                <span className="font-hindi text-[11px] sm:text-sm font-semibold tracking-wide" style={{ color: palette.selected }}>
                   {selectedItem.detailHi}
                 </span>
               )}
               {selectedItem.detailEn && (
-                <span className="font-sans text-[11px] sm:text-xs tracking-wider opacity-70 capitalize mt-0.5" style={{ color: palette.text }}>
+                <span className="font-sans text-[10px] sm:text-xs tracking-wider opacity-70 capitalize mt-0.5" style={{ color: palette.text }}>
                   {selectedItem.detailEn}
                 </span>
               )}
@@ -471,10 +488,10 @@ export function WheelCarousel({
               aria-hidden="true"
               className="absolute top-1/2 z-10 -translate-y-1/2 rounded-full shadow-[0_0_10px_rgba(212,166,90,0.4)] transition-all"
               style={{
-                left: `calc(${apexInset}% - ${markerGap}px)`,
-                width: markerSize,
-                height: markerSize,
-                marginLeft: -markerSize,
+                left: `calc(${effectiveApexInset}% - ${effectiveMarkerGap}px)`,
+                width: effectiveMarkerSize,
+                height: effectiveMarkerSize,
+                marginLeft: -effectiveMarkerSize,
                 backgroundColor: palette.marker,
               }}
             />
@@ -484,10 +501,10 @@ export function WheelCarousel({
             const offset = shortestOffset(index, rotation, itemCount);
             if (Math.abs(offset) > visibleItems + 1) return null;
 
-            const angle = offset * spacing;
+            const angle = offset * effectiveSpacing;
             const radians = (angle * Math.PI) / 180;
-            const x = -radius * (1 - Math.cos(radians));
-            const y = radius * Math.sin(radians);
+            const x = -effectiveRadius * (1 - Math.cos(radians));
+            const y = effectiveRadius * Math.sin(radians);
             const distance = Math.min(Math.abs(offset) / visibleItems, 1);
             const opacity = Math.cos((distance * Math.PI) / 2);
             const scale = 1 - Math.min(Math.abs(offset) * 0.04, 0.45);
@@ -504,12 +521,12 @@ export function WheelCarousel({
                   moveBy(delta);
                 }}
                 className={cn(
-                  "pointer-events-auto cursor-pointer absolute top-1/2 origin-left whitespace-nowrap text-sm sm:text-base md:text-lg font-medium leading-none tracking-tight transition-colors duration-200",
-                  selected ? "font-bold scale-105" : "hover:opacity-90",
+                  "pointer-events-auto cursor-pointer absolute top-1/2 origin-left whitespace-nowrap font-medium leading-none tracking-tight transition-colors duration-200",
+                  selected ? "font-bold text-[13px] sm:text-lg scale-105" : "text-xs sm:text-base hover:opacity-90",
                   itemClassName,
                 )}
                 style={{
-                  left: `${apexInset}%`,
+                  left: `${effectiveApexInset}%`,
                   color: selected ? palette.selected : palette.text,
                   opacity: selected ? 1 : Math.max(0.15, opacity),
                   transform: `translate(${x}px, ${y}px) translateY(-50%) rotate(${angle}deg) scale(${scale})`,

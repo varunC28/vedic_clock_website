@@ -1473,7 +1473,7 @@ export function GuideView() {
                   <WheelCarousel
                     items={RASHI_WHEEL_ITEMS}
                     photoSide="left"
-                    photoWidth={30}
+                    photoWidth={28}
                     photoAspect="1/1"
                     showPhotoBox={false}
                     radius={300}
