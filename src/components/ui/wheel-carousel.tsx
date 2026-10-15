@@ -155,12 +155,14 @@ export function WheelCarousel({
     };
   }, []);
 
-  const effectiveApexInset = isMobile ? Math.min(apexInset, 8) : apexInset;
-  const effectiveRadius = isMobile ? Math.min(radius, 220) : radius;
-  const effectiveSpacing = isMobile ? Math.min(spacing, 13) : spacing;
-  const effectiveMarkerSize = isMobile ? Math.min(markerSize, 10) : markerSize;
-  const effectiveMarkerGap = isMobile ? Math.min(markerGap, 12) : markerGap;
-  const effectiveGap = isMobile ? 8 : gap;
+  const effectiveApexInset = isMobile ? 26 : apexInset;
+  const effectiveApexUnit = isMobile ? "px" : "%";
+  const effectiveRadius = isMobile ? Math.min(radius, 210) : radius;
+  const effectiveSpacing = isMobile ? 12 : spacing;
+  const effectiveMarkerSize = isMobile ? 8 : markerSize;
+  const effectiveMarkerGap = isMobile ? 11 : markerGap;
+  const effectiveGap = isMobile ? 10 : gap;
+  const effectiveVisibleItems = isMobile ? 5 : visibleItems;
 
   const resolvedMode =
     mode === "system"
@@ -399,7 +401,7 @@ export function WheelCarousel({
       ref={containerRef}
       data-lenis-prevent="true"
       className={cn(
-        "flex min-h-[380px] sm:min-h-[440px] w-full items-center justify-center overflow-hidden rounded-2xl sm:rounded-3xl border transition-all duration-500 overscroll-contain",
+        "flex min-h-[290px] sm:min-h-[420px] w-full items-center justify-center overflow-hidden rounded-2xl sm:rounded-3xl border transition-all duration-500 overscroll-contain",
         className,
       )}
       style={{
@@ -413,13 +415,13 @@ export function WheelCarousel({
         aria-label="Wheel carousel"
         aria-activedescendant={
           Math.abs(shortestOffset(safeSelectedIndex, rotation, itemCount)) <=
-          visibleItems + 1
+          effectiveVisibleItems + 1
             ? `${instanceId}-item-${safeSelectedIndex}`
             : undefined
         }
         tabIndex={0}
         className={cn(
-          "flex h-full w-full touch-none select-none items-center overflow-hidden outline-none px-2.5 py-4 sm:p-8",
+          "flex h-full w-full touch-none select-none items-center overflow-hidden outline-none px-2 py-2 sm:p-8",
           photoSide === "right" && "flex-row-reverse",
           isDragging ? "cursor-grabbing" : "cursor-grab",
         )}
@@ -432,11 +434,11 @@ export function WheelCarousel({
       >
         {/* ── Left Column: Active Item Spotlight & Artwork ── */}
         <div
-          className="flex flex-col shrink-0 items-center justify-center gap-2 sm:gap-3"
+          className="flex flex-col shrink-0 items-center justify-center gap-1 sm:gap-3"
           style={{
             width: isMobile ? "28%" : `${photoWidth}%`,
-            minWidth: isMobile ? "96px" : "140px",
-            maxWidth: isMobile ? "115px" : undefined,
+            minWidth: isMobile ? "92px" : "140px",
+            maxWidth: isMobile ? "110px" : undefined,
           }}
         >
           <div
@@ -497,7 +499,7 @@ export function WheelCarousel({
 
         {/* ── Right Column: Rotating Orbit Labels ── */}
         <div
-          className="relative h-[320px] sm:h-[380px] min-w-0 flex-1 overflow-hidden"
+          className="relative h-[250px] sm:h-[360px] min-w-0 flex-1 overflow-hidden"
           style={{ maskImage: mask, WebkitMaskImage: mask }}
         >
           {showMarker && (
@@ -505,7 +507,7 @@ export function WheelCarousel({
               aria-hidden="true"
               className="absolute top-1/2 z-10 -translate-y-1/2 rounded-full shadow-[0_0_10px_rgba(212,166,90,0.4)] transition-all"
               style={{
-                left: `calc(${effectiveApexInset}% - ${effectiveMarkerGap}px)`,
+                left: `calc(${effectiveApexInset}${effectiveApexUnit} - ${effectiveMarkerGap}px)`,
                 width: effectiveMarkerSize,
                 height: effectiveMarkerSize,
                 marginLeft: -effectiveMarkerSize,
@@ -516,13 +518,13 @@ export function WheelCarousel({
 
           {carouselItems.map((item, index) => {
             const offset = shortestOffset(index, rotation, itemCount);
-            if (Math.abs(offset) > visibleItems + 1) return null;
+            if (Math.abs(offset) > effectiveVisibleItems + 1) return null;
 
             const angle = offset * effectiveSpacing;
             const radians = (angle * Math.PI) / 180;
             const x = -effectiveRadius * (1 - Math.cos(radians));
             const y = effectiveRadius * Math.sin(radians);
-            const distance = Math.min(Math.abs(offset) / visibleItems, 1);
+            const distance = Math.min(Math.abs(offset) / effectiveVisibleItems, 1);
             const opacity = Math.cos((distance * Math.PI) / 2);
             const scale = 1 - Math.min(Math.abs(offset) * 0.04, 0.45);
             const selected = Math.abs(offset) < 0.5;
@@ -539,14 +541,16 @@ export function WheelCarousel({
                   moveBy(delta);
                 }}
                 className={cn(
-                  "pointer-events-auto cursor-pointer absolute top-1/2 origin-left whitespace-nowrap font-medium leading-none tracking-tight transition-colors duration-200",
-                  selected ? "font-bold text-[13px] sm:text-lg scale-105" : "text-xs sm:text-base hover:opacity-90",
+                  "pointer-events-auto cursor-pointer absolute top-1/2 origin-left whitespace-nowrap leading-none tracking-tight transition-colors duration-200",
+                  selected
+                    ? "font-bold text-[12.5px] sm:text-lg scale-[1.02]"
+                    : "text-[11px] sm:text-sm font-medium hover:opacity-90",
                   itemClassName,
                 )}
                 style={{
-                  left: `${effectiveApexInset}%`,
+                  left: `${effectiveApexInset}${effectiveApexUnit}`,
                   color: selected ? palette.selected : palette.text,
-                  opacity: selected ? 1 : Math.max(0.15, opacity),
+                  opacity: selected ? 1 : Math.max(0.18, opacity),
                   transform: `translate(${x}px, ${y}px) translateY(-50%) rotate(${angle}deg) scale(${scale})`,
                 }}
               >
