@@ -45,7 +45,7 @@ export function InstitutionCard({
   return (
     <div
       className={cn(
-        "flex flex-col justify-between p-5 sm:p-6 lg:p-4.5 xl:p-6 w-full h-full rounded-2xl motion-safe:transition-all motion-safe:duration-300",
+        "flex flex-col justify-between p-5 sm:p-6 lg:p-5 xl:p-6 w-full h-full rounded-2xl motion-safe:transition-all motion-safe:duration-300",
         containerClasses,
         className
       )}
@@ -53,7 +53,7 @@ export function InstitutionCard({
       <div>
         {/* Top Header: Number Badge or Icon + Hindi Title */}
         {num ? (
-          <div className="flex items-center gap-2 mb-2.5">
+          <div className="flex items-center gap-2 mb-3">
             <span
               className={cn(
                 "font-mono text-xs font-bold px-2 py-0.5 rounded-full border tracking-wider",
@@ -77,7 +77,7 @@ export function InstitutionCard({
         ) : null}
 
         {/* English Title */}
-        <h4 className={cn("font-serif text-lg font-semibold leading-snug mb-2", titleColorEn)}>
+        <h4 className={cn("font-serif text-lg font-semibold leading-snug mb-2.5", titleColorEn)}>
           {titleEn}
         </h4>
 
@@ -88,15 +88,15 @@ export function InstitutionCard({
           </h5>
         )}
 
-        {/* Tagline with consistent min-height for row-level alignment */}
-        <p className={cn("font-sans text-xs sm:text-sm leading-relaxed mb-4 min-h-[58px] sm:min-h-[66px]", taglineColor)}>
+        {/* Tagline / Description */}
+        <p className={cn("font-sans text-xs sm:text-sm leading-relaxed", taglineColor)}>
           {tagline}
         </p>
       </div>
 
       {/* Capsule Bullets with uniform single-line height matching BilingualPill aesthetic */}
       {bullets.length > 0 && (
-        <div className={cn("pt-4 border-t flex flex-col gap-2 w-full", dividerColor)}>
+        <div className={cn("pt-4 mt-4 border-t flex flex-col gap-2 w-full", dividerColor)}>
           {bullets.map((bullet, idx) => (
             <div
               key={idx}

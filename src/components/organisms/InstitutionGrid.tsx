@@ -19,45 +19,29 @@ export function InstitutionGrid({ variant = "dark", className }: InstitutionGrid
       num: "01",
       titleEn: "Temples & Sanctuaries",
       titleHi: "मंदिर एवं तीर्थ स्थल",
-      tagline: "Synchronizing sanctum aartis, daily rituals, and festival observances to living sunrise time.",
-      bullets: [
-        "Sunrise-based aarti alerts",
-        "Panchang festival calendar",
-        "Sanctum brass casework",
-      ],
+      tagline:
+        "Synchronizing sunrise-based aarti alerts, daily rituals, and Panchang festival observances to living solar time — beautifully encased in handcrafted sanctum bell-brass casework.",
     },
     {
       num: "02",
       titleEn: "Museums & Heritage",
       titleHi: "संग्रहालय एवं धरोहर",
-      tagline: "A functioning astronomical monument celebrating India's sacred prime meridian and horological heritage.",
-      bullets: [
-        "Ujjain 0° meridian showcase",
-        "Interactive visitor display",
-        "Permanent horology exhibit",
-      ],
+      tagline:
+        "A monumental interactive centerpiece showcasing Ujjain's ancient 0° prime meridian and India's living horological science as a permanent visitor exhibit.",
     },
     {
       num: "03",
       titleEn: "Universities & Research",
       titleHi: "विश्वविद्यालय एवं शोध",
-      tagline: "A monumental scientific centerpiece for faculties of astronomy, astrophysics, and Vedic sciences.",
-      bullets: [
-        "Live astronomical algorithms",
-        "Grand foyer installation",
-        "Sidereal research reference",
-      ],
+      tagline:
+        "A scientific foyer installation for astrophysics and astronomical faculties, computing live Surya Siddhanta ephemerides as an authoritative sidereal research reference.",
     },
     {
       num: "04",
       titleEn: "Estates & Collectors",
       titleHi: "भव्य निवास एवं संग्राहक",
-      tagline: "An heirloom architectural timepiece for connoisseurs of timeless horology and cultural distinction.",
-      bullets: [
-        "Wall & pedestal mounts",
-        "Limited artisan edition",
-        "Dedicated curator certificate",
-      ],
+      tagline:
+        "An heirloom architectural timepiece for distinguished private estates, available in custom wall or pedestal mountings with a numbered curator provenance certificate.",
     },
   ];
 
@@ -115,7 +99,6 @@ export function InstitutionGrid({ variant = "dark", className }: InstitutionGrid
             titleEn={seg.titleEn}
             titleHi={seg.titleHi}
             tagline={seg.tagline}
-            bullets={seg.bullets}
             variant={isParchment ? "light" : "dark"}
             className={cn(
               "transition-all duration-300 h-full",
