@@ -3,7 +3,7 @@ import { FaqView } from "@/components/views/FaqView";
 import { MASTER_FAQ_ITEMS } from "@/data/faq-data";
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions · Horological & Astronomical Knowledge Base",
+  title: "Frequently Asked Questions",
   description:
     "Authoritative answers on the Vikramaditya Vedic Clock, 0° Ujjain meridian, offline microcontroller engineering, and temple commissions.",
   alternates: {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { GuideView } from "@/components/views/GuideView";
 
 export const metadata: Metadata = {
-  title: "Panchang & Muhurta Guide · Astronomy of Vedic Timekeeping",
+  title: "Panchang & Muhurta Guide",
   description:
     "Master guide to Vedic timekeeping. Learn the five limbs of Panchang (Tithi, Vaar, Nakshatra, Yoga, Karana), 30 Muhurtas, and sidereal zodiac astronomy.",
   alternates: {

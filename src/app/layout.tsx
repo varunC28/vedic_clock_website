@@ -23,7 +23,7 @@ const notoDevanagari = Noto_Sans_Devanagari({
 export const metadata: Metadata = {
   metadataBase: new URL("https://thevedicghadi.in"),
   title: {
-    default: "Vikramaditya Vedic Clock | World's Premier Astronomical Timepiece",
+    default: "Vikramaditya Vedic Clock | Living Astronomical Timepiece",
     template: "%s | Vikramaditya Vedic Clock",
   },
   description:

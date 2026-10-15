@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ContactView } from "@/components/views/ContactView";
 
 export const metadata: Metadata = {
-  title: "Acquisitions & Institutional Enquiries · Contact Us",
+  title: "Acquisitions & Inquiries",
   description:
     "Connect with the Vikramaditya Vedic Clock team. Inquire about bespoke horological commissions, temple dials, and institutional acquisitions.",
   alternates: {

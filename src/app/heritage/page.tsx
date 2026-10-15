@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { HeritageView } from "@/components/views/HeritageView";
 
 export const metadata: Metadata = {
-  title: "Sacred Meridian of Ujjain & Historical Heritage · Avanti 0°",
+  title: "0° Prime Meridian of Ujjain",
   description:
     "Explore ancient Indian astronomy. Why Ujjain was recognized as the 0° prime meridian millennia before Greenwich, and Varahamihira's legacy.",
   alternates: {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { CatalogueView } from "@/components/views/CatalogueView";
 
 export const metadata: Metadata = {
-  title: "Artisan Timepieces & Institutional Commissions · Catalogue",
+  title: "Editions & Specifications",
   description:
     "Official specification monograph and editions catalogue for the Vikramaditya Vedic Clock. Sanctum wall mounts and bespoke commissions in bell brass.",
   alternates: {

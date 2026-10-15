@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { BlogView } from "@/components/views/BlogView";
 
 export const metadata: Metadata = {
-  title: "Chronicles of Celestial Horology · Research & Publications",
+  title: "Chronicles of Vedic Time",
   description:
     "Scholarly publications and essays on ancient Indian astronomy, Ujjain prime meridian, Surya Siddhanta calculations, and circadian Vedic time.",
   alternates: {

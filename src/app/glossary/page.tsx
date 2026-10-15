@@ -3,7 +3,7 @@ import { GlossaryView } from "@/components/views/GlossaryView";
 import { VEDIC_GLOSSARY_TERMS } from "@/data/vedic-glossary";
 
 export const metadata: Metadata = {
-  title: "Vedic Horology Lexicon & Glossary | वैदिक कालगणना शब्दकोश",
+  title: "Vedic Horology Lexicon",
   description:
     "Explore 42 terms of ancient Indian timekeeping: Ghati, Pala, Muhurta, Dinamana, Ayanamsha, and Panchang with formulas and classical citations.",
   alternates: {
