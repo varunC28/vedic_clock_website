@@ -417,17 +417,39 @@ export function HeritageView() {
       </main>
 
       {/* ═══════════════════════════════════════════════════════
-          SECTION 3: CHRONOLOGY TIMELINE (ALWAYS DARK FOR ALTERNATION)
+          SECTION 3: CHRONOLOGY TIMELINE
          ═══════════════════════════════════════════════════════ */}
-      <section className="w-full bg-[#03060E] text-ivory transition-colors duration-500 pt-16 sm:pt-20 pb-8 overflow-hidden border-y border-[#D4A65A]/20">
+      <section
+        className={cn(
+          "w-full transition-colors duration-500 pt-16 sm:pt-20 pb-8 overflow-hidden border-y",
+          isParchment
+            ? "bg-[#FAF6F0] text-[#2D1B0E] border-[#DFCBB5]"
+            : "bg-[#03060E] text-ivory border-[#D4A65A]/20"
+        )}
+      >
         <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-12 mb-8 sm:mb-12 flex flex-col gap-1 text-left">
-          <span className="font-mono text-xs uppercase tracking-wider text-[#D4A65A]">
+          <span
+            className={cn(
+              "font-mono text-xs uppercase tracking-wider",
+              isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
+            )}
+          >
             Chronological Epochs · 1500 BCE to 2026 CE
           </span>
-          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal tracking-tight text-[#FBF5E7]">
+          <h2
+            className={cn(
+              "font-serif text-2xl sm:text-3xl lg:text-4xl font-normal tracking-tight",
+              isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
+            )}
+          >
             The Evolution of Vedic Horology
           </h2>
-          <p className="font-sans text-xs sm:text-sm max-w-xl mt-1 text-ivory/70 leading-relaxed">
+          <p
+            className={cn(
+              "font-sans text-xs sm:text-sm max-w-xl mt-1 leading-relaxed",
+              isParchment ? "text-[#6E5540]" : "text-ivory/70"
+            )}
+          >
             Trace the intellectual continuum across millennia, from Rigvedic solar mathematics to modern monumental tower horology.
           </p>
         </div>
@@ -437,18 +459,18 @@ export function HeritageView() {
           <Timeline
             title="Vedic Chronology"
             periodLabel="1500 BCE to 2026 CE"
-            backgroundColor="#03060E"
-            textColor="#FBF5E7"
-            mutedTextColor="rgba(251, 245, 231, 0.7)"
-            activeColor="#D4A65A"
+            backgroundColor={isParchment ? "#FAF6F0" : "#03060E"}
+            textColor={isParchment ? "#2D1B0E" : "#FBF5E7"}
+            mutedTextColor={isParchment ? "#6E5540" : "rgba(251, 245, 231, 0.7)"}
+            activeColor={isParchment ? "#B8873D" : "#D4A65A"}
             imageUrl="/assets/images/ancient-temple-celestial-wheel.webp?v=2"
             imageAlt="Ancient Temple Beneath the Celestial Wheel - Avanti Meridian"
           />
         </div>
       </section>
 
-      {/* ── Bottom Editorial Container (LIGHT in light mode / DARK in dark mode) ── */}
-      <main className="relative z-10 pt-16 sm:pt-20 pb-24 px-5 sm:px-8 lg:px-12 max-w-5xl mx-auto flex flex-col gap-20 sm:gap-24 text-left">
+      {/* ── Bottom Editorial Container ── */}
+      <div className="relative z-10 pt-16 sm:pt-20 pb-24 px-5 sm:px-8 lg:px-12 max-w-5xl mx-auto flex flex-col gap-20 sm:gap-24 text-left">
 
         {/* ═══════════════════════════════════════════════════════
             SECTION 4: SUN-ARC DIURNAL DIAL (HOVER TO EXPLORE)
@@ -694,10 +716,10 @@ export function HeritageView() {
           </div>
         </section>
 
-      </main>
+      </div>
 
-      {/* ── Grounded Luxury Footer [ALWAYS DARK] ── */}
-      <Footer variant="dark" />
+      {/* ── Grounded Luxury Footer ── */}
+      <Footer variant={isParchment ? "parchment" : "dark"} />
     </div>
   );
 }

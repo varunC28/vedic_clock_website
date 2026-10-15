@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, useRef } from "react";
+import { flushSync } from "react-dom";
 
 export type Theme = "cosmic" | "parchment";
 
@@ -75,8 +76,16 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
     // 2. Modern Native View Transition API (Chrome, Edge, Safari 18+)
     if (typeof document !== "undefined" && "startViewTransition" in document) {
+      const savedScrollY = typeof window !== "undefined" ? window.scrollY : 0;
+
       const transition = (document as any).startViewTransition(() => {
-        setTheme(next);
+        flushSync(() => {
+          setTheme(next);
+        });
+        // Anchor scroll position to prevent layout shifts or pin-spacer recalculation jumps
+        if (typeof window !== "undefined" && window.scrollY !== savedScrollY) {
+          window.scrollTo({ top: savedScrollY, behavior: "instant" });
+        }
       });
 
       transition.ready.then(() => {
@@ -88,7 +97,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
             ],
           },
           {
-            duration: 1300, // Silky 1.3s horological reveal
+            duration: 500, // Silky, responsive 500ms horological reveal
             easing: "cubic-bezier(0.22, 1, 0.36, 1)", // Luxury deceleration
             pseudoElement: "::view-transition-new(root)",
           }
@@ -107,11 +116,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
     setTimeout(() => {
       setTheme(next);
-    }, 450);
+    }, 250);
 
     setTimeout(() => {
       setFallbackRipple(null);
-    }, 1300);
+    }, 600);
   };
 
   return (

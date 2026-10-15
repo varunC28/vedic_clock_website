@@ -334,18 +334,7 @@ export default function Timeline({
     const t3 = setTimeout(refreshTrigger, 800);
     const t4 = setTimeout(refreshTrigger, 1500);
 
-    // 4. ResizeObserver to track layout shifts above the timeline without recursive body loop
-    let ro: ResizeObserver | null = null;
-    if (typeof ResizeObserver !== "undefined" && typeof document !== "undefined") {
-      ro = new ResizeObserver(() => {
-        refreshTrigger();
-      });
-      if (section.parentElement) {
-        ro.observe(section.parentElement);
-      }
-    }
-
-    // 5. Window event listeners
+    // 4. Window event listeners
     window.addEventListener("resize", refreshTrigger);
     window.addEventListener("orientationchange", refreshTrigger);
     window.addEventListener("load", refreshTrigger);
@@ -356,7 +345,6 @@ export default function Timeline({
       clearTimeout(t2);
       clearTimeout(t3);
       clearTimeout(t4);
-      if (ro) ro.disconnect();
       window.removeEventListener("resize", refreshTrigger);
       window.removeEventListener("orientationchange", refreshTrigger);
       window.removeEventListener("load", refreshTrigger);
