@@ -503,88 +503,78 @@ export function HeritageView() {
             </p>
           </div>
 
-          {/* Interactive Celestial Ribbon */}
-          <div
-            className={cn(
-              "p-6 sm:p-8 rounded-2xl border transition-all duration-300",
-              isParchment
-                ? "bg-[#F2ECE1]/60 border-[#DFCBB5]"
-                : "bg-[#080E1C]/80 border-[#D4A65A]/25"
-            )}
-          >
-            {/* Phase Selector Chips */}
-            <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-6">
-              {ARC_PHASES.map((phase) => {
-                const isActive = activePhase.id === phase.id;
-                return (
-                  <button
-                    key={phase.id}
-                    type="button"
-                    onMouseEnter={() => setActivePhase(phase)}
-                    onClick={() => setActivePhase(phase)}
-                    className={cn(
-                      "px-3.5 py-2 rounded-xl text-xs font-sans transition-all cursor-pointer flex items-center gap-2 border",
-                      isActive
-                        ? isParchment
-                          ? "bg-[#482D1C] text-[#FAF6F0] border-[#482D1C] shadow-sm"
-                          : "bg-[#D4A65A] text-[#03060E] border-[#D4A65A] font-semibold shadow-sm"
-                        : isParchment
-                          ? "bg-[#FAF6F0] text-[#5C4533] border-[#DFCBB5] hover:border-[#B8873D]"
-                          : "bg-[#060B18] text-ivory/70 border-[#D4A65A]/20 hover:border-[#D4A65A]/40"
-                    )}
-                  >
-                    <span>{phase.icon}</span>
-                    <span className="font-medium">{phase.nameEn}</span>
-                    <span className="opacity-60 text-[10px] hidden sm:inline">{phase.timeHint}</span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Active Phase Dynamic Spotlight */}
-            <div
-              className={cn(
-                "p-6 rounded-xl border transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6 text-left",
-                isParchment
-                  ? "bg-[#FAF6F0] border-[#DFCBB5]"
-                  : "bg-[#060B18] border-[#D4A65A]/30"
-              )}
-            >
-              <div className="flex flex-col gap-1.5 max-w-xl">
-                <div className="flex items-center gap-2">
-                  <span className="text-xl">{activePhase.icon}</span>
-                  <h3
-                    className={cn(
-                      "font-sans text-lg font-bold",
-                      isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
-                    )}
-                  >
-                    {activePhase.nameEn} · <span className="font-hindi font-medium">{activePhase.nameHi}</span>
-                  </h3>
-                </div>
-
-                <p
+          {/* Phase Selector Chips (Blended directly into background) */}
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+            {ARC_PHASES.map((phase) => {
+              const isActive = activePhase.id === phase.id;
+              return (
+                <button
+                  key={phase.id}
+                  type="button"
+                  onMouseEnter={() => setActivePhase(phase)}
+                  onClick={() => setActivePhase(phase)}
                   className={cn(
-                    "font-sans text-sm leading-relaxed",
-                    isParchment ? "text-[#5C4533]" : "text-ivory/80"
+                    "px-3.5 sm:px-4 py-2 rounded-xl text-xs font-sans transition-all duration-300 cursor-pointer flex items-center gap-2 border",
+                    isActive
+                      ? isParchment
+                        ? "bg-[#482D1C] text-[#FAF6F0] border-[#482D1C] shadow-sm font-medium"
+                        : "bg-gradient-to-r from-[#B8873D] to-[#D4A65A] text-[#03060E] border-[#D4A65A] font-semibold shadow-md shadow-[#D4A65A]/20"
+                      : isParchment
+                        ? "bg-[#FAF6F0]/80 text-[#5C4533] border-[#DFCBB5] hover:border-[#B8873D] hover:bg-[#FAF6F0]"
+                        : "bg-[#060B18]/60 text-ivory/70 border-white/10 hover:border-[#D4A65A]/40 hover:text-ivory hover:bg-white/[0.04]"
                   )}
                 >
-                  {activePhase.summary}
-                </p>
+                  <span className="text-sm">{phase.icon}</span>
+                  <span className="font-medium">{phase.nameEn}</span>
+                  <span className="opacity-60 text-[10px] hidden sm:inline">{phase.timeHint}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Active Phase Dynamic Spotlight (Transparent glass card blended into background) */}
+          <div
+            className={cn(
+              "p-6 sm:p-7 rounded-2xl border transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6 text-left",
+              isParchment
+                ? "border-[#DFCBB5] bg-gradient-to-b from-[#FAF6F0]/60 to-transparent shadow-sm"
+                : "border-[#D4A65A]/20 bg-gradient-to-b from-white/[0.03] to-transparent backdrop-blur-sm"
+            )}
+          >
+            <div className="flex flex-col gap-1.5 max-w-xl">
+              <div className="flex items-center gap-2">
+                <span className="text-xl">{activePhase.icon}</span>
+                <h3
+                  className={cn(
+                    "font-sans text-lg font-bold",
+                    isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
+                  )}
+                >
+                  {activePhase.nameEn} · <span className="font-hindi font-medium">{activePhase.nameHi}</span>
+                </h3>
               </div>
 
-              {/* Pill Badge */}
-              <div
+              <p
                 className={cn(
-                  "shrink-0 px-4 py-2.5 rounded-xl border flex flex-col items-start md:items-end text-xs",
-                  isParchment
-                    ? "bg-[#F2ECE1] border-[#DFCBB5] text-[#8C5D33]"
-                    : "bg-[#0B1220] border-[#D4A65A]/30 text-[#D4A65A]"
+                  "font-sans text-sm leading-relaxed",
+                  isParchment ? "text-[#5C4533]" : "text-ivory/80"
                 )}
               >
-                <span className="font-mono text-[10px] uppercase tracking-wider opacity-70">Cosmic Quality</span>
-                <span className="font-medium font-sans mt-0.5">{activePhase.nature}</span>
-              </div>
+                {activePhase.summary}
+              </p>
+            </div>
+
+            {/* Pill Badge */}
+            <div
+              className={cn(
+                "shrink-0 px-4 py-2.5 rounded-xl border flex flex-col items-start md:items-end text-xs transition-colors",
+                isParchment
+                  ? "bg-transparent border-[#DFCBB5] text-[#8C5D33]"
+                  : "bg-transparent border-[#D4A65A]/25 text-[#D4A65A]"
+              )}
+            >
+              <span className="font-mono text-[10px] uppercase tracking-wider opacity-70">Cosmic Quality</span>
+              <span className="font-medium font-sans mt-0.5">{activePhase.nature}</span>
             </div>
           </div>
         </section>
