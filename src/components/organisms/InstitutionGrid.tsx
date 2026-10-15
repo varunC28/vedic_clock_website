@@ -71,10 +71,10 @@ export function InstitutionGrid({ variant = "dark", className }: InstitutionGrid
     },
     {
       num: "03",
-      titleEn: "Universities & Research",
-      titleHi: "विश्वविद्यालय एवं शोध",
+      titleEn: "Universities",
+      titleHi: "विश्वविद्यालय",
       tagline:
-        "An iconic scientific centerpiece for astrophysics atriums, planetariums, and mathematics faculties — computing live Surya Siddhanta ephemerides, Nakshatra transits, and Ujjain zero-meridian sidereal coordinates as an active pedagogical research reference.",
+        "An iconic scientific centerpiece for university rotundas, campus atriums, and astronomy faculties — computing live Surya Siddhanta ephemerides, Nakshatra transits, and Ujjain zero-meridian sidereal coordinates as an active pedagogical instrument.",
     },
     {
       num: "04",
@@ -140,13 +140,20 @@ export function InstitutionGrid({ variant = "dark", className }: InstitutionGrid
         )}
       />
 
-      {/* ── 4 Segment Grid (Equal Height Cards & Rows with Staggered Reveal) ─ */}
+      {/* ── 4 Segment Grid (Blended Editorial Layout with Staggered Reveal) ─ */}
       <div
         ref={gridContainerRef}
-        className="relative z-10 w-full max-w-6xl xl:max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 xl:gap-6 items-stretch"
+        className="relative z-10 w-full max-w-6xl xl:max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 xl:gap-8 items-start"
       >
-        {segments.map((seg) => (
-          <div key={seg.num} className="institution-card-anim h-full">
+        {segments.map((seg, idx) => (
+          <div
+            key={seg.num}
+            className={cn(
+              "institution-card-anim h-full flex flex-col",
+              idx !== 0 && "lg:border-l lg:border-white/[0.08] lg:pl-6 xl:pl-8",
+              isParchment && idx !== 0 && "lg:border-l lg:border-[#3D2A1A]/10 lg:pl-6 xl:pl-8"
+            )}
+          >
             <InstitutionCard
               num={seg.num}
               titleEn={seg.titleEn}
