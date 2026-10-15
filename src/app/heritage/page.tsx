@@ -5,6 +5,19 @@ export const metadata: Metadata = {
   title: "0° Prime Meridian of Ujjain",
   description:
     "Explore ancient Indian astronomy. Why Ujjain was recognized as the 0° prime meridian millennia before Greenwich, and Varahamihira's legacy.",
+  keywords: [
+    "ujjain prime meridian",
+    "vikram samvat",
+    "calendar vikram samvat",
+    "indian calendar",
+    "ancient indian timekeeping",
+    "vedic timekeeping system",
+    "surya siddhanta",
+    "varahamihira",
+    "avanti 0 meridian",
+    "ujjain vedh shala",
+    "history of indian horology",
+  ],
   alternates: {
     canonical: "/heritage",
     languages: {

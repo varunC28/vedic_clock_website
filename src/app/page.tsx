@@ -5,6 +5,17 @@ export const metadata: Metadata = {
   title: "The Living Geometry of Time | Vikramaditya Vedic Clock",
   description:
     "Experience the premier Vedic timepiece calibrated to Ujjain 0° Prime Meridian. Features a living 30-Muhurta diurnal dial, Panchang, and sidereal solar transit.",
+  keywords: [
+    "Vedic Clock",
+    "Vikramaditya Vedic Clock",
+    "vedic clock online",
+    "vaidik clock",
+    "panchang clock",
+    "vedic astronomical clock",
+    "living astronomical timepiece",
+    "ujjain prime meridian clock",
+    "panchang clock india",
+  ],
   alternates: {
     canonical: "/",
     languages: {
@@ -50,6 +61,10 @@ const homeJsonLd = {
       alternateName: [
         "विक्रमादित्य वैदिक घड़ी",
         "Vedic Clock India",
+        "Vedic Clock Online",
+        "Vaidik Clock",
+        "Panchang Clock",
+        "Vedic Astronomical Clock",
         "Vikramaditya Vedic Horological Timepiece",
       ],
       image: [

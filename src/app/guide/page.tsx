@@ -5,6 +5,22 @@ export const metadata: Metadata = {
   title: "Panchang & Muhurta Guide",
   description:
     "Master guide to Vedic timekeeping. Learn the five limbs of Panchang (Tithi, Vaar, Nakshatra, Yoga, Karana), 30 Muhurtas, and sidereal zodiac astronomy.",
+  keywords: [
+    "hindu calendar",
+    "aaj ka panchang",
+    "panchang for today",
+    "panchang",
+    "hindi panchang",
+    "panchang calendar",
+    "calendar tithi",
+    "dainik panchang",
+    "today tithi and panchang",
+    "panchang calculator",
+    "30 muhurtas",
+    "tithi",
+    "nakshatra",
+    "hindu calendar online",
+  ],
   alternates: {
     canonical: "/guide",
     languages: {

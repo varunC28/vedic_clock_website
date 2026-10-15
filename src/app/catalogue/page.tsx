@@ -5,6 +5,17 @@ export const metadata: Metadata = {
   title: "Editions & Specifications",
   description:
     "Official specification monograph and editions catalogue for the Vikramaditya Vedic Clock. Sanctum wall mounts and bespoke commissions in bell brass.",
+  keywords: [
+    "vedic clock price in india",
+    "vedic clock for temples",
+    "panchang clock",
+    "vedic astronomical clock",
+    "sanctum wall mount clock",
+    "temple clock india",
+    "vedic clock editions",
+    "vikramaditya clock price",
+    "vedic clock specification",
+  ],
   alternates: {
     canonical: "/catalogue",
     languages: {
