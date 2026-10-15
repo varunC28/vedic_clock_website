@@ -49,17 +49,7 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // 1. Next.js Built Chunks & Static JS/CSS
-      {
-        source: '/_next/static/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      // 2. All Subdirectory Assets (/assets/...)
+      // 1. All Subdirectory Assets (/assets/...)
       {
         source: '/assets/:path*',
         headers: [
