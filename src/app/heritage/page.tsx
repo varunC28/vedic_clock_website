@@ -153,7 +153,7 @@ const heritageJsonLd = {
           url: "https://thevedicghadi.in/assets/icon.png",
         },
       },
-      image: "https://thevedicghadi.in/assets/blog/ujjain-zero-meridian.jpg",
+      image: "https://thevedicghadi.in/assets/blog/ujjain-zero-meridian.webp",
     },
   ],
 };

@@ -13,8 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 1.0,
       images: [
-        `${baseUrl}/assets/blog/shastras-to-silicon.jpg`,
-        `${baseUrl}/assets/blog/ujjain-zero-meridian.jpg`,
+        `${baseUrl}/assets/blog/shastras-to-silicon.webp`,
+        `${baseUrl}/assets/blog/ujjain-zero-meridian.webp`,
       ],
     },
     {
@@ -23,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.9,
       images: [
-        `${baseUrl}/assets/blog/ujjain-zero-meridian.jpg`,
+        `${baseUrl}/assets/blog/ujjain-zero-meridian.webp`,
       ],
     },
     {
@@ -48,7 +48,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
       images: [
-        `${baseUrl}/assets/blog/shastras-to-silicon.jpg`,
+        `${baseUrl}/assets/blog/shastras-to-silicon.webp`,
       ],
     },
     {
@@ -57,8 +57,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 0.8,
       images: [
-        `${baseUrl}/assets/blog/shastras-to-silicon.jpg`,
-        `${baseUrl}/assets/blog/ujjain-zero-meridian.jpg`,
+        `${baseUrl}/assets/blog/shastras-to-silicon.webp`,
+        `${baseUrl}/assets/blog/ujjain-zero-meridian.webp`,
       ],
     },
     {
@@ -67,7 +67,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
       images: [
-        `${baseUrl}/assets/blog/shastras-to-silicon.jpg`,
+        `${baseUrl}/assets/blog/shastras-to-silicon.webp`,
       ],
     },
     {
@@ -93,7 +93,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     images: [
       article.image
         ? `${baseUrl}${article.image}`
-        : `${baseUrl}/assets/blog/shastras-to-silicon.jpg`,
+        : `${baseUrl}/assets/blog/shastras-to-silicon.webp`,
     ],
   }));
 

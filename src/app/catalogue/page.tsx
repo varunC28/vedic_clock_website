@@ -74,7 +74,7 @@ const catalogueJsonLd = {
     {
       "@type": "Product",
       name: "Vikramaditya Vedic Clock",
-      image: "https://thevedicghadi.in/assets/blog/shastras-to-silicon.jpg",
+      image: "https://thevedicghadi.in/assets/blog/shastras-to-silicon.webp",
       description:
         "Handcrafted astronomical horological instrument calculating real-time Panchang, 30 dynamic Muhurtas, and sidereal zodiac positions calibrated to the ancient Ujjain 0° Prime Meridian.",
       brand: {

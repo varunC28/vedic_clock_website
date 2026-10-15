@@ -68,8 +68,8 @@ const homeJsonLd = {
         "Vikramaditya Vedic Horological Timepiece",
       ],
       image: [
-        "https://thevedicghadi.in/assets/blog/shastras-to-silicon.jpg",
-        "https://thevedicghadi.in/assets/blog/ujjain-zero-meridian.jpg",
+        "https://thevedicghadi.in/assets/blog/shastras-to-silicon.webp",
+        "https://thevedicghadi.in/assets/blog/ujjain-zero-meridian.webp",
       ],
       description:
         "Handcrafted astronomical horological instrument calibrated to the historic 0° Prime Meridian of Ujjain. Computes real-time Panchang (Tithi, Vaar, Nakshatra, Yoga, Karana), 30 dynamic diurnal Muhurtas, and sidereal solar transit 100% offline via embedded Surya Siddhanta ephemerides.",

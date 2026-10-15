@@ -18,7 +18,7 @@ const fraunces = Fraunces({
 
 const notoDevanagari = Noto_Sans_Devanagari({ 
   subsets: ["devanagari"], 
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "600", "700"],
   variable: "--font-noto-devanagari",
   display: "swap",
 });
@@ -153,7 +153,7 @@ const rootJsonLd = {
         url: "https://thevedicghadi.in/assets/icon.png",
         caption: "Vikramaditya Vedic Clock Emblem",
       },
-      image: "https://thevedicghadi.in/assets/blog/shastras-to-silicon.jpg",
+      image: "https://thevedicghadi.in/assets/blog/shastras-to-silicon.webp",
       description:
         "World's premier precision astronomical Vedic timepiece calibrating living 30-Muhurta diurnal cycles, Panchang coordinates, and sidereal solar transit from the ancient 0° prime meridian of Ujjain.",
       foundingLocation: {
