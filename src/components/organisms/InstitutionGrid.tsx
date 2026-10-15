@@ -67,21 +67,21 @@ export function InstitutionGrid({ variant = "dark", className }: InstitutionGrid
       titleEn: "Museums & Heritage",
       titleHi: "संग्रहालय एवं धरोहर",
       tagline:
-        "A monumental interactive centerpiece showcasing Ujjain's ancient 0° prime meridian and India's living horological science as a permanent visitor exhibit.",
+        "A monumental interactive centerpiece showcasing Ujjain's ancient zero meridian and Vedic horological science — permanently exhibited for cultural institutions and global visitors.",
     },
     {
       num: "03",
       titleEn: "Universities",
       titleHi: "विश्वविद्यालय",
       tagline:
-        "An iconic scientific centerpiece for university rotundas, campus atriums, and astronomy faculties — computing live Surya Siddhanta ephemerides, Nakshatra transits, and Ujjain zero-meridian sidereal coordinates as an active pedagogical instrument.",
+        "A scientific foyer installation for university atriums and astronomy faculties — computing live Surya Siddhanta ephemerides and solar coordinates as an active pedagogical instrument.",
     },
     {
       num: "04",
       titleEn: "Estates & Collectors",
       titleHi: "भव्य निवास एवं संग्राहक",
       tagline:
-        "An heirloom architectural timepiece for distinguished private estates, available in custom wall or pedestal mountings with a numbered curator provenance certificate.",
+        "An heirloom architectural timepiece for distinguished private estates — custom-crafted in wall or pedestal bell-brass casework with a numbered curator provenance certificate.",
     },
   ];
 
