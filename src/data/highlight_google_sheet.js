@@ -1,37 +1,30 @@
 /**
  * ══════════════════════════════════════════════════════════════════
- * GOOGLE APPS SCRIPT: AUTO-HIGHLIGHT & ENRICH SEO KEYWORDS
+ * GOOGLE APPS SCRIPT: PURE WHITE + GREEN USED KEYWORDS ONLY
  * ══════════════════════════════════════════════════════════════════
  * 
- * HOW TO RUN IN 30 SECONDS:
- * 1. Open your Google Sheet:
- *    https://docs.google.com/spreadsheets/d/18mwgxwrvCUQDTd4t2bUIugA5NGwbn81k9OY9aOmiPIc/edit
- * 2. In the top navigation menu, click:
- *    Extensions > Apps Script
- * 3. Delete any default placeholder code (e.g., function myFunction()),
- *    paste this ENTIRE script, and click the Save icon (💾).
- * 4. Click the "Run" button (▶) at the top toolbar.
- *    (If Google asks for authorization, click Advanced > Go to Untitled project).
- * 5. Return to your Google Sheet tab:
- *    - Row headers will have "Website Status" and "Pages Found" added.
- *    - 26 Exact Matches are highlighted in Soft Pastel Green (#D4EDDA).
- *    - 104 Entity Matches are highlighted in Soft Pastel Gold/Yellow (#FFF3CD).
- *    - 81 Archival/Competitor queries are marked in Neutral Light Gray (#F8F9FA).
- *    - 35 Brand New High-Value Keywords from your website are appended
- *      at the bottom and highlighted in Soft Pastel Purple (#E2D9F3)!
+ * WHAT THIS SCRIPT DOES:
+ * - Makes all rows clean WHITE (#FFFFFF) by default.
+ * - Highlights ONLY the SEO keywords actively used on the website in GREEN (#D4EDDA).
+ * - Appends the 35 new keywords from the website in GREEN at the bottom.
+ * 
+ * HOW TO RUN:
+ * 1. Open your copy of the sheet (File > Make a copy).
+ * 2. Click Extensions > Apps Script.
+ * 3. Paste this script and click "Run" (▶).
  */
 
-function highlightAndEnrichKeywords() {
+function highlightUsedKeywordsGreenOnly() {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   const lastRow = sheet.getLastRow();
   
-  // 1. Setup Status and Location Headers in Columns H and I
+  // 1. Setup Status and Location Headers in Columns B and C (or append)
   sheet.getRange(1, 8).setValue("Website Status");
   sheet.getRange(1, 9).setValue("Pages Found / Notes");
   sheet.getRange(1, 1, 1, 9).setFontWeight("bold");
 
-  // 2. Exact Matches (26 Keywords)
-  const EXACT_LIST = [
+  // 2. Active keywords used on website
+  const USED_KEYWORDS = new Set([
   "hindu calendar",
   "aaj ka panchang",
   "panchang for today",
@@ -58,125 +51,12 @@ function highlightAndEnrichKeywords() {
   "vedic clock price in india",
   "vedic clock for temples",
   "vedic timekeeping system"
-];
-  const exactSet = new Set(EXACT_LIST);
+]);
 
-  // 3. Entity / Covered in Engine (104 Keywords)
-  const ENTITY_LIST = [
-  "calendar hindu calendar",
-  "date of deepavali",
-  "panchang drik",
-  "hindu panchang",
-  "2025 ka calendar",
-  "aaj ka hindi panchang",
-  "calendar hindu panchang",
-  "date of holi",
-  "drik panchang for today",
-  "ganesh chaturthi dates",
-  "hindi panchang today",
-  "hindu calendar month",
-  "hindu calendar of this month",
-  "hindu calendar this month",
-  "hindu calendar today",
-  "hindu panchang today",
-  "hindu tithi today",
-  "kal ka panchang",
-  "m panchang",
-  "navratri dates",
-  "panchang tithi today",
-  "tithi panchang today",
-  "tithi today panchang",
-  "today s panchang",
-  "today tithi hindi",
-  "today tithi in panchang",
-  "hindu festivals",
-  "2024 ka calendar",
-  "aaj ka hindu panchang",
-  "aaj ka panchang tithi",
-  "aaj ki tithi panchang",
-  "aaj panchang",
-  "according to hindu calendar what is today",
-  "all hindu festival",
-  "as per hindu calendar what is today",
-  "calendar hindi",
-  "calendar panchangam",
-  "date panchang today",
-  "day panchang",
-  "deepavali calendar",
-  "diwali calendar",
-  "drik panchang calendar",
-  "drik panchang com",
-  "drik panchang hindu calendar",
-  "drik panchang in hindi",
-  "drik panchang rashi",
-  "dussehra festival date",
-  "e panchang",
-  "hindi month calendar",
-  "hindi month today",
-  "hindi months of the year",
-  "hindi panchang calendar",
-  "hindi panchang today tithi",
-  "hindi panchang tomorrow",
-  "hindi tithi",
-  "hindu almanac",
-  "hindu calendar 2024",
-  "hindu calendar date today",
-  "hindu calendar day today",
-  "hindu calendar drik panchang",
-  "hindu calendar festival",
-  "hindu calendar new year",
-  "hindu calendar tithi",
-  "hindu calendar tithi today",
-  "hindu calendar year",
-  "hindu date today",
-  "hindu festival today",
-  "hindu festival tomorrow",
-  "hindu months",
-  "hindu samvat calendar",
-  "holi calendar",
-  "indian calendar date today",
-  "lakshmi calendar",
-  "my panchang",
-  "online panchang",
-  "online panchangam",
-  "panchang rashi",
-  "panchang tomorrow in hindi",
-  "this year deepavali date",
-  "this year holi date",
-  "to day panchang",
-  "today calendar hindi",
-  "today date according to hindu calendar",
-  "today tithi as per hindu calendar",
-  "today tithi panchang in hindi",
-  "today vikram samvat",
-  "today's tithi according to hindu calendar",
-  "today's tithi according to hindu panchang",
-  "tomorrow panchang in hindi",
-  "tomorrow tithi panchang",
-  "upcoming hindu festival",
-  "vedic astrology calendar",
-  "vikram calendar",
-  "vikram samvat today",
-  "vedic panchang",
-  "panchang vedic astrology",
-  "vedic hindu panchang",
-  "vedic panchang 2022",
-  "vedic panchang in hindi",
-  "vedic panchang today",
-  "vedic rishi panchang",
-  "vedic time panchang",
-  "ancient indian timekeeping system",
-  "vedic calendar and panchang"
-];
-  const entitySet = new Set(ENTITY_LIST);
+  const COLOR_WHITE = "#FFFFFF";
+  const COLOR_GREEN = "#D4EDDA";
 
-  // 4. Color Palette
-  const COLOR_EXACT = "#D4EDDA";   // Soft Green
-  const COLOR_ENTITY = "#FFF3CD";  // Soft Yellow/Gold
-  const COLOR_UNUSED = "#F8F9FA";  // Neutral Gray
-  const COLOR_NEW = "#E2D9F3";     // Soft Purple
-
-  // 5. Update and color-code existing rows
+  // 3. Clear all colors to White, and mark used rows in Green
   if (lastRow > 1) {
     const dataRange = sheet.getRange(2, 1, lastRow - 1, 9);
     const values = dataRange.getValues();
@@ -186,424 +66,398 @@ function highlightAndEnrichKeywords() {
       const kw = String(values[i][0]).trim().toLowerCase();
       if (!kw) continue;
 
-      if (exactSet.has(kw)) {
-        values[i][7] = "USED (Exact Match)";
-        values[i][8] = "Live in Website Content & SEO Meta";
-        for (let c = 0; c < 9; c++) backgrounds[i][c] = COLOR_EXACT;
-      } else if (entitySet.has(kw)) {
-        values[i][7] = "USED (Entity / Engine)";
-        values[i][8] = "Calculated Live in Panchang Engine & Festivals";
-        for (let c = 0; c < 9; c++) backgrounds[i][c] = COLOR_ENTITY;
+      if (USED_KEYWORDS.has(kw)) {
+        values[i][7] = "USED";
+        values[i][8] = "Active on Website";
+        for (let c = 0; c < 9; c++) backgrounds[i][c] = COLOR_GREEN;
       } else {
-        values[i][7] = "NOT USED (Archival / Competitor)";
-        values[i][8] = "Archival Year Query or Competitor Brand";
-        for (let c = 0; c < 9; c++) backgrounds[i][c] = COLOR_UNUSED;
+        values[i][7] = "NOT USED";
+        values[i][8] = "-";
+        for (let c = 0; c < 9; c++) backgrounds[i][c] = COLOR_WHITE;
       }
     }
     dataRange.setValues(values);
     dataRange.setBackgrounds(backgrounds);
   }
 
-  // 6. Append New High-Value Keywords from Website (35 Keywords)
-  const newRows = [
+  // 4. Append the 35 New Website Keywords in Green
+  const newKeywords = [
   [
     "vedic horology",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Heritage, Clock, Home",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Core Platform / Scientific Discipline",
-    "NEW (Added from Website)",
-    "Heritage, Clock, Home"
+    "Core Platform / Scientific Discipline"
   ],
   [
     "zero meridian of ujjain",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Heritage, Clock",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Historical / Geographic AEO",
-    "NEW (Added from Website)",
-    "Heritage, Clock"
+    "Historical / Geographic AEO"
   ],
   [
     "prime meridian of ujjain",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Heritage, Meta SEO",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Geographic / Historical SEO",
-    "NEW (Added from Website)",
-    "Heritage, Meta SEO"
+    "Geographic / Historical SEO"
   ],
   [
     "avantika meridian",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Heritage, Guide",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Historical Astronomical Meridian",
-    "NEW (Added from Website)",
-    "Heritage, Guide"
+    "Historical Astronomical Meridian"
   ],
   [
     "ghati and vighati",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Clock, Guide, Home",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Time Unit (Vedic Chronometry)",
-    "NEW (Added from Website)",
-    "Clock, Guide, Home"
+    "Time Unit (Vedic Chronometry)"
   ],
   [
     "ghati",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Clock, Guide",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Time Unit (24 modern minutes)",
-    "NEW (Added from Website)",
-    "Clock, Guide"
+    "Time Unit (24 modern minutes)"
   ],
   [
     "vighati",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Clock, Guide",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Time Unit (24 modern seconds)",
-    "NEW (Added from Website)",
-    "Clock, Guide"
+    "Time Unit (24 modern seconds)"
   ],
   [
     "brahma muhurta",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Home, Guide, Blog",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Circadian Muhurta (Creation Hour)",
-    "NEW (Added from Website)",
-    "Home, Guide, Blog"
+    "Circadian Muhurta (Creation Hour)"
   ],
   [
     "abhijit muhurta",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Guide, Blog",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Auspicious Solar Midday Muhurta",
-    "NEW (Added from Website)",
-    "Guide, Blog"
+    "Auspicious Solar Midday Muhurta"
   ],
   [
     "choghadiya",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Clock, Guide",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Diurnal Astrological Time Windows",
-    "NEW (Added from Website)",
-    "Clock, Guide"
+    "Diurnal Astrological Time Windows"
   ],
   [
     "choghadiya muhurta",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Clock, Guide",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Astrological Muhurta Timing",
-    "NEW (Added from Website)",
-    "Clock, Guide"
+    "Astrological Muhurta Timing"
   ],
   [
     "suryodaya",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Home, Heritage, Guide",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Sunrise-based Diurnal Horizon",
-    "NEW (Added from Website)",
-    "Home, Heritage, Guide"
+    "Sunrise-based Diurnal Horizon"
   ],
   [
     "sunrise to sunrise timekeeping",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Heritage, Home",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Vedic Diurnal Concept",
-    "NEW (Added from Website)",
-    "Heritage, Home"
+    "Vedic Diurnal Concept"
   ],
   [
     "lala devanagari numerals",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Clock, Heritage",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Horological Devanagari Dial Design",
-    "NEW (Added from Website)",
-    "Clock, Heritage"
+    "Horological Devanagari Dial Design"
   ],
   [
     "devanagari clock dial",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Clock, Catalogue",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Product / Horological Design",
-    "NEW (Added from Website)",
-    "Clock, Catalogue"
+    "Product / Horological Design"
   ],
   [
     "sidereal solar time",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Clock, Guide",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Astronomical Principle",
-    "NEW (Added from Website)",
-    "Clock, Guide"
+    "Astronomical Principle"
   ],
   [
     "lahiri ayanamsha",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Core Engine, Guide",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Astro Calculation Engine",
-    "NEW (Added from Website)",
-    "Core Engine, Guide"
+    "Astro Calculation Engine"
   ],
   [
     "ayanamsha",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Core Engine, Guide",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Sidereal Coordinate Shift",
-    "NEW (Added from Website)",
-    "Core Engine, Guide"
+    "Sidereal Coordinate Shift"
   ],
   [
     "samvatsara",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Guide, Home",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "60-Year Jovian Solar Cycle",
-    "NEW (Added from Website)",
-    "Guide, Home"
+    "60-Year Jovian Solar Cycle"
   ],
   [
     "adhika masa",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Guide, Core Engine",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Intercalary Lunar Month Calculation",
-    "NEW (Added from Website)",
-    "Guide, Core Engine"
+    "Intercalary Lunar Month Calculation"
   ],
   [
     "shukla paksha",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Guide, Panchang, Home",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Waxing Lunar Fortnight",
-    "NEW (Added from Website)",
-    "Guide, Panchang, Home"
+    "Waxing Lunar Fortnight"
   ],
   [
     "krishna paksha",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Guide, Panchang, Home",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Waning Lunar Fortnight",
-    "NEW (Added from Website)",
-    "Guide, Panchang, Home"
+    "Waning Lunar Fortnight"
   ],
   [
     "nakshatra calculator",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Clock, Guide",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Panchang Limb Calculator",
-    "NEW (Added from Website)",
-    "Clock, Guide"
+    "Panchang Limb Calculator"
   ],
   [
     "tithi calculator",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Clock, Guide",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Panchang Limb Calculator",
-    "NEW (Added from Website)",
-    "Clock, Guide"
+    "Panchang Limb Calculator"
   ],
   [
     "27 nakshatras",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Guide, Clock",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Lunar Mansions Reference",
-    "NEW (Added from Website)",
-    "Guide, Clock"
+    "Lunar Mansions Reference"
   ],
   [
     "vedic clock for institutions",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Institutions, Contact",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "B2B Commercial / Architectural Intent",
-    "NEW (Added from Website)",
-    "Institutions, Contact"
+    "B2B Commercial / Architectural Intent"
   ],
   [
     "monumental tower clock",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Institutions, Heritage",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Monumental Civic / Temple Horology",
-    "NEW (Added from Website)",
-    "Institutions, Heritage"
+    "Monumental Civic / Temple Horology"
   ],
   [
     "brass astronomical clock",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Institutions, Clock",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Hardware Horological Craftsmanship",
-    "NEW (Added from Website)",
-    "Institutions, Clock"
+    "Hardware Horological Craftsmanship"
   ],
   [
     "surya siddhanta",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Heritage, Blog, Guide",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Foundational Astronomical Treatise",
-    "NEW (Added from Website)",
-    "Heritage, Blog, Guide"
+    "Foundational Astronomical Treatise"
   ],
   [
     "vedanga jyotisha",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Heritage, Blog",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Ancient Vedic Astronomy Canon",
-    "NEW (Added from Website)",
-    "Heritage, Blog"
+    "Ancient Vedic Astronomy Canon"
   ],
   [
     "lagadha",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Heritage",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Ancient Avanti Astronomer",
-    "NEW (Added from Website)",
-    "Heritage"
+    "Ancient Avanti Astronomer"
   ],
   [
     "circadian solar arc",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Heritage, Home",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Biological / Diurnal Synchronization",
-    "NEW (Added from Website)",
-    "Heritage, Home"
+    "Biological / Diurnal Synchronization"
   ],
   [
     "sun-arc diurnal dial",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Heritage",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Interactive Chronometric Dial",
-    "NEW (Added from Website)",
-    "Heritage"
+    "Interactive Chronometric Dial"
   ],
   [
     "panchang guide",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Guide, Header",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Panchang Educational Pillar",
-    "NEW (Added from Website)",
-    "Guide, Header"
+    "Panchang Educational Pillar"
   ],
   [
     "muhurta calculation",
-    "INR",
-    "High Intent (AEO/Niche)",
+    "USED (New Addition)",
+    "Guide, Blog",
+    "High Intent (Niche)",
     "New",
     "New",
     "Low",
-    "Astrological Muhurta Reckoning",
-    "NEW (Added from Website)",
-    "Guide, Blog"
+    "Astrological Muhurta Reckoning"
   ]
 ];
 
-  if (newRows.length > 0) {
+  if (newKeywords.length > 0) {
     const startAppendRow = sheet.getLastRow() + 1;
-    const appendRange = sheet.getRange(startAppendRow, 1, newRows.length, 9);
-    appendRange.setValues(newRows);
-    appendRange.setBackground(COLOR_NEW);
+    // Format to match 9-column sheet layout: Keyword, Currency, Volume, 3M, YoY, Comp, CompIndex, Status, Notes
+    const appendRows = newKeywords.map(k => [
+      k[0],           // Keyword
+      "INR",         // Currency
+      k[3],           // Searches
+      k[4],           // 3M
+      k[5],           // YoY
+      k[6],           // Comp
+      k[7],           // CompIndex
+      k[1],           // Status ("USED (New Addition)")
+      k[2]            // Pages Found
+    ]);
+
+    const appendRange = sheet.getRange(startAppendRow, 1, appendRows.length, 9);
+    appendRange.setValues(appendRows);
+    appendRange.setBackground(COLOR_GREEN);
   }
 
-  // Auto-fit column widths
+  // Auto-fit columns
   for (let col = 1; col <= 9; col++) {
     sheet.autoResizeColumn(col);
   }
 
-  SpreadsheetApp.getActiveSpreadsheet().toast("SEO Keywords successfully highlighted and enriched!", "Complete", 5);
+  SpreadsheetApp.getActiveSpreadsheet().toast("Finished: All rows set to white, only active keywords marked green!", "Success", 5);
 }
