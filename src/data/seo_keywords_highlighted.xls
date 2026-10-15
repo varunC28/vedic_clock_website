@@ -1,0 +1,2769 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Center"/>
+   <Font ss:FontName="Segoe UI" ss:Size="11" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="Header">
+   <Alignment ss:Vertical="Center" ss:Horizontal="Center"/>
+   <Font ss:FontName="Segoe UI" ss:Size="11" ss:Bold="1" ss:Color="#FFFFFF"/>
+   <Interior ss:Color="#2D1B0E" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="Green">
+   <Alignment ss:Vertical="Center"/>
+   <Font ss:FontName="Segoe UI" ss:Size="10" ss:Color="#155724"/>
+   <Interior ss:Color="#D4EDDA" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="Yellow">
+   <Alignment ss:Vertical="Center"/>
+   <Font ss:FontName="Segoe UI" ss:Size="10" ss:Color="#856404"/>
+   <Interior ss:Color="#FFF3CD" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="Gray">
+   <Alignment ss:Vertical="Center"/>
+   <Font ss:FontName="Segoe UI" ss:Size="10" ss:Color="#6C757D"/>
+   <Interior ss:Color="#F8F9FA" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="Purple">
+   <Alignment ss:Vertical="Center"/>
+   <Font ss:FontName="Segoe UI" ss:Size="10" ss:Color="#381E72" ss:Bold="1"/>
+   <Interior ss:Color="#E2D9F3" ss:Pattern="Solid"/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="SEO Keywords Audit">
+  <Table ss:DefaultRowHeight="20">
+   <Column ss:Width="220"/>
+   <Column ss:Width="180"/>
+   <Column ss:Width="110"/>
+   <Column ss:Width="240"/>
+   <Column ss:Width="130"/>
+   <Column ss:Width="110"/>
+   <Column ss:Width="90"/>
+   <Column ss:Width="90"/>
+   <Column ss:Width="120"/>
+   <Row ss:Height="26">
+    <Cell ss:StyleID="Header"><Data ss:Type="String">Keyword</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">Status</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">Highlight Category</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">Pages Found / Notes</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">Avg Monthly Searches</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">3 Month Change</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">YoY Change</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">Competition</Data></Cell>
+    <Cell ss:StyleID="Header"><Data ss:Type="String">Competition Index</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">hindu calendar</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">guide, Home</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">500000</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">5</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">aaj ka panchang</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">guide, Home</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">500000</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">calendar hindu calendar</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">500000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">date of deepavali</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">500000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">panchang drik</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">500000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">panchang for today</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">guide, Home</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">500000</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">telugu calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">gujarati calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">panchang</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">manifest (data), panchangNames (data), vedic-glossary (data), hinduCalendar (data)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">hindi panchang</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">guide</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">10</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">indian calendar</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Home, heritage</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">6</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">4</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">panchang calendar</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">guide</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">14</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">marathi calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">2</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">2025 ka calendar</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Medium</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">36</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">aaj ka hindi panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">calendar hindu panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">4</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">calendar telugu calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">calendar tithi</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">guide, Home</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">4</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">date of holi</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">drik panchang for today</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">ganesh chaturthi dates</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">gujarati tithi today</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindi panchang today</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu calendar month</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu calendar of this month</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">hindu calendar online</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">guide</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">-99%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">2</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu calendar this month</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu calendar today</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu panchang today</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu tithi today</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">ka panchang</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">guide, Home</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">kal ka panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">m panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">navratri dates</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">panchang tamil</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">panchang tithi today</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">panchang today kannada</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">panchanga calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">14</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">telugu calendar telugu calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">tithi panchang today</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">tithi today panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">today in telugu calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">today s panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">today tithi and panchang</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">guide</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">today tithi hindi</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">today tithi in panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">todays panchang</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">tomorrows panchang</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">vikram samvat</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">blog-articles (data), article-citations (data), livePanchang (data), hinduCalendar (data)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">50000</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">kannada calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">4</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">anatomical clock</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">desi calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">15</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">1982 ka calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">1991 calendar hindu panchang</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">1992 telugu calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">1993 calendar hindu panchang</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">1995 calendar hindu panchang</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">1995 ka calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">1996 calendar hindu panchang</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">1996 ka calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">1997 telugu calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">1998 calendar hindu panchang</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">1998 ka calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">1999 ka calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">2000 telugu calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">2001 telugu calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">2002 calendar with festivals</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">2002 ka calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">2002 telugu calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">2003 ka calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">2024 ka calendar</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">25</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">2024 telugu calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">aaj ka hindu panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">aaj ka panchang tithi</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">aaj ki tithi panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">aaj panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">aajnu panchang</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">according to hindu calendar what is today</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">ajnu panchang</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">all hindu festival</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">as per hindu calendar what is today</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">calendar hindi</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">16</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">calendar panchangam</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">22</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">calendar vikram samvat</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Home, heritage</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">dainik panchang</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">guide, Home</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">date panchang today</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">day panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">deepavali calendar</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">2</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">diwali calendar</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">2</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">drik panchang calendar</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">drik panchang com</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">drik panchang hindu calendar</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">drik panchang in hindi</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">drik panchang rashi</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">drik panchang telugu</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">dussehra festival date</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">e panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">gujarati calendar 2024</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">gujarati calendar tithi</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">gujarati calendar tithi today</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">gujarati calendar today</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">gujarati calendar today tithi</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">gujarati month</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">gujarati panchang</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">gujarati panchang today</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">hindi mein calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Medium</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">36</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindi month calendar</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">2</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindi month today</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindi months of the year</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindi panchang calendar</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">25</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindi panchang today tithi</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindi panchang tomorrow</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindi tithi</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu almanac</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu calendar 2024</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu calendar date today</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu calendar day today</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu calendar drik panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu calendar festival</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">3</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu calendar new year</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu calendar tithi</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">7</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu calendar tithi today</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu calendar year</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu date today</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu festival today</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu festival tomorrow</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu months</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">hindu samvat calendar</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">holi calendar</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">indian calendar date today</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">lakshmi calendar</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">10</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">lala ramswaroop panchang calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">10</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">maha shivratri date</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">mahashivratri puja time</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">malayalam calendar today</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">marathi calendar kalnirnay</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">6</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">marathi calendar today</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">marathi panchang</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">marathi panchang today</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">mithila panchang</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">my panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">mypanchang</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">november telugu calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">old panchang</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-99%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">old town square astronomical clock</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Medium</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">61</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">online panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">online panchangam</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">panchang 1984 calendar with festivals</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">panchang calculator</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">guide</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">2</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">panchang rashi</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">panchang tomorrow in hindi</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">prague old town astronomical clock</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Medium</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">61</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">sanatan panchang</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">2</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">september telugu calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">shubh panchang</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">tamil daily sheet calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">telugu calendar day today</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">telugu calendar of this month</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">telugu calendar panchangam</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">3</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">telugu calendar this month</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">this year deepavali date</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">this year holi date</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">to day panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">today calendar hindi</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">today date according to hindu calendar</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">today desi month date</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">today tithi as per hindu calendar</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">2</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">today tithi gujarati calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">today tithi panchang in hindi</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">today vikram samvat</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">today&#x27;s kalnirnay</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">today&#x27;s tithi according to hindu calendar</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">today&#x27;s tithi according to hindu panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">todays panchang tamil</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">tomorrow panchang in hindi</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">tomorrow telugu calendar</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">tomorrow tithi panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">upcoming hindu festival</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">vedic astrology calendar</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">-99%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">vikram calendar</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">vikram samvat calendar</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">article-citations (data), Guide</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">vikram samvat today</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">vinayaka chaturthi date</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">5000</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">900%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">vedic clock</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Contact, manifest (data), blog, Catalogue</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">500</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">15</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">astrogyan panchang</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">500</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">vedic clock online</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Home</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">500</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">28</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">vedic panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">500</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">vikramaditya vedic clock</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">faq, Article, manifest (data), contact</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">500</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">panchang clock</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">catalogue, Home</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">50</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">24</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">ujjain prime meridian</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">article-citations (data), blog, [slug], guide</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">50</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">-90%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">astro jyotish panchang</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">50</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-100%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Unknown</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">astrojyoti com panchang</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">50</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">hindu calendar jyotish</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">50</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">hindu jyotish panchang</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">50</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">panchang vedic astrology</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">2</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">vaidik clock</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Home</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">50</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">vedic hindu panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">vedic panchang 2022</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Unknown</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">vedic panchang in hindi</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">vedic panchang today</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">vedic rishi panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">vedic time panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">50</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">-100%</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Unknown</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">www astrojyoti com panchang</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NOT USED (Archival / Competitor)</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">NEUTRAL</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">-</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">50</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">∞</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Gray"><Data ss:Type="String">0</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">vedic astronomical clock</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">catalogue, Home</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">--</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">--</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Unknown</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">vedic clock price in india</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">catalogue, Home</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">--</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">--</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Unknown</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">vedic clock for temples</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">catalogue</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">--</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">--</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Unknown</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">vedic timekeeping system</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">USED (Exact Match)</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">GREEN</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">heritage</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">--</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">--</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String">Unknown</Data></Cell>
+    <Cell ss:StyleID="Green"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">ancient indian timekeeping system</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">--</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">--</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Unknown</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">vedic calendar and panchang</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">USED (Entity / Engine)</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">YELLOW</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Calculated in Panchang Engine / Festivals</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">--</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">--</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String">Unknown</Data></Cell>
+    <Cell ss:StyleID="Yellow"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">vedic horology</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Heritage, Clock, Home</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Core Platform / Scientific Discipline</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">zero meridian of ujjain</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Heritage, Clock</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Historical / Geographic AEO</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">prime meridian of ujjain</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Heritage, Meta SEO</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Geographic / Historical SEO</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">avantika meridian</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Heritage, Guide</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Historical Astronomical Meridian</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">ghati and vighati</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Clock, Guide, Home</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Time Unit (Vedic Chronometry)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">ghati</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Clock, Guide</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Time Unit (24 modern minutes)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">vighati</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Clock, Guide</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Time Unit (24 modern seconds)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">brahma muhurta</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Home, Guide, Blog</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Circadian Muhurta (Creation Hour)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">abhijit muhurta</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Guide, Blog</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Auspicious Solar Midday Muhurta</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">choghadiya</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Clock, Guide</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Diurnal Astrological Time Windows</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">choghadiya muhurta</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Clock, Guide</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Astrological Muhurta Timing</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">suryodaya</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Home, Heritage, Guide</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Sunrise-based Diurnal Horizon</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">sunrise to sunrise timekeeping</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Heritage, Home</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Vedic Diurnal Concept</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">lala devanagari numerals</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Clock, Heritage</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Horological Devanagari Dial Design</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">devanagari clock dial</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Clock, Catalogue</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Product / Horological Design</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">sidereal solar time</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Clock, Guide</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Astronomical Principle</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">lahiri ayanamsha</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Core Engine, Guide</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Astro Calculation Engine</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">ayanamsha</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Core Engine, Guide</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Sidereal Coordinate Shift</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">samvatsara</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Guide, Home</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">60-Year Jovian Solar Cycle</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">adhika masa</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Guide, Core Engine</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Intercalary Lunar Month Calculation</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">shukla paksha</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Guide, Panchang, Home</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Waxing Lunar Fortnight</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">krishna paksha</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Guide, Panchang, Home</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Waning Lunar Fortnight</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">nakshatra calculator</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Clock, Guide</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Panchang Limb Calculator</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">tithi calculator</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Clock, Guide</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Panchang Limb Calculator</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">27 nakshatras</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Guide, Clock</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Lunar Mansions Reference</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">vedic clock for institutions</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Institutions, Contact</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">B2B Commercial / Architectural Intent</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">monumental tower clock</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Institutions, Heritage</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Monumental Civic / Temple Horology</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">brass astronomical clock</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Institutions, Clock</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Hardware Horological Craftsmanship</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">surya siddhanta</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Heritage, Blog, Guide</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Foundational Astronomical Treatise</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">vedanga jyotisha</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Heritage, Blog</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Ancient Vedic Astronomy Canon</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">lagadha</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Heritage</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Ancient Avanti Astronomer</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">circadian solar arc</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Heritage, Home</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Biological / Diurnal Synchronization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">sun-arc diurnal dial</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Heritage</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Interactive Chronometric Dial</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">panchang guide</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Guide, Header</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Panchang Educational Pillar</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">muhurta calculation</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">NEW (Added from Website)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">PURPLE</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Guide, Blog</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">High Intent (AEO/Niche)</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">New</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Low</Data></Cell>
+    <Cell ss:StyleID="Purple"><Data ss:Type="String">Astrological Muhurta Reckoning</Data></Cell>
+   </Row>
+  </Table>
+ </Worksheet>
+</Workbook>
