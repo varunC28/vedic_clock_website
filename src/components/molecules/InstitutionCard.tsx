@@ -25,22 +25,22 @@ export function InstitutionCard({
   const isDark = variant === "dark";
 
   const containerClasses = isDark
-    ? "bg-[#080E1C]/80 border border-brass/25 shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:border-brass/50 hover:shadow-[0_8px_32px_rgba(184,135,61,0.15)]"
-    : "bg-white/75 border border-[#B8873D]/25 shadow-sm hover:border-[#B8873D]/50 hover:shadow-md backdrop-blur-sm";
+    ? "bg-gradient-to-b from-white/[0.05] via-white/[0.025] to-transparent hover:from-white/[0.08] hover:via-white/[0.04] hover:to-white/[0.02] backdrop-blur-md border border-[#D4A65A]/20 hover:border-[#D4A65A]/50 ring-1 ring-inset ring-white/[0.06] hover:ring-white/[0.12] shadow-[0_8px_32px_rgba(0,0,0,0.37)] hover:shadow-[0_14px_44px_rgba(212,166,90,0.15)] hover:-translate-y-1"
+    : "bg-gradient-to-b from-white/45 to-white/20 hover:from-white/65 hover:to-white/35 backdrop-blur-md border border-[#B8873D]/30 hover:border-[#B8873D]/60 ring-1 ring-inset ring-white/70 hover:ring-white/90 shadow-[0_8px_24px_rgba(61,42,26,0.06)] hover:shadow-[0_14px_36px_rgba(184,135,61,0.16)] hover:-translate-y-1";
 
   const numBadgeClasses = isDark
-    ? "bg-antique-gold/15 border-antique-gold/30 text-antique-gold"
-    : "bg-brass/15 border-brass/35 text-brass";
+    ? "bg-[#D4A65A]/15 border-[#D4A65A]/30 text-[#E8B94B] shadow-[0_0_12px_rgba(212,166,90,0.08)]"
+    : "bg-brass/15 border-brass/35 text-brass shadow-sm";
 
   const iconColor = isDark ? "text-antique-gold" : "text-brass";
-  const titleColorEn = isDark ? "text-ivory" : "text-deep-bronze";
-  const titleColorHi = isDark ? "text-antique-gold/90" : "text-brass";
-  const taglineColor = isDark ? "text-ivory/70" : "text-deep-bronze/80";
-  const dividerColor = isDark ? "border-brass/20" : "border-brass/25";
+  const titleColorEn = isDark ? "text-ivory" : "text-[#2A1B10]";
+  const titleColorHi = isDark ? "text-antique-gold/90" : "text-[#8B6425]";
+  const taglineColor = isDark ? "text-ivory/70" : "text-[#3D2A1A]/80";
+  const dividerColor = isDark ? "border-white/10" : "border-brass/25";
 
   const capsuleClasses = isDark
-    ? "bg-brass/15 border border-brass/35 text-antique-gold hover:border-antique-gold/60 hover:bg-brass/25 shadow-[0_0_12px_rgba(212,166,90,0.06)]"
-    : "bg-deep-bronze/10 border border-deep-bronze/25 text-deep-bronze hover:border-deep-bronze/50 hover:bg-deep-bronze/15 shadow-sm";
+    ? "bg-white/[0.04] border border-[#D4A65A]/25 text-antique-gold hover:border-antique-gold/60 hover:bg-white/[0.08] shadow-[0_0_12px_rgba(212,166,90,0.06)]"
+    : "bg-white/60 border border-brass/30 text-deep-bronze hover:border-brass/60 hover:bg-white/90 shadow-sm";
 
   return (
     <div

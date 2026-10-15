@@ -90,6 +90,16 @@ export function InstitutionGrid({ variant = "dark", className }: InstitutionGrid
         </p>
       </div>
 
+      {/* ── Ambient Radial Atmosphere for Glass Refraction ───────────────────── */}
+      <div
+        className={cn(
+          "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] max-w-[90vw] h-[450px] rounded-full blur-3xl pointer-events-none -z-0",
+          isParchment
+            ? "bg-gradient-to-r from-[#B8873D]/[0.08] via-[#F5A623]/[0.06] to-[#B8873D]/[0.08]"
+            : "bg-gradient-to-r from-[#B8873D]/[0.04] via-[#D4A65A]/[0.07] to-[#B8873D]/[0.04]"
+        )}
+      />
+
       {/* ── 4 Segment Grid (Equal Height Cards & Rows) ───────────────────────── */}
       <div className="relative z-10 w-full max-w-6xl xl:max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 xl:gap-6 items-stretch">
         {segments.map((seg) => (
@@ -100,12 +110,7 @@ export function InstitutionGrid({ variant = "dark", className }: InstitutionGrid
             titleHi={seg.titleHi}
             tagline={seg.tagline}
             variant={isParchment ? "light" : "dark"}
-            className={cn(
-              "transition-all duration-300 h-full",
-              isParchment
-                ? "bg-white/70 border border-[#B8873D]/25 shadow-sm hover:border-[#B8873D]/60 hover:shadow-md"
-                : "bg-[#080E1C]/80 border border-[#D4A65A]/20 hover:border-[#D4A65A]/50"
-            )}
+            className="h-full"
           />
         ))}
       </div>
