@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useRef, useMemo, useEffect } from 'react';
+import React, { useRef, useMemo, useEffect, useState } from 'react';
 import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber';
 import { Mesh, TextureLoader, SRGBColorSpace, Color, AdditiveBlending, DoubleSide, ShaderMaterial, FrontSide, NoToneMapping } from 'three';
 
-const EARTH_TEXTURE = '/assets/earth.jpg';
-const EARTH_NORMAL = '/assets/images/earth_normal.jpg';
-const EARTH_SPECULAR = '/assets/images/earth_specular.jpg';
-const EARTH_CLOUDS = '/assets/images/earth_clouds.png';
+const EARTH_TEXTURE = '/assets/earth.webp';
+const EARTH_NORMAL = '/assets/images/earth_normal.webp';
+const EARTH_SPECULAR = '/assets/images/earth_specular.webp';
+const EARTH_CLOUDS = '/assets/images/earth_clouds.webp';
 
 interface Earth3DProps {
   /** Diameter in logical pixels for the container */
@@ -35,14 +35,27 @@ function EarthSphere(): React.JSX.Element {
     dayMap.colorSpace = SRGBColorSpace;
     dayMap.needsUpdate = true;
     
-    dayMap.anisotropy = maxAnisotropy;
-    normalMap.anisotropy = maxAnisotropy;
-    specularMap.anisotropy = maxAnisotropy;
+    // Clamp anisotropy to 4x to save GPU sampling bandwidth without losing sharpness
+    const anisotropy = Math.min(maxAnisotropy, 4);
+    dayMap.anisotropy = anisotropy;
+    normalMap.anisotropy = anisotropy;
+    specularMap.anisotropy = anisotropy;
     
     normalMap.needsUpdate = true;
     specularMap.needsUpdate = true;
+
+    // Hardware-accelerated GPU pre-upload: pushes texture data to VRAM ahead of the 1st frame
+    if (gl && typeof gl.initTexture === 'function') {
+      try {
+        gl.initTexture(dayMap);
+        gl.initTexture(normalMap);
+        gl.initTexture(specularMap);
+      } catch {
+        // Safe no-op if context is busy
+      }
+    }
     /* eslint-enable react-hooks/immutability */
-  }, [dayMap, normalMap, specularMap, maxAnisotropy]);
+  }, [dayMap, normalMap, specularMap, maxAnisotropy, gl]);
 
   // Slow continuous rotation
   useFrame((_state, delta) => {
@@ -53,7 +66,7 @@ function EarthSphere(): React.JSX.Element {
 
   return (
     <mesh ref={meshRef} rotation={[0, 0, 23.44 * (Math.PI / 180)]}>
-      <sphereGeometry args={[1, 256, 256]} />
+      <sphereGeometry args={[1, 96, 96]} />
       <meshPhongMaterial
         map={dayMap}
         normalMap={normalMap}
@@ -90,6 +103,23 @@ function EarthSphere(): React.JSX.Element {
 function CloudSphere(): React.JSX.Element {
   const meshRef = useRef<Mesh>(null);
   const cloudMap = useLoader(TextureLoader, EARTH_CLOUDS);
+  const { gl } = useThree();
+
+  useEffect(() => {
+    if (cloudMap) {
+      /* eslint-disable react-hooks/immutability */
+      cloudMap.anisotropy = Math.min(gl.capabilities.getMaxAnisotropy(), 4);
+      cloudMap.needsUpdate = true;
+      if (gl && typeof gl.initTexture === 'function') {
+        try {
+          gl.initTexture(cloudMap);
+        } catch {
+          // Safe no-op
+        }
+      }
+      /* eslint-enable react-hooks/immutability */
+    }
+  }, [cloudMap, gl]);
 
   useFrame((_state, delta) => {
     if (meshRef.current) {
@@ -99,7 +129,7 @@ function CloudSphere(): React.JSX.Element {
 
   return (
     <mesh ref={meshRef} rotation={[0, 0, 23.44 * (Math.PI / 180)]} scale={[1.006, 1.006, 1.006]}>
-      <sphereGeometry args={[1, 256, 256]} />
+      <sphereGeometry args={[1, 96, 96]} />
       <meshPhongMaterial
         map={cloudMap}
         transparent={true}
@@ -153,7 +183,7 @@ function AtmosphereGlow(): React.JSX.Element {
 
   return (
     <mesh scale={[1.08, 1.08, 1.08]}>
-      <sphereGeometry args={[1, 256, 256]} />
+      <sphereGeometry args={[1, 96, 96]} />
       <primitive object={shaderMaterial} attach="material" />
     </mesh>
   );
@@ -196,7 +226,7 @@ class EarthErrorBoundary extends React.Component<React.PropsWithChildren, { hasE
     if (this.state.hasError) {
       return (
         <div style={{ width: '100%', height: '100%', backgroundColor: 'transparent', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <img src="/assets/earth.jpg" alt="Earth fallback" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
+          <img src="/assets/earth.webp" alt="Earth fallback" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
         </div>
       );
     }
@@ -207,8 +237,31 @@ class EarthErrorBoundary extends React.Component<React.PropsWithChildren, { hasE
 // ── Main exported component ────────────────────────────────────────────
 
 export function Earth3D({ size }: Earth3DProps): React.JSX.Element {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(true);
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry) {
+          setIsVisible(entry.isIntersecting);
+        }
+      },
+      { rootMargin: '100px' }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div
+      ref={containerRef}
       style={{
         width: size,
         height: size,
@@ -218,12 +271,32 @@ export function Earth3D({ size }: Earth3DProps): React.JSX.Element {
         backgroundColor: 'transparent',
       }}
     >
+      {/* Instant 2D placeholder while WebGL initializes and compiles shaders */}
+      <img
+        src="/assets/earth.webp"
+        alt="Earth"
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          borderRadius: '50%',
+          objectFit: 'cover',
+          opacity: isReady ? 0 : 1,
+          transition: 'opacity 0.4s ease-out',
+          pointerEvents: 'none',
+        }}
+      />
+
       <EarthErrorBoundary>
         <Canvas
           dpr={[1, 2]}
+          frameloop={isVisible ? 'always' : 'never'}
           gl={{
             alpha: true,
             antialias: true,
+            stencil: false,
             powerPreference: 'high-performance',
             toneMapping: NoToneMapping,
             outputColorSpace: SRGBColorSpace,
@@ -231,6 +304,7 @@ export function Earth3D({ size }: Earth3DProps): React.JSX.Element {
           onCreated={({ gl }) => {
             gl.toneMapping = NoToneMapping;
             gl.outputColorSpace = SRGBColorSpace;
+            setIsReady(true);
           }}
           camera={{ position: [0, 0, 2.8], fov: 45 }}
           style={{
