@@ -9,7 +9,6 @@ export interface ArcPhase {
   nameHi: string;
   timeHint: string;
   angle: number;
-  icon: string;
   summary: string;
   nature: string;
 }
@@ -30,23 +29,43 @@ export function SolarArcSlider({
   const trackRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
 
+  const total = phases.length - 1;
   const activeIndex = Math.max(
     0,
     phases.findIndex((p) => p.id === activePhase.id)
   );
-  const total = phases.length - 1;
-  const activePercent = (activeIndex / total) * 100;
 
-  // Calculate phase from pointer position
-  const handlePointerPosition = useCallback(
-    (clientX: number) => {
+  // Continuous percentage state (0 to 100)
+  const [percent, setPercent] = useState<number>(() => (activeIndex / total) * 100);
+
+  // Keep percentage in sync with external activePhase changes when NOT dragging
+  useEffect(() => {
+    if (!isDragging) {
+      setPercent((activeIndex / total) * 100);
+    }
+  }, [activeIndex, total, isDragging]);
+
+  // Calculate position and phase from pointer event
+  const updateFromPointer = useCallback(
+    (clientX: number, snapOnRelease = false) => {
       if (!trackRef.current) return;
       const rect = trackRef.current.getBoundingClientRect();
-      const rawFraction = (clientX - rect.left) / rect.width;
-      const clamped = Math.max(0, Math.min(1, rawFraction));
-      const newIndex = Math.round(clamped * total);
-      if (phases[newIndex] && phases[newIndex].id !== activePhase.id) {
-        onPhaseChange(phases[newIndex]);
+      const raw = ((clientX - rect.left) / rect.width) * 100;
+      const clamped = Math.max(0, Math.min(100, raw));
+
+      const closestIndex = Math.min(
+        total,
+        Math.max(0, Math.round((clamped / 100) * total))
+      );
+
+      if (snapOnRelease) {
+        setPercent((closestIndex / total) * 100);
+      } else {
+        setPercent(clamped);
+      }
+
+      if (phases[closestIndex] && phases[closestIndex].id !== activePhase.id) {
+        onPhaseChange(phases[closestIndex]);
       }
     },
     [phases, total, activePhase.id, onPhaseChange]
@@ -56,20 +75,22 @@ export function SolarArcSlider({
     e.preventDefault();
     setIsDragging(true);
     e.currentTarget.setPointerCapture(e.pointerId);
-    handlePointerPosition(e.clientX);
+    updateFromPointer(e.clientX, false);
   };
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!isDragging) return;
-    handlePointerPosition(e.clientX);
+    updateFromPointer(e.clientX, false);
   };
 
   const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDragging) return;
     setIsDragging(false);
+    updateFromPointer(e.clientX, true);
     try {
       e.currentTarget.releasePointerCapture(e.pointerId);
     } catch {
-      // In case pointer was already released
+      // Pointer already released
     }
   };
 
@@ -79,21 +100,25 @@ export function SolarArcSlider({
       e.preventDefault();
       const nextIndex = Math.min(total, activeIndex + 1);
       onPhaseChange(phases[nextIndex]);
+      setPercent((nextIndex / total) * 100);
     } else if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
       e.preventDefault();
       const prevIndex = Math.max(0, activeIndex - 1);
       onPhaseChange(phases[prevIndex]);
+      setPercent((prevIndex / total) * 100);
     } else if (e.key === "Home") {
       e.preventDefault();
       onPhaseChange(phases[0]);
+      setPercent(0);
     } else if (e.key === "End") {
       e.preventDefault();
       onPhaseChange(phases[total]);
+      setPercent(100);
     }
   };
 
   return (
-    <div className="w-full flex flex-col gap-3 py-4 select-none touch-none">
+    <div className="w-full flex flex-col gap-4 py-3 select-none touch-none">
       {/* ── TRACK & DRAGGABLE CELESTIAL DOT ── */}
       <div
         ref={trackRef}
@@ -101,59 +126,26 @@ export function SolarArcSlider({
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerUp}
-        className="relative w-full h-16 sm:h-20 flex items-center cursor-pointer group"
+        className="relative w-full h-14 sm:h-16 flex items-center cursor-pointer group"
       >
-        {/* Background Rail Line */}
+        {/* Continuous Horizon Rail Line (No intermediate dots) */}
         <div
           className={cn(
-            "w-full h-1.5 sm:h-2 rounded-full relative transition-colors duration-300",
+            "w-full h-1 sm:h-1.5 rounded-full relative overflow-hidden transition-colors duration-300",
             isParchment ? "bg-[#DFCBB5]" : "bg-white/10"
           )}
         >
-          {/* Active Filled Progress Rail */}
+          {/* Active Filled Progress Line */}
           <div
             className={cn(
-              "h-full rounded-full transition-all duration-200 ease-out",
+              "h-full rounded-full",
+              isDragging ? "transition-none" : "transition-all duration-350 ease-out",
               isParchment
                 ? "bg-gradient-to-r from-[#8C5D33] via-[#B8873D] to-[#8C5D33]"
-                : "bg-gradient-to-r from-[#B8873D] via-[#D4A65A] to-[#E8B94B] shadow-[0_0_12px_rgba(212,166,90,0.5)]"
+                : "bg-gradient-to-r from-[#B8873D] via-[#D4A65A] to-[#E8B94B] shadow-[0_0_12px_rgba(212,166,90,0.6)]"
             )}
-            style={{ width: `${activePercent}%` }}
+            style={{ width: `${percent}%` }}
           />
-
-          {/* Milestone Step Ticks on the Line */}
-          {phases.map((phase, idx) => {
-            const percent = (idx / total) * 100;
-            const isPassed = idx <= activeIndex;
-            return (
-              <div
-                key={phase.id}
-                className={cn(
-                  "absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 -translate-x-1/2 rounded-full border-2 transition-all duration-300 pointer-events-none flex items-center justify-center",
-                  isPassed
-                    ? isParchment
-                      ? "bg-[#8C5D33] border-[#FAF6F0] shadow-sm scale-110"
-                      : "bg-[#D4A65A] border-[#FAF6F0] shadow-[0_0_8px_rgba(212,166,90,0.7)] scale-110"
-                    : isParchment
-                      ? "bg-[#FAF6F0] border-[#DFCBB5]"
-                      : "bg-[#060B18] border-white/20"
-                )}
-                style={{ left: `${percent}%` }}
-              >
-                {/* Micro inner dot */}
-                <div
-                  className={cn(
-                    "w-1 h-1 rounded-full",
-                    isPassed
-                      ? "bg-white"
-                      : isParchment
-                        ? "bg-[#DFCBB5]"
-                        : "bg-white/30"
-                  )}
-                />
-              </div>
-            );
-          })}
         </div>
 
         {/* ── DRAGGABLE SOLAR ORB (THUMB) & FLOATING TOOLTIP ── */}
@@ -167,23 +159,26 @@ export function SolarArcSlider({
           aria-valuenow={activeIndex}
           aria-valuetext={`${activePhase.nameEn} (${activePhase.timeHint})`}
           className={cn(
-            "absolute top-1/2 -translate-y-1/2 -translate-x-1/2 z-20 outline-none transition-transform duration-150 ease-out cursor-grab active:cursor-grabbing",
-            isDragging ? "scale-110 cursor-grabbing" : "hover:scale-105"
+            "absolute top-1/2 -translate-y-1/2 -translate-x-1/2 z-20 outline-none cursor-grab active:cursor-grabbing",
+            isDragging
+              ? "scale-110 cursor-grabbing transition-none"
+              : "transition-[left,transform] duration-350 ease-out hover:scale-105"
           )}
-          style={{ left: `${activePercent}%` }}
+          style={{ left: `${percent}%` }}
         >
           {/* Floating Phase Pill Above the Dot */}
           <div
             className={cn(
-              "absolute -top-11 sm:-top-12 left-1/2 -translate-x-1/2 whitespace-nowrap px-3 py-1 sm:py-1.5 rounded-full border text-[11px] sm:text-xs font-sans font-medium flex items-center gap-1.5 pointer-events-none transition-all duration-200 shadow-lg",
+              "absolute -top-10 sm:-top-11 left-1/2 -translate-x-1/2 whitespace-nowrap px-3 py-1 rounded-full border text-[11px] sm:text-xs font-sans font-medium flex items-center gap-2 pointer-events-none shadow-lg",
+              isDragging ? "transition-none" : "transition-all duration-350 ease-out",
               isParchment
-                ? "bg-[#FAF6F0] border-[#DFCBB5] text-[#2D1B0E]"
-                : "bg-[#091122]/95 border-[#D4A65A]/40 text-[#FBF5E7] shadow-[0_4px_20px_rgba(0,0,0,0.6)]"
+                ? "bg-[#FAF6F0] border-[#DFCBB5] text-[#2D1B0E] shadow-[0_4px_16px_rgba(72,45,28,0.12)]"
+                : "bg-[#091122]/95 border-[#D4A65A]/40 text-[#FBF5E7] shadow-[0_4px_20px_rgba(0,0,0,0.7)]"
             )}
           >
-            <span>{activePhase.icon}</span>
-            <span className="font-semibold">{activePhase.nameEn}</span>
-            <span className="opacity-60 text-[10px] hidden sm:inline">{activePhase.timeHint}</span>
+            <span className="font-semibold tracking-tight">{activePhase.nameEn}</span>
+            <span className="opacity-50 text-[10px] font-mono">·</span>
+            <span className="opacity-75 text-[10.5px] font-mono">{activePhase.timeHint}</span>
 
             {/* Downward triangle arrow pointing to the dot */}
             <div
@@ -196,19 +191,19 @@ export function SolarArcSlider({
             />
           </div>
 
-          {/* Draggable Sun Orb */}
+          {/* Draggable Celestial Dot */}
           <div
             className={cn(
-              "w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center border-2 transition-all duration-200",
+              "w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center border-2",
               isParchment
-                ? "bg-gradient-to-tr from-[#8C5D33] via-[#B8873D] to-[#FAF6F0] border-white shadow-[0_2px_10px_rgba(72,45,28,0.35)]"
-                : "bg-gradient-to-tr from-[#B8873D] via-[#D4A65A] to-[#FFF5D1] border-white shadow-[0_0_18px_rgba(212,166,90,0.9)]"
+                ? "bg-gradient-to-tr from-[#8C5D33] via-[#B8873D] to-[#FAF6F0] border-white shadow-[0_2px_10px_rgba(72,45,28,0.4)]"
+                : "bg-gradient-to-tr from-[#B8873D] via-[#D4A65A] to-[#FFF5D1] border-white shadow-[0_0_16px_rgba(212,166,90,0.95)]"
             )}
           >
-            {/* Core jewel */}
+            {/* Core golden jewel */}
             <div
               className={cn(
-                "w-2 h-2 rounded-full",
+                "w-1.5 h-1.5 rounded-full",
                 isParchment ? "bg-[#482D1C]" : "bg-[#03060E]"
               )}
             />
@@ -216,13 +211,13 @@ export function SolarArcSlider({
         </div>
       </div>
 
-      {/* ── MILESTONE LABELS BELOW THE LINE ── */}
-      <div className="relative w-full h-12 text-xs font-sans">
+      {/* ── MILESTONE LABELS BELOW THE LINE (CLICKABLE, NO EMOJIS) ── */}
+      <div className="relative w-full h-11 text-xs font-sans">
         {phases.map((phase, idx) => {
-          const percent = (idx / total) * 100;
+          const stepPercent = (idx / total) * 100;
           const isActive = idx === activeIndex;
 
-          // Alignment logic so edge labels don't get clipped by screen edges
+          // Alignment logic so edge labels never get clipped
           let alignmentClass = "-translate-x-1/2 text-center";
           if (idx === 0) alignmentClass = "translate-x-0 text-left";
           if (idx === total) alignmentClass = "-translate-x-full text-right";
@@ -231,17 +226,20 @@ export function SolarArcSlider({
             <button
               key={phase.id}
               type="button"
-              onClick={() => onPhaseChange(phase)}
+              onClick={() => {
+                onPhaseChange(phase);
+                setPercent(stepPercent);
+              }}
               className={cn(
-                "absolute top-0 flex flex-col cursor-pointer transition-all duration-200 hover:opacity-100",
+                "absolute top-0 flex flex-col cursor-pointer transition-all duration-300 hover:opacity-100 outline-none",
                 alignmentClass,
-                isActive ? "opacity-100" : "opacity-60 hover:opacity-85"
+                isActive ? "opacity-100" : "opacity-55 hover:opacity-85"
               )}
-              style={{ left: `${percent}%` }}
+              style={{ left: `${stepPercent}%` }}
             >
               <span
                 className={cn(
-                  "font-mono text-[10px] sm:text-[11px] tracking-wider",
+                  "font-mono text-[10px] sm:text-[11px] tracking-wider transition-colors duration-200",
                   isActive
                     ? isParchment
                       ? "text-[#8C5D33] font-bold"
@@ -255,7 +253,7 @@ export function SolarArcSlider({
               </span>
               <span
                 className={cn(
-                  "text-[11px] sm:text-xs mt-0.5 whitespace-nowrap",
+                  "text-[11px] sm:text-xs mt-0.5 whitespace-nowrap transition-colors duration-200",
                   isActive
                     ? isParchment
                       ? "text-[#2D1B0E] font-semibold"
@@ -265,8 +263,7 @@ export function SolarArcSlider({
                       : "text-ivory/70"
                 )}
               >
-                <span className="mr-1 hidden sm:inline">{phase.icon}</span>
-                <span>{phase.nameEn.split(" ")[0]}</span>
+                {phase.nameEn.split(" ")[0]}
               </span>
             </button>
           );

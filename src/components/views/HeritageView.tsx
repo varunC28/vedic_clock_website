@@ -90,7 +90,6 @@ interface ArcPhase {
   nameHi: string;
   timeHint: string;
   angle: number; // in degrees along top semicircle (0 to 180)
-  icon: string;
   summary: string;
   nature: string;
 }
@@ -102,7 +101,6 @@ const ARC_PHASES: ArcPhase[] = [
     nameHi: "सूर्योदय",
     timeHint: "~06:00 AM",
     angle: 0,
-    icon: "🌅",
     summary: "The zero point of the Vedic day. The solar disc breaches the horizon, activating Prana and opening the diurnal Muhurtas.",
     nature: "Creation & Awakening · सृजन",
   },
@@ -112,7 +110,6 @@ const ARC_PHASES: ArcPhase[] = [
     nameHi: "संगव",
     timeHint: "~09:00 AM",
     angle: 45,
-    icon: "☀️",
     summary: "Peak mental clarity and energetic action. Commencing auspicious endeavors, scholarship, and enterprise.",
     nature: "Vitality & Enterprise · उद्यम",
   },
@@ -122,7 +119,6 @@ const ARC_PHASES: ArcPhase[] = [
     nameHi: "मध्याह्न · अभिजित",
     timeHint: "~12:00 PM",
     angle: 90,
-    icon: "👑",
     summary: "The solar meridian transit. The 8th Muhurta (Abhijit) dissolves obstacles, sanctified by direct overhead solar radiation.",
     nature: "Zenith & Victory · विजय",
   },
@@ -132,7 +128,6 @@ const ARC_PHASES: ArcPhase[] = [
     nameHi: "सूर्यास्त",
     timeHint: "~06:00 PM",
     angle: 180,
-    icon: "🌇",
     summary: "Sandhya twilight. Daylight gives way to nocturnal Ratrimana. A sacred threshold for contemplative pause and Aarti.",
     nature: "Equilibrium & Stillness · संध्या",
   },
@@ -142,7 +137,6 @@ const ARC_PHASES: ArcPhase[] = [
     nameHi: "ब्रह्म मुहूर्त",
     timeHint: "~04:24 AM",
     angle: 315, // nocturnal pre-dawn
-    icon: "✨",
     summary: "The 14th nocturnal Muhurta (approx. 96 to 48 minutes before sunrise). Peak atmospheric serenity and cognitive plasticity.",
     nature: "Pure Consciousness · चेतना",
   },
@@ -522,17 +516,14 @@ export function HeritageView() {
             )}
           >
             <div key={activePhase.id} className="flex flex-col gap-1.5 max-w-xl animate-in fade-in duration-300">
-              <div className="flex items-center gap-2">
-                <span className="text-xl sm:text-2xl">{activePhase.icon}</span>
-                <h3
-                  className={cn(
-                    "font-sans text-lg sm:text-xl font-bold",
-                    isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
-                  )}
-                >
-                  {activePhase.nameEn} · <span className="font-hindi font-medium">{activePhase.nameHi}</span>
-                </h3>
-              </div>
+              <h3
+                className={cn(
+                  "font-sans text-lg sm:text-xl font-bold tracking-tight",
+                  isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
+                )}
+              >
+                {activePhase.nameEn} · <span className="font-hindi font-medium">{activePhase.nameHi}</span>
+              </h3>
 
               <p
                 className={cn(
