@@ -569,17 +569,23 @@ export function HeritageView() {
 
         {/* ═══════════════════════════════════════════════════════
             SECTION 5: CANONICAL INSCRIPTIONS CAROUSEL (3 QUOTES)
-            [ALWAYS DARK for alternating rhythm]
+            [BLENDED EDITORIAL LAYOUT]
            ═══════════════════════════════════════════════════════ */}
         <section
           onMouseEnter={() => setIsQuoteHovered(true)}
           onMouseLeave={() => setIsQuoteHovered(false)}
-          className="p-8 sm:p-12 rounded-3xl border border-[#D4A65A]/30 bg-[#060B18] text-ivory shadow-2xl transition-all duration-300 text-left flex flex-col justify-between gap-6 relative overflow-hidden min-h-[290px] sm:min-h-[260px]"
+          className={cn(
+            "w-full py-6 sm:py-8 px-2 sm:px-4 bg-transparent transition-all duration-300 text-left flex flex-col justify-between gap-6 relative select-none min-h-[260px] sm:min-h-[230px]",
+            isParchment ? "text-[#2D1B0E]" : "text-ivory"
+          )}
         >
           {/* Subtle cosmic glow */}
           <div
             aria-hidden="true"
-            className="absolute -top-16 -right-16 w-64 h-64 bg-[#D4A65A]/10 rounded-full blur-3xl pointer-events-none"
+            className={cn(
+              "absolute -top-16 -right-16 w-64 h-64 rounded-full blur-3xl pointer-events-none",
+              isParchment ? "bg-[#B8873D]/8" : "bg-[#D4A65A]/10"
+            )}
           />
 
           {/* Animated Quote Card */}
@@ -587,16 +593,31 @@ export function HeritageView() {
             key={CANON_QUOTES[activeQuoteIndex].id}
             className="relative z-10 flex flex-col gap-4 animate-in fade-in duration-500 transition-all ease-out"
           >
-            <span className="font-mono text-xs uppercase tracking-widest text-[#D4A65A]">
+            <span
+              className={cn(
+                "font-mono text-xs uppercase tracking-widest",
+                isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
+              )}
+            >
               {CANON_QUOTES[activeQuoteIndex].canon}
             </span>
 
-            <blockquote className="font-serif text-lg sm:text-2xl italic leading-relaxed text-[#FBF5E7]">
+            <blockquote
+              className={cn(
+                "font-serif text-lg sm:text-2xl italic leading-relaxed",
+                isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
+              )}
+            >
               {CANON_QUOTES[activeQuoteIndex].quoteEn}
             </blockquote>
 
             <div className="flex items-center justify-end pt-2 text-xs">
-              <span className="font-sans font-medium uppercase tracking-wider text-right text-[#D4A65A]">
+              <span
+                className={cn(
+                  "font-sans font-medium uppercase tracking-wider text-right",
+                  isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
+                )}
+              >
                 {CANON_QUOTES[activeQuoteIndex].source}
               </span>
             </div>
@@ -615,8 +636,8 @@ export function HeritageView() {
                   className={cn(
                     "h-2 rounded-full transition-all duration-300 cursor-pointer",
                     isActive
-                      ? "w-6 bg-[#D4A65A]"
-                      : "w-2 bg-[#D4A65A]/30 hover:bg-[#D4A65A]/60"
+                      ? isParchment ? "w-6 bg-[#8C5D33]" : "w-6 bg-[#D4A65A]"
+                      : isParchment ? "w-2 bg-[#8C5D33]/30 hover:bg-[#8C5D33]/60" : "w-2 bg-[#D4A65A]/30 hover:bg-[#D4A65A]/60"
                   )}
                 />
               );
