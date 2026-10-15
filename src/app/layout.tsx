@@ -305,7 +305,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${fraunces.variable} ${notoDevanagari.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${inter.variable} ${fraunces.variable} ${notoDevanagari.variable}`}
+    >
       <head>
         {/* Preload critical above-the-fold clock hero assets to achieve sub-second LCP */}
         <link
@@ -337,7 +341,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(rootJsonLd) }}
         />
       </head>
-      <body className="font-sans selection:bg-brass/30 selection:text-ivory">
+      <body
+        suppressHydrationWarning
+        className="font-sans selection:bg-brass/30 selection:text-ivory"
+      >
         <SmoothScrollProvider>
           <ThemeProvider>
             {children}

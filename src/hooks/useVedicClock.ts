@@ -83,7 +83,11 @@ interface DayBundle {
  * The other limbs are NOT cached on the bundle — they're recomputed
  * every tick from the current instant.
  */
-function bundleForSunrise(sunriseUtc: Date, nextSunriseUtc: Date): DayBundle {
+function bundleForSunrise(
+  sunriseUtc: Date,
+  nextSunriseUtc: Date,
+  testFestivalQuery?: string | null
+): DayBundle {
   // Detect the Shukla and Krishna lunar months with Adhika Masa awareness.
   const { shuklaMonth, krishnaMonth, nextAmantaMonth, nextNewMoonUtc } = calculateDayLunarMonths(sunriseUtc);
 
@@ -99,48 +103,40 @@ function bundleForSunrise(sunriseUtc: Date, nextSunriseUtc: Date): DayBundle {
   let festival = festivalForIstDate(sunriseCivilIst);
 
   // Allow URL query parameter on web to test festival visuals on any screen
-  if (typeof window !== 'undefined' && window.location && window.location.search) {
-    try {
-      const params = new URLSearchParams(window.location.search);
-      const testFest = params.get('testFestival') || params.get('festival');
-      if (testFest) {
-        if (testFest === 'longest' || testFest === 'dussehra') {
-          festival = {
-            dateGregorian: '2026-10-20',
-            nameEn: 'Dussehra (Vijayadashami)',
-            nameHi: 'दशहरा',
-            type: 'Lunar',
-            observance: 'Major',
-          };
-        } else if (testFest === 'janmashtami') {
-          festival = {
-            dateGregorian: '2026-09-04',
-            nameEn: 'Krishna Janmashtami',
-            nameHi: 'कृष्ण जन्माष्टमी',
-            type: 'Lunar',
-            observance: 'Major',
-          };
-        } else if (testFest === 'ugadi') {
-          festival = {
-            dateGregorian: '2026-03-19',
-            nameEn: 'Gudi Padwa / Ugadi',
-            nameHi: 'उगादि',
-            type: 'Lunisolar',
-            observance: 'Major',
-          };
-        } else {
-          // Default test festival: Ganesh Chaturthi
-          festival = {
-            dateGregorian: '2026-09-15',
-            nameEn: 'Ganesh Chaturthi',
-            nameHi: 'गणेश चतुर्थी',
-            type: 'Lunar',
-            observance: 'Major',
-          };
-        }
-      }
-    } catch {
-      // Ignore if URLSearchParams is unavailable
+  if (testFestivalQuery) {
+    if (testFestivalQuery === 'longest' || testFestivalQuery === 'dussehra') {
+      festival = {
+        dateGregorian: '2026-10-20',
+        nameEn: 'Dussehra (Vijayadashami)',
+        nameHi: 'दशहरा',
+        type: 'Lunar',
+        observance: 'Major',
+      };
+    } else if (testFestivalQuery === 'janmashtami') {
+      festival = {
+        dateGregorian: '2026-09-04',
+        nameEn: 'Krishna Janmashtami',
+        nameHi: 'कृष्ण जन्माष्टमी',
+        type: 'Lunar',
+        observance: 'Major',
+      };
+    } else if (testFestivalQuery === 'ugadi') {
+      festival = {
+        dateGregorian: '2026-03-19',
+        nameEn: 'Gudi Padwa / Ugadi',
+        nameHi: 'उगादि',
+        type: 'Lunisolar',
+        observance: 'Major',
+      };
+    } else {
+      // Default test festival: Ganesh Chaturthi
+      festival = {
+        dateGregorian: '2026-09-15',
+        nameEn: 'Ganesh Chaturthi',
+        nameHi: 'गणेश चतुर्थी',
+        type: 'Lunar',
+        observance: 'Major',
+      };
     }
   }
 
@@ -172,7 +168,16 @@ export function useVedicClock(): VedicClockState | null {
   useEffect(() => {
     function recomputeBundle(now: Date): DayBundle {
       const { sunrise, nextSunrise } = resolveSunrisePair(now);
-      const bundle = bundleForSunrise(sunrise, nextSunrise);
+      let testFest: string | null = null;
+      if (typeof window !== 'undefined' && window.location?.search) {
+        try {
+          const params = new URLSearchParams(window.location.search);
+          testFest = params.get('testFestival') || params.get('festival');
+        } catch {
+          // Ignore if URLSearchParams is unavailable
+        }
+      }
+      const bundle = bundleForSunrise(sunrise, nextSunrise, testFest);
       dayBundleRef.current = bundle;
       return bundle;
     }
