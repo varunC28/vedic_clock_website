@@ -231,7 +231,7 @@ export function HeritageView() {
           {/* Eyebrow */}
           <span
             className={cn(
-              "font-mono text-xs tracking-[0.25em] uppercase mb-4",
+              "font-mono text-xs tracking-[0.25em] uppercase mb-4 transition-colors duration-500",
               isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
             )}
           >
@@ -241,7 +241,7 @@ export function HeritageView() {
           {/* Headline */}
           <h1
             className={cn(
-              "font-sans text-3xl sm:text-4xl lg:text-[46px] font-bold leading-[1.15] tracking-tight mb-4 heritage-speakable-headline",
+              "font-sans text-3xl sm:text-4xl lg:text-[46px] font-bold leading-[1.15] tracking-tight mb-4 heritage-speakable-headline transition-colors duration-500",
               isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
             )}
           >
@@ -251,7 +251,7 @@ export function HeritageView() {
           {/* Bilingual Subtitle */}
           <p
             className={cn(
-              "font-hindi text-lg sm:text-xl font-medium mb-5",
+              "font-hindi text-lg sm:text-xl font-medium mb-5 transition-colors duration-500",
               isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
             )}
           >
@@ -261,7 +261,7 @@ export function HeritageView() {
           {/* Clean Editorial Lead */}
           <p
             className={cn(
-              "font-sans text-sm sm:text-base leading-relaxed max-w-2xl heritage-speakable-lead",
+              "font-sans text-sm sm:text-base leading-relaxed max-w-2xl heritage-speakable-lead transition-colors duration-500",
               isParchment ? "text-[#6E5540]" : "text-ivory/70"
             )}
           >
@@ -276,7 +276,7 @@ export function HeritageView() {
           <div className="flex flex-col gap-1.5">
             <span
               className={cn(
-                "font-mono text-xs uppercase tracking-wider",
+                "font-mono text-xs uppercase tracking-wider transition-colors duration-500",
                 isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
               )}
             >
@@ -284,7 +284,7 @@ export function HeritageView() {
             </span>
             <h2
               className={cn(
-                "font-serif text-2xl sm:text-3xl lg:text-4xl font-normal tracking-tight",
+                "font-serif text-2xl sm:text-3xl lg:text-4xl font-normal tracking-tight transition-colors duration-500",
                 isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
               )}
             >
@@ -292,7 +292,7 @@ export function HeritageView() {
             </h2>
             <p
               className={cn(
-                "font-sans text-xs sm:text-sm max-w-xl leading-relaxed mt-1",
+                "font-sans text-xs sm:text-sm max-w-xl leading-relaxed mt-1 transition-colors duration-500",
                 isParchment ? "text-[#6E5540]" : "text-ivory/65"
               )}
             >
@@ -425,7 +425,7 @@ export function HeritageView() {
         <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-12 mb-8 sm:mb-12 flex flex-col gap-1 text-left">
           <span
             className={cn(
-              "font-mono text-xs uppercase tracking-wider",
+              "font-mono text-xs uppercase tracking-wider transition-colors duration-500",
               isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
             )}
           >
@@ -433,7 +433,7 @@ export function HeritageView() {
           </span>
           <h2
             className={cn(
-              "font-serif text-2xl sm:text-3xl lg:text-4xl font-normal tracking-tight",
+              "font-serif text-2xl sm:text-3xl lg:text-4xl font-normal tracking-tight transition-colors duration-500",
               isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
             )}
           >
@@ -441,7 +441,7 @@ export function HeritageView() {
           </h2>
           <p
             className={cn(
-              "font-sans text-xs sm:text-sm max-w-xl mt-1 leading-relaxed",
+              "font-sans text-xs sm:text-sm max-w-xl mt-1 leading-relaxed transition-colors duration-500",
               isParchment ? "text-[#6E5540]" : "text-ivory/70"
             )}
           >
@@ -474,7 +474,7 @@ export function HeritageView() {
           <div className="flex flex-col gap-1">
             <span
               className={cn(
-                "font-mono text-xs uppercase tracking-wider",
+                "font-mono text-xs uppercase tracking-wider transition-colors duration-500",
                 isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
               )}
             >
@@ -482,7 +482,7 @@ export function HeritageView() {
             </span>
             <h2
               className={cn(
-                "font-sans text-2xl sm:text-3xl font-bold tracking-tight",
+                "font-sans text-2xl sm:text-3xl font-bold tracking-tight transition-colors duration-500",
                 isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
               )}
             >
@@ -490,7 +490,7 @@ export function HeritageView() {
             </h2>
             <p
               className={cn(
-                "font-sans text-sm max-w-xl mt-1",
+                "font-sans text-sm max-w-xl mt-1 transition-colors duration-500",
                 isParchment ? "text-[#6E5540]" : "text-ivory/70"
               )}
             >
@@ -509,25 +509,25 @@ export function HeritageView() {
           {/* Active Phase Dynamic Spotlight (Transparent glass card blended into background) */}
           <div
             className={cn(
-              "p-6 sm:p-7 rounded-2xl border transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6 text-left",
+              "p-6 sm:p-7 rounded-2xl border transition-colors duration-500 flex flex-col md:flex-row md:items-center justify-between gap-6 text-left backdrop-blur-sm",
               isParchment
-                ? "border-[#DFCBB5] bg-gradient-to-b from-[#FAF6F0]/60 to-transparent shadow-sm"
-                : "border-[#D4A65A]/20 bg-gradient-to-b from-white/[0.03] to-transparent backdrop-blur-sm"
+                ? "border-[#DFCBB5] bg-[#FAF6F0]/60 shadow-sm"
+                : "border-[#D4A65A]/20 bg-white/[0.02] shadow-[0_8px_32px_rgba(0,0,0,0.2)]"
             )}
           >
-            <div key={activePhase.id} className="flex flex-col gap-1.5 max-w-xl animate-in fade-in duration-300">
+            <div key={activePhase.id} className="flex flex-col gap-1.5 max-w-xl">
               <h3
                 className={cn(
-                  "font-sans text-lg sm:text-xl font-bold tracking-tight",
+                  "font-sans text-lg sm:text-xl font-bold tracking-tight transition-colors duration-500",
                   isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
                 )}
               >
-                {activePhase.nameEn} · <span className="font-hindi font-medium">{activePhase.nameHi}</span>
+                {activePhase.nameEn} · <span className="font-hindi font-medium transition-colors duration-500">{activePhase.nameHi}</span>
               </h3>
 
               <p
                 className={cn(
-                  "font-sans text-sm sm:text-[14.5px] leading-relaxed",
+                  "font-sans text-sm sm:text-[14.5px] leading-relaxed transition-colors duration-500",
                   isParchment ? "text-[#5C4533]" : "text-ivory/80"
                 )}
               >
@@ -539,14 +539,14 @@ export function HeritageView() {
             <div
               key={`${activePhase.id}-badge`}
               className={cn(
-                "shrink-0 px-4 py-2.5 rounded-xl border flex flex-col items-start md:items-end text-xs transition-colors animate-in fade-in duration-300",
+                "shrink-0 px-4 py-2.5 rounded-xl border flex flex-col items-start md:items-end text-xs transition-colors duration-500",
                 isParchment
                   ? "bg-transparent border-[#DFCBB5] text-[#8C5D33]"
                   : "bg-transparent border-[#D4A65A]/25 text-[#D4A65A]"
               )}
             >
-              <span className="font-mono text-[10px] uppercase tracking-wider opacity-70">Cosmic Quality</span>
-              <span className="font-medium font-sans mt-0.5">{activePhase.nature}</span>
+              <span className="font-mono text-[10px] uppercase tracking-wider opacity-70 transition-colors duration-500">Cosmic Quality</span>
+              <span className="font-medium font-sans mt-0.5 transition-colors duration-500">{activePhase.nature}</span>
             </div>
           </div>
         </section>
@@ -564,7 +564,7 @@ export function HeritageView() {
           <div
             aria-hidden="true"
             className={cn(
-              "absolute -top-16 -right-16 w-64 h-64 rounded-full blur-3xl pointer-events-none",
+              "absolute -top-16 -right-16 w-64 h-64 rounded-full blur-3xl pointer-events-none transition-colors duration-500",
               isParchment ? "bg-[#B8873D]/8" : "bg-[#D4A65A]/10"
             )}
           />
@@ -572,11 +572,11 @@ export function HeritageView() {
           {/* Animated Quote Card */}
           <div
             key={CANON_QUOTES[activeQuoteIndex].id}
-            className="relative z-10 flex flex-col gap-4 motion-safe:animate-in motion-safe:fade-in motion-safe:duration-500"
+            className="relative z-10 flex flex-col gap-4 motion-safe:animate-in motion-safe:fade-in motion-safe:duration-300"
           >
             <span
               className={cn(
-                "font-mono text-xs uppercase tracking-widest",
+                "font-mono text-xs uppercase tracking-widest transition-colors duration-500",
                 isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
               )}
             >
@@ -585,7 +585,7 @@ export function HeritageView() {
 
             <blockquote
               className={cn(
-                "font-serif text-lg sm:text-2xl italic leading-relaxed",
+                "font-serif text-lg sm:text-2xl italic leading-relaxed transition-colors duration-500",
                 isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
               )}
             >
@@ -595,7 +595,7 @@ export function HeritageView() {
             <div className="flex items-center justify-end pt-2 text-xs">
               <span
                 className={cn(
-                  "font-sans font-medium uppercase tracking-wider text-right",
+                  "font-sans font-medium uppercase tracking-wider text-right transition-colors duration-500",
                   isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
                 )}
               >
@@ -615,7 +615,7 @@ export function HeritageView() {
                   onClick={() => setActiveQuoteIndex(idx)}
                   aria-label={`Go to quote ${idx + 1}`}
                   className={cn(
-                    "h-2 rounded-full motion-safe:transition-[width] motion-safe:duration-300 cursor-pointer",
+                    "h-2 rounded-full transition-all duration-500 cursor-pointer",
                     isActive
                       ? isParchment ? "w-6 bg-[#8C5D33]" : "w-6 bg-[#D4A65A]"
                       : isParchment ? "w-2 bg-[#8C5D33]/30 hover:bg-[#8C5D33]/60" : "w-2 bg-[#D4A65A]/30 hover:bg-[#D4A65A]/60"
@@ -630,13 +630,13 @@ export function HeritageView() {
             SECTION 6: MINIMALIST NEXT STEPS / CTA
            ═══════════════════════════════════════════════════════ */}
         <section className={cn(
-          "flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-4 border-t",
+          "flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-4 border-t transition-colors duration-500",
           isParchment ? "border-[#DFCBB5]" : "border-white/10"
         )}>
           <div className="flex flex-col gap-1">
             <h3
               className={cn(
-                "font-sans text-lg font-bold",
+                "font-sans text-lg font-bold transition-colors duration-500",
                 isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
               )}
             >
@@ -644,7 +644,7 @@ export function HeritageView() {
             </h3>
             <p
               className={cn(
-                "font-sans text-xs sm:text-sm",
+                "font-sans text-xs sm:text-sm transition-colors duration-500",
                 isParchment ? "text-[#6E5540]" : "text-ivory/70"
               )}
             >
@@ -656,7 +656,7 @@ export function HeritageView() {
             <Link
               href="/clock"
               className={cn(
-                "px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide transition-all",
+                "px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide transition-all duration-500",
                 isParchment
                   ? "bg-black hover:bg-neutral-900 text-white shadow-sm"
                   : "bg-gradient-to-r from-[#B8873D] to-[#D4A65A] hover:from-[#C9974D] hover:to-[#E5B76A] text-[#03060E] shadow-sm font-bold"
@@ -667,7 +667,7 @@ export function HeritageView() {
             <Link
               href="/guide"
               className={cn(
-                "px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide border transition-all",
+                "px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide border transition-all duration-500",
                 isParchment
                   ? "border-[#482D1C] text-[#482D1C] hover:bg-[#EFE7DA]"
                   : "border-[#D4A65A]/40 text-[#D4A65A] hover:bg-[#D4A65A]/10"

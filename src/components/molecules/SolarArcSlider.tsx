@@ -131,15 +131,15 @@ export function SolarArcSlider({
         {/* Continuous Horizon Rail Line (No intermediate dots) */}
         <div
           className={cn(
-            "w-full h-1 sm:h-1.5 rounded-full relative overflow-hidden transition-colors duration-300",
+            "w-full h-1 sm:h-1.5 rounded-full relative overflow-hidden transition-colors duration-500",
             isParchment ? "bg-[#DFCBB5]" : "bg-white/10"
           )}
         >
           {/* Active Filled Progress Line */}
           <div
             className={cn(
-              "h-full rounded-full",
-              isDragging ? "transition-none" : "transition-all duration-350 ease-out",
+              "h-full rounded-full transition-colors duration-500",
+              isDragging ? "transition-none" : "transition-[width] duration-350 ease-out",
               isParchment
                 ? "bg-gradient-to-r from-[#8C5D33] via-[#B8873D] to-[#8C5D33]"
                 : "bg-gradient-to-r from-[#B8873D] via-[#D4A65A] to-[#E8B94B] shadow-[0_0_12px_rgba(212,166,90,0.6)]"
@@ -169,8 +169,7 @@ export function SolarArcSlider({
           {/* Floating Phase Pill Above the Dot */}
           <div
             className={cn(
-              "absolute -top-10 sm:-top-11 left-1/2 -translate-x-1/2 whitespace-nowrap px-3 py-1 rounded-full border text-[11px] sm:text-xs font-sans font-medium flex items-center gap-2 pointer-events-none shadow-lg",
-              isDragging ? "transition-none" : "transition-all duration-350 ease-out",
+              "absolute -top-10 sm:-top-11 left-1/2 -translate-x-1/2 whitespace-nowrap px-3 py-1 rounded-full border text-[11px] sm:text-xs font-sans font-medium flex items-center gap-2 pointer-events-none transition-all duration-500",
               isParchment
                 ? "bg-[#FAF6F0] border-[#DFCBB5] text-[#2D1B0E] shadow-[0_4px_16px_rgba(72,45,28,0.12)]"
                 : "bg-[#091122]/95 border-[#D4A65A]/40 text-[#FBF5E7] shadow-[0_4px_20px_rgba(0,0,0,0.7)]"
@@ -183,7 +182,7 @@ export function SolarArcSlider({
             {/* Downward triangle arrow pointing to the dot */}
             <div
               className={cn(
-                "absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 border-r border-b",
+                "absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 border-r border-b transition-colors duration-500",
                 isParchment
                   ? "bg-[#FAF6F0] border-[#DFCBB5]"
                   : "bg-[#091122] border-[#D4A65A]/40"
@@ -194,7 +193,7 @@ export function SolarArcSlider({
           {/* Draggable Celestial Dot */}
           <div
             className={cn(
-              "w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center border-2",
+              "w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center border-2 transition-all duration-500",
               isParchment
                 ? "bg-gradient-to-tr from-[#8C5D33] via-[#B8873D] to-[#FAF6F0] border-white shadow-[0_2px_10px_rgba(72,45,28,0.4)]"
                 : "bg-gradient-to-tr from-[#B8873D] via-[#D4A65A] to-[#FFF5D1] border-white shadow-[0_0_16px_rgba(212,166,90,0.95)]"
@@ -203,7 +202,7 @@ export function SolarArcSlider({
             {/* Core golden jewel */}
             <div
               className={cn(
-                "w-1.5 h-1.5 rounded-full",
+                "w-1.5 h-1.5 rounded-full transition-colors duration-500",
                 isParchment ? "bg-[#482D1C]" : "bg-[#03060E]"
               )}
             />
@@ -239,7 +238,7 @@ export function SolarArcSlider({
             >
               <span
                 className={cn(
-                  "font-mono text-[10px] sm:text-[11px] tracking-wider transition-colors duration-200",
+                  "font-mono text-[10px] sm:text-[11px] tracking-wider transition-colors duration-500",
                   isActive
                     ? isParchment
                       ? "text-[#8C5D33] font-bold"
@@ -253,7 +252,7 @@ export function SolarArcSlider({
               </span>
               <span
                 className={cn(
-                  "text-[11px] sm:text-xs mt-0.5 whitespace-nowrap transition-colors duration-200",
+                  "text-[11px] sm:text-xs mt-0.5 whitespace-nowrap transition-colors duration-500",
                   isActive
                     ? isParchment
                       ? "text-[#2D1B0E] font-semibold"
