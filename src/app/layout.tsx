@@ -6,18 +6,21 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 const inter = Inter({ 
   subsets: ["latin"], 
-  variable: "--font-inter" 
+  variable: "--font-inter",
+  display: "swap",
 });
 
 const fraunces = Fraunces({ 
   subsets: ["latin"], 
-  variable: "--font-fraunces" 
+  variable: "--font-fraunces",
+  display: "swap",
 });
 
 const notoDevanagari = Noto_Sans_Devanagari({ 
   subsets: ["devanagari"], 
   weight: ["400", "500", "600", "700", "800", "900"],
-  variable: "--font-noto-devanagari" 
+  variable: "--font-noto-devanagari",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -38,6 +41,10 @@ export const metadata: Metadata = {
     "panchang clock",
     "vedic astronomical clock",
     "vedic clock price in india",
+    "jantar mantar ujjain",
+    "jantar mantar vedic clock",
+    "ujjain jantar mantar",
+    "samrat yantra",
     "aaj ka panchang",
     "panchang for today",
     "dainik panchang",
@@ -229,7 +236,12 @@ const rootJsonLd = {
         {
           "@type": "Place",
           name: "Vedh Shala (Ujjain Observatory)",
-          alternateName: "वेधशाला उज्जैन",
+          alternateName: [
+            "वेधशाला उज्जैन",
+            "Jantar Mantar Ujjain",
+            "जंतर मंतर उज्जैन",
+            "Jiwaji Observatory"
+          ],
           sameAs: [
             "https://en.wikipedia.org/wiki/Vedh_Shala",
             "https://www.wikidata.org/wiki/Q7917997",

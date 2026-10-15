@@ -7,6 +7,11 @@ export const metadata: Metadata = {
     "Explore ancient Indian astronomy. Why Ujjain was recognized as the 0° prime meridian millennia before Greenwich, and Varahamihira's legacy.",
   keywords: [
     "ujjain prime meridian",
+    "jantar mantar ujjain",
+    "jantar mantar vedic clock",
+    "ujjain jantar mantar",
+    "jantar mantar observatory",
+    "samrat yantra ujjain",
     "vikram samvat",
     "calendar vikram samvat",
     "indian calendar",
@@ -106,6 +111,12 @@ const heritageJsonLd = {
         {
           "@type": "Place",
           name: "Vedh Shala (Ujjain Astronomical Observatory)",
+          alternateName: [
+            "Jantar Mantar Ujjain",
+            "जंतर मंतर उज्जैन",
+            "Jiwaji Observatory",
+            "Ujjain Vedh Shala"
+          ],
           sameAs: [
             "https://en.wikipedia.org/wiki/Vedh_Shala",
             "https://www.wikidata.org/wiki/Q7917997",
