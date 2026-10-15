@@ -574,10 +574,7 @@ export function HeritageView() {
         <section
           onMouseEnter={() => setIsQuoteHovered(true)}
           onMouseLeave={() => setIsQuoteHovered(false)}
-          className={cn(
-            "w-full py-6 sm:py-8 px-2 sm:px-4 bg-transparent transition-all duration-300 text-left flex flex-col justify-between gap-6 relative select-none min-h-[260px] sm:min-h-[230px]",
-            isParchment ? "text-[#2D1B0E]" : "text-ivory"
-          )}
+          className="w-full py-6 sm:py-8 px-2 sm:px-4 bg-transparent text-left flex flex-col justify-between gap-6 relative select-none min-h-[260px] sm:min-h-[230px]"
         >
           {/* Subtle cosmic glow */}
           <div
@@ -591,7 +588,7 @@ export function HeritageView() {
           {/* Animated Quote Card */}
           <div
             key={CANON_QUOTES[activeQuoteIndex].id}
-            className="relative z-10 flex flex-col gap-4 animate-in fade-in duration-500 transition-all ease-out"
+            className="relative z-10 flex flex-col gap-4 motion-safe:animate-in motion-safe:fade-in motion-safe:duration-500"
           >
             <span
               className={cn(
@@ -634,7 +631,7 @@ export function HeritageView() {
                   onClick={() => setActiveQuoteIndex(idx)}
                   aria-label={`Go to quote ${idx + 1}`}
                   className={cn(
-                    "h-2 rounded-full transition-all duration-300 cursor-pointer",
+                    "h-2 rounded-full motion-safe:transition-[width] motion-safe:duration-300 cursor-pointer",
                     isActive
                       ? isParchment ? "w-6 bg-[#8C5D33]" : "w-6 bg-[#D4A65A]"
                       : isParchment ? "w-2 bg-[#8C5D33]/30 hover:bg-[#8C5D33]/60" : "w-2 bg-[#D4A65A]/30 hover:bg-[#D4A65A]/60"
