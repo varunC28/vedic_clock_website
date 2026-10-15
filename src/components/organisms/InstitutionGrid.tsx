@@ -1,10 +1,16 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
 import { SectionEyebrow } from "@/components/atoms/SectionEyebrow";
 import { GoldDivider } from "@/components/atoms/GoldDivider";
 import { InstitutionCard } from "@/components/molecules/InstitutionCard";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface InstitutionGridProps {
   variant?: "dark" | "parchment";
@@ -13,6 +19,40 @@ interface InstitutionGridProps {
 
 export function InstitutionGrid({ variant = "dark", className }: InstitutionGridProps) {
   const isParchment = variant === "parchment";
+  const gridContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !gridContainerRef.current) return;
+
+    const cards = gridContainerRef.current.querySelectorAll(".institution-card-anim");
+    if (!cards.length) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        cards,
+        {
+          opacity: 0,
+          y: 28,
+          scale: 0.97,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.85,
+          stagger: 0.12,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: gridContainerRef.current,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+    }, gridContainerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const segments = [
     {
@@ -34,7 +74,7 @@ export function InstitutionGrid({ variant = "dark", className }: InstitutionGrid
       titleEn: "Universities & Research",
       titleHi: "विश्वविद्यालय एवं शोध",
       tagline:
-        "A scientific foyer installation for astrophysics and astronomical faculties, computing live Surya Siddhanta ephemerides as an authoritative sidereal research reference.",
+        "An iconic scientific centerpiece for astrophysics atriums, planetariums, and mathematics faculties — computing live Surya Siddhanta ephemerides, Nakshatra transits, and Ujjain zero-meridian sidereal coordinates as an active pedagogical research reference.",
     },
     {
       num: "04",
@@ -100,18 +140,22 @@ export function InstitutionGrid({ variant = "dark", className }: InstitutionGrid
         )}
       />
 
-      {/* ── 4 Segment Grid (Equal Height Cards & Rows) ───────────────────────── */}
-      <div className="relative z-10 w-full max-w-6xl xl:max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 xl:gap-6 items-stretch">
+      {/* ── 4 Segment Grid (Equal Height Cards & Rows with Staggered Reveal) ─ */}
+      <div
+        ref={gridContainerRef}
+        className="relative z-10 w-full max-w-6xl xl:max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 xl:gap-6 items-stretch"
+      >
         {segments.map((seg) => (
-          <InstitutionCard
-            key={seg.num}
-            num={seg.num}
-            titleEn={seg.titleEn}
-            titleHi={seg.titleHi}
-            tagline={seg.tagline}
-            variant={isParchment ? "light" : "dark"}
-            className="h-full"
-          />
+          <div key={seg.num} className="institution-card-anim h-full">
+            <InstitutionCard
+              num={seg.num}
+              titleEn={seg.titleEn}
+              titleHi={seg.titleHi}
+              tagline={seg.tagline}
+              variant={isParchment ? "light" : "dark"}
+              className="h-full"
+            />
+          </div>
         ))}
       </div>
     </section>
