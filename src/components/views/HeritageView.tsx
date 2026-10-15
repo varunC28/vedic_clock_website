@@ -30,18 +30,6 @@ const Timeline = dynamic(() => import("@/components/ui/timeline"), {
   ),
 });
 
-const HorizontalTimeline = dynamic(
-  () => import("@/components/molecules/HorizontalTimeline").then((m) => m.HorizontalTimeline),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="w-full min-h-[300px] flex items-center justify-center p-8 bg-[#03060E] rounded-2xl border border-[#D4A65A]/20">
-        <div className="w-8 h-8 border-2 border-[#D4A65A] border-t-transparent rounded-full animate-spin" />
-      </div>
-    ),
-  }
-);
-
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
@@ -159,71 +147,7 @@ const ARC_PHASES: ArcPhase[] = [
   },
 ];
 
-// ── 3. Chronology Milestones ──
-interface Milestone {
-  year: string;
-  eraEn: string;
-  eraHi: string;
-  headlineEn: string;
-  headlineHi: string;
-  description: string;
-  impact: string;
-}
-
-const MILESTONES: Milestone[] = [
-  {
-    year: "1500+ BCE",
-    eraEn: "Vedic Antiquity",
-    eraHi: "वैदिक काल",
-    headlineEn: "The 360-Spoke Cosmic Wheel",
-    headlineHi: "अहोरात्र चक्र",
-    description:
-      "Rigvedic astronomical hymns formulate the solar cycle into 12 lunar months, 30 daily Muhurtas, and 27 Nakshatras tracing the Moon’s ecliptic path.",
-    impact: "First recorded formulation of horizon-anchored time units in human history.",
-  },
-  {
-    year: "500 BCE",
-    eraEn: "Siddhantic Foundation",
-    eraHi: "सूर्य सिद्धान्त",
-    headlineEn: "Ujjain Formally Defined as Prime Meridian",
-    headlineHi: "अवंतिका रेखांश",
-    description:
-      "The Surya Siddhanta mathematically defines the Rekha-Desha (zero longitude) traversing Avanti (Ujjain), calculating time down to Truti (29.6 microseconds).",
-    impact: "Established astronomical coordinate system linking planetary longitude to local gnomon shadows.",
-  },
-  {
-    year: "57 BCE",
-    eraEn: "Vikramaditya Era",
-    eraHi: "विक्रम संवत्",
-    headlineEn: "The Royal Calendar of King Vikramaditya",
-    headlineHi: "राजकीय पंचांग",
-    description:
-      "Emperor Vikramaditya of Ujjain inaugurates the Vikram Samvat era, uniting astronomical observation with civil administration, temple rituals, and national calendar standards.",
-    impact: "Pre-dates the Gregorian calendar by 57 years; remains India's premier astronomical dating era.",
-  },
-  {
-    year: "505 CE",
-    eraEn: "Classical Golden Age",
-    eraHi: "वराहमिहिर काल",
-    headlineEn: "Varahamihira Calibrates Clepsydras & Gnomons",
-    headlineHi: "घटी-यंत्र एवं शंकु",
-    description:
-      "In Ujjain, royal astronomer Varahamihira compiles the Pancha-Siddhantika, standardizing the copper bowl water clock (Ghati-Yantra) for micro-accurate 24-minute intervals.",
-    impact: "Mechanical horology calibrated precisely to solar altitude angles.",
-  },
-  {
-    year: "2024–2026",
-    eraEn: "Modern Rebirth",
-    eraHi: "नव पुनर्जागरण",
-    headlineEn: "The Vikramaditya Vedic Clock in Ujjain",
-    headlineHi: "आधुनिक वेदिक घड़ी",
-    description:
-      "Ancient Sanskrit astronomical mathematics synthesized with high-precision micro-stepper horology and satellite astronomical ephemerides in a monumental tower clock.",
-    impact: "Returning astronomical authenticity and living Vedic time to the civil world.",
-  },
-];
-
-// ── 4. Canonical Quotes Carousel Data ──
+// ── 3. Canonical Quotes Carousel Data ──
 interface CanonQuote {
   id: string;
   canon: string;
@@ -258,7 +182,6 @@ const CANON_QUOTES: CanonQuote[] = [
 export function HeritageView() {
   const { isParchment } = useTheme();
   const [activePhase, setActivePhase] = useState<ArcPhase>(ARC_PHASES[0]);
-  const [timelineVariant, setTimelineVariant] = useState<"hyperiux" | "rail">("hyperiux");
   const [activeQuoteIndex, setActiveQuoteIndex] = useState(0);
   const [isQuoteHovered, setIsQuoteHovered] = useState(false);
 
@@ -497,72 +420,31 @@ export function HeritageView() {
           SECTION 3: CHRONOLOGY TIMELINE (ALWAYS DARK FOR ALTERNATION)
          ═══════════════════════════════════════════════════════ */}
       <section className="w-full bg-[#03060E] text-ivory transition-colors duration-500 pt-16 sm:pt-20 pb-8 overflow-hidden border-y border-[#D4A65A]/20">
-        <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-12 mb-8 sm:mb-12 flex flex-col gap-6 text-left">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div className="flex flex-col gap-1">
-              <span className="font-mono text-xs uppercase tracking-wider text-[#D4A65A]">
-                Chronological Epochs · 1500 BCE to 2026 CE
-              </span>
-              <h2 className="font-sans text-2xl sm:text-3xl font-bold tracking-tight text-[#FBF5E7]">
-                The Evolution of Vedic Horology
-              </h2>
-              <p className="font-sans text-sm max-w-xl mt-1 text-ivory/70">
-                Trace the intellectual continuum across millennia, from Rigvedic solar mathematics to modern monumental tower horology.
-              </p>
-            </div>
-
-            {/* Layout Comparison Switcher */}
-            <div className="w-full sm:w-auto grid grid-cols-2 sm:inline-flex items-center gap-1 p-1 rounded-full border bg-[#091122]/90 border-[#D4A65A]/25 shadow-inner shrink-0">
-              <button
-                type="button"
-                onClick={() => setTimelineVariant("hyperiux")}
-                className={cn(
-                  "px-4 py-2 sm:py-1.5 rounded-full text-xs font-sans transition-all duration-300 cursor-pointer flex items-center justify-center text-center",
-                  timelineVariant === "hyperiux"
-                    ? "bg-gradient-to-r from-[#B8873D] to-[#D4A65A] text-[#03060E] shadow-md shadow-[#D4A65A]/20 font-bold"
-                    : "text-ivory/65 hover:text-ivory hover:bg-white/5 font-medium"
-                )}
-              >
-                Hyperiux Scroll
-              </button>
-              <button
-                type="button"
-                onClick={() => setTimelineVariant("rail")}
-                className={cn(
-                  "px-4 py-2 sm:py-1.5 rounded-full text-xs font-sans transition-all duration-300 cursor-pointer flex items-center justify-center text-center",
-                  timelineVariant === "rail"
-                    ? "bg-gradient-to-r from-[#B8873D] to-[#D4A65A] text-[#03060E] shadow-md shadow-[#D4A65A]/20 font-bold"
-                    : "text-ivory/65 hover:text-ivory hover:bg-white/5 font-medium"
-                )}
-              >
-                Rail Cards
-              </button>
-            </div>
-          </div>
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-12 mb-8 sm:mb-12 flex flex-col gap-1 text-left">
+          <span className="font-mono text-xs uppercase tracking-wider text-[#D4A65A]">
+            Chronological Epochs · 1500 BCE to 2026 CE
+          </span>
+          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal tracking-tight text-[#FBF5E7]">
+            The Evolution of Vedic Horology
+          </h2>
+          <p className="font-sans text-xs sm:text-sm max-w-xl mt-1 text-ivory/70 leading-relaxed">
+            Trace the intellectual continuum across millennia, from Rigvedic solar mathematics to modern monumental tower horology.
+          </p>
         </div>
 
         {/* ── Full Width Timeline Stream (Unconstrained by max-w-5xl) ── */}
-        {timelineVariant === "hyperiux" ? (
-          <div className="w-full max-w-full overflow-hidden relative">
-            <Timeline
-              title="Vedic Chronology"
-              periodLabel="1500 BCE to 2026 CE"
-              backgroundColor="#03060E"
-              textColor="#FBF5E7"
-              mutedTextColor="rgba(251, 245, 231, 0.7)"
-              activeColor="#D4A65A"
-              imageUrl="/assets/images/ancient-temple-celestial-wheel.webp?v=2"
-              imageAlt="Ancient Temple Beneath the Celestial Wheel - Avanti Meridian"
-            />
-          </div>
-        ) : (
-          <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-12 my-8">
-            <HorizontalTimeline
-              milestones={MILESTONES}
-              variant="dark"
-            />
-          </div>
-        )}
+        <div className="w-full max-w-full overflow-hidden relative">
+          <Timeline
+            title="Vedic Chronology"
+            periodLabel="1500 BCE to 2026 CE"
+            backgroundColor="#03060E"
+            textColor="#FBF5E7"
+            mutedTextColor="rgba(251, 245, 231, 0.7)"
+            activeColor="#D4A65A"
+            imageUrl="/assets/images/ancient-temple-celestial-wheel.webp?v=2"
+            imageAlt="Ancient Temple Beneath the Celestial Wheel - Avanti Meridian"
+          />
+        </div>
       </section>
 
       {/* ── Bottom Editorial Container (LIGHT in light mode / DARK in dark mode) ── */}
