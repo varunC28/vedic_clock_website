@@ -54,7 +54,7 @@ export function FeatureBulletBlock({
             {/* Text Block */}
             <p className="font-sans text-sm leading-relaxed">
               <span className={cn("font-semibold", labelColor)}>{bullet.label}</span>
-              <span className={cn("mx-1.5", dashColor)}>—</span>
+              <span className={cn("mx-1.5 font-medium", dashColor)}>:</span>
               <span className={descColor}>{bullet.description}</span>
             </p>
           </div>

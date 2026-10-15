@@ -140,7 +140,7 @@ export function ContactView() {
                 isParchment ? "text-[#6E5540]" : "text-ivory/70"
               )}
             >
-              At Shiv Enterprises, we are dedicated to bringing timeless Vedic wisdom and precision horology to life. We love connecting with our community — reach out to us directly!
+              Shiv Enterprises designs and manufactures the Vikramaditya Vedic Clock. We welcome consultations for private acquisitions, temple sanctums, and institutional installations. Reach out to our team directly.
             </p>
 
             {/* ── DIRECT PERSONAL CONTACT (Pure typography, zero card box) ── */}

@@ -70,13 +70,13 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
         textHi: "सन् १८८४ के अंतर्राष्ट्रीय मेरिडियन सम्मेलन में राजनीतिक प्रभाव के आधार पर लंदन के ग्रीनविच को शून्य देशांतर चुने जाने से सहस्त्रों वर्ष पूर्व, भारतीय आचार्यों ने यह सिद्ध किया था कि [प्रधान मध्याह्न रेखा और उज्जैन की ऐतिहासिक धरोहर](/heritage) किसी साम्राज्य की सीमा नहीं, अपितु एक ब्रह्मांडीय ज्यामितीय सत्य होनी चाहिए। सूर्य सिद्धान्त के अनुसार लंका से सुमेरु पर्वत को मिलाने वाला यह ब्रह्मांडीय [रेखादेश](/glossary#rekha-desha) ठीक [अवंतिका](/glossary#avanti) के ऊपर से होकर गुजरता है।",
         text: "Long before maritime empires voted at the 1884 International Meridian Conference to fix the prime meridian at Greenwich, classical Indian horology recognized a cosmic principle: zero longitude should not be an arbitrary imperial line. As chronicled in the [astronomical heritage of Ujjain](/heritage), as established in the classical plumb line of [Rekha-desha](/glossary#rekha-desha) traversing straight above [Avanti](/glossary#avanti).",
         shloka: "राक्षसालये देवतानां च मध्ये यत् समसूत्रम्। तदवन्तीमुपरि गतं रेखादेश इति स्मृतः॥",
-        shlokaTranslation: "That true plumb line which passes midway between the realm of Lanka and the celestial summit, traversing straight above Avanti (Ujjain), is proclaimed the baseline meridian of the earth. — Surya Siddhanta",
+        shlokaTranslation: "That true plumb line which passes midway between the realm of Lanka and the celestial summit, traversing straight above Avanti (Ujjain), is proclaimed the baseline meridian of the earth (Surya Siddhanta).",
       },
       {
         heading: "Intersection with the Tropic of Cancer",
         headingHi: "कर्क रेखा का खगोलीय संपात",
-        textHi: "उज्जैन लगभग २३.१८° उत्तरी अक्षांश पर स्थित है — जहां से कर्क रेखा मध्य भारत को पार करती है। ग्रीष्म संक्रांति (Summer Solstice) के दिन दोपहर का सूर्य ठीक शीर्ष बिंदु (Zenith) पर होता है, जिससे सीधी खड़ी छड़ की परछाई शून्य हो जाती है। यह अद्वितीय खगोलीय स्थिति विश्व के किसी अन्य ऐतिहासिक नगर में नहीं मिलती।",
-        text: "Ujjain sits at approximately 23.18° North latitude — precisely where the Tropic of Cancer traverses Central India. On the summer solstice, the midday sun reaches its absolute zenith (90° overhead), casting zero shadow from vertical gnomons. No other ancient capital combined this solstice alignment with direct transit geometry across the subcontinent.",
+        textHi: "उज्जैन लगभग २३.१८° उत्तरी अक्षांश पर स्थित है, जहां से कर्क रेखा मध्य भारत को पार करती है। ग्रीष्म संक्रांति (Summer Solstice) के दिन दोपहर का सूर्य ठीक शीर्ष बिंदु (Zenith) पर होता है, जिससे सीधी खड़ी छड़ की परछाई शून्य हो जाती है। यह अद्वितीय खगोलीय स्थिति विश्व के किसी अन्य ऐतिहासिक नगर में नहीं मिलती।",
+        text: "Ujjain sits at approximately 23.18° North latitude, precisely where the Tropic of Cancer traverses Central India. On the summer solstice, the midday sun reaches its absolute zenith (90° overhead), casting zero shadow from vertical gnomons. No other ancient capital combined this solstice alignment with direct transit geometry across the subcontinent.",
       },
       {
         heading: "From Varahamihira to Jai Singh II",
@@ -128,7 +128,7 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
         heading: "Synthesizing Planetary Ephemerides with Steppers",
         headingHi: "उपग्रह पंचांग और स्टेपर मोटर्स का समन्वय",
         textHi: "[विक्रमादित्य वैदिक घड़ी संग्रह](/catalogue) के भौतिक डायल गैर-रेखीय गियर चालन का उपयोग करते हैं, जो वास्तविक समय के उपग्रह सौर उन्नयन डेटा द्वारा संचालित होकर [३० मुहूर्तों और पंचांग अंगों](/guide) को पूर्ण खगोलीय प्रामाणिकता के साथ प्रदर्शित करते हैं, जिन्हें आवासीय पूजा-गृहों अथवा [विशिष्ट संस्थागत अधिष्ठापनों](/contact) हेतु तैयार किया गया है।",
-        text: "The physical dials of the [Vikramaditya Vedic Clock collection](/catalogue) execute non-linear gear movements governed by real-time satellite solar elevation tables, presenting the [30 sacred Muhurtas](/guide), Nakshatras, and Tithis with absolute astronomical authenticity — engineered for domestic sanctums and [custom institutional commissions](/contact).",
+        text: "The physical dials of the [Vikramaditya Vedic Clock collection](/catalogue) execute non-linear gear movements governed by real-time satellite solar elevation tables, presenting the [30 sacred Muhurtas](/guide), Nakshatras, and Tithis with absolute astronomical authenticity, engineered for domestic sanctums and [institutional installations](/contact).",
       },
     ],
   },
@@ -148,7 +148,7 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
         "सूर्योदय पर दिन का प्रारंभ मानव चयापचय और चेतना को प्राकृतिक सौर चक्र के साथ सीधा जोड़ता है।"
     ]
 },
-    description: "Civil midnight is an artificial abstraction set in total darkness. Vedic time begins at Suryodaya — synchronizing human biology with the solar arc.",
+    description: "Civil midnight is an artificial abstraction set in total darkness. Vedic time begins at Suryodaya, synchronizing daily life with the natural solar cycle.",
     descriptionHi: "12:00 AM का कृत्रिम विभाजन रात्रि के गहनतम अंधकार में होता है, जबकि वैदिक दिन प्रथम सूर्य किरण के साथ जागता है।",
     imageAlt: "Vedic solar horizon calculation illustrating dawn-to-dawn circadian day reckoning versus artificial midnight",
     imageAltHi: "प्राकृतिक सूर्योदय आधारित अहोरात्र चक्र बनाम कृत्रिम मध्यरात्रि दिवस विभाजन",
@@ -168,7 +168,7 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
         textHi: "जैसे ही सूर्य का ऊपरी सिरा स्थानीय क्षितिज को स्पर्श करता है, वातावरण का आयनीकरण बदल जाता है, शरीर में कॉर्टिसोल का स्राव आरंभ होता है और चयापचय जागृत होता है। मध्यरात्रि १२:०० बजे दिन बदलना एक कृत्रिम प्रशासनिक व्यवस्था है, जबकि संपूर्ण २४ घंटे के [अहोरात्र](/glossary#ahoratra) का शुभारंभ स्थानीय [सूर्योदय](/glossary#suryodaya) पर करना, जैसा कि हमारी [पंचांग संदर्भ निर्देशिका](/guide) में वर्णित है, प्राकृतिक शरीर विज्ञान के पूर्ण अनुकूल है। आधुनिक मानक समय और सौर कालगणना के अंतर को समझने के लिए हमारी [प्रश्नोत्तरी (FAQ)](/faq) देखें, जो [उज्जयिनी के प्रधान मध्याह्न केंद्र](/heritage) की प्राचीन खगोलीय परंपरा पर आधारित है।",
         text: "When the upper limb of the solar disc breaches the local horizon, atmospheric ionization shifts, cortisol production initiates, and metabolic awakenings begin. Starting the 24-hour [Ahoratra](/glossary#ahoratra) at local [Suryodaya](/glossary#suryodaya), as mathematically formulated in our [Master Panchang Guide](/guide), anchors human consciousness directly to nature. To understand why modern civil time differs from solar coordinates, explore our [Horological FAQ](/faq) and the timeless science of [Ujjain's prime meridian heritage](/heritage).",
         shloka: "उद्यन्नुद्यन्त्सूर्यः प्राणान् प्रेरयति सर्वशः। तस्मादुद्यन्तमेवैनं नमस्कुर्वन्ति साधवः॥",
-        shlokaTranslation: "As the sun ascends, it awakens the vital prana throughout all living beings. Therefore, the wise greet time at the horizon. — Atharvaveda",
+        shlokaTranslation: "As the sun ascends, it awakens the vital prana throughout all living beings. Therefore, the wise greet time at the horizon (Atharvaveda).",
       },
     ],
   },
@@ -264,8 +264,8 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
         "पंचांग के पाँचों अंगों का ज्ञान मानव कर्मों को ब्रह्मांडीय अनुकूलता और समय की ऊर्जा के साथ जोड़ता है।"
     ]
 },
-    description: "Tithi, Vaar, Nakshatra, Yoga, and Karana — understanding how the interaction of the Sun and Moon shapes daily focus and decision-making.",
-    descriptionHi: "तिथि, वार, नक्षत्र, योग और करण — सूर्य और चंद्रमा के कोणों से निर्धारित होने वाले पाँच खगोलीय तत्वों की सरल व्याख्या।",
+    description: "How the five astronomical dimensions of the Panchang track the interactions of the Sun and Moon to guide daily decisions.",
+    descriptionHi: "तिथि, वार, नक्षत्र, योग और करण: सूर्य और चंद्रमा के कोणों से निर्धारित होने वाले पाँच खगोलीय तत्वों की सरल व्याख्या।",
     imageAlt: "The five astronomical dimensions of the Panchang: Tithi, Vara, Nakshatra, Yoga, and Karana plotted on a celestial sphere",
     imageAltHi: "पंचांग के पाँच मूल अंग: तिथि, वार, नक्षत्र, योग और करण का खगोलीय आरेख",
     imageCaption: "Every moment carries a five-dimensional astronomical signature: the longitudinal angular separation of the Sun and Moon.",
@@ -303,7 +303,7 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
     ]
 },
     description: "The 12-month solar cycle and 360-degree ecliptic circle first articulated in Rigvedic hymns millennia before modern geometry.",
-    descriptionHi: "द्वादश प्रधयश्चक्रमेकं त्रीणि नभ्यानि क उ तच्चिकेत — ऋग्वेद के प्रथम मण्डल में वर्णित सौर मंडल की ज्यामिति।",
+    descriptionHi: "द्वादश प्रधयश्चक्रमेकं त्रीणि नभ्यानि क उ तच्चिकेत: ऋग्वेद के प्रथम मण्डल में वर्णित सौर मंडल की ज्यामिति।",
     imageAlt: "Rigvedic twelve-spoked celestial wheel and 360-day calendar cycle described in Dirghatamas hymn",
     imageAltHi: "ऋग्वेद के दीर्घतमा ऋषि द्वारा वर्णित १२ अरों और ३६० दिनों वाला कालचक्र",
     imageCaption: "Rishi Dirghatamas' famous Rigvedic hymn describes the unaging wheel of time with twelve spokes revolving through the cosmos.",
@@ -357,8 +357,8 @@ export const VEDIC_BLOG_ARTICLES: BlogArticle[] = [
       {
         heading: "The Victory Era of King Vikramaditya",
         headingHi: "विक्रमादित्य का राज्यारोहण और काल मानक",
-        textHi: "ईसा पूर्व ५७ में महाराजा विक्रमादित्य ने विदेशी आक्रांताओं को परास्त कर मालवा को स्वतंत्र कराया। इस विजय के उपलक्ष्य में उन्होंने संपूर्ण प्रजा का ऋण माफ कर एक नए युग का सूत्रपात किया — जिसे विक्रम संवत् कहा गया। यह सौर और चंद्र गतियों का ऐसा अद्भुत समन्वय है जो कभी ऋतुओं से भटकता नहीं है। मालवा को स्वतंत्र कराकर उज्जयिनी को वह गौरव प्रदान किया जिसका उल्लेख हमारी [ऐतिहासिक धरोहर आख्यान](/heritage) में मिलता है। विक्रम संवत् को ऋतुओं और सौर [संक्रांति](/glossary#sankranti) से जोड़े रखने वाले [अधिक मास](/glossary#adhik-maas) के खगोलीय नियमों का विवरण हमारे [पंचांग गाइड](/guide) में देखें। विशिष्ट संस्थागत परिसरों में स्थापना हेतु हमारे [परामर्श एवं संपर्क पटल](/contact) पर जुड़ें।",
-        text: "In 57 BCE, Emperor Vikramaditya defeated foreign invaders and liberated Malwa, inaugurating an era where civil debt was cleared and astronomical observation was restored to royal patronage. This historic milestone established Ujjain as the intellectual epicenter recorded in our [Heritage Chronicle](/heritage). The lunisolar intercalary month ([Adhik Maas](/glossary#adhik-maas)) mechanism that accounts for solar [Sankranti](/glossary#sankranti) and keeps Vikram Samvat aligned with the seasons is detailed in our [Panchang Guide](/guide). For custom institutional installations celebrating Vikram Samvat heritage, connect with our [bespoke commissions team](/contact).",
+        textHi: "ईसा पूर्व ५७ में महाराजा विक्रमादित्य ने विदेशी आक्रांताओं को परास्त कर मालवा को स्वतंत्र कराया। इस विजय के उपलक्ष्य में उन्होंने संपूर्ण प्रजा का ऋण माफ कर एक नए युग का सूत्रपात किया, जिसे विक्रम संवत् कहा गया। यह सौर और चंद्र गतियों का ऐसा अद्भुत समन्वय है जो कभी ऋतुओं से भटकता नहीं है। मालवा को स्वतंत्र कराकर उज्जयिनी को वह गौरव प्रदान किया जिसका उल्लेख हमारी [ऐतिहासिक धरोहर आख्यान](/heritage) में मिलता है। विक्रम संवत् को ऋतुओं और सौर [संक्रांति](/glossary#sankranti) से जोड़े रखने वाले [अधिक मास](/glossary#adhik-maas) के खगोलीय नियमों का विवरण हमारे [पंचांग गाइड](/guide) में देखें। विशिष्ट संस्थागत परिसरों में स्थापना हेतु हमारे [परामर्श एवं संपर्क पटल](/contact) पर जुड़ें।",
+        text: "In 57 BCE, Emperor Vikramaditya defeated foreign invaders and liberated Malwa, inaugurating an era where civil debt was cleared and astronomical observation was restored to royal patronage. This historic milestone established Ujjain as the intellectual epicenter recorded in our [Heritage Chronicle](/heritage). The lunisolar intercalary month ([Adhik Maas](/glossary#adhik-maas)) mechanism that accounts for solar [Sankranti](/glossary#sankranti) and keeps Vikram Samvat aligned with the seasons is detailed in our [Panchang Guide](/guide). For custom institutional installations celebrating Vikram Samvat heritage, connect with our [advisory team](/contact).",
       },
     ],
   },

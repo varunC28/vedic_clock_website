@@ -60,28 +60,28 @@ export function InstitutionGrid({ variant = "dark", className }: InstitutionGrid
       titleEn: "Temples & Sanctuaries",
       titleHi: "मंदिर एवं तीर्थ स्थल",
       tagline:
-        "Synchronizing sunrise-based aarti alerts, daily rituals, and Panchang festival observances to living solar time — beautifully encased in handcrafted sanctum bell-brass casework.",
+        "Tracks daily aartis, temple rituals, and Panchang festivals according to local solar time. Housed in solid, hand-finished bell-brass casework.",
     },
     {
       num: "02",
       titleEn: "Museums & Heritage",
       titleHi: "संग्रहालय एवं धरोहर",
       tagline:
-        "A monumental interactive centerpiece showcasing Ujjain's ancient zero meridian and Vedic horological science — permanently exhibited for cultural institutions and global visitors.",
+        "A permanent gallery installation on Ujjain's ancient prime meridian and India's classical tradition of astronomical timekeeping.",
     },
     {
       num: "03",
       titleEn: "Universities",
       titleHi: "विश्वविद्यालय",
       tagline:
-        "A scientific foyer installation for university atriums and astronomy faculties — computing live Surya Siddhanta ephemerides and solar coordinates as an active pedagogical instrument.",
+        "Built for campus atriums and astronomy departments to demonstrate Surya Siddhanta planetary mathematics and solar coordinates in real time.",
     },
     {
       num: "04",
       titleEn: "Estates & Collectors",
       titleHi: "भव्य निवास एवं संग्राहक",
       tagline:
-        "An heirloom architectural timepiece for distinguished private estates — custom-crafted in wall or pedestal bell-brass casework with a numbered curator provenance certificate.",
+        "An architectural timepiece for private residences, individually numbered and mounted in solid wall or pedestal bell-brass casework.",
     },
   ];
 
@@ -126,7 +126,7 @@ export function InstitutionGrid({ variant = "dark", className }: InstitutionGrid
             isParchment ? "text-[#3D2A1A]/75" : "text-ivory/65"
           )}
         >
-          From ancient sanctums to private architectural estates — bespoke installations of the Vikramaditya Vedic Clock.
+          Architectural installations of the Vikramaditya Vedic Clock for ancient sanctums, public museums, and private residences.
         </p>
       </div>
 

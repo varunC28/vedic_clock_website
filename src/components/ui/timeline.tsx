@@ -165,7 +165,7 @@ export const ALL_MILESTONES: MilestoneItem[] = [
 
 export default function Timeline({
   title = "Vedic Chronology",
-  periodLabel = "1500 BCE — 2026 CE",
+  periodLabel = "1500 BCE to 2026 CE",
   textColor = "#2D1B0E",
   mutedTextColor = "#6E5540",
   activeColor = "#B8873D",

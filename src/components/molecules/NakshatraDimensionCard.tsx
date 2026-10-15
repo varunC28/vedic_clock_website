@@ -185,7 +185,7 @@ export function NakshatraDimensionCard({
             isParchment ? "text-[#3D2A1A]/85" : "text-ivory/75"
           )}
         >
-          As the Moon travels around Earth each month, it passes through 27 ancient star clusters. In Indian astrology, your birth Nakshatra is your true cosmic star sign. The clock highlights which constellation the Moon is visiting in the sky right now.
+          As the Moon orbits Earth each month, it traverses 27 classical sidereal stellar sectors. In Indian astronomy, your birth Nakshatra marks your foundational lunar mansion. The clock indicates the exact constellation the Moon transits in the sky right now.
         </p>
 
         {/* Minimal Spec Badges */}

@@ -182,7 +182,7 @@ export function YogaKaranaDimensionCard({
               isParchment ? "text-[#8A5A1A]" : "text-[#E8B94B]/90"
             )}
           >
-            Daily Vibe &amp; Action Timing
+            Solar-Lunar Harmony &amp; Action Timing
           </p>
         </div>
 
@@ -192,7 +192,7 @@ export function YogaKaranaDimensionCard({
             isParchment ? "text-[#3D2A1A]/85" : "text-ivory/75"
           )}
         >
-          When the Sun and Moon&apos;s energies mix, they create the day&apos;s &quot;Yoga&quot; — the overall mood and vibe of the day. &quot;Karana&quot; divides each half-day into practical action windows, letting you know if right now is ideal for starting new work, taking risks, or chilling out.
+          Yoga computes the combined angular positions of the Sun and Moon to reflect the qualitative tone of the day. Karana divides each lunar day into two halves, identifying whether the active moment favors decisive work, strategic negotiation, or restorative pause.
         </p>
 
         {/* Minimal Spec Badges */}

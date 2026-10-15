@@ -86,7 +86,7 @@ export function FeatureGrid({ variant = "dark", className }: FeatureGridProps) {
             isParchment ? "text-[#3D2A1A]/75" : "text-ivory/65"
           )}
         >
-          Not uniform mechanical gears — the Vedic Clock measures time through the living celestial geometry of the Sun, Moon, and cosmos.
+          Rather than uniform mechanical seconds, the Vedic Clock calculates time directly from the observed positions of the Sun and Moon.
         </p>
       </div>
 

@@ -197,7 +197,7 @@ export function TithiDimensionCard({
             isParchment ? "text-[#3D2A1A]/85" : "text-ivory/75"
           )}
         >
-          Normal clocks only show random numbers like &quot;October 14&quot;. A Tithi tracks the real shape of the Moon in the night sky as it grows full or fades to dark across 30 phases. It connects your day to the actual rhythm of nature, oceans, and natural energy.
+          Civil calendars follow arbitrary numerical dates. A Tithi measures the Moon&apos;s precise 12-degree elongation from the Sun across thirty distinct lunar phases, synchronizing your day with natural tidal rhythms and celestial cycles.
         </p>
 
         {/* Minimal Spec Badges */}

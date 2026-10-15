@@ -14,7 +14,7 @@ export const ARTICLE_SCHOLARLY_CITATIONS: Record<string, ScholarlyCitation[]> = 
   "ujjain-zero-meridian": [
     {
       "@type": "Book",
-      name: "Surya Siddhanta (सूर्य सिद्धान्त) — Madhya-Adhikara, Verse 62",
+      name: "Surya Siddhanta (सूर्य सिद्धान्त): Madhya-Adhikara, Verse 62",
       description:
         "Classical Sanskrit astronomical treatise defining the zero prime meridian plumb-line passing from Lanka on the equator through Avanti (Ujjain) to Mount Meru.",
       sameAs: "https://en.wikipedia.org/wiki/Surya_Siddhanta",
@@ -42,7 +42,7 @@ export const ARTICLE_SCHOLARLY_CITATIONS: Record<string, ScholarlyCitation[]> = 
   "cosmic-wheel-rigveda": [
     {
       "@type": "Book",
-      name: "Rigveda Samhita — Mandala 1, Sukta 164 (Asya Vamasya Hymn)",
+      name: "Rigveda Samhita: Mandala 1, Sukta 164 (Asya Vamasya Hymn)",
       author: {
         "@type": "Person",
         name: "Rishi Dirghatamas",
@@ -62,14 +62,14 @@ export const ARTICLE_SCHOLARLY_CITATIONS: Record<string, ScholarlyCitation[]> = 
   "thirty-muhurtas-diurnal-geometry": [
     {
       "@type": "Book",
-      name: "Taittiriya Brahmana — Anuvaka 3.10.1 (Kala Sankhya)",
+      name: "Taittiriya Brahmana: Anuvaka 3.10.1 (Kala Sankhya)",
       description:
         "Vedic Brahmana text establishing the 15 dynamic daytime Muhurtas (Dinamana) and 15 nighttime Muhurtas (Ratrimana).",
       sameAs: "https://en.wikipedia.org/wiki/Brahmana",
     },
     {
       "@type": "Book",
-      name: "Surya Siddhanta — Chapter 1: Computation of Mean Planetary Motions",
+      name: "Surya Siddhanta: Chapter 1: Computation of Mean Planetary Motions",
       description:
         "Mathematical formulation of the 60-Ghati (30-Muhurta) diurnal Ahoratra cycle and seasonal expansion factors.",
       sameAs: "https://en.wikipedia.org/wiki/Surya_Siddhanta",
@@ -90,7 +90,7 @@ export const ARTICLE_SCHOLARLY_CITATIONS: Record<string, ScholarlyCitation[]> = 
     },
     {
       "@type": "Book",
-      name: "Brihat Samhita (बृहत्संहिता) — Horology and Gnomonics",
+      name: "Brihat Samhita (बृहत्संहिता): Horology and Gnomonics",
       author: {
         "@type": "Person",
         name: "Varāhamihira of Ujjain",
@@ -120,7 +120,7 @@ export const ARTICLE_SCHOLARLY_CITATIONS: Record<string, ScholarlyCitation[]> = 
   "sunrise-over-midnight": [
     {
       "@type": "Book",
-      name: "Atharva Veda Parishishta — Suryodaya Prakarana",
+      name: "Atharva Veda Parishishta: Suryodaya Prakarana",
       description:
         "Vedic astronomical hymn establishing Suryodaya (horizon solar breach) as the natural, metabolic, and temporal dawn of the diurnal day.",
       sameAs: "https://en.wikipedia.org/wiki/Atharvaveda",
@@ -199,7 +199,7 @@ export const ARTICLE_SCHOLARLY_CITATIONS: Record<string, ScholarlyCitation[]> = 
   "bespoke-architectural-horology": [
     {
       "@type": "Book",
-      name: "Rasaratna Samucchaya of Vagbhata — Metallurgy of Kansa",
+      name: "Rasaratna Samucchaya of Vagbhata: Metallurgy of Kansa",
       description:
         "Classical Sanskrit treatise on the exact 78:22 copper-to-tin bell metal alloy (Kamsya) for pure acoustic resonance and corrosion resistance.",
       sameAs: "https://en.wikipedia.org/wiki/Rasashastra",
@@ -242,7 +242,7 @@ export const ARTICLE_SCHOLARLY_CITATIONS: Record<string, ScholarlyCitation[]> = 
     },
     {
       "@type": "Book",
-      name: "Manusmriti — Chapter 4: Codes of Daily Temporal Rhythm",
+      name: "Manusmriti: Chapter 4: Codes of Daily Temporal Rhythm",
       description:
         "Classical text on diurnal thresholds, contemplative Sandhya stillness, and living in sync with seasonal daylight transitions.",
       sameAs: "https://en.wikipedia.org/wiki/Manusmriti",

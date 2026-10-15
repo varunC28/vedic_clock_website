@@ -98,8 +98,8 @@ const TOC_ITEMS: TocItem[] = [
     id: "chapter-5",
     num: 5,
     numHi: "५",
-    titleHi: "राशि — सूर्य व चंद्र",
-    titleEn: "Rashi — Zodiac Signs",
+    titleHi: "राशि · सूर्य व चंद्र",
+    titleEn: "Rashi · Zodiac Signs",
   },
   {
     id: "chapter-6",
@@ -216,8 +216,8 @@ const KARANA_ITEMS = [
 ];
 
 const MUHURTA_GUIDE_ITEMS = [
-  { num: 1, hi: "रुद्र", en: "Rudra", deity: "Rudra", nature: "inauspicious", natureHi: "अशुभ", natureEn: "Inauspicious", suitableFor: "Avoid — destruction energy, inauspicious for all new starts", doHi: "व्रत, संयम", doEn: "fasting, restraint", avoidHi: "नए कार्य आरंभ", avoidEn: "starting new work" },
-  { num: 2, hi: "आहि", en: "Ahi", deity: "Sarpa", nature: "inauspicious", natureHi: "अशुभ", natureEn: "Inauspicious", suitableFor: "Avoid — serpent energy, inauspicious", doHi: "आंतरिक/दफ़्तर कार्य", doEn: "back-office work", avoidHi: "कानूनी कार्य, शुभारंभ", avoidEn: "legal filings, launches" },
+  { num: 1, hi: "रुद्र", en: "Rudra", deity: "Rudra", nature: "inauspicious", natureHi: "अशुभ", natureEn: "Inauspicious", suitableFor: "Avoid: destruction energy, inauspicious for all new starts", doHi: "व्रत, संयम", doEn: "fasting, restraint", avoidHi: "नए कार्य आरंभ", avoidEn: "starting new work" },
+  { num: 2, hi: "आहि", en: "Ahi", deity: "Sarpa", nature: "inauspicious", natureHi: "अशुभ", natureEn: "Inauspicious", suitableFor: "Avoid: serpent energy, inauspicious", doHi: "आंतरिक/दफ़्तर कार्य", doEn: "back-office work", avoidHi: "कानूनी कार्य, शुभारंभ", avoidEn: "legal filings, launches" },
   { num: 3, hi: "मित्र", en: "Mitra", deity: "Mitra", nature: "auspicious", natureHi: "शुभ", natureEn: "Auspicious", suitableFor: "Friendships, alliances, business partnerships", doHi: "मित्रता, समझौते", doEn: "meetings, agreements", avoidHi: "झगड़े", avoidEn: "quarrels" },
   { num: 4, hi: "पितृ", en: "Pitri", deity: "Pitrs", nature: "inauspicious", natureHi: "अशुभ", natureEn: "Inauspicious", suitableFor: "Ancestral rites, Shraddha ceremonies only", doHi: "पितृ तर्पण, दान", doEn: "ancestor remembrance, charity", avoidHi: "विवाह, गृहप्रवेश", avoidEn: "weddings, house-warming" },
   { num: 5, hi: "वसु", en: "Vasu", deity: "Ashtavasus", nature: "auspicious", natureHi: "शुभ", natureEn: "Auspicious", suitableFor: "Wealth-related activities, business, purchasing", doHi: "धन लेन-देन, खरीद", doEn: "finance, purchases", avoidHi: "अपव्यय", avoidEn: "wasteful spending" },
@@ -227,16 +227,16 @@ const MUHURTA_GUIDE_ITEMS = [
   { num: 9, hi: "सुतमुखी", en: "Sutamukhi", deity: "Indra", nature: "auspicious", natureHi: "शुभ", natureEn: "Auspicious", suitableFor: "Leadership, governance, important decisions", doHi: "यात्रा, नेटवर्किंग", doEn: "travel, networking", avoidHi: "अधिक वादे", avoidEn: "over-promising" },
   { num: 10, hi: "पुरुहूत", en: "Puruhuta", deity: "Indra", nature: "inauspicious", natureHi: "अशुभ", natureEn: "Inauspicious", suitableFor: "War, competitions, debates, legal matters", doHi: "निजी उपासना", doEn: "private worship", avoidHi: "बड़े उपक्रम", avoidEn: "major ventures" },
   { num: 11, hi: "वाहिनी", en: "Vahini", deity: "Agni", nature: "inauspicious", natureHi: "अशुभ", natureEn: "Inauspicious", suitableFor: "Fire ceremonies, Havana, Yajna, cooking", doHi: "योजना, तैयारी", doEn: "planning, preparation", avoidHi: "यात्रा आरंभ", avoidEn: "starting journeys" },
-  { num: 12, hi: "नक्तनकरा", en: "Naktanankara", deity: "Nishachara", nature: "inauspicious", natureHi: "अशुभ", natureEn: "Inauspicious", suitableFor: "Avoid — night-walker energy, inauspicious", doHi: "विश्राम, रख-रखाव", doEn: "rest, maintenance", avoidHi: "सार्वजनिक आयोजन", avoidEn: "public events" },
+  { num: 12, hi: "नक्तनकरा", en: "Naktanankara", deity: "Nishachara", nature: "inauspicious", natureHi: "अशुभ", natureEn: "Inauspicious", suitableFor: "Avoid: night-walker energy, inauspicious", doHi: "विश्राम, रख-रखाव", doEn: "rest, maintenance", avoidHi: "सार्वजनिक आयोजन", avoidEn: "public events" },
   { num: 13, hi: "वरुण", en: "Varuna", deity: "Varuna", nature: "auspicious", natureHi: "शुभ", natureEn: "Auspicious", suitableFor: "Water travel, trade, contracts, oath-taking", doHi: "शुद्धिकरण, जल-कार्य", doEn: "purification, water-related work", avoidHi: "चुगली", avoidEn: "gossip" },
   { num: 14, hi: "अर्यमन्", en: "Aryaman", deity: "Aryaman", nature: "conditional", natureHi: "शुभ (रविवार को अशुभ)", natureEn: "Auspicious (except Sunday)", suitableFor: "Marriage, social ceremonies, guest reception", doHi: "समझौते, संबंध", doEn: "contracts, alliances", avoidHi: "रवि को प्रतिष्ठा-कार्य", avoidEn: "prestige events on Sunday" },
   { num: 15, hi: "भग", en: "Bhaga", deity: "Bhaga", nature: "inauspicious", natureHi: "अशुभ", natureEn: "Inauspicious", suitableFor: "Prosperity rituals, Lakshmi puja, wealth blessings", doHi: "दान", doEn: "charity", avoidHi: "संपत्ति बाँटना", avoidEn: "dividing property" },
   { num: 16, hi: "गिरीश", en: "Girisha", deity: "Shiva", nature: "auspicious", natureHi: "शुभ", natureEn: "Auspicious", suitableFor: "Shiva worship only; completing tasks", doHi: "कार्य का समापन", doEn: "completing tasks", avoidHi: "जोखिम भरे आरंभ", avoidEn: "risky new starts" },
-  { num: 17, hi: "अजपाद", en: "Ajapada", deity: "Aja Ekapada", nature: "inauspicious", natureHi: "अशुभ", natureEn: "Inauspicious", suitableFor: "Avoid — associated with obstacles", doHi: "परीक्षण, लेखा-जोखा", doEn: "audits, review", avoidHi: "यात्रा, शल्यक्रिया", avoidEn: "travel, surgery" },
+  { num: 17, hi: "अजपाद", en: "Ajapada", deity: "Aja Ekapada", nature: "inauspicious", natureHi: "अशुभ", natureEn: "Inauspicious", suitableFor: "Avoid: associated with obstacles", doHi: "परीक्षण, लेखा-जोखा", doEn: "audits, review", avoidHi: "यात्रा, शल्यक्रिया", avoidEn: "travel, surgery" },
   { num: 18, hi: "अहिर्बुध्न्य", en: "Ahirbudhnya", deity: "Ahirbudhnya", nature: "auspicious", natureHi: "शुभ", natureEn: "Auspicious", suitableFor: "Deep study, healing, tantric contemplation", doHi: "अध्ययन, चिकित्सा", doEn: "deep study, healing", avoidHi: "सतही प्रचार", avoidEn: "superficial promotion" },
-  { num: 19, hi: "पुष्य", en: "Pushya", deity: "Pushan", nature: "auspicious", natureHi: "शुभ", natureEn: "Auspicious", suitableFor: "Highly auspicious — travel, education, buying gold", doHi: "शिक्षा, पोषण", doEn: "education, nourishment", avoidHi: "ग़लत भोजन", avoidEn: "poor diet" },
+  { num: 19, hi: "पुष्य", en: "Pushya", deity: "Pushan", nature: "auspicious", natureHi: "शुभ", natureEn: "Auspicious", suitableFor: "Highly auspicious: travel, education, buying gold", doHi: "शिक्षा, पोषण", doEn: "education, nourishment", avoidHi: "ग़लत भोजन", avoidEn: "poor diet" },
   { num: 20, hi: "अश्विनी", en: "Ashvini", deity: "Ashvins", nature: "auspicious", natureHi: "शुभ", natureEn: "Auspicious", suitableFor: "Medicine, healing, swift actions, horse riding", doHi: "उपचार, यात्रा, शुरुआत", doEn: "medical care, travel, beginnings", avoidHi: "विलम्ब", avoidEn: "delaying starts" },
-  { num: 21, hi: "यम", en: "Yama", deity: "Yama", nature: "inauspicious", natureHi: "अशुभ", natureEn: "Inauspicious", suitableFor: "Avoid — lord of death, inauspicious for all", doHi: "अनुशासन, नियम-पालन", doEn: "discipline, following rules", avoidHi: "उत्सव, जोखिम", avoidEn: "celebrations, risk-taking" },
+  { num: 21, hi: "यम", en: "Yama", deity: "Yama", nature: "inauspicious", natureHi: "अशुभ", natureEn: "Inauspicious", suitableFor: "Avoid: lord of death, inauspicious for all", doHi: "अनुशासन, नियम-पालन", doEn: "discipline, following rules", avoidHi: "उत्सव, जोखिम", avoidEn: "celebrations, risk-taking" },
   { num: 22, hi: "अग्नि", en: "Agni", deity: "Agni", nature: "auspicious", natureHi: "शुभ", natureEn: "Auspicious", suitableFor: "Fire rituals, purification, bold energetic work", doHi: "साहसिक कार्य, ऊर्जा", doEn: "bold, energetic work", avoidHi: "क्रोध, जल्दबाज़ी", avoidEn: "anger, haste" },
   { num: 23, hi: "विधातृ", en: "Vidhatr", deity: "Brahma", nature: "auspicious", natureHi: "शुभ", natureEn: "Auspicious", suitableFor: "Creative arts, writing, designing, planning", doHi: "दस्तावेज़, अनुबंध", doEn: "drafting agreements", avoidHi: "टालमटोल", avoidEn: "procrastination" },
   { num: 24, hi: "कण्ड", en: "Chanda", deity: "Chandra", nature: "auspicious", natureHi: "शुभ", natureEn: "Auspicious", suitableFor: "Emotional healing, poetry, music, meditation", doHi: "कला, सजावट", doEn: "art, decoration", avoidHi: "अहंकार", avoidEn: "vanity" },
@@ -244,7 +244,7 @@ const MUHURTA_GUIDE_ITEMS = [
   { num: 26, hi: "जीव/अमृत", en: "Jiiva", deity: "Brihaspati", nature: "highly_auspicious", natureHi: "अति शुभ", natureEn: "Highly Auspicious", suitableFor: "Education, teaching, spiritual study, Guru worship", doHi: "व्रत, साधना, स्वास्थ्य", doEn: "vows, spiritual practice, health matters", avoidHi: "हानिकारक कार्य", avoidEn: "harmful actions" },
   { num: 27, hi: "विष्णु", en: "Vishnu", deity: "Vishnu", nature: "auspicious", natureHi: "शुभ", natureEn: "Auspicious", suitableFor: "All Vaishnava rites, preservation, sustenance work", doHi: "दीर्घकालीन योजना, दान", doEn: "long-term planning, charity", avoidHi: "जुआ", avoidEn: "gambling" },
   { num: 28, hi: "द्युमद्गद्युति", en: "Dyumadgadyuti", deity: "Surya", nature: "auspicious", natureHi: "शुभ", natureEn: "Auspicious", suitableFor: "Solar worship, authority matters, arts, music", doHi: "कला, संगीत", doEn: "art, music", avoidHi: "झगड़े", avoidEn: "conflict" },
-  { num: 29, hi: "ब्रह्मा", en: "Brahma", deity: "Brahma", nature: "highly_auspicious", natureHi: "अति शुभ", natureEn: "Highly Auspicious", suitableFor: "Most auspicious — sacred beginnings, deep meditation", doHi: "ध्यान, वेदाध्ययन", doEn: "meditation, sacred study", avoidHi: "व्यर्थ बातें", avoidEn: "idle talk" },
+  { num: 29, hi: "ब्रह्मा", en: "Brahma", deity: "Brahma", nature: "highly_auspicious", natureHi: "अति शुभ", natureEn: "Highly Auspicious", suitableFor: "Most auspicious: sacred beginnings, deep meditation", doHi: "ध्यान, वेदाध्ययन", doEn: "meditation, sacred study", avoidHi: "व्यर्थ बातें", avoidEn: "idle talk" },
   { num: 30, hi: "समुद्र", en: "Samudrama", deity: "Varuna", nature: "auspicious", natureHi: "शुभ", natureEn: "Auspicious", suitableFor: "Sea travel, deep study, hidden knowledge, Yoga", doHi: "यात्रा आरंभ, शुद्धि", doEn: "starting journeys, purification", avoidHi: "गंदगी, अपव्यय", avoidEn: "clutter, waste" },
 ];
 
@@ -313,11 +313,11 @@ const PANCHANG_READING_STEPS = [
 const DAILY_USE_STEPS = [
   {
     titleHi: "मुहूर्त जाँचें",
-    descEn: "Check the Muhurta before starting anything important — matching it against the Do / Avoid table.",
+    descEn: "Check the Muhurta before starting important work, matching it against the Do and Avoid guidance.",
   },
   {
     titleHi: "करण जाँचें",
-    descEn: "Check the Karana — make sure it isn't Vishti (Bhadra) before auspicious work.",
+    descEn: "Check the Karana to ensure it is not Vishti (Bhadra) before beginning auspicious work.",
   },
   {
     titleHi: "नक्षत्र देखें",
@@ -590,7 +590,7 @@ export function GuideView() {
 
           {/* ── TABLE OF CONTENTS (Using M5: PanchangTableRow) ── */}
           <section
-            aria-label="विषय-सूची — Table of Contents"
+            aria-label="विषय-सूची · Table of Contents"
             className={cn("w-full max-w-4xl rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 shadow-sm border", t.box)}
           >
             {/* Table Container Eyebrow */}
@@ -671,11 +671,11 @@ export function GuideView() {
             </div>
 
             <p className={cn("font-hindi text-sm sm:text-base font-medium leading-relaxed mb-2.5 text-justify", t.bodyHi)}>
-              विक्रमादित्य वैदिक घड़ी भारत की प्राचीन समय-प्रणाली को आधुनिक डिजिटल रूप में सामने लाती है। इसमें एक दिन — अर्थात् एक सूर्योदय से अगले सूर्योदय तक — को 30 मुहूर्त में बाँटा गया है। प्रत्येक मुहूर्त 30 कला में और प्रत्येक कला 30 काष्ठा में विभाजित होती है। घड़ी किसी भी स्थान के अक्षांश, देशांतर और स्थानीय सूर्योदय के आधार पर यह समय सटीक रूप से निकालती है।
+              विक्रमादित्य वैदिक घड़ी भारत की प्राचीन समय-प्रणाली को आधुनिक डिजिटल रूप में प्रस्तुत करती है। इसमें एक दिन, यानी एक सूर्योदय से अगले सूर्योदय तक के काल को 30 मुहूर्त में बाँटा गया है। प्रत्येक मुहूर्त 30 कला में और प्रत्येक कला 30 काष्ठा में विभाजित होती है। घड़ी किसी भी स्थान के अक्षांश, देशांतर और स्थानीय सूर्योदय के आधार पर यह समय सटीक रूप से निकालती है।
             </p>
 
             <p className={cn("font-sans text-xs sm:text-[13.5px] leading-relaxed text-justify guide-speakable-thesis", t.bodyEn)}>
-              The Vikramaditya Vedic Clock brings India&apos;s ancient time system into a modern digital form. It divides a day — one sunrise to the next — into 30 Muhurtas. Each Muhurta contains 30 Kala, and each Kala contains 30 Kashtha. The clock calculates this precisely for any location, using its latitude, longitude, and local sunrise.
+              The Vikramaditya Vedic Clock translates India&apos;s ancient time system into a modern digital instrument. It divides each day, measured from one sunrise to the next, into 30 Muhurtas. Each Muhurta contains 30 Kala, and each Kala contains 30 Kashtha. The clock computes this continuously for any location, using its precise latitude, longitude, and local sunrise.
             </p>
           </div>
 
@@ -691,11 +691,11 @@ export function GuideView() {
             </div>
 
             <p className={cn("font-hindi text-sm sm:text-base font-medium leading-relaxed mb-2.5 text-justify", t.bodyHi)}>
-              ऋग्वेद में समय की पहली गणना &apos;मुहूर्त&apos; के रूप में मिलती है — एक सूर्योदय से दूसरे सूर्योदय तक 30 मुहूर्त, प्रत्येक मुहूर्त में 30 काल और प्रत्येक काल में 30 काष्ठा। इस प्रकार प्राचीन भारत एक 30-घंटे की समय-प्रणाली का उपयोग करता था, जिसमें सूर्योदय से सूर्यास्त तक 15 मुहूर्त और सूर्यास्त से अगले सूर्योदय तक शेष 15 मुहूर्त होते थे। यांत्रिक तकनीक की सीमाओं के कारण 20वीं सदी तक इस प्रणाली पर आधारित घड़ियाँ बनाना संभव नहीं था, और सन् 1884 में 24-घंटे की प्रणाली को वैश्विक मानक के रूप में अपना लिया गया। अब डिजिटल तकनीक की मदद से इस प्राचीन, सूर्योदय-आधारित प्रणाली को पुनः जीवित किया जा सकता है।
+              ऋग्वेद में समय की पहली इकाई &apos;मुहूर्त&apos; के रूप में मिलती है। एक सूर्योदय से दूसरे सूर्योदय तक 30 मुहूर्त होते हैं, प्रत्येक मुहूर्त में 30 काल और प्रत्येक काल में 30 काष्ठा। इस प्रकार प्राचीन भारत 30-घंटे की समय-प्रणाली का उपयोग करता था, जिसमें सूर्योदय से सूर्यास्त तक 15 मुहूर्त और सूर्यास्त से अगले सूर्योदय तक शेष 15 मुहूर्त होते थे। यांत्रिक सीमाओं के कारण 20वीं सदी तक इस प्रणाली पर घड़ियाँ बनाना संभव नहीं था, और 1884 में 24-घंटे की मानक प्रणाली अपना ली गई। अब डिजिटल तकनीक के माध्यम से इस सूर्योदय-आधारित प्रणाली को पुनः क्रियान्वित किया गया है।
             </p>
 
             <p className={cn("font-sans text-xs sm:text-[13.5px] leading-relaxed text-justify", t.bodyEn)}>
-              The Rig Veda contains the earliest known unit of time, the &apos;Muhurta&apos; — 30 of them between one sunrise and the next, each split into 30 Kala, each Kala into 30 Kashtha. Ancient India effectively worked on a 30-hour clock, with 15 Muhurtas from sunrise to sunset and the remaining 15 from sunset to the next sunrise. Mechanical clockwork couldn&apos;t support a system this granular until the 20th century, and the 24-hour system was adopted worldwide in 1884. With digital technology, this older, sunrise-based system can now be brought back to life.
+              The Rig Veda records the earliest known unit of time, the &apos;Muhurta&apos;, with 30 Muhurtas spanning from one sunrise to the next. Each Muhurta divides into 30 Kala, and each Kala into 30 Kashtha. Ancient Indian astronomy worked on this 30-part diurnal cycle, with 15 Muhurtas during daylight and 15 through the night. Early mechanical horology lacked the computational flexibility to track variable solar hours until digital technology made real-time local sunrise tracking possible.
             </p>
           </div>
 
@@ -711,11 +711,11 @@ export function GuideView() {
             </div>
 
             <p className={cn("font-hindi text-sm sm:text-base font-medium leading-relaxed mb-2.5 text-justify", t.bodyHi)}>
-              वैदिक ऋषियों ने एक ऐसी समय-प्रणाली विकसित की जो मनुष्य को प्रकृति से जोड़े, क्योंकि यह पृथ्वी की सूर्य के सापेक्ष स्थिति पर आधारित है। आज का कैलेंडर भी सूर्य पर आधारित है, परंतु दिन की गणना मध्यरात्रि (24:00) से होती है — एक मनमाना, प्रकृति से असंबद्ध बिंदु। वैदिक प्रणाली में तिथि सदैव सूर्योदय पर बदलती है, अर्थात प्रत्येक स्थान पर सुबह ठीक 00:00 बजे सूर्योदय होता है। इससे दिन की गणना कहीं अधिक सहज और सटीक हो जाती है।
+              वैदिक ऋषियों ने एक ऐसी समय-प्रणाली विकसित की जो मनुष्य को प्रकृति से जोड़े, क्योंकि यह पृथ्वी की सूर्य के सापेक्ष स्थिति पर आधारित है। आज का कैलेंडर भी सूर्य पर आधारित है, परंतु दिन की गणना मध्यरात्रि (24:00) से होती है, जो एक अप्राकृतिक बिंदु है। वैदिक प्रणाली में तिथि सदैव सूर्योदय पर बदलती है, अर्थात प्रत्येक स्थान पर सुबह ठीक 00:00 बजे सूर्योदय होता है। इससे दिन की गणना कहीं अधिक सहज और सटीक हो जाती है।
             </p>
 
             <p className={cn("font-sans text-xs sm:text-[13.5px] leading-relaxed text-justify", t.bodyEn)}>
-              The Vedic Rishis designed a time system that keeps people connected to nature, since it&apos;s based on the earth&apos;s position relative to the sun. Today&apos;s calendar is also solar, but the day still resets at an arbitrary point — midnight. In the Vedic system, the date instead changes at sunrise, so the clock always reads 00:00 the moment the sun rises at that location — a more intuitive and precise way of marking a day.
+              The Vedic Rishis designed a time system that keeps daily life aligned with nature by measuring the earth&apos;s position relative to the sun. While the modern civil calendar is also solar, each day begins at midnight. In the Vedic system, the date changes at sunrise, so the clock reads 00:00 the moment the sun rises, creating a natural reference point for the solar day.
             </p>
           </div>
 
@@ -724,13 +724,13 @@ export function GuideView() {
             <div className={cn("rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-sm", t.calloutDashed)}>
               <p className={cn("font-hindi text-sm sm:text-base font-medium leading-relaxed mb-3 text-justify", t.bodyHi)}>
                 <strong className={cn("font-bold", t.titleHi)}>
-                  एक और बात · One more thing
+                  एक और बात · One more thing:
                 </strong>{" "}
-                — कई देश डेलाइट सेविंग टाइम का उपयोग करते हैं, जिससे सूर्योदय का समय स्थिर 24-घंटे की घड़ी पर प्रतिदिन बदलता दिखता है। एक सूर्योदय-आधारित घड़ी में यह भ्रम नहीं रहता — हर जगह सूर्योदय सदैव 00:00 पर होता है, और हर देश, राज्य व शहर का अपना स्थानीय वैदिक समय होता है, जो वहाँ की कार्य-संस्कृति को प्रकृति के अनुरूप व्यवस्थित करता है।
+                कई देश डेलाइट सेविंग टाइम का उपयोग करते हैं, जिससे सूर्योदय का समय स्थिर 24-घंटे की घड़ी पर प्रतिदिन बदलता दिखता है। एक सूर्योदय-आधारित घड़ी में यह भ्रम नहीं रहता। हर जगह सूर्योदय सदैव 00:00 पर होता है, और प्रत्येक क्षेत्र का अपना स्थानीय वैदिक समय होता है जो दिनचर्या को सौर चक्र के अनुरूप रखता है।
               </p>
 
               <p className={cn("font-sans text-xs sm:text-[13.5px] leading-relaxed text-justify", t.bodyEn)}>
-                Many countries use daylight saving time, which makes sunrise appear to shift daily on a fixed 24-hour clock. A sunrise-based clock removes that confusion — sunrise is always 00:00, everywhere — and every country, state, and city gets its own local Vedic time, keeping daily rhythms aligned with nature.
+                Many countries use daylight saving time, making sunrise appear to drift on a fixed 24-hour clock. A sunrise-based clock eliminates this issue because sunrise is always 00:00 everywhere. Every region calculates its own local Vedic time, keeping daily schedules aligned with nature.
               </p>
             </div>
           </section>
@@ -774,7 +774,7 @@ export function GuideView() {
           {/* Intro Text */}
           <div className="mb-6 sm:mb-8 text-left">
             <h3 className={cn("font-hindi text-base sm:text-lg font-bold leading-snug", t.titleHi)}>
-              प्राचीन वैदिक ग्रंथों (सूर्य सिद्धांत व विष्णु पुराण) में समय की सूक्ष्म से स्थूल इकाइयाँ — <Link href="/glossary#truti" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">त्रुटि</Link> व <Link href="/glossary#kashtha" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">काष्ठा</Link> से लेकर <Link href="/glossary#ghati" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">घटी</Link> और <Link href="/glossary#ahoratra" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">अहोरात्र</Link> तक:
+              प्राचीन वैदिक ग्रंथों (सूर्य सिद्धांत व विष्णु पुराण) में समय की सूक्ष्म से स्थूल इकाइयाँ, जैसे <Link href="/glossary#truti" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">त्रुटि</Link> व <Link href="/glossary#kashtha" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">काष्ठा</Link> से लेकर <Link href="/glossary#ghati" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">घटी</Link> और <Link href="/glossary#ahoratra" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">अहोरात्र</Link> तक:
             </h3>
             <p className={cn("font-sans text-xs sm:text-sm mt-1 leading-relaxed", t.bodyEn)}>
               Ancient Vedic texts (Surya Siddhanta & Vishnu Purana) calibrate time from atomic moments like <Link href="/glossary#truti" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Truti</Link> and <Link href="/glossary#kashtha" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Kashtha</Link> to macro cycles like <Link href="/glossary#ghati" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Ghati</Link> and <Link href="/glossary#ahoratra" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Ahoratra</Link>:
@@ -894,7 +894,7 @@ export function GuideView() {
           {/* ── Callout Box with Left Accent Bar ── */}
           <div className={cn("w-full rounded-r-2xl p-4 sm:p-5 shadow-sm", t.callout)}>
             <p className={cn("font-hindi text-sm sm:text-[15px] font-bold leading-relaxed mb-1.5 text-left", t.bodyHi)}>
-              घड़ी पर दिखने वाला समय जैसे 11:10:20 इसी तरह पढ़ा जाता है — 11वाँ मुहूर्त, 10वीं कला, 20वीं काष्ठा।
+              घड़ी पर दिखने वाला समय जैसे 11:10:20 इसी तरह पढ़ा जाता है: 11वाँ मुहूर्त, 10वीं कला, 20वीं काष्ठा।
             </p>
             <p className={cn("font-sans text-xs sm:text-[13px] leading-relaxed text-left", t.bodyEn)}>
               So a reading like 11:10:20 on the clock means: the 11th Muhurta, 10th Kala, 20th Kashtha of the current day.
@@ -967,7 +967,7 @@ export function GuideView() {
           {/* Intro Text */}
           <div className="mb-6 sm:mb-8 text-left">
             <h3 className={cn("font-hindi text-base sm:text-lg font-bold leading-snug", t.titleHi)}>
-              पंचांग पाँच मूल तत्वों से मिलकर बनता है —{" "}
+              पंचांग पाँच मूल तत्वों से मिलकर बनता है:{" "}
               <Link href="/glossary#tithi" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">तिथि</Link>,{" "}
               <Link href="/glossary#vara" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">वार</Link>,{" "}
               <Link href="/glossary#nakshatra" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">नक्षत्र</Link>,{" "}
@@ -975,7 +975,7 @@ export function GuideView() {
               <Link href="/glossary#karana" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">करण</Link>। प्रत्येक दिन का चरित्र इन्हीं पाँच अंगों से तय होता है।
             </h3>
             <p className={cn("font-sans text-xs sm:text-sm mt-1.5 leading-relaxed", t.bodyEn)}>
-              The Panchang (Vedic almanac) is built from five core elements —{" "}
+              The Panchang (Vedic almanac) is built from five core elements:{" "}
               <Link href="/glossary#tithi" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Tithi</Link>,{" "}
               <Link href="/glossary#vara" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Vara</Link>,{" "}
               <Link href="/glossary#nakshatra" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Nakshatra</Link>,{" "}
@@ -987,23 +987,23 @@ export function GuideView() {
           <GoldDivider variant={isParchment ? "light" : "dark"} className="my-6 max-w-sm mx-auto" />
 
           {/* ────────────────────────────────────────────────────────
-              LIMB 1: TITHI (तिथि — चंद्र दिवस)
+              LIMB 1: TITHI (तिथि: चंद्र दिवस)
              ──────────────────────────────────────────────────────── */}
           <section className="mb-12 sm:mb-14">
             <div className="mb-3.5 max-w-full">
               <BilingualPill
-                hi="1. तिथि — चंद्र दिवस"
-                en="1. Tithi — The Lunar Day"
+                hi="1. तिथि: चंद्र दिवस"
+                en="1. Tithi: The Lunar Day"
                 size="md"
                 variant={isParchment ? "light" : "dark"}
               />
             </div>
 
             <p className={cn("font-hindi text-sm sm:text-base font-medium leading-relaxed mb-2 text-justify", t.bodyHi)}>
-              एक चंद्र मास में 30 तिथियाँ होती हैं — 15 शुक्ल पक्ष (बढ़ता चंद्रमा) और 15 कृष्ण पक्ष (घटता चंद्रमा) में।
+              एक चंद्र मास में 30 तिथियाँ होती हैं, जिनमें 15 शुक्ल पक्ष (बढ़ता चंद्रमा) और 15 कृष्ण पक्ष (घटता चंद्रमा) में विभाजित हैं।
             </p>
             <p className={cn("font-sans text-xs sm:text-[13.5px] leading-relaxed mb-5 text-justify", t.bodyEn)}>
-              A lunar month has 30 Tithis — 15 in Shukla Paksha (waxing moon) and 15 in Krishna Paksha (waning moon).
+              A lunar month has 30 Tithis, divided into 15 in Shukla Paksha (waxing moon) and 15 in Krishna Paksha (waning moon).
             </p>
 
             {/* Sacred Days Callouts */}
@@ -1038,13 +1038,13 @@ export function GuideView() {
           </section>
 
           {/* ────────────────────────────────────────────────────────
-              LIMB 2: VARA (वार — सप्ताह का दिन)
+              LIMB 2: VARA (वार: सप्ताह का दिन)
              ──────────────────────────────────────────────────────── */}
           <section className="mb-12 sm:mb-14">
             <div className="mb-3.5 max-w-full">
               <BilingualPill
-                hi="2. वार — सप्ताह का दिन"
-                en="2. Vara — The Day of the Week"
+                hi="2. वार: सप्ताह का दिन"
+                en="2. Vara: Day of the Week"
                 size="md"
                 variant={isParchment ? "light" : "dark"}
               />
@@ -1079,13 +1079,13 @@ export function GuideView() {
           </section>
 
           {/* ────────────────────────────────────────────────────────
-              LIMB 3: NAKSHATRA (नक्षत्र — 27 नक्षत्र)
+              LIMB 3: NAKSHATRA (नक्षत्र: 27 नक्षत्र)
              ──────────────────────────────────────────────────────── */}
           <section className="mb-12 sm:mb-14">
             <div className="mb-3.5 max-w-full">
               <BilingualPill
-                hi="3. नक्षत्र — 27 नक्षत्र"
-                en="3. Nakshatra — The 27 Lunar Mansions"
+                hi="3. नक्षत्र: 27 नक्षत्र"
+                en="3. Nakshatra: 27 Lunar Mansions"
                 size="md"
                 variant={isParchment ? "light" : "dark"}
               />
@@ -1107,13 +1107,13 @@ export function GuideView() {
           </section>
 
           {/* ────────────────────────────────────────────────────────
-              LIMB 4: YOGA (योग — 27 योग)
+              LIMB 4: YOGA (योग: 27 योग)
              ──────────────────────────────────────────────────────── */}
           <section className="mb-12 sm:mb-14">
             <div className="mb-3.5 max-w-full">
               <BilingualPill
-                hi="4. योग — 27 योग"
-                en="4. Yoga — The 27 Yogas"
+                hi="4. योग: 27 योग"
+                en="4. Yoga: 27 Angles"
                 size="md"
                 variant={isParchment ? "light" : "dark"}
               />
@@ -1135,23 +1135,23 @@ export function GuideView() {
           </section>
 
           {/* ────────────────────────────────────────────────────────
-              LIMB 5: KARANA (करण — 11 करण)
+              LIMB 5: KARANA (करण: 11 करण)
              ──────────────────────────────────────────────────────── */}
           <section className="mb-4">
             <div className="mb-3.5 max-w-full">
               <BilingualPill
-                hi="5. करण — 11 करण"
-                en="5. Karana — The 11 Karanas"
+                hi="5. करण: 11 करण"
+                en="5. Karana: 11 Half-Tithis"
                 size="md"
                 variant={isParchment ? "light" : "dark"}
               />
             </div>
 
             <p className={cn("font-hindi text-sm sm:text-base font-medium leading-relaxed mb-2 text-justify", t.bodyHi)}>
-              प्रत्येक तिथि दो करण में बँटी होती है — कुल 11 नाम हैं, जिनमें से 7 बार-बार आते हैं और 4 स्थिर हैं।
+              प्रत्येक तिथि दो करण में बँटी होती है। कुल 11 नाम हैं, जिनमें 7 बार-बार आते हैं और 4 स्थिर हैं।
             </p>
             <p className={cn("font-sans text-xs sm:text-[13.5px] leading-relaxed mb-6 text-justify", t.bodyEn)}>
-              Each Tithi splits into two Karanas. There are 11 names in all — 7 repeat through the month, and 4 are fixed.
+              Each Tithi splits into two Karanas. There are 11 names in all: 7 repeat through the month, and 4 are fixed.
             </p>
 
             {/* ── 11 Karanas Table (Using M5: PanchangTableRow) ── */}
@@ -1220,10 +1220,10 @@ export function GuideView() {
           {/* Intro Text */}
           <div className="mb-6 sm:mb-8 text-left">
             <h3 className={cn("font-hindi text-base sm:text-lg font-bold leading-snug", t.titleHi)}>
-              दिन के 30 भाग — प्रत्येक का अपना स्वभाव और मार्गदर्शन है। प्रातःकाल का <Link href="/glossary#brahma-muhurta" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">ब्रह्म मुहूर्त</Link> (29वाँ) और मध्याह्न का <Link href="/glossary#abhijit-muhurta" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">अभिजित् मुहूर्त</Link> (8वाँ) सर्वकार्य सिद्धिप्रद माने जाते हैं। विषुव पर एक <Link href="/glossary#muhurta" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">मुहूर्त</Link> ≈ 48 मिनट का होता है।
+              दिन के 30 भाग, प्रत्येक का अपना स्वभाव और मार्गदर्शन है। प्रातःकाल का <Link href="/glossary#brahma-muhurta" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">ब्रह्म मुहूर्त</Link> (29वाँ) और मध्याह्न का <Link href="/glossary#abhijit-muhurta" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">अभिजित् मुहूर्त</Link> (8वाँ) सर्वकार्य सिद्धिप्रद माने जाते हैं। विषुव पर एक <Link href="/glossary#muhurta" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">मुहूर्त</Link> ≈ 48 मिनट का होता है।
             </h3>
             <p className={cn("font-sans text-xs sm:text-sm mt-1.5 leading-relaxed", t.bodyEn)}>
-              The 30 cyclical windows of each solar day — each with its own nature and guidance. Pre-dawn <Link href="/glossary#brahma-muhurta" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Brahma Muhurta</Link> and midday <Link href="/glossary#abhijit-muhurta" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Abhijit Muhurta</Link> are celebrated across classical treatises. On the equinox, one <Link href="/glossary#muhurta" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Muhurta</Link> spans 48 minutes.
+              The solar day is divided into 30 cyclical windows, each carrying distinct traditional guidance. Pre-dawn <Link href="/glossary#brahma-muhurta" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Brahma Muhurta</Link> and midday <Link href="/glossary#abhijit-muhurta" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Abhijit Muhurta</Link> are celebrated across classical treatises. On the equinox, one <Link href="/glossary#muhurta" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Muhurta</Link> spans 48 minutes.
             </p>
           </div>
 
@@ -1354,7 +1354,7 @@ export function GuideView() {
         </article>
 
         {/* ========================================================
-            CHAPTER 5: RASHI — ZODIAC SIGNS (राशि — सूर्य व चंद्र)
+            CHAPTER 5: RASHI · ZODIAC SIGNS (राशि · सूर्य व चंद्र)
            ======================================================== */}
         <article
           id="chapter-5"
@@ -1379,10 +1379,10 @@ export function GuideView() {
           <div className="w-full flex justify-center mb-8 sm:mb-10">
             <div className={cn("w-full max-w-lg rounded-full py-3.5 sm:py-4 px-6 sm:px-10 text-center flex flex-col items-center transition-all", t.capsule)}>
               <span className={cn("font-hindi text-xl sm:text-2xl md:text-3xl font-bold leading-tight tracking-wide", t.capsuleHi)}>
-                राशि — सूर्य व चंद्र
+                राशि · सूर्य व चंद्र
               </span>
               <span className={cn("font-serif text-xs sm:text-sm tracking-wider mt-1", t.capsuleEn)}>
-                Rashi — Zodiac Signs
+                Rashi · Zodiac Signs
               </span>
             </div>
           </div>
@@ -1559,7 +1559,7 @@ export function GuideView() {
               विक्रम संवत् भारत का परंपरागत कैलेंडर है, जिसका प्रारंभ राजा विक्रमादित्य द्वारा 57 ईसा पूर्व में हुआ माना जाता है। इसमें <Link href="/glossary#samvatsara" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">संवत्</Link> वर्ष, चंद्र <Link href="/glossary#masa" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">मास</Link>, <Link href="/glossary#paksha" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">पक्ष</Link>, <Link href="/glossary#tithi" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">तिथि</Link> और <Link href="/glossary#vara" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">वार</Link> एक साथ दिखते हैं, और भारत के सभी पारंपरिक त्योहार व अनुष्ठान इसी पंचांग पर आधारित होते हैं।
             </p>
             <p className={cn("font-sans text-xs sm:text-[13.5px] leading-relaxed text-justify", t.bodyEn)}>
-              Vikram Samvat is India&apos;s traditional calendar, said to begin with King Vikramaditya in 57 BCE. It brings together the <Link href="/glossary#samvatsara" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Samvat</Link> year, lunar <Link href="/glossary#masa" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Masa</Link>, <Link href="/glossary#paksha" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Paksha</Link>, <Link href="/glossary#tithi" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Tithi</Link>, and <Link href="/glossary#vara" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Vara</Link> in one view — and nearly every traditional Indian festival and ritual is timed against it.
+              Vikram Samvat is India&apos;s traditional calendar, dating back to King Vikramaditya in 57 BCE. It brings together the <Link href="/glossary#samvatsara" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Samvat</Link> year, lunar <Link href="/glossary#masa" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Masa</Link>, <Link href="/glossary#paksha" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Paksha</Link>, <Link href="/glossary#tithi" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Tithi</Link>, and <Link href="/glossary#vara" className="underline decoration-[#D4A65A]/50 hover:decoration-[#D4A65A]">Vara</Link> in one view. Nearly every traditional Indian festival and ritual is timed against this calendar.
             </p>
           </div>
 

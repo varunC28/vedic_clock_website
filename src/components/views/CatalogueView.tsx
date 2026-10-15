@@ -68,7 +68,7 @@ export function CatalogueView() {
             The Master Catalogue
           </h1>
           <h2 className="text-xl sm:text-2xl font-hindi text-[#D4A65A] font-semibold mt-1.5">
-            विक्रमादित्य वेदिक घड़ी — समग्र परिचय
+            विक्रमादित्य वेदिक घड़ी · समग्र परिचय
           </h2>
 
           <GoldDivider variant="dark" className="my-4 max-w-xs scale-90" />

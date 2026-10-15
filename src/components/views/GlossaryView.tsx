@@ -224,8 +224,8 @@ export function GlossaryView() {
               isParchment ? "text-[#5C4033]" : "text-ivory/70"
             )}
           >
-            Authoritative definitions of ancient Indian temporal dimensions—from infinitesimal
-            microseconds (<span className="italic">Truti</span>) and clepsydra water-vessels (
+            Authoritative definitions of ancient Indian temporal dimensions, from infinitesimal
+            microseconds (<span className="italic">Truti</span>) and clepsydra water vessels (
             <span className="italic">Ghati</span>) to solar solstices and the 30 diurnal Muhurtas.
           </p>
         </header>

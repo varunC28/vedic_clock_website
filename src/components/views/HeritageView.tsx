@@ -77,7 +77,7 @@ const PILLARS: Pillar[] = [
     titleHi: "सूर्योदय · सृष्टि का समय",
     tagline: "Natural Horizon Origin vs. Arbitrary Midnight",
     hoverDetail:
-      "Civil midnight (12:00 AM) is an artificial abstraction set at the darkest hour. Vedic timekeeping begins at Suryodaya (local astronomical sunrise), when the first solar ray crosses the horizon—aligning biological circadian rhythm and metabolic awakening with the cosmos.",
+      "Civil midnight (12:00 AM) is an artificial abstraction set at the darkest hour. Vedic timekeeping begins at Suryodaya (local astronomical sunrise), when the first solar ray crosses the horizon, aligning biological circadian rhythms and metabolic awakening with the cosmos.",
     shloka: "उद्यन्नुद्यन्त्सूर्यः प्राणान् प्रेरयति...",
     shlokaSource: "Atharvaveda (प्राण सूक्त)",
   },
@@ -237,21 +237,21 @@ const CANON_QUOTES: CanonQuote[] = [
     canon: "Ancient Canon · Surya Siddhanta",
     quoteEn:
       "“That true vertical meridian which passes between Lanka and the celestial abode through Avanti (Ujjain) is the sacred prime meridian of astronomical observation.”",
-    source: "— Surya Siddhanta (भूगोल अध्याय)",
+    source: "Surya Siddhanta (भूगोल अध्याय)",
   },
   {
     id: "pancha-siddhantika",
     canon: "Astronomical Treatise · Varahamihira",
     quoteEn:
       "“Time is the primordial seed of cosmic creation, calibrated by celestial spheres. In Avanti, where celestial latitude aligns with Earth’s spine, solar shadows reveal divine geometry.”",
-    source: "— Varahamihira (पंचसिद्धान्तिका)",
+    source: "Varahamihira (पंचसिद्धान्तिका)",
   },
   {
     id: "vedanga-jyotisha",
     canon: "Cosmic Jyotisha · Vedanga Jyotisha",
     quoteEn:
       "“As the crest on the head of a peacock, as the brilliant gem on the hood of a cobra, so astronomy and celestial reckoning sit at the summit of all sacred Vedic knowledge.”",
-    source: "— Lagadha (वेदांग ज्योतिष, श्लोक ४)",
+    source: "Lagadha (वेदांग ज्योतिष, श्लोक ४)",
   },
 ];
 
@@ -308,7 +308,7 @@ export function HeritageView() {
       <main className="relative z-10 pt-28 sm:pt-36 pb-4 sm:pb-6 px-5 sm:px-8 lg:px-12 max-w-5xl mx-auto flex flex-col gap-20 sm:gap-24 text-left">
         
         {/* ═══════════════════════════════════════════════════════
-            SECTION 1: HERO — THE PRIME MERIDIAN OF ANTIQUITY
+            SECTION 1: HERO · THE PRIME MERIDIAN OF ANTIQUITY
            ═══════════════════════════════════════════════════════ */}
         <section className="flex flex-col items-start max-w-3xl">
           {/* Eyebrow */}
@@ -348,7 +348,7 @@ export function HeritageView() {
               isParchment ? "text-[#6E5540]" : "text-ivory/70"
             )}
           >
-            Long before civil conventions fixed the Prime Meridian at Greenwich in 1884, classical Indian astronomers recognized Ujjain as the navel of the earth. Here, where the Tropic of Cancer intersected the ancient meridian of reference, time was never measured from arbitrary midnight—it was born anew with each sunrise.
+            Long before civil conventions fixed the Prime Meridian at Greenwich in 1884, classical Indian astronomers recognized Ujjain as the navel of the earth. Here, where the Tropic of Cancer intersected the ancient meridian of reference, time was never measured from arbitrary midnight. It was born anew with each sunrise.
           </p>
         </section>
 
@@ -495,7 +495,7 @@ export function HeritageView() {
                 The Evolution of Vedic Horology
               </h2>
               <p className="font-sans text-sm max-w-xl mt-1 text-ivory/70">
-                Trace the intellectual continuum across millennia—from Rigvedic solar mathematics to modern monumental tower horology.
+                Trace the intellectual continuum across millennia, from Rigvedic solar mathematics to modern monumental tower horology.
               </p>
             </div>
 
@@ -534,7 +534,7 @@ export function HeritageView() {
           <div className="w-full max-w-full overflow-hidden relative">
             <Timeline
               title="Vedic Chronology"
-              periodLabel="1500 BCE — 2026 CE"
+              periodLabel="1500 BCE to 2026 CE"
               backgroundColor="#03060E"
               textColor="#FBF5E7"
               mutedTextColor="rgba(251, 245, 231, 0.7)"

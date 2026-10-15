@@ -192,7 +192,7 @@ export function MuhurtaDimensionCard({
             isParchment ? "text-[#3D2A1A]/85" : "text-ivory/75"
           )}
         >
-          Instead of 60 flat minutes, the Vedic clock starts when the sun actually rises in your city. The day is divided into thirty 48-minute windows called Muhurtas. It highlights prime golden hours — like Brahma Muhurta at dawn or Abhijit at noon — for workouts, exams, or starting important things.
+          Unlike mechanical civil hours, the Vedic day begins at astronomical sunrise in your location and unfolds through thirty 48-minute Muhurtas. The dial pinpoints key diurnal windows, including Brahma Muhurta before dawn for meditation and Abhijit at solar noon for decisive undertakings.
         </p>
 
         {/* Minimal Spec Badges */}
