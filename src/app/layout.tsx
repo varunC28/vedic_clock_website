@@ -94,9 +94,19 @@ export const metadata: Metadata = {
       "Calibrated to Ujjain 0° Prime Meridian. Discover 30 Muhurtas, live Panchang, and sidereal astronomical horology.",
     images: [
       {
-        url: "https://thevedicghadi.in/api/og?title=Vikramaditya%20Vedic%20Clock&subtitle=Living%20Diurnal%20Horology%20Calibrated%20to%20Ujjain%200%C2%B0%20Prime%20Meridian&category=Sacred%20Horology&cta=EXPLORE%20LIVING%20CLOCK%20%E2%86%92",
+        url: "https://thevedicghadi.in/og-image.webp",
+        secureUrl: "https://thevedicghadi.in/og-image.webp",
+        type: "image/webp",
         width: 1200,
-        height: 630,
+        height: 725,
+        alt: "Vikramaditya Vedic Clock Horological Dial and Ancient Indian Astronomy",
+      },
+      {
+        url: "https://thevedicghadi.in/og-image.jpg",
+        secureUrl: "https://thevedicghadi.in/og-image.jpg",
+        type: "image/jpeg",
+        width: 1200,
+        height: 725,
         alt: "Vikramaditya Vedic Clock Horological Dial and Ancient Indian Astronomy",
       },
     ],
@@ -106,14 +116,13 @@ export const metadata: Metadata = {
     title: "Vikramaditya Vedic Clock | World's Premier Astronomical Timepiece",
     description:
       "Precision Vedic time calibrated to Ujjain 0° Prime Meridian. 30 Muhurtas, live Panchang, and solar zenith synchronization.",
-    images: [
-      "https://thevedicghadi.in/api/og?title=Vikramaditya%20Vedic%20Clock&subtitle=Living%20Diurnal%20Horology%20Calibrated%20to%20Ujjain%200%C2%B0%20Prime%20Meridian&category=Sacred%20Horology&cta=EXPLORE%20LIVING%20CLOCK%20%E2%86%92",
-    ],
+    images: ["https://thevedicghadi.in/og-image.webp"],
     creator: "@thevedicghadi",
   },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
       { url: "/assets/icon.png", sizes: "192x192", type: "image/png" },
       { url: "/assets/icon.png", sizes: "512x512", type: "image/png" },
     ],
@@ -153,7 +162,7 @@ const rootJsonLd = {
         url: "https://thevedicghadi.in/assets/icon.png",
         caption: "Vikramaditya Vedic Clock Emblem",
       },
-      image: "https://thevedicghadi.in/assets/blog/shastras-to-silicon.webp",
+      image: "https://thevedicghadi.in/og-image.webp",
       description:
         "World's premier precision astronomical Vedic timepiece calibrating living 30-Muhurta diurnal cycles, Panchang coordinates, and sidereal solar transit from the ancient 0° prime meridian of Ujjain.",
       foundingLocation: {

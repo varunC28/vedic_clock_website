@@ -33,9 +33,19 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://thevedicghadi.in/api/og?title=The%20Living%20Geometry%20of%20Time&subtitle=Vikramaditya%20Vedic%20Clock%20%E2%80%A2%20Calibrated%20to%20Ujjain%200%C2%B0%20Prime%20Meridian&category=Vedic%20Horology&cta=EXPLORE%20LIVING%20CLOCK%20%E2%86%92",
+        url: "https://thevedicghadi.in/og-image.webp",
+        secureUrl: "https://thevedicghadi.in/og-image.webp",
+        type: "image/webp",
         width: 1200,
-        height: 630,
+        height: 725,
+        alt: "Vikramaditya Vedic Clock Horological Dial",
+      },
+      {
+        url: "https://thevedicghadi.in/og-image.jpg",
+        secureUrl: "https://thevedicghadi.in/og-image.jpg",
+        type: "image/jpeg",
+        width: 1200,
+        height: 725,
         alt: "Vikramaditya Vedic Clock Horological Dial",
       },
     ],
@@ -45,9 +55,7 @@ export const metadata: Metadata = {
     title: "Vikramaditya Vedic Clock | The Living Geometry of Time",
     description:
       "Precision Vedic time calibrated to Ujjain 0° Prime Meridian. 30 Muhurtas, live Panchang, and solar zenith synchronization.",
-    images: [
-      "https://thevedicghadi.in/api/og?title=The%20Living%20Geometry%20of%20Time&subtitle=Vikramaditya%20Vedic%20Clock%20%E2%80%A2%20Calibrated%20to%20Ujjain%200%C2%B0%20Prime%20Meridian&category=Vedic%20Horology&cta=EXPLORE%20LIVING%20CLOCK%20%E2%86%92",
-    ],
+    images: ["https://thevedicghadi.in/og-image.webp"],
   },
 };
 
@@ -68,8 +76,8 @@ const homeJsonLd = {
         "Vikramaditya Vedic Horological Timepiece",
       ],
       image: [
-        "https://thevedicghadi.in/assets/blog/shastras-to-silicon.webp",
-        "https://thevedicghadi.in/assets/blog/ujjain-zero-meridian.webp",
+        "https://thevedicghadi.in/og-image.webp",
+        "https://thevedicghadi.in/og-image.jpg",
       ],
       description:
         "Handcrafted astronomical horological instrument calibrated to the historic 0° Prime Meridian of Ujjain. Computes real-time Panchang (Tithi, Vaar, Nakshatra, Yoga, Karana), 30 dynamic diurnal Muhurtas, and sidereal solar transit 100% offline via embedded Surya Siddhanta ephemerides.",

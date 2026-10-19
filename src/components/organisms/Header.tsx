@@ -30,6 +30,7 @@ export function Header({ alwaysVisible = false }: HeaderProps) {
   const { isParchment, toggleTheme } = useTheme();
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setMenuOpen(false);
     if (pathname === "/") {
       e.preventDefault();
       const heroEl = document.getElementById("hero");
@@ -53,15 +54,18 @@ export function Header({ alwaysVisible = false }: HeaderProps) {
     return () => window.removeEventListener("scroll", onScroll);
   }, [alwaysVisible]);
 
-  // Lock body scroll when mobile menu is open
+  // Lock body and html scroll when mobile menu is open
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     }
     return () => {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     };
   }, [menuOpen]);
 
@@ -70,7 +74,7 @@ export function Header({ alwaysVisible = false }: HeaderProps) {
       <header
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out",
-          (alwaysVisible || scrolled)
+          (alwaysVisible || scrolled || menuOpen)
             ? isParchment
               ? "translate-y-0 opacity-100 bg-[#F3E9D2]/95 backdrop-blur-lg border-b border-[#B8873D]/25 shadow-md shadow-[#3D2A1A]/5 pointer-events-auto"
               : "translate-y-0 opacity-100 bg-void-navy/90 backdrop-blur-lg border-b border-brass/10 shadow-lg shadow-black/30 pointer-events-auto"
@@ -170,35 +174,45 @@ export function Header({ alwaysVisible = false }: HeaderProps) {
         </div>
       </header>
 
-      {/* Mobile Full-Screen Overlay Menu */}
+      {/* Mobile Overlay Menu - Positioned cleanly below the header with dedicated scrolling */}
       <div
         className={cn(
-          "fixed inset-0 z-40 bg-void-navy/95 backdrop-blur-xl flex flex-col items-center justify-center gap-10 transition-opacity duration-300 lg:hidden",
-          menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          "fixed top-16 sm:top-20 inset-x-0 bottom-0 z-40 transition-all duration-300 ease-in-out lg:hidden overflow-y-auto overscroll-contain",
+          isParchment
+            ? "bg-[#F3E9D2]/98 backdrop-blur-xl border-t border-[#B8873D]/15"
+            : "bg-void-navy/98 backdrop-blur-xl border-t border-brass/10",
+          menuOpen
+            ? "opacity-100 pointer-events-auto translate-y-0"
+            : "opacity-0 pointer-events-none -translate-y-2"
         )}
       >
-        <nav className="flex flex-col items-center gap-8">
-          {NAV_LINKS.map((link) => (
-            <div key={link.href} onClick={() => setMenuOpen(false)}>
-              <NavItem
-                href={link.href}
-                en={link.en}
-                hi={link.hi} // Full bilingual on mobile
-                download={link.download}
-                className="scale-110"
+        <div className="min-h-full flex flex-col items-center py-8 px-4">
+          <div className="my-auto flex flex-col items-center gap-7 w-full max-w-xs">
+            <nav className="flex flex-col items-center gap-6 w-full">
+              {NAV_LINKS.map((link) => (
+                <div key={link.href} onClick={() => setMenuOpen(false)} className="w-full flex justify-center">
+                  <NavItem
+                    href={link.href}
+                    en={link.en}
+                    hi={link.hi} // Full bilingual on mobile
+                    download={link.download}
+                    variant={isParchment ? "light" : "dark"}
+                    className="scale-105"
+                  />
+                </div>
+              ))}
+            </nav>
+
+            <div onClick={() => setMenuOpen(false)} className="mt-2">
+              <BrassButton
+                en="Enquire Now"
+                hi="पूछताछ करें"
+                size="md"
+                variant="primary"
+                href="/contact"
               />
             </div>
-          ))}
-        </nav>
-        
-        <div onClick={() => setMenuOpen(false)} className="mt-4">
-          <BrassButton
-            en="Enquire Now"
-            hi="पूछताछ करें"
-            size="md"
-            variant="primary"
-            href="/contact"
-          />
+          </div>
         </div>
       </div>
     </>

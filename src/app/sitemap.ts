@@ -13,8 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 1.0,
       images: [
-        `${baseUrl}/assets/blog/shastras-to-silicon.webp`,
-        `${baseUrl}/assets/blog/ujjain-zero-meridian.webp`,
+        `${baseUrl}/og-image.webp`,
+        `${baseUrl}/og-image.jpg`,
       ],
     },
     {
@@ -48,7 +48,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
       images: [
-        `${baseUrl}/assets/blog/shastras-to-silicon.webp`,
+        `${baseUrl}/og-image.webp`,
       ],
     },
     {
