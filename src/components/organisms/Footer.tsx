@@ -4,12 +4,14 @@ import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { getWhatsAppUrl, WHATSAPP_CONFIG } from "@/config";
 
 const NAVIGATE_LINKS = [
   { href: "/", label: "Home" },
   { href: "/clock", label: "The Clock" },
   { href: "/faq", label: "FAQ" },
   { href: "/catalogue.pdf", label: "Catalogue (PDF)", download: "Vedic_Watch_Catalogue.pdf" },
+  { href: "/contact", label: "Contact Us" },
 ];
 
 const EXPLORE_LINKS = [
@@ -136,11 +138,13 @@ export function Footer({ variant = "dark", className }: FooterProps) {
               Limited artisan production for sacred sanctums, museums, and private estates.
             </p>
             <a
-              href="tel:+919406664444"
+              href={getWhatsAppUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-mono text-xs text-ivory/75 hover:text-[#FFF5D1] transition-colors mb-2 flex items-center gap-1.5"
             >
-              <span>📞</span>
-              <span>+91 94066 64444</span>
+              <span>💬</span>
+              <span>WhatsApp: {WHATSAPP_CONFIG.formattedPhone}</span>
             </a>
             <a
               href="mailto:contact@thevedicghadi.in"
@@ -149,11 +153,20 @@ export function Footer({ variant = "dark", className }: FooterProps) {
               <span>✉️</span>
               <span>contact@thevedicghadi.in</span>
             </a>
+            <a
+              href={getWhatsAppUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-sans text-[#E8B94B] hover:text-[#FFF5D1] font-medium tracking-wide transition-colors group mb-2"
+            >
+              <span>Enquire on WhatsApp</span>
+              <span className="transition-transform group-hover:translate-x-1">→</span>
+            </a>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-1.5 text-xs font-sans text-[#E8B94B] hover:text-[#FFF5D1] font-medium tracking-wide transition-colors group"
+              className="inline-flex items-center gap-1.5 text-xs font-sans text-ivory/60 hover:text-[#FFF5D1] transition-colors group"
             >
-              <span>Enquire Now</span>
+              <span>Contact Us Form</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </Link>
           </div>

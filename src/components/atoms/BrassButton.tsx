@@ -6,6 +6,8 @@ interface BrassButtonProps {
   size?: "sm" | "md" | "lg";
   variant?: "primary" | "ghost";
   href?: string;
+  target?: string;
+  rel?: string;
   onClick?: () => void;
   disabled?: boolean;
   className?: string;
@@ -17,6 +19,8 @@ export function BrassButton({
   size = "md",
   variant = "primary",
   href,
+  target,
+  rel,
   onClick,
   disabled = false,
   className,
@@ -93,8 +97,18 @@ export function BrassButton({
   const allClasses = cn(baseClasses, variantClasses[variant], disabledClasses, className);
 
   if (href && !disabled) {
+    const isExternal =
+      href.startsWith("http://") ||
+      href.startsWith("https://") ||
+      href.startsWith("//") ||
+      href.startsWith("mailto:") ||
+      href.startsWith("tel:");
+
+    const finalTarget = target !== undefined ? target : isExternal && !href.startsWith("tel:") && !href.startsWith("mailto:") ? "_blank" : undefined;
+    const finalRel = rel !== undefined ? rel : finalTarget === "_blank" ? "noopener noreferrer" : undefined;
+
     return (
-      <a href={href} className={allClasses}>
+      <a href={href} target={finalTarget} rel={finalRel} className={allClasses}>
         {content}
       </a>
     );

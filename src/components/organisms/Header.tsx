@@ -8,6 +8,7 @@ import { NavItem } from "@/components/molecules/NavItem";
 import { BrassButton } from "@/components/atoms/BrassButton";
 import { CelestialThemeToggle } from "@/components/atoms/CelestialThemeToggle";
 import { useTheme } from "@/components/providers/ThemeProvider";
+import { getWhatsAppUrl } from "@/config";
 
 const NAV_LINKS = [
   { href: "/", en: "Home", hi: "मुख्य पृष्ठ" },
@@ -125,7 +126,7 @@ export function Header({ alwaysVisible = false }: HeaderProps) {
 
           {/* Right: Desktop CTA + Sun/Night Theme Toggle */}
           <div className="hidden lg:flex items-center gap-3">
-            <BrassButton en="Enquire" size="sm" variant="primary" href="/contact" />
+            <BrassButton en="Enquire" size="sm" variant="primary" href={getWhatsAppUrl()} />
             
             {/* Luxury Celestial Horological Theme Toggle */}
             <CelestialThemeToggle
@@ -209,7 +210,7 @@ export function Header({ alwaysVisible = false }: HeaderProps) {
                 hi="पूछताछ करें"
                 size="md"
                 variant="primary"
-                href="/contact"
+                href={getWhatsAppUrl()}
               />
             </div>
           </div>

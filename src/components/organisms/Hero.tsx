@@ -7,6 +7,7 @@ import { VedicClockReplica } from "./VedicClockReplica";
 import { SectionEyebrow } from "@/components/atoms/SectionEyebrow";
 import { GoldDivider } from "@/components/atoms/GoldDivider";
 import { BrassButton } from "@/components/atoms/BrassButton";
+import { getWhatsAppUrl } from "@/config";
 
 export const LOAD_SPEED = 0.55;
 
@@ -201,7 +202,7 @@ export function Hero({ variant = "dark", className }: HeroProps) {
               en="Enquire Now"
               hi="पूछताछ करें"
               size="md"
-              href="/contact"
+              href={getWhatsAppUrl()}
             />
           </div>
         </div>

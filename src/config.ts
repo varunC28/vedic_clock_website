@@ -39,3 +39,17 @@ export function toIst(utc: Date): Date {
 export function fromIst(istWall: Date): Date {
   return new Date(istWall.getTime() - IST_OFFSET_MS);
 }
+
+/** WhatsApp Business Configuration */
+export const WHATSAPP_CONFIG = {
+  phoneNumber: "919770984615",
+  formattedPhone: "+91 97709 84615",
+  defaultMessage:
+    "Namaste! I am interested in inquiring about the Vikramaditya Vedic Clock. Could you please share more details, pricing, and the catalogue?",
+};
+
+/** Generate a direct WhatsApp Business link with pre-written message */
+export function getWhatsAppUrl(message: string = WHATSAPP_CONFIG.defaultMessage): string {
+  return `https://wa.me/${WHATSAPP_CONFIG.phoneNumber}?text=${encodeURIComponent(message)}`;
+}
+

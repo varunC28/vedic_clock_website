@@ -3,6 +3,7 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import { CtaCard } from "@/components/molecules/CtaCard";
+import { getWhatsAppUrl } from "@/config";
 
 interface ClosingCtaSectionProps {
   variant?: "dark" | "parchment";
@@ -32,7 +33,7 @@ export function ClosingCtaSection({ variant = "dark", className }: ClosingCtaSec
           buttonTextEn="Enquire Now"
           buttonTextHi="पूछताछ करें"
           buttonSize="md"
-          href="/contact"
+          href={getWhatsAppUrl()}
         />
       </div>
     </section>

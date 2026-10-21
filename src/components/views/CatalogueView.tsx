@@ -8,6 +8,7 @@ import { Header } from "@/components/organisms/Header";
 import { SectionEyebrow } from "@/components/atoms/SectionEyebrow";
 import { GoldDivider } from "@/components/atoms/GoldDivider";
 import { BrassButton } from "@/components/atoms/BrassButton";
+import { getWhatsAppUrl } from "@/config";
 
 const Footer = dynamic(
   () => import("@/components/organisms/Footer").then((m) => m.Footer),
@@ -92,7 +93,7 @@ export function CatalogueView() {
               en="Enquire Now"
               hi="पूछताछ करें"
               size="md"
-              href="/contact"
+              href={getWhatsAppUrl("Namaste! I would like to enquire about acquiring the Vikramaditya Vedic Clock and review the catalogue.")}
             />
           </div>
         </div>
@@ -163,13 +164,15 @@ export function CatalogueView() {
                 </div>
 
                 <div className="pt-6 mt-6 border-t border-white/5">
-                  <Link
-                    href="/contact"
+                  <a
+                    href={getWhatsAppUrl(`Namaste! I would like to enquire about acquiring the ${ed.titleEn} (${ed.titleHi}) edition of the Vikramaditya Vedic Clock.`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-xs font-sans text-[#E8B94B] hover:text-[#FFF5D1] inline-flex items-center gap-1.5 transition-colors font-medium"
                   >
-                    <span>Enquire</span>
+                    <span>Enquire on WhatsApp</span>
                     <span>→</span>
-                  </Link>
+                  </a>
                 </div>
               </div>
             ))}
@@ -188,7 +191,7 @@ export function CatalogueView() {
             en="Enquire Now"
             hi="पूछताछ करें"
             size="lg"
-            href="/contact"
+            href={getWhatsAppUrl("Namaste! I would like to inquire about bespoke architectural dimensions and custom commission for the Vikramaditya Vedic Clock.")}
           />
         </div>
       </main>

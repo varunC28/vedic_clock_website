@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 import { Header } from "@/components/organisms/Header";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { MASTER_FAQ_ITEMS } from "@/data/faq-data";
+import { getWhatsAppUrl } from "@/config";
 
 const Footer = dynamic(
   () => import("@/components/organisms/Footer").then((m) => m.Footer),
@@ -207,8 +208,10 @@ export function FaqView() {
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-            <Link
-              href="/contact"
+            <a
+              href={getWhatsAppUrl("Namaste! I have a question regarding the Vikramaditya Vedic Clock and would like to enquire directly.")}
+              target="_blank"
+              rel="noopener noreferrer"
               className={cn(
                 "px-6 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-all cursor-pointer",
                 isParchment
@@ -216,7 +219,18 @@ export function FaqView() {
                   : "bg-gradient-to-r from-[#B8873D] via-[#D4A65A] to-[#E5B76A] text-[#03060E] hover:opacity-95 shadow-[0_4px_16px_rgba(212,166,90,0.25)]"
               )}
             >
-              Enquire Now →
+              Enquire on WhatsApp →
+            </a>
+            <Link
+              href="/contact"
+              className={cn(
+                "px-6 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-all border cursor-pointer",
+                isParchment
+                  ? "border-[#482D1C]/40 text-[#482D1C] hover:bg-[#482D1C]/5"
+                  : "border-[#D4A65A]/40 text-[#D4A65A] hover:bg-[#D4A65A]/10"
+              )}
+            >
+              Contact Form →
             </Link>
             <a
               href="/catalogue.pdf"

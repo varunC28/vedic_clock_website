@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import dynamic from "next/dynamic";
 import { Header } from "@/components/organisms/Header";
 import { useTheme } from "@/components/providers/ThemeProvider";
+import { getWhatsAppUrl, WHATSAPP_CONFIG } from "@/config";
 
 const Footer = dynamic(
   () => import("@/components/organisms/Footer").then((m) => m.Footer),
@@ -163,7 +164,21 @@ export function ContactView() {
               </div>
               <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-1 text-sm font-sans">
                 <a
-                  href="tel:+919406664444"
+                  href={getWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(
+                    "inline-flex items-center gap-2 font-mono transition-colors",
+                    isParchment
+                      ? "text-[#2D1B0E] hover:text-[#8C5D33]"
+                      : "text-ivory hover:text-[#E8B94B]"
+                  )}
+                >
+                  <span className={isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"}>💬</span>
+                  <span>WhatsApp: {WHATSAPP_CONFIG.formattedPhone}</span>
+                </a>
+                <a
+                  href="tel:+919770984615"
                   className={cn(
                     "inline-flex items-center gap-2 font-mono transition-colors",
                     isParchment
@@ -172,7 +187,7 @@ export function ContactView() {
                   )}
                 >
                   <span className={isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"}>📞</span>
-                  <span>+91 94066 64444</span>
+                  <span>{WHATSAPP_CONFIG.formattedPhone}</span>
                 </a>
                 <a
                   href="mailto:contact@thevedicghadi.in"
