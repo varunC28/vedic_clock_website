@@ -1491,7 +1491,9 @@ export function GuideView() {
                 {/* Micro helper bar with table expander */}
                 <div className="flex flex-wrap items-center justify-between gap-2 px-2 text-[11px] opacity-75 font-sans">
                   <span className="flex items-center gap-1.5">
-                    <span>💡</span>
+                    <svg className="w-3.5 h-3.5 text-[#D4A65A] shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                     <span>Drag vertically or click any Rashi sign to rotate the wheel</span>
                   </span>
                   <button

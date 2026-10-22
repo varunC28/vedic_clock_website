@@ -85,7 +85,9 @@ export function CatalogueView() {
               download="Vedic_Watch_Catalogue.pdf"
               className="px-6 py-2.5 rounded-full bg-[#D4A65A] text-[#050A14] font-sans text-xs sm:text-sm font-semibold tracking-wide hover:bg-[#E8B94B] transition-all shadow-[0_0_20px_rgba(212,166,90,0.3)] flex items-center gap-2"
             >
-              <span>📥</span>
+              <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
               <span>Download Master Catalogue (PDF)</span>
             </a>
 

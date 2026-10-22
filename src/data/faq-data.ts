@@ -19,10 +19,10 @@ export interface FaqCategory {
 
 export const FAQ_CATEGORIES: FaqCategory[] = [
   { key: "all", labelEn: "All Questions", labelHi: "सभी प्रश्न", icon: "✦" },
-  { key: "astronomy", labelEn: "Vedic Astronomy", labelHi: "खगोल विज्ञान", icon: "🌌" },
-  { key: "hardware", labelEn: "Clock & Hardware", labelHi: "यंत्र व तकनीक", icon: "🕰️" },
-  { key: "geography", labelEn: "Global Calibration", labelHi: "वैश्विक भूगोल", icon: "🌍" },
-  { key: "acquisitions", labelEn: "Commissions & Orders", labelHi: "अधिग्रहण व संस्थाएँ", icon: "🏛️" },
+  { key: "astronomy", labelEn: "Vedic Astronomy", labelHi: "खगोल विज्ञान", icon: "✦" },
+  { key: "hardware", labelEn: "Clock & Hardware", labelHi: "यंत्र व तकनीक", icon: "✦" },
+  { key: "geography", labelEn: "Global Calibration", labelHi: "वैश्विक भूगोल", icon: "✦" },
+  { key: "acquisitions", labelEn: "Commissions & Orders", labelHi: "अधिग्रहण व संस्थाएँ", icon: "✦" },
 ];
 
 export const MASTER_FAQ_ITEMS: FaqItem[] = [

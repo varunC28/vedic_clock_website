@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; border: 1px solid #e5e7eb; border-radius: 12px; background-color: #ffffff; color: #1f2937;">
         <div style="border-bottom: 2px solid #B8873D; padding-bottom: 16px; margin-bottom: 20px;">
           <h2 style="color: #2D1B0E; margin: 0; font-size: 20px; font-weight: 700;">
-            ✨ New Vedic Clock Contact Enquiry
+            New Vedic Clock Contact Enquiry
           </h2>
           <p style="color: #6B7280; font-size: 13px; margin: 4px 0 0 0;">
             Received via the official website contact portal
