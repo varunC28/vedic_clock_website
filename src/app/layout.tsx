@@ -18,7 +18,7 @@ const fraunces = Fraunces({
 
 const notoDevanagari = Noto_Sans_Devanagari({ 
   subsets: ["devanagari"], 
-  weight: ["400", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-noto-devanagari",
   display: "swap",
 });

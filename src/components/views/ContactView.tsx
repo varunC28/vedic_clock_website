@@ -115,19 +115,21 @@ export function ContactView() {
           {/* ── LEFT COLUMN: Typography, Direct Contact & Offices (No Card Boxes) ── */}
           <div className="lg:col-span-6 flex flex-col text-left">
             {/* Eyebrow */}
-            <span
+            <div
               className={cn(
-                "font-mono text-xs tracking-[0.25em] uppercase mb-4",
+                "flex items-center gap-2 text-xs font-semibold mb-4",
                 isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
               )}
             >
-              / get in touch /
-            </span>
+              <span className="font-sans uppercase tracking-[0.2em]">Get In Touch</span>
+              <span className="opacity-40">/</span>
+              <span className="font-hindi text-sm font-medium">संपर्क करें</span>
+            </div>
 
             {/* Headline */}
             <h1
               className={cn(
-                "font-sans text-3xl sm:text-4xl lg:text-[44px] font-bold leading-[1.18] tracking-tight mb-4",
+                "font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal leading-[1.18] tracking-tight mb-4",
                 isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
               )}
             >

@@ -60,9 +60,11 @@ export function FaqView() {
       <main className="relative z-10 pt-28 sm:pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto flex flex-col items-center">
         {/* ── Hero Header ── */}
         <div className="text-center mb-12 max-w-2xl flex flex-col items-center">
-          <span className={cn("font-mono text-xs tracking-[0.25em] uppercase font-semibold mb-3", t.eyebrow)}>
-            Knowledge Hub · ज्ञान-कोष
-          </span>
+          <div className={cn("flex items-center gap-2 text-xs font-semibold mb-3 justify-center", t.eyebrow)}>
+            <span className="font-sans uppercase tracking-[0.2em]">Knowledge Hub</span>
+            <span className="opacity-40">/</span>
+            <span className="font-hindi text-sm font-medium">ज्ञान-कोष</span>
+          </div>
 
           <h1 className={cn("font-hindi text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-normal leading-tight", t.titleHi)}>
             प्रश्नोत्तरी एवं संदर्भ

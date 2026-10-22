@@ -26,9 +26,9 @@
   --color-giltDeep: #8A6A2E;
   --color-bindu: #FFE3A8;
 
-  --font-serif: var(--font-fraunces), serif;
-  --font-sans: var(--font-inter), sans-serif;
-  --font-hindi: var(--font-noto-devanagari), 'Noto Sans Devanagari', sans-serif;
+  --font-serif: var(--font-fraunces), var(--font-noto-devanagari), "Noto Serif Devanagari", "Georgia", serif;
+  --font-sans: var(--font-inter), var(--font-noto-devanagari), "Noto Sans Devanagari", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-hindi: var(--font-noto-devanagari), "Noto Sans Devanagari", var(--font-inter), sans-serif;
 }
 
 @utility animate-heartbeat {
@@ -92,6 +92,7 @@
   }
 
   body {
+    font-family: var(--font-sans);
     background-color: var(--color-void-navy);
     color: var(--color-ivory);
     overflow-x: hidden;

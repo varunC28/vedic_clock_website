@@ -229,19 +229,25 @@ export function HeritageView() {
            ═══════════════════════════════════════════════════════ */}
         <section className="flex flex-col items-start max-w-3xl">
           {/* Eyebrow */}
-          <span
+          <div
             className={cn(
-              "font-mono text-xs tracking-[0.25em] uppercase mb-4 transition-colors duration-500",
+              "flex flex-wrap items-center gap-2 text-xs mb-4 transition-colors duration-500",
               isParchment ? "text-[#8C5D33]" : "text-[#D4A65A]"
             )}
           >
-            / heritage & the idea / विचार एवं परंपरा /
-          </span>
+            <span className="font-sans uppercase tracking-[0.2em] font-semibold">
+              Heritage & The Idea
+            </span>
+            <span className="opacity-40 text-[10px]">/</span>
+            <span className="font-hindi text-sm font-medium">
+              विचार एवं परंपरा
+            </span>
+          </div>
 
           {/* Headline */}
           <h1
             className={cn(
-              "font-sans text-3xl sm:text-4xl lg:text-[46px] font-bold leading-[1.15] tracking-tight mb-4 heritage-speakable-headline transition-colors duration-500",
+              "font-serif text-3xl sm:text-4xl lg:text-[46px] font-normal leading-[1.18] tracking-tight mb-4 heritage-speakable-headline transition-colors duration-500",
               isParchment ? "text-[#2D1B0E]" : "text-[#FBF5E7]"
             )}
           >

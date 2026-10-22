@@ -163,7 +163,7 @@ export function Hero({ variant = "dark", className }: HeroProps) {
           <div className="space-y-1 sm:space-y-1.5">
             <h2
               className={cn(
-                "text-3xl sm:text-4xl md:text-5xl font-hindi font-bold tracking-tight leading-tight",
+                "text-3xl sm:text-4xl md:text-5xl font-hindi font-bold tracking-normal leading-tight",
                 isParchment
                   ? "text-[#2A1B10] drop-shadow-sm"
                   : "text-[#FBF5E7] drop-shadow-[0_2px_18px_rgba(0,0,0,0.9)]"
