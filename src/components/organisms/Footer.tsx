@@ -8,7 +8,7 @@ import { getWhatsAppUrl, WHATSAPP_CONFIG } from "@/config";
 
 const NAVIGATE_LINKS = [
   { href: "/", label: "Home" },
-  { href: "/clock", label: "The Clock" },
+  { href: "https://app.thevedicghadi.in", label: "The Clock" },
   { href: "/faq", label: "FAQ" },
   { href: "/catalogue.pdf", label: "Catalogue (PDF)", download: "Vedic_Watch_Catalogue.pdf" },
   { href: "/contact", label: "Contact Us" },
@@ -89,7 +89,7 @@ export function Footer({ variant = "dark", className }: FooterProps) {
             <ul className="space-y-3">
               {NAVIGATE_LINKS.map((link) => (
                 <li key={link.label}>
-                  {link.download ? (
+                  {link.download || link.href.startsWith("http") ? (
                     <a
                       href={link.href}
                       download={link.download}

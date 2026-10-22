@@ -8,8 +8,8 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/clock',
-        destination: '/',
-        permanent: true,
+        destination: 'https://app.thevedicghadi.in',
+        permanent: false,
       },
       {
         source: '/panchang',

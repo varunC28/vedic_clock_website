@@ -661,8 +661,8 @@ export function HeritageView() {
           </div>
 
           <div className="flex items-center gap-3 shrink-0">
-            <Link
-              href="/clock"
+            <a
+              href="https://app.thevedicghadi.in"
               className={cn(
                 "px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide transition-all duration-500",
                 isParchment
@@ -671,7 +671,7 @@ export function HeritageView() {
               )}
             >
               The Clock →
-            </Link>
+            </a>
             <Link
               href="/guide"
               className={cn(

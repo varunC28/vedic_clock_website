@@ -53,3 +53,7 @@ export function getWhatsAppUrl(message: string = WHATSAPP_CONFIG.defaultMessage)
   return `https://wa.me/${WHATSAPP_CONFIG.phoneNumber}?text=${encodeURIComponent(message)}`;
 }
 
+/** Official Vedic Clock Web Application URL */
+export const VEDIC_CLOCK_APP_URL = "https://app.thevedicghadi.in";
+
+

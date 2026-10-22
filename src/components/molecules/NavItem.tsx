@@ -13,6 +13,8 @@ interface NavItemProps {
   forceActive?: boolean; // For sandbox demo purposes
   className?: string;
   download?: boolean | string;
+  target?: string;
+  rel?: string;
 }
 
 export function NavItem({
@@ -23,15 +25,21 @@ export function NavItem({
   forceActive,
   className,
   download,
+  target,
+  rel,
 }: NavItemProps) {
   const pathname = usePathname();
   const [isHovered, setIsHovered] = useState(false);
+
+  const isExternal = href.startsWith("http://") || href.startsWith("https://");
 
   // Check if active. Exact match for '/', startsWith for others.
   // forceActive overrides this for sandbox demonstration.
   const isActive =
     forceActive !== undefined
       ? forceActive
+      : isExternal
+      ? false
       : href === "/"
       ? pathname === href
       : pathname?.startsWith(href);
@@ -88,6 +96,21 @@ export function NavItem({
       <a
         href={href}
         download={typeof download === "string" ? download : true}
+        className={cn("group flex flex-col items-center gap-1 cursor-pointer", className)}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {linkContent}
+      </a>
+    );
+  }
+
+  if (isExternal) {
+    return (
+      <a
+        href={href}
+        target={target}
+        rel={target === "_blank" ? "noopener noreferrer" : rel}
         className={cn("group flex flex-col items-center gap-1 cursor-pointer", className)}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
